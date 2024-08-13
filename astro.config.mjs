@@ -20,10 +20,8 @@ export default defineConfig({
   ],
   output: "static",
   markdown: {
- 
-    shikiConfig: { theme: 'css-variables' }
+     shikiConfig: { theme: 'css-variables' }
   },
   wrap: true,
   scopedStyleStrategy: "where",
-  
 });
