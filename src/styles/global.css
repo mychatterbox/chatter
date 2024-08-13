@@ -3,13 +3,13 @@
 @import "tailwindcss/utilities";
 
 
-@font-face {
+/* @font-face {
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url(../fonts/PretendardGOV-Regular.subset.woff2) format("woff2");
-}
+} */
 
 @font-face {
   font-family: "Pretendard";
@@ -22,7 +22,7 @@
 @font-face {
   font-family: "Pretendard";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-display: swap;
   src: url(../fonts/PretendardGOV-SemiBold.subset.woff2) format("woff2");
 }
