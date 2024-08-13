@@ -7,7 +7,7 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site: "https://chatter.kr",
-  trailingSlash: "never",
+  trailingSlash: "ignore",
   integrations: [
     svelte(),
     tailwind(),
