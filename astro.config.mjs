@@ -4,8 +4,6 @@ import markdoc from "@astrojs/markdoc";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
-import vercel from "@astrojs/vercel/static";
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://chatter.kr",
@@ -18,10 +16,11 @@ export default defineConfig({
       filter: (p) => !p.includes("/draft/"),
     }),
   ],
-  output: "static",
+
   markdown: {
      shikiConfig: { theme: 'css-variables' }
   },
   wrap: true,
   scopedStyleStrategy: "where",
+  output: "static",
 });
