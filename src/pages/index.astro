@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import FeedItem from "components/feed-item.astro";
+import Html from "components/html.astro";
+import Nav from "components/navbar.astro";
+
+let pub = await getCollection("published");
+if (import.meta.env.PROD) pub = pub.filter((p) => p.data.list && !p.slug.startsWith("draft/"));
+pub.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<Html title="mychatterbox" description="이런 것도 팁이 되나 싶은 정보들">
+  <Nav />
+  <main class="px-4 pb-12">
+    <ul class="mx-auto max-w-screen-lg font-medium">
+      {pub.map((entry) => <FeedItem entry={entry} />)}
+    </ul>
+  </main>
+</Html>

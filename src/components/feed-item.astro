@@ -1,0 +1,72 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Prose from "components/prose.astro";
+import { format } from "date-fns";
+
+interface Props {
+  entry: CollectionEntry<"published">;
+}
+const { entry } = Astro.props;
+const {
+  slug,
+  data: { title, description, pubDate, kind },
+  // data: { title, description, pubDate, kind, tags },
+} = entry;
+const { Content } = await entry.render();
+const draft = entry.slug.startsWith("draft/");
+---
+
+<li class="pb-20">
+  <div class="mb-5 flex flex-col items-start">
+    <a
+      class="text-2xl font-semibold leading-tight decoration-zinc-900 decoration-2 underline-offset-2 hover:underline dark:decoration-white"
+      href={`/${slug}`}
+    >
+      <h2 
+      class="text-2xl font-semibold leading-tight"
+      transition:name={`title-${entry.slug}`}
+    >
+    {title}
+    <!-- {entry.data.title} -->
+    </h2>
+    </a>
+    <div class="flex items-center space-x-1 pl-0.5">
+      <div class="text-sm text-zinc-600 dark:text-zinc-400">
+        {
+          kind === "article" ? (
+          <a href={`/kind/${kind}`} class="font-medium text-blue-600 dark:text-blue-400 pr-2">
+              Article
+            </a>
+          ) : kind === "note" ? (
+          <a href={`/kind/${kind}`} class="font-medium text-emerald-700 dark:text-emerald-400 pr-2">
+              Note
+            </a>
+          ) : null
+        }
+        <span>{format(pubDate, "y-MM-dd")}</span>
+        <!-- <span>published on {format(pubDate, "yyyy-MM-dd")}</span> -->
+      </div>
+      {
+        draft && (
+          <div class="text-sm font-black uppercase text-rose-600 dark:text-rose-600">draft</div>
+        )
+      }
+    </div>
+  </div>
+  <Prose>
+    <!-- {
+      kind === "article" ? (
+        <p class="break-words" set:html={description}></p>
+      ) : kind === "note" ? (
+        <Content />
+      ) : null
+    } -->
+    {
+      kind === "article" ? (
+        <p class="break-words">{description}</p>
+      ) : kind === "note" ? (
+        <Content />
+      ) : null
+    }
+  </Prose>
+</li>
