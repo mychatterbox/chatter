@@ -6,6 +6,7 @@ export async function GET(context: RSSOptions) {
   const pub = all.filter((p) => !p.slug.startsWith("draft/"));
   pub.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
   return rss({
+    trailingSlash: false,
     title: "mychatterbox",
     description: "이런 것도 팁이 되나 싶은 정보들",
     site: context.site,
