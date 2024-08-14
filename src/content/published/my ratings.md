@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2024-08-10
+pubDate: 2024-08-14
 slug: my-ratings
 featured: false
 draft: false
@@ -151,6 +151,7 @@ description: 영화, TV 별점 리스트
 
 ![100](../../assets/images/8.png)
 
+[하나 그리고 넷 (གཅིག་དང་བཞི།) (2022)](https://www.themoviedb.org/movie/878977 "하나 그리고 넷 (གཅིག་དང་བཞི།) (2022)")  
 [The Master and Margarita (Мастер и Маргарита) (2024)](https://www.themoviedb.org/movie/586353 "The Master and Margarita (Мастер и Маргарита) (2024)")  
 [엉클 분미 (ลุงบุญมีระลึกชาติ) (2010)](https://www.themoviedb.org/movie/38368 "엉클 분미 (ลุงบุญมีระลึกชาติ) (2010)")  
 [Englar alheimsins (2000)](https://www.themoviedb.org/movie/20152 "Englar alheimsins (2000)")  
@@ -1885,6 +1886,8 @@ description: 영화, TV 별점 리스트
 [닥터 차정숙 (2023)](https://www.themoviedb.org/tv/214997 "닥터 차정숙 (2023)")  
 ![100](../../assets/images/5.png)
 
+[기름범벅 교살자 (The Greasy Strangler) (2016)](https://www.themoviedb.org/movie/320413 "기름범벅 교살자 (The Greasy Strangler) (2016)")  
+[The Beast Within (2024)](https://www.themoviedb.org/movie/1300962 "The Beast Within (2024)")  
 [크로스 (2024)](https://www.themoviedb.org/movie/1002088 "크로스 (2024)")  
 [The Instigators (2024)](https://www.themoviedb.org/movie/1059064 "The Instigators (2024)")  
 [Zevcat (2024)](https://www.themoviedb.org/movie/1267742 "Zevcat (2024)")  
@@ -2592,6 +2595,7 @@ description: 영화, TV 별점 리스트
 [女鬼橋2：怨鬼樓 (2023)](https://www.themoviedb.org//999087 "女鬼橋2：怨鬼樓 (2023)")  
 ![100](../../assets/images/4.png)
 
+[배틀독 (Battledogs) (2013)](https://www.themoviedb.org/movie/184712 "배틀독 (Battledogs) (2013)")  
 [Haile: A Family Nightmare (2023)](https://www.themoviedb.org/movie/1143839 "Haile: A Family Nightmare (2023)")  
 [Golam (2024)](https://www.themoviedb.org/movie/1222140 "Golam (2024)")  
 [하우스 오브 본즈 (House of Bones) (2010)](https://www.themoviedb.org/movie/50288 "하우스 오브 본즈 (House of Bones) (2010)")  
