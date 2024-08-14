@@ -1154,6 +1154,7 @@ description: 영화, TV 별점 리스트
 
 ![100](../../assets/images/6.png)
 
+[핸섬가이즈 (2024)](https://www.themoviedb.org/movie/736720 "핸섬가이즈 (2024)")  
 [살인자는 누구인가 (เมอร์เด้อเหรอ ฆาตกรรมอิหยังวะ) (2023)](https://www.themoviedb.org/movie/1034335 "살인자는 누구인가 (เมอร์เด้อเหรอ ฆาตกรรมอิหยังวะ) (2023)")  
 [나인스 게이트 (The Ninth Gate) (1999)](https://www.themoviedb.org/movie/622 "나인스 게이트 (The Ninth Gate) (1999)")  
 [화이트 플라스틱 스카이 (Műanyag égbolt) (2023)](https://www.themoviedb.org/movie/587384 "화이트 플라스틱 스카이 (Műanyag égbolt) (2023)")  
