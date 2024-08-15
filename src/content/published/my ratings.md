@@ -1887,6 +1887,7 @@ description: 영화, TV 별점 리스트
 [닥터 차정숙 (2023)](https://www.themoviedb.org/tv/214997 "닥터 차정숙 (2023)")  
 ![100](../../assets/images/5.png)
 
+[Lord of Misrule (2023)](https://www.themoviedb.org/movie/853387 "Lord of Misrule (2023)")  
 [기름범벅 교살자 (The Greasy Strangler) (2016)](https://www.themoviedb.org/movie/320413 "기름범벅 교살자 (The Greasy Strangler) (2016)")  
 [The Beast Within (2024)](https://www.themoviedb.org/movie/1300962 "The Beast Within (2024)")  
 [크로스 (2024)](https://www.themoviedb.org/movie/1002088 "크로스 (2024)")  
