@@ -8,7 +8,7 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: "https://chatter.kr",
 
-  trailingSlash: "never",
+  trailingSlash: "ignore",
   integrations: [
     svelte(),
     tailwind(),
