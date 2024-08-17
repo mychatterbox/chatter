@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2024-08-15
+pubDate: 2024-08-17
 slug: my-ratings
 featured: false
 draft: false
@@ -32,6 +32,8 @@ description: 영화, TV 별점 리스트
 [미스터 션샤인 (2018)](https://www.themoviedb.org/tv/75820 "미스터 션샤인 (2018)")  
 [오징어 게임 (2021)](https://www.themoviedb.org/tv/93405 "오징어 게임 (2021)")  
 ![100](../../assets/images/9.png)
+
+[심플 라이프 (桃姐) (2011)](https://www.themoviedb.org/movie/91186 "심플 라이프 (桃姐) (2011)")  
 [애봇 초등학교 (Abbott Elementary) (2021)](https://www.themoviedb.org/tv/125935 "애봇 초등학교 (Abbott Elementary) (2021)")  
 [시계태엽 오렌지 (A Clockwork Orange) (1971)](https://www.themoviedb.org/movie/185 "A Clockwork Orange (1971)")  
 [괴물 (2006)](https://www.themoviedb.org/movie/1255 "괴물 (2006)")  
@@ -150,6 +152,7 @@ description: 영화, TV 별점 리스트
 [돼지의 왕 (2022)](https://www.themoviedb.org/tv/154523 "돼지의 왕 (2022)")  
 
 ![100](../../assets/images/8.png)
+
 
 [하나 그리고 넷 (གཅིག་དང་བཞི།) (2022)](https://www.themoviedb.org/movie/878977 "하나 그리고 넷 (གཅིག་དང་བཞི།) (2022)")  
 [The Master and Margarita (Мастер и Маргарита) (2024)](https://www.themoviedb.org/movie/586353 "The Master and Margarita (Мастер и Маргарита) (2024)")  
@@ -1154,6 +1157,8 @@ description: 영화, TV 별점 리스트
 
 ![100](../../assets/images/6.png)
 
+[The Duel (2024)](https://www.themoviedb.org/movie/1094605 "The Duel (2024)")  
+[폭군 (2024)](https://www.themoviedb.org/tv/246748 "폭군 (2024)")  
 [핸섬가이즈 (2024)](https://www.themoviedb.org/movie/736720 "핸섬가이즈 (2024)")  
 [살인자는 누구인가 (เมอร์เด้อเหรอ ฆาตกรรมอิหยังวะ) (2023)](https://www.themoviedb.org/movie/1034335 "살인자는 누구인가 (เมอร์เด้อเหรอ ฆาตกรรมอิหยังวะ) (2023)")  
 [나인스 게이트 (The Ninth Gate) (1999)](https://www.themoviedb.org/movie/622 "나인스 게이트 (The Ninth Gate) (1999)")  
@@ -1887,6 +1892,9 @@ description: 영화, TV 별점 리스트
 [닥터 차정숙 (2023)](https://www.themoviedb.org/tv/214997 "닥터 차정숙 (2023)")  
 ![100](../../assets/images/5.png)
 
+[종사 3: 귀문개 (粽邪3：鬼門開) (2023)](https://www.themoviedb.org/movie/1033667 "종사 3: 귀문개 (粽邪3：鬼門開) (2023)")  
+[종사 (粽邪) (2018)](https://www.themoviedb.org/movie/552737 "종사 (粽邪) (2018)")  
+[라방 (2023)](https://www.themoviedb.org/movie/1034871 "라방 (2023)")  
 [Lord of Misrule (2023)](https://www.themoviedb.org/movie/853387 "Lord of Misrule (2023)")  
 [기름범벅 교살자 (The Greasy Strangler) (2016)](https://www.themoviedb.org/movie/320413 "기름범벅 교살자 (The Greasy Strangler) (2016)")  
 [The Beast Within (2024)](https://www.themoviedb.org/movie/1300962 "The Beast Within (2024)")  
@@ -2597,6 +2605,7 @@ description: 영화, TV 별점 리스트
 [女鬼橋2：怨鬼樓 (2023)](https://www.themoviedb.org//999087 "女鬼橋2：怨鬼樓 (2023)")  
 ![100](../../assets/images/4.png)
 
+[Lunamancer (2021)](https://www.themoviedb.org/movie/879398 "Lunamancer (2021)")  
 [배틀독 (Battledogs) (2013)](https://www.themoviedb.org/movie/184712 "배틀독 (Battledogs) (2013)")  
 [Haile: A Family Nightmare (2023)](https://www.themoviedb.org/movie/1143839 "Haile: A Family Nightmare (2023)")  
 [Golam (2024)](https://www.themoviedb.org/movie/1222140 "Golam (2024)")  
@@ -3144,6 +3153,8 @@ description: 영화, TV 별점 리스트
 [특수공인중개사 오덕훈 (2022)](https://www.themoviedb.org/tv/203343 "특수공인중개사 오덕훈 (2022)")  
 [โรงเรียนผีมีอยู่ว่า… (2022)](https://www.themoviedb.org/tv/203502 "โรงเรียนผีมีอยู่ว่า… (2022)")  
 ![100](../../assets/images/2.png)
+
+[The Frontrooms (2024)](https://www.themoviedb.org/movie/1142820 "The Frontrooms (2024)")  
 [Jurassic Triangle (2024)](https://www.themoviedb.org/movie/1032448 "Jurassic Triangle (2024)")  
 [The Bad Orphan (2024)](https://www.themoviedb.org/movie/1300721 "The Bad Orphan (2024)")  
 [The Woods Are Real (2024)](https://www.themoviedb.org/movie/1134094 "The Woods Are Real (2024)")  
