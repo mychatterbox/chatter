@@ -2,14 +2,14 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2024-08-17
+pubDate: "2024-08-22"
 slug: my-ratings
 featured: false
 draft: false
 tags:
   - tmdb
 ogImage: '""'
-description: 영화, TV 별점 리스트
+description: ""
 ---
 
 ![100](../../assets/images/10.png)
@@ -581,6 +581,7 @@ description: 영화, TV 별점 리스트
 [이건 누명이야! 시칠리아 살인 미스터리 (Incastrati) (2022)](https://www.themoviedb.org/tv/154535 "Incastrati (2022)")  
 ![100](../../assets/images/7.png)
 
+[벤젠스 (Vengeance) (2022)](https://www.themoviedb.org/movie/683340 "벤젠스 (Vengeance) (2022)")  
 [거룩한 술꾼의 전설 (La leggenda del santo bevitore) (1988)](https://www.themoviedb.org/movie/54990 "거룩한 술꾼의 전설 (La leggenda del santo bevitore) (1988)")  
 [슬픔의 삼각형 (Triangle of Sadness) (2023)](https://www.themoviedb.org/movie/497828 "슬픔의 삼각형 (Triangle of Sadness) (2023)")  
 [Ga-ga: Glory to the Heroes (1986)](https://www.themoviedb.org/movie/91691 "Ga-ga: Glory to the Heroes (1986)")  
@@ -1157,6 +1158,7 @@ description: 영화, TV 별점 리스트
 
 ![100](../../assets/images/6.png)
 
+[우리는 좀비 (We Are Zombies) (2024)](https://www.themoviedb.org/movie/1139106 "우리는 좀비 (We Are Zombies) (2024)")  
 [The Duel (2024)](https://www.themoviedb.org/movie/1094605 "The Duel (2024)")  
 [폭군 (2024)](https://www.themoviedb.org/tv/246748 "폭군 (2024)")  
 [핸섬가이즈 (2024)](https://www.themoviedb.org/movie/736720 "핸섬가이즈 (2024)")  
@@ -1892,6 +1894,8 @@ description: 영화, TV 별점 리스트
 [닥터 차정숙 (2023)](https://www.themoviedb.org/tv/214997 "닥터 차정숙 (2023)")  
 ![100](../../assets/images/5.png)
 
+[오디티 (Oddity) (2024)](https://www.themoviedb.org/movie/1216191 "오디티 (Oddity) (2024)")  
+[Lore (2023)](https://www.themoviedb.org/movie/1155090 "Lore (2023)")  
 [종사 3: 귀문개 (粽邪3：鬼門開) (2023)](https://www.themoviedb.org/movie/1033667 "종사 3: 귀문개 (粽邪3：鬼門開) (2023)")  
 [종사 (粽邪) (2018)](https://www.themoviedb.org/movie/552737 "종사 (粽邪) (2018)")  
 [라방 (2023)](https://www.themoviedb.org/movie/1034871 "라방 (2023)")  
@@ -2605,6 +2609,11 @@ description: 영화, TV 별점 리스트
 [女鬼橋2：怨鬼樓 (2023)](https://www.themoviedb.org//999087 "女鬼橋2：怨鬼樓 (2023)")  
 ![100](../../assets/images/4.png)
 
+[다크 타워 (Dark Tower) (1987)](https://www.themoviedb.org/movie/106280 "다크 타워 (Dark Tower) (1987)")  
+[Black Mold (2023)](https://www.themoviedb.org/movie/949855 "Black Mold (2023)")  
+[시티헌터: 천사의 눈물 (2023)](https://www.themoviedb.org/movie/1056133 "시티헌터: 천사의 눈물 (2023)")  
+[Consumed (2024)](https://www.themoviedb.org/movie/1280990 "Consumed (2024)")  
+[Wishes of the Blue Girl (2024)](https://www.themoviedb.org/movie/1320728 "Wishes of the Blue Girl (2024)")  
 [Lunamancer (2021)](https://www.themoviedb.org/movie/879398 "Lunamancer (2021)")  
 [배틀독 (Battledogs) (2013)](https://www.themoviedb.org/movie/184712 "배틀독 (Battledogs) (2013)")  
 [Haile: A Family Nightmare (2023)](https://www.themoviedb.org/movie/1143839 "Haile: A Family Nightmare (2023)")  
@@ -3001,6 +3010,8 @@ description: 영화, TV 별점 리스트
 [連続殺人鬼カエル男 (2020)](https://www.themoviedb.org/tv/101643 "連続殺人鬼カエル男 (2020)")  
 [미남당 (2022)](https://www.themoviedb.org/tv/138663 "미남당 (2022)")  
 ![100](../../assets/images/3.png)
+
+[Eight Eyes (2024)](https://www.themoviedb.org/movie/1148787 "Eight Eyes (2024)")  
 [Mrit (2023)](https://www.themoviedb.org/movie/1326225 "Mrit (2023)")  
 [Hillock Haunting (2024)](https://www.themoviedb.org/movie/1322560 "Hillock Haunting (2024)")  
 [Abbey Grace (2016)](https://www.themoviedb.org/movie/419371 "Abbey Grace (2016)")  
