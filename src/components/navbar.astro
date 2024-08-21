@@ -4,6 +4,8 @@ import HomeModernIcon from "icons/hero/outline/home-modern.svelte";
 import InfoIcon from "icons/hero/outline/info-circle.svelte";
 import HomeModernSolidIcon from "icons/hero/solid/home-modern.svelte";
 import InfoSolidIcon from "icons/hero/solid/info-circle.svelte";
+import FilmSolidIcon from "icons/hero/solid/film.svelte";
+import FilmIcon from "icons/hero/outline/film.svelte";
 ---
 
 <header class="mb-8 flex items-center justify-between p-4 sm:px-8">
@@ -22,6 +24,19 @@ import InfoSolidIcon from "icons/hero/solid/info-circle.svelte";
       }
     </a>
     <a
+    aria-label="Film Ratings"
+    href="/my-ratings"
+    class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
+  >
+    {
+      Astro.url.pathname.startsWith("/my-ratings") ? (
+        <FilmSolidIcon class="h-7 w-7" />
+      ) : (
+        <FilmIcon class="h-7 w-7" />
+      )
+    }
+  </a>
+    <a
       aria-label="Site Info"
       href="/site-info"
       class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
@@ -34,6 +49,7 @@ import InfoSolidIcon from "icons/hero/solid/info-circle.svelte";
         )
       }
     </a>
+
   </div>
   <div class="flex-1"></div>
   <ColorSchemeToggle client:idle />
