@@ -7,15 +7,16 @@ slug: osfmount-ramdisk-scheduler
 featured: false
 draft: false
 tags:
-  - 램디스크
-  - OSFMOUNT
+   - 램디스크
+   - OSFMOUNT
 ogImage: ""
 description: OSFMOUNT 를 작업 스케줄러에 등록해 윈도우 시작 시 자동으로 폴더를 만드는 방법을 설명합니다.
 keywords:
-  - OSFMOUNT
-  - 램드라이브
-  - 램디스크
-  - OSFMOUNT 설정
+   - OSFMOUNT
+   - OSFMOUNT 설정
+   - 램드라이브
+   - 램디스크
+   - osfmount 사용법
 ---
 
 램이 아주 여유롭지 않으면 dynamic 방식이 가능한 [Imdisk](https://sourceforge.net/projects/imdisk-toolkit/) 램디스크가 더 편리하고 간편하지만 개인적인 이유로 OSFMOUNT 로 변경했습니다.  
