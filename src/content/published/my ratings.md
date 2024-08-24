@@ -15,15 +15,22 @@ description: ""
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* 스타일을 추가해보세요 */
-    </style>
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<!-- <style>
+    summary::before {
+        content: ""; /* 빈 요소 생성 */
+        display: inline-block;
+        width: 145px; /* 원하는 크기로 조정하세요 */
+        height: 24px;
+        background-image: url("/images/10.png"); /* 별 이미지 경로 */
+        background-size: cover;
+    }
+</style> -->
 </head>
 <body>
     <details open>
-        <summary>★★★★★★★★★★</summary>
+          <summary style="list-style: none; cursor: pointer;"><img src="/images/10.png"></summary>
         <ul>
 <li> <a href="https://www.themoviedb.org/movie/17654">District 9 (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/11423">살인의 추억 (2003)</a></li>
@@ -45,7 +52,7 @@ description: ""
         </ul>
     </details>
     <details>
-        <summary>★★★★★★★★★☆</summary>
+        <summary style="list-style: none; cursor: pointer;"><img src="/images/9.png"></summary>
         <ui>
 <li> <a href="https://www.themoviedb.org/movie/878977">하나 그리고 넷 (གཅིག་དང་བཞི།) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/586353">The Master and Margarita (Мастер и Маргарита) (2024)</a></li>
@@ -475,7 +482,7 @@ description: ""
         </ul>
     </details>
     <details>
-        <summary>★★★★★★★★☆☆</summary>
+        <summary style="list-style: none; cursor: pointer;"><img src="/images/8.png"></summary>
         <ui>
 <li> <a href="https://www.themoviedb.org/movie/878977">하나 그리고 넷 (གཅིག་དང་བཞི།) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/586353">The Master and Margarita (Мастер и Маргарита) (2024)</a></li>
@@ -905,7 +912,7 @@ description: ""
         </ul>
     </details>
     <details>
-        <summary>★★★★★★★☆☆☆</summary>
+        <summary style="list-style: none; cursor: pointer;"><img src="/images/7.png"></summary>
         <ui>
 <li> <a href="https://www.themoviedb.org/movie/683340">벤젠스 (Vengeance) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/54990">거룩한 술꾼의 전설 (La leggenda del santo bevitore) (1988)</a></li>
@@ -1484,7 +1491,7 @@ description: ""
         </ul>
     </details>
     <details>
-        <summary>★★★★★★☆☆☆☆</summary>
+        <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
         <ui>
 <li> <a href="https://www.themoviedb.org/movie/1000862">The Good Teacher (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1226578">롱레그스 (Longlegs) (2024)</a></li>
@@ -2226,7 +2233,7 @@ description: ""
         </ul>
     </details>
     <details>
-        <summary>★★★★★☆☆☆☆☆</summary>
+        <summary style="list-style: none; cursor: pointer;"><img src="/images/5.png"></summary>
         <ui>
 <li> <a href="https://www.themoviedb.org/movie/864855">루비의 선택 (Ruby's Choice) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1080249">Place of Bones (2024)</a></li>
@@ -2947,7 +2954,7 @@ description: ""
         </ul>
     </details>
     <details>
-        <summary>★★★★☆☆☆☆☆☆</summary>
+        <summary style="list-style: none; cursor: pointer;"><img src="/images/4.png"></summary>
         <ui>
 <li> <a href="https://www.themoviedb.org/movie/1243914">Dance of Death (Ronggeng Kematian) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/106280">다크 타워 (Dark Tower) (1987)</a></li>
@@ -3353,7 +3360,7 @@ description: ""
         </ul>
     </details>
     <details>
-        <summary>★★★☆☆☆☆☆☆☆</summary>
+        <summary style="list-style: none; cursor: pointer;"><img src="/images/3.png"></summary>
         <ui>
 <li> <a href="https://www.themoviedb.org/movie/1148787">Eight Eyes (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1326225">Mrit (2023)</a></li>
@@ -3510,7 +3517,7 @@ description: ""
         </ul>
     </details>
     <details>
-        <summary>★★☆☆☆☆☆☆☆☆</summary>
+        <summary style="list-style: none; cursor: pointer;"><img src="/images/2.png"></summary>
         <ui>       
 <li> <a href="https://www.themoviedb.org/movie/1142820">The Frontrooms (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1032448">Jurassic Triangle (2024)</a></li>
@@ -3568,7 +3575,7 @@ description: ""
         </ul>
     </details>
     <details>
-        <summary>★☆☆☆☆☆☆☆☆☆</summary>
+        <summary style="list-style: none; cursor: pointer;"><img src="/images/1.png"></summary>
         <ui>              
 <li> <a href="https://www.themoviedb.org/movie/1166528">Hillbilly Frankenstein from Hell (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/467377">Crazy Lake (2017)</a></li>
