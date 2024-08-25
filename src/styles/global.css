@@ -70,8 +70,10 @@
 
 @layer components {
   :root {
-    --astro-code-color-background:#262c31;
-    --astro-code-color-text: theme(colors.zinc.100);
+    /* --astro-code-color-background:#262c31; */
+    --astro-code-color-background:#efeff0;
+    /* --astro-code-color-text: theme(colors.zinc.100); */
+    --astro-code-color-text: black;
     --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-function: theme(colors.zinc.500);
     --astro-code-token-comment: theme(colors.blue.600);
@@ -84,8 +86,10 @@
   }
 
   .dark {
-    --astro-code-color-background: #dcdcdd;
-    --astro-code-color-text: black;
+    /* --astro-code-color-background: #dcdcdd; */
+    --astro-code-color-background:#202022;
+    /* --astro-code-color-text: black; */
+    --astro-code-color-text: white;
     --astro-code-token-function: theme(colors.zinc.200);
     --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-comment: theme(colors.blue.400);
