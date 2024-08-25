@@ -3,13 +3,6 @@
 @import "tailwindcss/utilities";
 
 
-/* @font-face {
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(../fonts/PretendardGOV-Regular.subset.woff2) format("woff2");
-} */
 
 @font-face {
   font-family: "Pretendard";
@@ -77,31 +70,42 @@
 
 @layer components {
   :root {
-    --astro-code-color-background: theme(colors.zinc.900);
-
+    --astro-code-color-background:#292929;
     --astro-code-color-text: theme(colors.zinc.100);
     --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-function: theme(colors.zinc.500);
     --astro-code-token-comment: theme(colors.blue.600);
     --astro-code-token-keyword: #e35955;
-    /* --astro-code-token-keyword: theme(colors.orange.500); */
-
     --astro-code-token-constant: var(--astro-code-color-text);
     --astro-code-token-parameter: var(--astro-code-color-text);
     --astro-code-token-string-expression: var(--astro-code-token-string);
     --astro-code-token-punctuation: var(--astro-code-color-text);
     --astro-code-token-link: var(--astro-code-token-string-expression);
   }
+
   .dark {
-    --astro-code-color-background: theme(colors.zinc.100);
-    --astro-code-color-text:theme(colors.zinc.900);
-    --astro-code-token-function: theme(colors.zinc.900);
-    --astro-code-token-string: theme(colors.emerald.600);
+    --astro-code-color-background: #dcdcdd;
+    --astro-code-color-text: black;
+    --astro-code-token-function: theme(colors.zinc.200);
+    --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-comment: theme(colors.blue.400);
-    /* --astro-code-token-keyword: theme(colors.orange.600); */
     --astro-code-token-keyword: #c73a49;
   }
+
+  /* 인라인 코드 스타일 오버라이드 */
+  .prose code {
+    background-color: var(--astro-code-color-background);
+    color: var(--astro-code-color-text);
+  }
+
+  .dark .prose code {
+    background-color: var(--astro-code-color-background);
+    color: var(--astro-code-color-text);
+  }
+
+  
 }
+
 
 .prose a {
   @apply break-words underline-offset-4 hover:text-blue-400 ;
@@ -125,4 +129,45 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-zinc-400 dark:bg-zinc-400;
+}
+
+
+
+.prose code::before, 
+.prose code::after {
+    content: none !important;
+}
+
+
+/* 인라인 코드 스타일 */
+.prose code:not(pre code) {
+  background-color: #292929; /* 인라인 코드 배경색 (일반 모드) */
+  color: white;
+  font-family: inherit; /* 기본 폰트로 설정 */
+  font-size: 1rem; /* 인라인 코드 폰트 크기 (예: 16px) */
+}
+
+/* 인라인 코드 스타일 (다크 모드) */
+.dark .prose code:not(pre code) {
+  background-color: #dcdcdd; /* 인라인 코드 배경색 (다크 모드) */
+  color: black;
+  font-size: 1rem; /* 인라인 코드 폰트 크기 (다크 모드) */
+}
+
+/* 코드 블록 전체 스타일 */
+.prose pre {
+  background-color: var(--astro-code-color-background);
+  color: var(--astro-code-color-text);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-family: "Berkeley Mono", monospace; /* 고정폭 폰트 */
+  font-size: 0.875rem; /* 코드 블록 폰트 크기 (일반 모드) */
+}
+
+/* 코드 블록 내 코드 요소 스타일 */
+.prose pre code {
+  background-color: inherit; /* 코드 요소 배경색을 상속 */
+  color: inherit; /* 코드 요소 글자색을 상속 */
+  font-family: inherit; /* 코드 요소 폰트 상속 */
+  font-size: inherit; /* 코드 요소 폰트 크기 상속 */
 }
