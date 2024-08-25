@@ -1,6 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
@@ -10,14 +9,6 @@ module.exports = {
       fontFamily: {
         sans: ['"Pretendard"', ...defaultTheme.fontFamily.sans],
         mono: ['"Berkeley Mono"', ...defaultTheme.fontFamily.mono],
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            "blockquote p:first-of-type::before": { content: "none" },
-            "blockquote p:first-of-type::after": { content: "none" },
-          },
-        },
       },
     },
   },
