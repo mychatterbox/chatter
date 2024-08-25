@@ -10,6 +10,9 @@ module.exports = {
         sans: ['"Pretendard"', ...defaultTheme.fontFamily.sans],
         mono: ['"Berkeley Mono"', ...defaultTheme.fontFamily.mono],
       },
+      colors: {     // 배경색 추가
+        'custom-dark': '#121212', 
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
