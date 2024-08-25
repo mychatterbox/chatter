@@ -70,7 +70,7 @@
 
 @layer components {
   :root {
-    --astro-code-color-background:#292929;
+    --astro-code-color-background:#262c31;
     --astro-code-color-text: theme(colors.zinc.100);
     --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-function: theme(colors.zinc.500);
@@ -141,7 +141,7 @@
 
 /* 인라인 코드 스타일 */
 .prose code:not(pre code) {
-  background-color: #292929; /* 인라인 코드 배경색 (일반 모드) */
+  background-color: #262c31; /* 인라인 코드 배경색 (일반 모드) */
   color: white;
   font-family: inherit; /* 기본 폰트로 설정 */
   font-size: 1rem; /* 인라인 코드 폰트 크기 (예: 16px) */
