@@ -55,7 +55,7 @@ description: ""
         <summary style="list-style: none; cursor: pointer;"><img src="/images/9.png"></summary>
         <ui>
 <li> <a href="https://www.themoviedb.org/movie/91186">심플 라이프 (桃姐) (2011)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/125935">애봇 초등학교 (Abbott 2021)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/125935">애봇 초등학교 (Abbott Elementary) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/185">A Clockwork Orange (1971)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1255">괴물 (2006)</a></li> 
 <li> <a href="https://www.themoviedb.org/movie/20453">3 Idiots (2009)</a></li>
@@ -1185,6 +1185,7 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1011556">노스 오브 노멀 (North of Normal) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/974250">프로비던스 (Greedy People) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1000862">The Good Teacher (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1226578">롱레그스 (Longlegs) (2024)</a></li>
