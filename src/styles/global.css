@@ -23,7 +23,7 @@
 @font-face {
   font-family: "Pretendard";
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   font-display: swap;
   src: url(../fonts/PretendardGOV-ExtraBold.subset.woff2) format("woff2");
 }
@@ -96,7 +96,8 @@
     --astro-code-token-keyword: #c73a49;
   }
 
-  /* 인라인 코드 스타일 오버라이드 */
+/* 
+  인라인 코드 스타일 오버라이드
   .prose code {
     background-color: var(--astro-code-color-background);
     color: var(--astro-code-color-text);
@@ -106,8 +107,7 @@
     background-color: var(--astro-code-color-background);
     color: var(--astro-code-color-text);
   }
-
-  
+   */
 }
 
 
@@ -145,16 +145,16 @@
 
 /* 인라인 코드 스타일 */
 .prose code:not(pre code) {
-  background-color: #262c31; /* 인라인 코드 배경색 (일반 모드) */
-  color: white;
+  
+  color: #cc2323;
   font-family: inherit; /* 기본 폰트로 설정 */
   font-size: 1rem; /* 인라인 코드 폰트 크기 (예: 16px) */
 }
 
 /* 인라인 코드 스타일 (다크 모드) */
 .dark .prose code:not(pre code) {
-  background-color: #dcdcdd; /* 인라인 코드 배경색 (다크 모드) */
-  color: black;
+  
+  color: #e94a3f;
   font-size: 1rem; /* 인라인 코드 폰트 크기 (다크 모드) */
 }
 
