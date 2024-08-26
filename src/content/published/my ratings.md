@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: "2024-08-25"
+pubDate: "2024-08-26"
 slug: my-ratings
 featured: false
 draft: false
@@ -606,6 +606,7 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/7.png"></summary>
         <ui>
+
 <li> <a href="https://www.themoviedb.org/movie/683340">벤젠스 (Vengeance) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/54990">거룩한 술꾼의 전설 (La leggenda del santo bevitore) (1988)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/497828">슬픔의 삼각형 (Triangle of Sadness) (2023)</a></li>
@@ -1185,6 +1186,7 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/123828">Forest Creatures (Šuma summarum) (2010)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1011556">노스 오브 노멀 (North of Normal) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/974250">프로비던스 (Greedy People) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1000862">The Good Teacher (2024)</a></li>
