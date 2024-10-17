@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: "2024-09-16"
+pubDate: "2024-10-16"
 slug: my-ratings
 featured: false
 draft: false
@@ -176,6 +176,8 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/8.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1029281">스트레인지 달링 (Strange Darling) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/308940">The Crucible (2014)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/878977">하나 그리고 넷 (གཅིག་དང་བཞི།) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/586353">The Master and Margarita (Мастер и Маргарита) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/38368">엉클 분미 (ลุงบุญมีระลึกชาติ) (2010)</a></li>
@@ -606,6 +608,9 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/7.png"></summary>
         <ui>
+
+<li> <a href="https://www.themoviedb.org/movie/551499">70 빈라덴 (70 Binladens) (2019)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1066298">만강홍: 사라진 밀서 (满江红) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1032823">트랩 (Trap) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/193544">Thou Gild'st the Even (Sen Aydınlatırsın Geceyi) (2013)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/683340">벤젠스 (Vengeance) (2022)</a></li>
@@ -1186,6 +1191,13 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1278263">신성한 나무의 씨앗 (دانه‌ی انجیر معابد) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/748230">Salem's Lot (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1053993">The Wait (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1226840">언젠간 달라질 거야 (Things Will Be Different) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/975056">카브리니 (Cabrini) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1246989">Para Betina Pengikut Iblis 2 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/618243">풍선 (དབུགས་ལྒང་།) (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1212088">더 납작 엎드릴게요 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/219652">아무도 없는 숲속에서 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1245700">섹터 36 (सेक्टर 36) (2024)</a></li>
@@ -1943,6 +1955,25 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/5.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1264429">Temurun (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1089123">Daddy's Head (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1014661">하우스 오브 스포일스 (House of Spoils) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/322498">그림자 (2007)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1052280">왓츠 인사이드 (It's What's Inside) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1114513">스픽 노 이블 (Speak No Evil) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1293263">The Curse of the Necklace (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/807339">아파트 7A (Apartment 7A) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/139357">Pizza (பீட்சா) (2012)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/779056">불편한 편의점 (Продукты 24) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1137205">최후의 선택 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/418078">잇 컴스 앳 나잇 (It Comes at Night) (2017)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1201697">Curse of the Sin Eater (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1091267">더 웰 (The Well) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/532656">퍼펙트 스킨 (Perfect Skin) (2019)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1196980">무덤의 형벌 (Siksa Kubur) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1196980">The Lonely Man with the Ghost Machine (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1062215">어프레이드 (Afraid) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/930600">딜리버런스 (The Deliverance) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/24116">더 스켑틱 (The Skeptic) (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/976830">The Deep Dark (Gueules noires) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1317893">한 밤의 판타지아 (2024)</a></li>
@@ -2675,6 +2706,17 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/4.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1295166">The Exorcism of Saint Patrick (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1352962">Kalinga (కళింగ) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1139095">Little Bites (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/38065">샐비지 (Salvage) (2006)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1309344">Effigy (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1052886">Do You See What I See (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1291594">Beezel (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1089223">리볼버 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1136487">Violett (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/989872">Hunt Her, Kill Her (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1288255">Sapien (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1064028">메이드 (Subservience) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1096838">Here After (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1325494">풍기 (2024)</a></li>
@@ -3093,6 +3135,9 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/3.png"></summary>
         <ui>
+
+<li> <a href="https://www.themoviedb.org/movie/1028583">Isleen Pines (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1288255">Death Ph.D (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1155059">Creeping Death (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1254021">Everwinter Night (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1186023">Don't Turn Out the Lights (2024)</a></li>
@@ -3255,6 +3300,7 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/2.png"></summary>
         <ui>       
+<li> <a href="https://www.themoviedb.org/movie/1358329">The House on Laura Anne Dr. (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/953683">Earth Virus of the Dead (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1245526">Smell No Evil (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1325782">붉은 댕기 (2024)</a></li>
