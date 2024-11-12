@@ -23,5 +23,5 @@ keywords:
 아래 예시는 대화 채널로 설정했는데, 이리저리 테스트해보니 주음량으로 설정, 주음량을 낮추고 다른 소리를 키우는 것이 좋은 것 같습니다.  
 여기서 '대화' 채널이라는 것은 게임 내 npc 대사를 말합니다.
 
-![](../../assets/blog-images/2024/wow-dbm-volume_1.jpg)
-![](../../assets/blog-images/2024/wow-dbm-volume_2.jpg)
+![dbm 볼륨](../../assets/blog-images/2024/wow-dbm-volume_1.jpg)
+![dbm 볼륨](../../assets/blog-images/2024/wow-dbm-volume_2.jpg)
