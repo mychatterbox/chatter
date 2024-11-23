@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: "2024-10-16"
+pubDate: "2024-11-23"
 slug: my-ratings
 featured: false
 draft: false
@@ -176,6 +176,7 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/8.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/933260">서브스턴스 (The Substance) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1029281">스트레인지 달링 (Strange Darling) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/308940">The Crucible (2014)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/878977">하나 그리고 넷 (གཅིག་དང་བཞི།) (2022)</a></li>
@@ -608,7 +609,8 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/7.png"></summary>
         <ui>
-
+<li> <a href="https://www.themoviedb.org/movie/863873">카도 레이크 (Caddo Lake) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1373727">Caligula: The Ultimate Cut (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/551499">70 빈라덴 (70 Binladens) (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1066298">만강홍: 사라진 밀서 (满江红) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1032823">트랩 (Trap) (2024)</a></li>
@@ -1191,9 +1193,13 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/11368">블러드 심플 (Blood Simple) (1984)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/23202">트릭 오어 트릿 (Trick 'r Treat) (2007)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/945961">에이리언: 로물루스 (Alien: Romulus) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1172700">Death After Dusk (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1278263">신성한 나무의 씨앗 (دانه‌ی انجیر معابد) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/748230">Salem's Lot (2024)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/1053993">The Wait (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1053993">The Wait (La Espera) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1226840">언젠간 달라질 거야 (Things Will Be Different) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/975056">카브리니 (Cabrini) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1246989">Para Betina Pengikut Iblis 2 (2024)</a></li>
@@ -1955,6 +1961,27 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/5.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1041517">Deer Camp ‘86 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/995926">베테랑 2 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1065478">결혼, 하겠나? (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/824249">2.0 Lucy (2021)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/840705">블링크 트와이스 (Blink Twice) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1286767">Black Cab (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/934866">Bad Genius (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1019239">El castigo (2022)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1063877">돈 무브 (Don't Move) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1084863">영혼의 포식자 (Le mangeur d'âmes) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1034541">테리파이어 3 (Terrifier 3) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/921384">Alien Country (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1091181">루가루: 늑대인간 (Loups-Garous) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1275003">Spirit in the Blood (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1308546">펌킨 (Carved) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1032372">Cold Meat (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1370313">Our Man In L.A. (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/814889">네버 렛 고 (Never Let Go) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/835113">오늘의 여자 주인공 (Woman of the Hour) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1123282">Depravity (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1278263">아웃사이드 (Outside) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1264429">Temurun (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1089123">Daddy's Head (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1014661">하우스 오브 스포일스 (House of Spoils) (2024)</a></li>
@@ -2706,6 +2733,15 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/4.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1147266">6시간 후 너는 죽는다 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/962486">Desert Shadows (2022)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/432271">Devil's Night (2015)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1380044">페스터 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1173569">갈증: 물의 저주 (Thirst) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1030983">Spin the Bottle (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1355581">9 Windows (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1340571">Lord of Wolves (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/978796">백맨 (Bagman) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1295166">The Exorcism of Saint Patrick (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1352962">Kalinga (కళింగ) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1139095">Little Bites (2024)</a></li>
@@ -3135,7 +3171,9 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/3.png"></summary>
         <ui>
-
+<li> <a href="https://www.themoviedb.org/movie/572195">더러운 돈에 손대지 마라 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/977156">늘봄가든 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1249532">Rippy (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1028583">Isleen Pines (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1288255">Death Ph.D (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1155059">Creeping Death (2023)</a></li>
