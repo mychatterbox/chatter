@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: "2024-11-23"
+pubDate: "2024-12-15"
 slug: my-ratings
 featured: false
 draft: false
@@ -609,6 +609,10 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/7.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1125510">더 플랫폼 2 (El hoyo 2) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/226529">조명가게 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/86848">이블 (Evil) (2019)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1172507">장손 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/863873">카도 레이크 (Caddo Lake) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1373727">Caligula: The Ultimate Cut (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/551499">70 빈라덴 (70 Binladens) (2019)</a></li>
@@ -1193,6 +1197,12 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1180648">Mudbrick (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/124364">프롬 (FROM) (2022)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1019404">말벌 (The Wasp) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1188301">더 킬러스 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/247518">그로테스크 (Grotesquerie) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/107889">The Pomegranate (2011)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/11368">블러드 심플 (Blood Simple) (1984)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/23202">트릭 오어 트릿 (Trick 'r Treat) (2007)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/945961">에이리언: 로물루스 (Alien: Romulus) (2024)</a></li>
@@ -1961,6 +1971,15 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/5.png"></summary>
         <ui>
+
+<li> <a href="https://www.themoviedb.org/movie/1105736">Schlitter: Evil in the Woods (Schlitter) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1337694">기기묘묘 2 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/990204">Street Trash (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/860867">The Accursed (2021)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1095848">오후 네시 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1046120">The Shade (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1147266">6시간 후 너는 죽는다 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/931940">The Fix (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1041517">Deer Camp ‘86 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/995926">베테랑 2 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1065478">결혼, 하겠나? (2024)</a></li>
@@ -2733,7 +2752,12 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/4.png"></summary>
         <ui>
-<li> <a href="https://www.themoviedb.org/movie/1147266">6시간 후 너는 죽는다 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1137165">개그맨 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/660355">사흘 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1091267">더 웰 (The Well) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1320330">더 로드: 이어 10 (Year 10) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1148558">아마존 활명수 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1296753">Remnant (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/962486">Desert Shadows (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/432271">Devil's Night (2015)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1380044">페스터 (2024)</a></li>
@@ -3171,6 +3195,8 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/3.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1371993">오늘부터 1일 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1319651">The Lady of the Lake (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/572195">더러운 돈에 손대지 마라 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/977156">늘봄가든 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1249532">Rippy (2024)</a></li>
