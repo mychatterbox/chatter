@@ -2,14 +2,14 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: "2024-12-15"
+pubDate: "2024-12-29"
 slug: my-ratings
 featured: false
 draft: false
 tags:
   - tmdb
 ogImage: '""'
-description: ""
+description: "영화 TV 별점"
 ---
 
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ description: ""
 <li> <a href="https://www.themoviedb.org/tv/83199">솔약국집 아들들 (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/64840">시그널 (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/75820">미스터 션샤인 (2018)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/93405">오징어 게임 (2021)</a></li>  
+<li> <a href="https://www.themoviedb.org/tv/93405/season/1">오징어 게임 (2021) 시즌 1</a></li>  
         </ul>
     </details>
     <details>
@@ -176,6 +176,9 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/8.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/36068">마르퀴즈 (Marquis) (1989)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1138194">헤러틱 (Heretic) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/4011">비틀쥬스 (Beetlejuice) (1993)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/933260">서브스턴스 (The Substance) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1029281">스트레인지 달링 (Strange Darling) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/308940">The Crucible (2014)</a></li>
@@ -609,6 +612,13 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/7.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/tv/236356">가족계획 (2024)</a></li>  
+<li> <a href="https://www.themoviedb.org/tv/93405/season/2">오징어 게임 (2024) 시즌 2</a></li>  
+<li> <a href="https://www.themoviedb.org/movie/467244">존 오브 인터레스트 (The Zone of Interest) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1244810">아메바 소녀들과 학교괴담: 개교기념일 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/240942">이토록 친밀한 배신자 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/69533">경감 메그레 (Maigret) (2016)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/917496">비틀쥬스 비틀쥬스 (Beetlejuice Beetlejuice) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1125510">더 플랫폼 2 (El hoyo 2) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/226529">조명가게 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/86848">이블 (Evil) (2019)</a></li>
@@ -1197,6 +1207,10 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/831988">비트윈 어스 (Між нами) (2021)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/26198">악마의 성 (The Keep) (1983)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1275998">Lake George (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1151244">베르밀리오 (Vermiglio) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1180648">Mudbrick (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/124364">프롬 (FROM) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1019404">말벌 (The Wasp) (2024)</a></li>
@@ -1971,7 +1985,10 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/5.png"></summary>
         <ui>
-
+<li> <a href="https://www.themoviedb.org/movie/1094274">Y2K (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/714650">1승 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1029235">아즈라엘 (Azrael) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/977150">공작새 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1105736">Schlitter: Evil in the Woods (Schlitter) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1337694">기기묘묘 2 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/990204">Street Trash (2024)</a></li>
@@ -2752,6 +2769,7 @@ description: ""
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/4.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/483737">토템 (Totem) (2017)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1137165">개그맨 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/660355">사흘 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1091267">더 웰 (The Well) (2024)</a></li>
