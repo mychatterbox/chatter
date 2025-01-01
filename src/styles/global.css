@@ -70,7 +70,9 @@
 
 @layer components {
   :root {
-    /* --astro-code-color-background:#262c31; */
+    /* --astro-code-foreground:#3f3f46; astro 5 업데이트 시 글자색 */
+    /* --astro-code-background:#efeff0; astro 5 업데이트 시 배경색 */
+
     --astro-code-color-background:#efeff0;
     /* --astro-code-color-text: theme(colors.zinc.100); */
     --astro-code-color-text: black;

@@ -2,7 +2,7 @@
 kind: "article"
 title: "사이트 정보"
 description: ""
-pubDate: "2024-02-25"
+pubDate: 2024-02-25
 slug: site-info
 ---
 

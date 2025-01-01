@@ -1,9 +1,11 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
 import Prose from "components/prose.astro";
 import { format } from "date-fns";
+import { render } from "astro:content";
 // import FeedbackIcon from "icons/hero/outline/chat-bubbles.svelte";
 // import ReplyIcon from "icons/hero/outline/envelope.svelte";
 // import HomeIcon from "icons/hero/outline/home-modern.svelte";
@@ -11,7 +13,7 @@ import { format } from "date-fns";
 export async function getStaticPaths() {
   const pub = await getCollection("published");
   return pub.map((entry) => ({
-    params: { path: entry.slug },
+    params: { path: entry.id },
     props: { entry },
   }));
 }
@@ -24,9 +26,9 @@ const { entry } = Astro.props;
 const {
   data: { title, description, pubDate, kind },
 } = entry;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
-const draft = entry.slug.startsWith("draft/");
+const draft = entry.id.startsWith("draft/");
 ---
 
 <Html
@@ -41,7 +43,7 @@ const draft = entry.slug.startsWith("draft/");
       <div class="mb-5 flex flex-col items-start">
         <h1 
         class="text-xl font-black leading-tight"
-        transition:name={`title-${entry.slug}`}
+        transition:name={`title-${entry.id}`}
       >
         {title}
       </h1>  

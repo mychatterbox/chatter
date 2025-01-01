@@ -8,6 +8,7 @@ import banner from "images/banner.jpg";
 import icon from "images/icon.svg";
 import "styles/global.css";
 import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
   title: string;
@@ -77,7 +78,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="rss" />
     <slot name="head" />
-    <ViewTransitions fallback="none" />
+    <ClientRouter />
+
         <!-- Google tag (gtag.js) -->
         <meta name="naver-site-verification" content="e782519ae8e3850a5acf6d2089279ece14da7dac" />
 

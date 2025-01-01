@@ -1,12 +1,14 @@
 ---
+import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import FeedItem from "components/feed-item.astro";
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
+import { format } from "date-fns";
 
-let pub = await getCollection("published");
-if (import.meta.env.PROD) pub = pub.filter((p) => p.data.list && !p.slug.startsWith("draft/"));
-pub.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const pub = await getCollection("published", ({ data }) => !data.draft);
+pub.sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 ---
 
 <Html title="mychatterbox" description="이런 것도 팁이 되나 싶은 정보들">

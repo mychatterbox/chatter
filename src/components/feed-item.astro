@@ -2,33 +2,33 @@
 import type { CollectionEntry } from "astro:content";
 import Prose from "components/prose.astro";
 import { format } from "date-fns";
+import { render } from "astro:content";
 
 interface Props {
   entry: CollectionEntry<"published">;
 }
 const { entry } = Astro.props;
 const {
-  slug,
+  id,
   data: { title, description, pubDate, kind },
   // data: { title, description, pubDate, kind, tags },
 } = entry;
-const { Content } = await entry.render();
-const draft = entry.slug.startsWith("draft/");
+const { Content } = await render(entry);
+const draft = entry.id.startsWith("draft/");
 ---
 {
-slug !== "my-ratings" && slug !== "site-info" && (
+id !== "my-ratings" && id !== "site-info" && (
 <li class="pb-20">
   <div class="mb-5 flex flex-col items-start">
     <a
       class="text-2xl font-semibold leading-tight decoration-zinc-900 decoration-2 underline-offset-2 hover:underline dark:decoration-white"
-      href={`/${slug}`}
+      href={`/${id}`}
     >
       <h2 
       class="text-xl font-black leading-tight"
-      transition:name={`title-${entry.slug}`}
+      transition:name={`title-${entry.id}`}
     >
     {title}
-
     </h2>
     </a>
     <div class="flex items-center space-x-1 pl-1">

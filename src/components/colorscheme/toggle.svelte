@@ -21,6 +21,6 @@
   {:else if $prefersColorScheme === "light"}
     <SunIcon class="h-7 w-7" />
   {:else}
-    <div class="h-7 w-7" />
+    <div class="h-7 w-7"></div>
   {/if}
 </button>
