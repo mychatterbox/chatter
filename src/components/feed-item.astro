@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import { render } from "astro:content";
 
 interface Props {
-  entry: CollectionEntry<"published">;
+  entry: CollectionEntry<"blog">;
 }
 const { entry } = Astro.props;
 const {
@@ -45,7 +45,7 @@ id !== "my-ratings" && id !== "site-info" && (
           ) : null
         }
         <span>{format(pubDate, "y-MM-dd")}</span>
-        <!-- <span>published on {format(pubDate, "yyyy-MM-dd")}</span> -->
+        {/* <!-- <span>published on {format(pubDate, "yyyy-MM-dd")}</span> --> */}
       </div>
       {
         draft && (

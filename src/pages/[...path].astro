@@ -11,7 +11,7 @@ import { render } from "astro:content";
 // import HomeIcon from "icons/hero/outline/home-modern.svelte";
 
 export async function getStaticPaths() {
-  const pub = await getCollection("published");
+  const pub = await getCollection("blog");
   return pub.map((entry) => ({
     params: { path: entry.id },
     props: { entry },
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  entry: CollectionEntry<"published">;
+  entry: CollectionEntry<"blog">;
 }
 
 const { entry } = Astro.props;

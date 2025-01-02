@@ -70,48 +70,33 @@
 
 @layer components {
   :root {
-    /* --astro-code-foreground:#3f3f46; astro 5 업데이트 시 글자색 */
-    /* --astro-code-background:#efeff0; astro 5 업데이트 시 배경색 */
-
-    --astro-code-color-background:#efeff0;
-    /* --astro-code-color-text: theme(colors.zinc.100); */
-    --astro-code-color-text: black;
+    --astro-code-foreground:#3f3f46; /* 글자색 */
+    --astro-code-background:#efeff0; /* 배경색 */
     --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-function: theme(colors.zinc.500);
     --astro-code-token-comment: theme(colors.blue.600);
-    --astro-code-token-keyword: #e35955;
-    --astro-code-token-constant: var(--astro-code-color-text);
-    --astro-code-token-parameter: var(--astro-code-color-text);
+    /* --astro-code-token-keyword: #e35955; */
+    --astro-code-token-keyword: #efeff0;
+    --astro-code-token-constant: var(--astro-code-foreground);
+    --astro-code-token-parameter: var(--astro-code-foreground);
     --astro-code-token-string-expression: var(--astro-code-token-string);
-    --astro-code-token-punctuation: var(--astro-code-color-text);
+    --astro-code-token-punctuation: var(--astro-code-foreground);
     --astro-code-token-link: var(--astro-code-token-string-expression);
   }
 
   .dark {
-    /* --astro-code-color-background: #dcdcdd; */
-    --astro-code-color-background:#202022;
-    /* --astro-code-color-text: black; */
-    --astro-code-color-text: white;
+    --astro-code-foreground:#d4d4d8; /* 글자색 */
+    --astro-code-background:#202022; /* 배경색 */
     --astro-code-token-function: theme(colors.zinc.200);
     --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-comment: theme(colors.blue.400);
     --astro-code-token-keyword: #c73a49;
   }
-
-/* 
-  인라인 코드 스타일 오버라이드
-  .prose code {
-    background-color: var(--astro-code-color-background);
-    color: var(--astro-code-color-text);
-  }
-
-  .dark .prose code {
-    background-color: var(--astro-code-color-background);
-    color: var(--astro-code-color-text);
-  }
-   */
 }
 
+blockquote {
+  font-style: normal !important;
+  }
 
 .prose a {
   @apply break-words underline-offset-4 hover:text-blue-400 ;
@@ -137,13 +122,10 @@
   @apply bg-zinc-400 dark:bg-zinc-400;
 }
 
-
-
 .prose code::before, 
 .prose code::after {
     content: none !important;
 }
-
 
 /* 인라인 코드 스타일 */
 .prose code:not(pre code) {
@@ -157,23 +139,21 @@
 .dark .prose code:not(pre code) {
   
   color: #e94a3f;
-  font-size: 1rem; /* 인라인 코드 폰트 크기 (다크 모드) */
 }
 
 /* 코드 블록 전체 스타일 */
 .prose pre {
-  background-color: var(--astro-code-color-background);
-  color: var(--astro-code-color-text);
-  padding: 1rem;
-  border-radius: 0.5rem;
+  /* background-color: var(--astro-code-color-background); */
+  /* background-color: var(--astro-code-background); */
+  /* color: var(--astro-code-color-text); */
+  /* padding: 1rem; */
   font-family: "Berkeley Mono", monospace; /* 고정폭 폰트 */
   font-size: 0.875rem; /* 코드 블록 폰트 크기 (일반 모드) */
 }
 
 /* 코드 블록 내 코드 요소 스타일 */
-.prose pre code {
-  background-color: inherit; /* 코드 요소 배경색을 상속 */
-  color: inherit; /* 코드 요소 글자색을 상속 */
-  font-family: inherit; /* 코드 요소 폰트 상속 */
-  font-size: inherit; /* 코드 요소 폰트 크기 상속 */
-}
+/* .prose pre code {
+ font-family: inherit;
+  font-size: inherit;
+} */
+

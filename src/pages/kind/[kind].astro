@@ -5,13 +5,13 @@ import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
 
 export async function getStaticPaths() {
-  const pub = await getCollection("published", ({ data }) => !data.draft);
+  const pub = await getCollection("blog", ({ data }) => !data.draft);
   const kind = new Set(pub.map((entry) => entry.data.kind));
   return Array.from(kind).map((kind) => ({ params: { kind } }));
 }
 
 // 게시물을 가져오고 필터링 및 정렬
-const pub = await getCollection("published", ({ data }) => !data.draft);
+const pub = await getCollection("blog", ({ data }) => !data.draft);
 const filteredPub = pub.filter((p) => p.data.kind === Astro.params.kind); // 필터링하여 새로운 변수에 저장
 filteredPub.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
