@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2024-12-29
+pubDate: 2025-01-02
 slug: my-ratings
 featured: false
 draft: false
@@ -2769,6 +2769,7 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/4.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1264247">Dosen Ghaib: It's Nighttime or You Already Know (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1204884">원정빌라 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/483737">토템 (Totem) (2017)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1137165">개그맨 (2024)</a></li>
