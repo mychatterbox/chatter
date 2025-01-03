@@ -1,10 +1,10 @@
 ---
-import { getEntry } from "astro:content";
+
 import { getCollection } from "astro:content";
 import FeedItem from "components/feed-item.astro";
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 
 
 const pub = await getCollection("blog", ({ data }) => !data.draft);
