@@ -15,8 +15,7 @@ pub.sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 {pub.map((entry) => <FeedItem entry={entry} />)}
 ```
 
-이런 코드는 감히 해석할 수도 없습니다.  
-대략 단어로 느낌만 핥는 수준입니다.  
+이런 코드는 대략 단어로 느낌만 핥는 수준입니다.  
 그래서 댓글시스템도 못 달고 있습니다.  
 
 [https://github.com/mrmcc3/vibing-dev][repo] 
