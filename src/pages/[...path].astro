@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry } from "astro:content";
+// import { type CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
@@ -18,9 +18,9 @@ export async function getStaticPaths() {
   }));
 }
 
-interface Props {
-  entry: CollectionEntry<"blog">;
-}
+// interface Props {
+//   entry: CollectionEntry<"blog">;
+// }
 
 const { entry } = Astro.props;
 const {
