@@ -2,11 +2,11 @@
 kind: "article"
 title: "사이트 정보"
 description: ""
-pubDate: 2024-02-25
+pubDate: 2025-01-02
 slug: site-info
 ---
 
-## 알림
+### 알림
 이 블로그는 제가 만든 것이 아닙니다.  
 저는 무슨 개발자도 아니고 그냥 일반인이라 아무것도 모릅니다.  
 
@@ -21,7 +21,7 @@ pub.sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 
 [https://github.com/mrmcc3/vibing-dev][repo] 
 
-위 블로그가 astro v4 를 기준으로 만들어졌을 때를 기본으로 해서 ChatGPT 4, Claude 3.5 sonnet 등 AI 의 도움을 받아 astro v5 로 업데이트했습니다.  
+위 블로그가 astro v4 를 기준으로 만들어졌을 때를 기본으로 해서 ChatGPT 4, Claude 3.5 sonnet 등 AI 의 도움을 받아 조금씩 수정하면서  astro v5 까지 업데이트했습니다.  
 ~~코파일럿은 수준이 많이 떨어집니다.~~  
 하지만 VS code와 Github의 도움을 많이 받고 있으므로 MS에게도 감사드립니다. 배당금도 잘 나오더라구요.  
 원 제작자분은 더 미니멀하게 디자인과 구조를 갈아엎은 상태입니다.  
@@ -32,7 +32,7 @@ Github에서 astro 만으로 구현한 수백개의 블로그를 봤는데, 상�
 
 [RSS Feed](/rss.xml) 는 이렇게 되어 있는데, 잘 될런지? 요즘도 해외에선 RSS 쓰나보죠?
 
-## 라이센스
+### 라이센스
 Except where otherwise noted, content on this site is licensed under [CC BY 4.0][cc].  
 Code snippets and the code for the site itself are [MIT Licensed][mit].
 
@@ -43,10 +43,8 @@ Code snippets and the code for the site itself are [MIT Licensed][mit].
 제 코드도 혹시라도 쓰실 분은 마음대로 갖다 쓰세요.  
 폰트, 색상 설정은 global.css 파일과 prose.astro 파일을 수정하면 됩니다.  
 
-주석이 지저분하므로 주의하시고. 
 
-
-## 출처
+### 출처
 
 - Icons on the site are [heroicons][icons] & [tablericons][tabler]
 - Fonts are [Pretendard][sans] and [Berkeley Mono][mono]
@@ -55,8 +53,7 @@ Code snippets and the code for the site itself are [MIT Licensed][mit].
 
 
 
-from : [https://github.com/mrmcc3/vibing-dev][repo]
-
+from : [https://github.com/mrmcc3/vibing-dev][repo]  
 to : [https://github.com/mychatterbox/chatter][repo2]
 
 
