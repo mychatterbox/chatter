@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-01-02
+pubDate: 2025-01-19
 slug: my-ratings
 featured: false
 draft: false
@@ -176,6 +176,8 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/8.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/655">파리, 텍사스 (Paris, Texas) (1984)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/513305">쓰촨의 신-신 극단 (椒麻堂会) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/36068">마르퀴즈 (Marquis) (1989)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1138194">헤러틱 (Heretic) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/4011">비틀쥬스 (Beetlejuice) (1993)</a></li>
@@ -1207,6 +1209,13 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/408544">블라인드 크라이스트 (El Cristo ciego) (2016) </a></li>
+<li> <a href="https://www.themoviedb.org/movie/1179071">Beautiful Friend (2023) </a></li>
+<li> <a href="https://www.themoviedb.org/movie/57749">The Clinic (2010) </a></li>
+<li> <a href="https://www.themoviedb.org/movie/443791">언더워터 (Underwater) (2020)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1305281">Members Club (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/472221">더 고트 라이프 (ആടുജീവിതം) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1094138">잭팟! (Jackpot!) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/831988">비트윈 어스 (Між нами) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/26198">악마의 성 (The Keep) (1983)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1275998">Lake George (2024)</a></li>
@@ -1985,6 +1994,12 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/5.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1250999">Cadı (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1265800">사유리 (サユリ) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/92779">Seedpeople (1992)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1092806">Bibi (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1397854">러브 스캠 (Mica è Colpa Mia) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/112581">리그 (The Rig) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1094274">Y2K (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/714650">1승 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1029235">아즈라엘 (Azrael) (2024)</a></li>
@@ -2769,6 +2784,8 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/4.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1135281">Life of Belle (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1263249">센티널 (Sentinel) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1264247">Dosen Ghaib: It's Nighttime or You Already Know (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1204884">원정빌라 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/483737">토템 (Totem) (2017)</a></li>
