@@ -22,7 +22,7 @@ pnpm-debug.log*
 .DS_Store
 
 # ideas are private
-/src/content/ideas
+/src/content/draft
 /src/content/blog-작성중
 
 # editors
