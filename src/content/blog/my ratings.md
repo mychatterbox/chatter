@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-01-19
+pubDate: 2025-01-20
 slug: my-ratings
 featured: false
 draft: false
@@ -614,8 +614,9 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/7.png"></summary>
         <ui>
-<li> <a href="https://www.themoviedb.org/tv/236356">가족계획 (2024)</a></li>  
-<li> <a href="https://www.themoviedb.org/tv/93405/season/2">오징어 게임 (2024) 시즌 2</a></li>  
+<li> <a href="https://www.themoviedb.org/movie/1109237">총을 든 스님 (The Monk and the Gun) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/236356">가족계획 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/93405/season/2">오징어 게임 (2024) 시즌 2</a></li>
 <li> <a href="https://www.themoviedb.org/movie/467244">존 오브 인터레스트 (The Zone of Interest) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1244810">아메바 소녀들과 학교괴담: 개교기념일 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/240942">이토록 친밀한 배신자 (2024)</a></li>
@@ -1209,9 +1210,12 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/647250">더 머신 (The Machine) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/627087">교실 안의 야크 (ལུང་ནག་ན) (2019)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/858096">살룸의 하이에나 (Saloum) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/408544">블라인드 크라이스트 (El Cristo ciego) (2016) </a></li>
-<li> <a href="https://www.themoviedb.org/movie/1179071">Beautiful Friend (2023) </a></li>
-<li> <a href="https://www.themoviedb.org/movie/57749">The Clinic (2010) </a></li>
+<li> <a href="https://www.themoviedb.org/movie/1179071">Beautiful Friend (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/57749">The Clinic (2010)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/443791">언더워터 (Underwater) (2020)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1305281">Members Club (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/472221">더 고트 라이프 (ആടുജീവിതം) (2024)</a></li>
@@ -2784,6 +2788,7 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/4.png"></summary>
         <ui>
+
 <li> <a href="https://www.themoviedb.org/movie/1135281">Life of Belle (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1263249">센티널 (Sentinel) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1264247">Dosen Ghaib: It's Nighttime or You Already Know (2024)</a></li>
@@ -3232,6 +3237,7 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/3.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1330373">Alien: Rubicon (2024)</a></li>        
 <li> <a href="https://www.themoviedb.org/movie/1371993">오늘부터 1일 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1319651">The Lady of the Lake (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/572195">더러운 돈에 손대지 마라 (2024)</a></li>
