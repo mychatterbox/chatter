@@ -97,36 +97,25 @@
 blockquote {
   font-style: normal !important;
   }
-
 .prose a {
   @apply break-words underline-offset-4 hover:text-blue-400 ;
 }  
-
-
 ::-webkit-scrollbar {
   @apply w-3;
 }
-
-
 ::-webkit-scrollbar-track {
   @apply bg-zinc-100 dark:bg-zinc-900;
 }
-
-
 ::-webkit-scrollbar-thumb {
   @apply bg-zinc-500 dark:bg-zinc-500;
 }
-
-
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-zinc-400 dark:bg-zinc-400;
 }
-
 .prose code::before, 
 .prose code::after {
     content: none !important;
 }
-
 /* 인라인 코드 스타일 */
 .prose code:not(pre code) {
   
@@ -150,10 +139,3 @@ blockquote {
   font-family: "Berkeley Mono", monospace; /* 고정폭 폰트 */
   font-size: 0.875rem; /* 코드 블록 폰트 크기 (일반 모드) */
 }
-
-/* 코드 블록 내 코드 요소 스타일 */
-/* .prose pre code {
- font-family: inherit;
-  font-size: inherit;
-} */
-
