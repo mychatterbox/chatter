@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-01-20
+pubDate: 2025-01-29
 slug: my-ratings
 featured: false
 draft: false
@@ -614,6 +614,12 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/7.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1167027">이벨린의 비범한 인생 (Ibelin) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1278338">세상의 끝까지 3km (Trei kilometri până la capătul lumii) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/426063">노스페라투 (Nosferatu) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1232827">바늘을 든 소녀 (Pigen med nålen) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/241816">강한 남자들 (Super Mâles) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/99511">로맨스 조 (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1109237">총을 든 스님 (The Monk and the Gun) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/236356">가족계획 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/93405/season/2">오징어 게임 (2024) 시즌 2</a></li>
@@ -1210,6 +1216,8 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/1113951">Whiteout (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1314323">Salsa (Šalša) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/647250">더 머신 (The Machine) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/627087">교실 안의 야크 (ལུང་ནག་ན) (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/858096">살룸의 하이에나 (Saloum) (2023)</a></li>
@@ -1998,6 +2006,9 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/5.png"></summary>
         <ui>
+<li> <a href="https://www.themoviedb.org/movie/965094">파일럿 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1201262">Grafted (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1093354">포에버 홈 (Forever Home) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1250999">Cadı (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1265800">사유리 (サユリ) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/92779">Seedpeople (1992)</a></li>
@@ -2782,13 +2793,15 @@ description: "영화 TV 별점"
 <li> <a href="https://www.themoviedb.org/tv/213274">미드나잇 호러: 6개의 밤 (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/203697">연예인 매니저로 살아남기 (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/110529">Cidade Invisível (2021)</a></li>
-<li> <a href="https://www.themoviedb.org//999087">女鬼橋2：怨鬼樓 (2023)</a></li>
+<li> <a href="https://www.themoviedb.org//999087">女鬼橋2:怨鬼樓 (2023)</a></li>
         </ul>
     </details>
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/4.png"></summary>
         <ui>
-
+<li> <a href="https://www.themoviedb.org/movie/441144">Mount Kawi (Gunung Kawi) (2017)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1160748">Bystanders (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1135281">올 아이 니드 (All I Need) (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1135281">Life of Belle (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1263249">센티널 (Sentinel) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1264247">Dosen Ghaib: It's Nighttime or You Already Know (2024)</a></li>
@@ -3237,7 +3250,8 @@ description: "영화 TV 별점"
     <details>
         <summary style="list-style: none; cursor: pointer;"><img src="/images/3.png"></summary>
         <ui>
-<li> <a href="https://www.themoviedb.org/movie/1330373">Alien: Rubicon (2024)</a></li>        
+<li> <a href="https://www.themoviedb.org/movie/472621">Hantu Jeruk Purut Reborn (2017)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1330373">Alien: Rubicon (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1371993">오늘부터 1일 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1319651">The Lady of the Lake (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/572195">더러운 돈에 손대지 마라 (2024)</a></li>
