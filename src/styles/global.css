@@ -140,7 +140,14 @@ blockquote {
   font-size: 0.875rem; /* 코드 블록 폰트 크기 (일반 모드) */
 }
 
-/* .tip {
+/* css 파일을 사용해 색상이 다른 blockquote 세로막대 구현 
+웹만을 위함이라면 단순하고 편하지만 md 파일 내에 아래와 같은 div 코드를 삽입해야하므로 md 파일이 훼손됨, 해당부분(div)은 html 취급됨(예: 줄바꿈은 <br>)
+<div class="warning">
+  경고
+</div> */
+
+/*
+.tip {
   padding-left: 1em;
   border-left-width: 4px;
   border-left-color: #22c55e;
