@@ -22,5 +22,5 @@ filteredPub.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
     <ul class="mx-auto max-w-screen-lg font-medium">
       {filteredPub.map((entry) => <FeedItem entry={entry} />)} <!-- 필터링된 배열 사용 -->
     </ul>
-  </main>
+  </main>    
 </Html>
