@@ -77,11 +77,11 @@
     --astro-code-token-comment: theme(colors.blue.600);
     /* --astro-code-token-keyword: #e35955; */
     --astro-code-token-keyword: #efeff0;
-    --astro-code-token-constant: var(--astro-code-foreground);
+    /* --astro-code-token-constant: var(--astro-code-foreground);
     --astro-code-token-parameter: var(--astro-code-foreground);
     --astro-code-token-string-expression: var(--astro-code-token-string);
     --astro-code-token-punctuation: var(--astro-code-foreground);
-    --astro-code-token-link: var(--astro-code-token-string-expression);
+    --astro-code-token-link: var(--astro-code-token-string-expression); */
   }
 
   .dark {
@@ -95,8 +95,9 @@
 }
 
 blockquote {
-  font-style: normal !important;
-  }
+  font-style: normal !important; /* 이탤릭 -> 기본 */
+  quotes: none !important; /* 따옴표 제거 */
+}    
 .prose a {
   @apply break-words underline-offset-4 hover:text-blue-400 ;
 }  
@@ -118,7 +119,6 @@ blockquote {
 }
 /* 인라인 코드 스타일 */
 .prose code:not(pre code) {
-  
   color: #cc2323;
   font-family: inherit; /* 기본 폰트로 설정 */
   font-size: 1rem; /* 인라인 코드 폰트 크기 (예: 16px) */
@@ -139,3 +139,16 @@ blockquote {
   font-family: "Berkeley Mono", monospace; /* 고정폭 폰트 */
   font-size: 0.875rem; /* 코드 블록 폰트 크기 (일반 모드) */
 }
+
+/* .tip {
+  padding-left: 1em;
+  border-left-width: 4px;
+  border-left-color: #22c55e;
+}
+
+.warning {
+
+  padding-left: 1em;
+  border-left-width: 4px;
+  border-left-color: #ef4444;
+} */
