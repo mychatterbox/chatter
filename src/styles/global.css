@@ -75,8 +75,8 @@
     --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-function: theme(colors.zinc.500);
     --astro-code-token-comment: theme(colors.blue.600);
-    /* --astro-code-token-keyword: #e35955; */
-    --astro-code-token-keyword: #efeff0;
+    --astro-code-token-keyword: #c73a49;
+    /* --astro-code-token-keyword: #efeff0; */
     /* --astro-code-token-constant: var(--astro-code-foreground);
     --astro-code-token-parameter: var(--astro-code-foreground);
     --astro-code-token-string-expression: var(--astro-code-token-string);
@@ -95,7 +95,7 @@
 }
 
 blockquote {
-  font-style: normal !important; /* 이탤릭 -> 기본 */
+  font-style: normal !important; /* 이탤릭 효과 제거 */
   quotes: none !important; /* 따옴표 제거 */
 }    
 .prose a {
