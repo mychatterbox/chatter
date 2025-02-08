@@ -244,7 +244,7 @@ description: "영화 TV 별점"
 <li> <a href="https://www.themoviedb.org/movie/1072371">Jules (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1019939">비버 대소동 (Hundreds of Beavers) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/970348">나의 올드 오크 (The Old Oak) (2023)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/975773">Wicked Little Letters (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/975773">X를 담아, 당신에게 (Wicked Little Letters) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/840430">바튼 아카데미 (The Holdovers) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/790496">배드 럭 뱅잉 (Babardeala cu bucluc sau porno balamuc) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1002457">몰도바의 해결사 (OAMENI DE TREABĂ) (2023)</a></li>
