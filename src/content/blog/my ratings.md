@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-01-29
+pubDate: 2025-02-08
 slug: my-ratings
 featured: false
 draft: false
@@ -15,22 +15,59 @@ description: "영화 TV 별점"
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <!-- <meta charset="UTF-8"> -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-<!-- <style>
-    summary::before {
-        content: ""; /* 빈 요소 생성 */
-        display: inline-block;
-        width: 145px; /* 원하는 크기로 조정하세요 */
-        height: 24px;
-        background-image: url("/images/10.png"); /* 별 이미지 경로 */
-        background-size: cover;
+<style>
+    details {
+        margin: 0.5rem 0;
     }
-</style> -->
+    summary {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        cursor: pointer;
+        /* width: 100%; */
+        transition: transform 0.2s ease;
+    }
+    summary:hover {
+        transform: scale(1.2);
+    }
+    .rating-image {
+        /* filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1)); */
+        line-height: 0.8;
+        margin-bottom: 0.5rem;
+    }
+    .rating-count {
+        /* font-size: 18px; */
+        /* color: #666; */
+        /* background:rgb(255, 255, 255); */
+        /* padding: 2px 12px;
+        border-radius: 8px; */
+        /* line-height: 1.1; */
+        /* margin-top: -0.25rem; */
+    }
+    /* details[open] summary {
+        margin-bottom: 0.5rem;
+    } */
+    /* ul {
+        padding-left: 2rem;
+        line-height: 1.6;
+    } */
+    /* a {
+        color: #2c3e50;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    a:hover {
+        color: #0066cc;
+    } */
+</style>
 </head>
 <body>
     <details open>
-          <summary style="list-style: none; cursor: pointer;"><img src="/images/10.png"></summary>
+        <summary style="list-style: none; cursor: pointer;">
+            <img src="/images/10.png" class="rating-image">
+            <span class="rating-count"></span>
+        </summary>
         <ul>
 <li> <a href="https://www.themoviedb.org/movie/17654">District 9 (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/11423">살인의 추억 (2003)</a></li>
@@ -51,8 +88,11 @@ description: "영화 TV 별점"
         </ul>
     </details>
     <details>
-        <summary style="list-style: none; cursor: pointer;"><img src="/images/9.png"></summary>
-        <ui>
+        <summary style="list-style: none; cursor: pointer;">
+            <img src="/images/9.png" class="rating-image">
+            <span class="rating-count"></span>
+        </summary>
+        <ul>
 <li> <a href="https://www.themoviedb.org/movie/91186">심플 라이프 (桃姐) (2011)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/125935">애봇 초등학교 (Abbott Elementary) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/185">A Clockwork Orange (1971)</a></li>
@@ -174,8 +214,13 @@ description: "영화 TV 별점"
         </ul>
     </details>
     <details>
-        <summary style="list-style: none; cursor: pointer;"><img src="/images/8.png"></summary>
-        <ui>
+        <summary style="list-style: none; cursor: pointer;">
+            <img src="/images/8.png" class="rating-image">
+            <span class="rating-count"></span>
+        </summary>
+        <ul>
+<li> <a href="https://www.themoviedb.org/movie/1039374">페르소나: 이상한 여자 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1102493">이처럼 사소한 것들 (Small Things Like These) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/655">파리, 텍사스 (Paris, Texas) (1984)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/513305">쓰촨의 신-신 극단 (椒麻堂会) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/36068">마르퀴즈 (Marquis) (1989)</a></li>
@@ -612,8 +657,14 @@ description: "영화 TV 별점"
         </ul>
     </details>
     <details>
-        <summary style="list-style: none; cursor: pointer;"><img src="/images/7.png"></summary>
-        <ui>
+        <summary style="list-style: none; cursor: pointer;">
+            <img src="/images/7.png" class="rating-image">
+            <span class="rating-count"></span>
+        </summary>
+        <ul>
+<li> <a href="https://www.themoviedb.org/movie/1190462">Breathing In (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/503919">라이트하우스 (The Lighthouse) (2019)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/258230">몬스터 콜 (A Monster Calls) (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1167027">이벨린의 비범한 인생 (Ibelin) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1278338">세상의 끝까지 3km (Trei kilometri până la capătul lumii) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/426063">노스페라투 (Nosferatu) (2024)</a></li>
@@ -1214,8 +1265,14 @@ description: "영화 TV 별점"
         </ul>
     </details>
     <details>
-        <summary style="list-style: none; cursor: pointer;"><img src="/images/6.png"></summary>
-        <ui>
+        <summary style="list-style: none; cursor: pointer;">
+            <img src="/images/6.png" class="rating-image">
+            <span class="rating-count"></span>
+        </summary>
+        <ul>
+<li> <a href="https://www.themoviedb.org/movie/333371">클로버필드 10번지 (10 Cloverfield Lane) (2016)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/241207">Altered Minds (The Red Robin) (2013)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/996821">코절리 인바이티드 (You're Cordially Invited) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1113951">Whiteout (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1314323">Salsa (Šalša) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/647250">더 머신 (The Machine) (2023)</a></li>
@@ -2004,8 +2061,14 @@ description: "영화 TV 별점"
         </ul>
     </details>
     <details>
-        <summary style="list-style: none; cursor: pointer;"><img src="/images/5.png"></summary>
-        <ui>
+        <summary style="list-style: none; cursor: pointer;">
+            <img src="/images/5.png" class="rating-image">
+            <span class="rating-count"></span>
+        </summary>
+        <ul>
+<li> <a href="https://www.themoviedb.org/movie/1260594">Sumala (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/82507">살인소설 (Sinister) (2012)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1181212">The Invisible Raptor (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/965094">파일럿 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1201262">Grafted (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1093354">포에버 홈 (Forever Home) (2023)</a></li>
@@ -2797,8 +2860,17 @@ description: "영화 TV 별점"
         </ul>
     </details>
     <details>
-        <summary style="list-style: none; cursor: pointer;"><img src="/images/4.png"></summary>
-        <ui>
+        <summary style="list-style: none; cursor: pointer;">
+            <img src="/images/4.png" class="rating-image">
+            <span class="rating-count"></span>
+        </summary>
+        <ul>
+<li> <a href="https://www.themoviedb.org/movie/1028944">크롬의 저주 (Curse of Crom: The Legend of Halloween) (2022)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/408870">프란시스의 밀실 (2016)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/457404">아무 것도 사라지지 않는다 (2014)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1237401">Lizzie Lazarus (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1124272">본 스나이퍼 (Bone Cold) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/969247">Dawn Chorus (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/441144">Mount Kawi (Gunung Kawi) (2017)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1160748">Bystanders (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1135281">올 아이 니드 (All I Need) (2016)</a></li>
@@ -3248,8 +3320,13 @@ description: "영화 TV 별점"
         </ul>
     </details>
     <details>
-        <summary style="list-style: none; cursor: pointer;"><img src="/images/3.png"></summary>
-        <ui>
+        <summary style="list-style: none; cursor: pointer;">
+            <img src="/images/3.png" class="rating-image">
+            <span class="rating-count"></span>
+        </summary>
+        <ul>
+<li> <a href="https://www.themoviedb.org/movie/1145474">Down Below (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1239717">Hunters Lodge (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/472621">Hantu Jeruk Purut Reborn (2017)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1330373">Alien: Rubicon (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1371993">오늘부터 1일 (2024)</a></li>
@@ -3419,8 +3496,11 @@ description: "영화 TV 별점"
         </ul>
     </details>
     <details>
-        <summary style="list-style: none; cursor: pointer;"><img src="/images/2.png"></summary>
-        <ui>       
+        <summary style="list-style: none; cursor: pointer;">
+            <img src="/images/2.png" class="rating-image">
+            <span class="rating-count"></span>
+        </summary>
+        <ul>    
 <li> <a href="https://www.themoviedb.org/movie/1358329">The House on Laura Anne Dr. (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/953683">Earth Virus of the Dead (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1245526">Smell No Evil (2021)</a></li>
@@ -3481,8 +3561,11 @@ description: "영화 TV 별점"
         </ul>
     </details>
     <details>
-        <summary style="list-style: none; cursor: pointer;"><img src="/images/1.png"></summary>
-        <ui>              
+        <summary style="list-style: none; cursor: pointer;">
+            <img src="/images/1.png" class="rating-image">
+            <span class="rating-count"></span>
+        </summary>
+        <ul>            
 <li> <a href="https://www.themoviedb.org/movie/1166528">Hillbilly Frankenstein from Hell (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/467377">Crazy Lake (2017)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/271263">주글래 살래 (2003)</a></li>
@@ -3493,5 +3576,14 @@ description: "영화 TV 별점"
 <li> <a href="https://www.themoviedb.org/movie/31127">R.O.T.O.R. (1987)</a></li>
         </ul>
     </details>
+<script client:load>
+  const detailsList = document.querySelectorAll('details');
+  detailsList.forEach(details => {
+    const ul = details.querySelector('ul');
+    const count = ul.querySelectorAll('li').length;
+    const countSpan = details.querySelector('.rating-count');
+    countSpan.textContent = `(${count})`;
+  });
+</script>
 </body>
 </html>
