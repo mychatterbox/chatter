@@ -32,19 +32,19 @@ OSFMOUNT는 항상 고정된 크기로만 사용할 수 있습니다.
    3. osfmount.bat 파일을 메모장 등 에디터로 열고 아래 내용으로 저장합니다.  
    아래 예시는 드라이브명은 `R 드라이브, 이름 RAMDISK, 16기가 용량`으로 설정합니다. 환경에 맞게 적절히 수정합니다.
 
-   ```md
-   @echo off
-   osfmount -a -t vm -o rw,hd,format:ntfs:"RAMDISK" -m R: -s 16G
-   ```
+      ```md
+      @echo off
+      osfmount -a -t vm -o rw,hd,format:ntfs:"RAMDISK" -m R: -s 16G
+      ```
 
    4. 미리 폴더를 만들고 싶다면 아래 코드를 적절하게 수정 후 추가하고 저장합니다.
 
-   ```md
-   timeout  /t 3
-   mkdir r:\Chrome\Cache
-   mkdir r:\Chromium\Cache
-   mkdir r:\Temp
-   ```
+      ```md
+      timeout  /t 3
+      mkdir r:\Chrome\Cache
+      mkdir r:\Chromium\Cache
+      mkdir r:\Temp
+      ```
 
    5. 이제 osfmount.bat 파일을 작업 스케줄러에 아래와 같이 혹은 각자의 방법으로 등록합니다.  
    왠지 작동이 안되는 것 같으면 작업 스케줄러의 계정 부분이나 동작 탭의 설정 부분을 잘 확인합니다.  
