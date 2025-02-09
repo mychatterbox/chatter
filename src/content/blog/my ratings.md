@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-02-08
+pubDate: 2025-02-09
 slug: my-ratings
 featured: false
 draft: false
@@ -1270,6 +1270,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/134273">영건 탐정사무소 (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/333371">클로버필드 10번지 (10 Cloverfield Lane) (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/241207">Altered Minds (The Red Robin) (2013)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/996821">코절리 인바이티드 (You're Cordially Invited) (2025)</a></li>
