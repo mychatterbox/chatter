@@ -71,7 +71,7 @@
 @layer components {
   :root {
     --astro-code-foreground:#3f3f46; /* 글자색 */
-    --astro-code-background:#efeff0; /* 배경색 */
+    --astro-code-background:#e8e8e9; /* 배경색 */
     --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-function: theme(colors.zinc.500);
     --astro-code-token-comment: theme(colors.blue.600);
