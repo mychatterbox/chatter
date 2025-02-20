@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-02-09
+pubDate: 2025-02-20
 slug: my-ratings
 featured: false
 draft: false
@@ -219,6 +219,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/tv/114527">미무추종 (迷雾追踪) (2020)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1039374">페르소나: 이상한 여자 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1102493">이처럼 사소한 것들 (Small Things Like These) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/655">파리, 텍사스 (Paris, Texas) (1984)</a></li>
@@ -662,6 +663,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/274783">The Gentleman from the Courtyard (Cripta) (2014)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1190462">Breathing In (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/503919">라이트하우스 (The Lighthouse) (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/258230">몬스터 콜 (A Monster Calls) (2016)</a></li>
@@ -1270,6 +1272,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/215196">촌능력전쟁 (2013)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/429774">비치온더비치 (2016)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1234434">혐오의 스타 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/134273">영건 탐정사무소 (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/333371">클로버필드 10번지 (10 Cloverfield Lane) (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/241207">Altered Minds (The Red Robin) (2013)</a></li>
@@ -2067,6 +2072,11 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1287842">The Dead Thing (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/73962">엄마는 창녀다 (2011)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1325482">날벼락 웨딩 (Zgon przed weselem) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1389675">Melanie's Grave (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1134433">데스 위스퍼러 (ธี่หยด) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1260594">Sumala (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/82507">살인소설 (Sinister) (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1181212">The Invisible Raptor (2024)</a></li>
