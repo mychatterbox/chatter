@@ -38,15 +38,17 @@ const {
 const pathname = Astro.url.pathname; // 예: /ventoy-theme/
 const url2 = pathname.split('/').filter(Boolean).pop(); // 예: ventoy-theme
 
-// pubDate에서 연도 추출 (예: "2025-01-01" → "2025")
-const getYearFromPubDate = (pubDate: string | undefined) => {
+const getYearFromPubDate = (pubDate: string | Date | undefined) => {
   if (!pubDate) return null;
 
-  // pubDate를 YYYY-MM-DD 형식으로 강제 변환
-  const dateString = pubDate.trim().split('T')[0];
-  const date = new Date(dateString);
+  let dateString: string;
+  if (pubDate instanceof Date) {
+    dateString = pubDate.toISOString().split('T')[0];
+  } else {
+    dateString = pubDate.trim().split('T')[0];
+  }
 
-  // 유효한 날짜인지 확인
+  const date = new Date(dateString);
   if (isNaN(date.getTime())) {
     console.error(`Invalid pubDate: ${pubDate}`);
     return null;
@@ -64,6 +66,12 @@ const defaultOgImage = year
 const finalOgImage = ogImage || defaultOgImage;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+console.log({
+  pubDateReceived: pubDate,
+  parsedYear: year,
+  generatedOgImage: defaultOgImage
+});
+
 ---
 
 <!doctype html>
