@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - 소프트웨어
-ogImage: ""
+ogImage: "https://chatter.kr/_astro/ventoy-theme_1.CEh8HA1D_AlsuA.webp"
 description: 심플한 Ventoy 테마 만드는 방법, 간단한 수정, 다른 테마를 찾고 적용하는 방법을 설명합니다.
 keywords:
   - 벤토이 테마
