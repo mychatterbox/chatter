@@ -30,6 +30,7 @@ const draft = entry.id.startsWith("draft/");
 <Html
   title={title}
   description={description}
+  pubDate={pubDate}
   ogType="article"
   robots={draft ? "noindex" : undefined}
 >
@@ -76,4 +77,6 @@ const draft = entry.id.startsWith("draft/");
     </article>
   </main>
 </Html>
+
+
 
