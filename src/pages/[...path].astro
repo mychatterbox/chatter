@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const {
-  data: { title, description, pubDate, kind },
+  data: { title, description, pubDate, kind, ogImage},
 } = entry;
 const { Content } = await render(entry);
 
@@ -31,6 +31,7 @@ const draft = entry.id.startsWith("draft/");
   title={title}
   description={description}
   pubDate={pubDate}
+  ogImage={ogImage}
   ogType="article"
   robots={draft ? "noindex" : undefined}
 >

@@ -11,7 +11,7 @@ const blog = defineCollection({
     pubDate: z.date(),
     kind: z.enum(['article', 'note']),
     list: z.boolean().optional(),
-    
+    ogImage: z.string().optional(),
   })
   .transform((o) => {
     return { ...o, draft: !(o.title && o.description && o.pubDate) };

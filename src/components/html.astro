@@ -16,7 +16,7 @@ export interface Props {
   ogType?: "website" | "article";
   ogTitle?: string;
   ogDescription?: string;
-  ogImage?: string;
+  ogImage?: string; // ogImage를 props로 받아옴
   themeColor?: string;
   pubDate?: Date; // pubDate를 props로 받아옴
 }
@@ -29,7 +29,7 @@ const {
   ogType = "website",
   ogTitle = title,
   ogDescription = description,
-  ogImage,
+  ogImage, // ogImage를 받아옴
   themeColor = "#121212",
   pubDate, // pubDate는 Date 객체로 전달됨
 } = Astro.props;
@@ -39,21 +39,21 @@ const pathname = Astro.url.pathname; // 예: /ventoy-theme/
 const url2 = pathname.split('/').filter(Boolean).pop(); // 예: ventoy-theme
 
 // pubDate를 문자열로 변환 (YYYY-MM-DD 형식)
-const pubDateString = pubDate ? pubDate.toLocaleDateString('en-CA') : null; // 'en-CA'는 YYYY-MM-DD 형식을 보장
-console.log("pubDateString:", pubDateString);
+const pubDateString = pubDate ? pubDate.toLocaleDateString('en-CA') : null;
 
 // pubDateString에서 연도 추출
 const year = pubDateString ? pubDateString.split('-')[0] : null;
-console.log("year:", year);
 
-// 연도와 slug를 기반으로 ogImage 자동 생성
-const defaultOgImage = year
-  ? `https://chatter.kr/blog-images/${year}/${url2}_1.png`
-  : "https://chatter.kr/images/banner.jpg"; // 연도가 없을 경우 기본 이미지 사용
+// ogImage가 없으면 기본 이미지 사용
+const defaultOgImage = "https://chatter.kr/images/banner.jpg";
 console.log("defaultOgImage:", defaultOgImage);
 
-const finalOgImage = ogImage || defaultOgImage;
-console.log("finalOgImage:", finalOgImage);
+// ogImage가 있으면 해당 이미지 사용, 없으면 기본 이미지 사용
+const finalOgImage = ogImage
+  ? new URL(ogImage, Astro.url).toString() // ogImage가 상대 경로일 경우 절대 경로로 변환
+  : defaultOgImage;
+  console.log("finalOgImage:", finalOgImage);
+
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -74,7 +74,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <meta property="og:title" content={ogTitle} />
       <meta property="og:description" content={ogDescription} />
       <meta property="og:url" content={canonicalURL} />
-      {finalOgImage && <meta property="og:image" content={new URL(finalOgImage, Astro.url)} />}
+      {finalOgImage && <meta property="og:image" content={finalOgImage} />}
       <meta property="twitter:card" content="summary_large_image" />
     </slot>
     <link rel="icon" href={icon.src} />
