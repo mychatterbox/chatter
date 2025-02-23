@@ -19,6 +19,7 @@ export interface Props {
   ogDescription?: string;
   ogImage?: string;
   themeColor?: string;
+  id?: string;
   // tags?: string[];
 }
 
@@ -31,6 +32,7 @@ const {
   ogTitle = title,
   ogDescription = description,
   ogImage = banner.src,
+  id,
   themeColor = "#121212",  // 상단 주소표시줄 다크테마 색상
   // themeColor = "#18181b",
   // tags,
