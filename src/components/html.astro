@@ -18,7 +18,7 @@ export interface Props {
   ogDescription?: string;
   ogImage?: string;
   themeColor?: string;
-  pubDate?: string; // pubDate를 props로 받아옴
+  pubDate?: Date; // pubDate를 props로 받아옴
 }
 
 const {
@@ -31,47 +31,31 @@ const {
   ogDescription = description,
   ogImage,
   themeColor = "#121212",
-  pubDate, // pubDate를 사용하여 연도 추출
+  pubDate, // pubDate는 Date 객체로 전달됨
 } = Astro.props;
 
 // 현재 페이지의 URL 경로에서 파일명(slug) 추출
 const pathname = Astro.url.pathname; // 예: /ventoy-theme/
 const url2 = pathname.split('/').filter(Boolean).pop(); // 예: ventoy-theme
 
-const getYearFromPubDate = (pubDate: string | Date | undefined) => {
-  if (!pubDate) return null;
+// pubDate를 문자열로 변환 (YYYY-MM-DD 형식)
+const pubDateString = pubDate ? pubDate.toLocaleDateString('en-CA') : null; // 'en-CA'는 YYYY-MM-DD 형식을 보장
+console.log("pubDateString:", pubDateString);
 
-  let dateString: string;
-  if (pubDate instanceof Date) {
-    dateString = pubDate.toISOString().split('T')[0];
-  } else {
-    dateString = pubDate.trim().split('T')[0];
-  }
-
-  const date = new Date(dateString);
-  if (isNaN(date.getTime())) {
-    console.error(`Invalid pubDate: ${pubDate}`);
-    return null;
-  }
-
-  return date.getFullYear().toString();
-};
-
-const year = getYearFromPubDate(pubDate); // 연도 추출
+// pubDateString에서 연도 추출
+const year = pubDateString ? pubDateString.split('-')[0] : null;
+console.log("year:", year);
 
 // 연도와 slug를 기반으로 ogImage 자동 생성
 const defaultOgImage = year
   ? `https://chatter.kr/blog-images/${year}/${url2}_1.png`
   : "https://chatter.kr/images/banner.jpg"; // 연도가 없을 경우 기본 이미지 사용
+console.log("defaultOgImage:", defaultOgImage);
+
 const finalOgImage = ogImage || defaultOgImage;
+console.log("finalOgImage:", finalOgImage);
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-console.log({
-  pubDateReceived: pubDate,
-  parsedYear: year,
-  generatedOgImage: defaultOgImage
-});
-
 ---
 
 <!doctype html>
