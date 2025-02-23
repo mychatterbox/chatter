@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-02-20
+pubDate: 2025-02-23
 slug: my-ratings
 featured: false
 draft: false
@@ -1272,6 +1272,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/865582">A Hero of Our Time (Zamanımızın Bir Kahramanı) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/215196">촌능력전쟁 (2013)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/429774">비치온더비치 (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1234434">혐오의 스타 (2024)</a></li>
@@ -2072,6 +2073,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1132497">Falling Stars (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1187125">Last County (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1297860">인헤리턴스 (Inheritance) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1287842">The Dead Thing (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/73962">엄마는 창녀다 (2011)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1325482">날벼락 웨딩 (Zgon przed weselem) (2025)</a></li>
@@ -2876,6 +2880,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1013243">Don't Talk to Strangers (2022)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/629931">데스트랩 (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1028944">크롬의 저주 (Curse of Crom: The Legend of Halloween) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/408870">프란시스의 밀실 (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/457404">아무 것도 사라지지 않는다 (2014)</a></li>
@@ -3336,6 +3342,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1323577">We Kill Them All (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1145474">Down Below (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1239717">Hunters Lodge (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/472621">Hantu Jeruk Purut Reborn (2017)</a></li>
