@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - 소프트웨어
-ogImage: "../images/ventoy-theme_1.png"
+ogImage: /blog-images/2025/ventoy-theme_1.png
 description: 심플한 Ventoy 테마 만드는 방법, 간단한 수정, 다른 테마를 찾고 적용하는 방법을 설명합니다.
 keywords:
   - 벤토이 테마
@@ -18,8 +18,7 @@ keywords:
 
 어짜피 몇 가지 리스트 중에서 하나를 선택하고 엔터 누를텐데 다른 정보는 필요없을 것 같습니다.  
 
-![ventoy-theme](../../assets/blog-images/2025/ventoy-theme_1.png)
-
+![ventoy-theme](/blog-images/2025/ventoy-theme_1.png)
 
 <details>
 <summary>theme.txt</summary>

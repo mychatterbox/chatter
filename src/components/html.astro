@@ -44,6 +44,9 @@ const {
 // }
 // const url = canonical();
 
+// slug를 기반으로 ogImage 자동 생성
+const defaultOgImage = `https://chatter.kr/_astro/${id}_1.webp`;
+const finalOgImage = ogImage || defaultOgImage;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -64,7 +67,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <meta property="og:title" content={ogTitle} />
       <meta property="og:description" content={ogDescription} />
       <meta property="og:url" content={canonicalURL} />
-      {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.url)} />}
+      {finalOgImage && <meta property="og:image" content={new URL(finalOgImage, Astro.url)} />}
+      <!-- {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.url)} />}       -->
       <meta property="twitter:card" content="summary_large_image" />
     </slot>
     <link rel="icon" href={icon.src} />
