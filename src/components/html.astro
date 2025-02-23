@@ -45,13 +45,13 @@ const pubDateString = pubDate ? pubDate.toLocaleDateString('en-CA') : null;
 const year = pubDateString ? pubDateString.split('-')[0] : null;
 
 // ogImage가 없으면 기본 이미지 사용
-const defaultOgImage = "https://chatter.kr/images/banner.jpg";
-console.log("defaultOgImage:", defaultOgImage);
+// const defaultOgImage = "https://chatter.kr/images/banner.jpg";
+// console.log("defaultOgImage:", defaultOgImage);
 
 // ogImage가 있으면 해당 이미지 사용, 없으면 기본 이미지 사용
 const finalOgImage = ogImage
   ? new URL(ogImage, Astro.url).toString() // ogImage가 상대 경로일 경우 절대 경로로 변환
-  : defaultOgImage;
+  : ogImage;
   console.log("finalOgImage:", finalOgImage);
 
 
