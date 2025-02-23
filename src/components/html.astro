@@ -18,6 +18,7 @@ export interface Props {
   ogDescription?: string;
   ogImage?: string;
   themeColor?: string;
+  pubDate?: string; // pubDate를 props로 받아옴
 }
 
 const {
@@ -30,14 +31,20 @@ const {
   ogDescription = description,
   ogImage,
   themeColor = "#121212",
+  pubDate, // pubDate를 사용하여 연도 추출
 } = Astro.props;
 
-// 현재 페이지의 URL 경로에서 파일명 추출
-const pathname = Astro.url.pathname; // 예: /minipc-pdcharger/
-const filename = pathname.split('/').filter(Boolean).pop(); // 예: minipc-pdcharger
+// 현재 페이지의 URL 경로에서 파일명(slug) 추출
+const pathname = Astro.url.pathname; // 예: /ventoy-theme/
+const slug = pathname.split('/').filter(Boolean).pop(); // 예: ventoy-theme
 
-// 파일명을 기반으로 ogImage 자동 생성
-const defaultOgImage = `https://chatter.kr/images/${filename}_1.webp`;
+// pubDate에서 연도 추출 (예: "2025-01-01" → "2025")
+const year = pubDate ? new Date(pubDate).getFullYear().toString() : null;
+
+// 연도와 slug를 기반으로 ogImage 자동 생성
+const defaultOgImage = year
+  ? `https://chatter.kr/blog-images/${year}/${slug}_1.png`
+  : "https://chatter.kr/images/banner.jpg"; // 연도가 없을 경우 기본 이미지 사용
 const finalOgImage = ogImage || defaultOgImage;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
