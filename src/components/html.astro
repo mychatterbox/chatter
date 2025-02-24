@@ -3,9 +3,9 @@ import ColorScheme from "components/colorscheme/head.astro";
 import font from "fonts/PretendardGOV-Medium.subset.woff2";
 import at_icon from "images/apple-touch-icon.png";
 import banner from "images/banner.jpg";
+import noimage from "images/no_ogimage.jpg";
 import icon from "images/icon.svg";
 import "styles/global.css";
-import { ViewTransitions } from "astro:transitions";
 import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
@@ -45,14 +45,14 @@ const pubDateString = pubDate ? pubDate.toLocaleDateString('en-CA') : null;
 const year = pubDateString ? pubDateString.split('-')[0] : null;
 
 // ogImage가 없으면 기본 이미지 사용
-// const defaultOgImage = "https://chatter.kr/images/banner.jpg";
-// console.log("defaultOgImage:", defaultOgImage);
+const defaultOgImage = noimage;
+//console.log("defaultOgImage:", defaultOgImage);
 
 // ogImage가 있으면 해당 이미지 사용, 없으면 기본 이미지 사용
 const finalOgImage = ogImage
   ? new URL(ogImage, Astro.url).toString() // ogImage가 상대 경로일 경우 절대 경로로 변환
-  : ogImage;
-  console.log("finalOgImage:", finalOgImage);
+  : defaultOgImage;
+  // console.log("finalOgImage:", finalOgImage);
 
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
