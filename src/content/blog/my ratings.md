@@ -663,6 +663,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/989662">어 디프런트 맨 (A Different Man) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/35848">Hukkle (2002)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/274783">The Gentleman from the Courtyard (Cripta) (2014)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1190462">Breathing In (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/503919">라이트하우스 (The Lighthouse) (2019)</a></li>
@@ -1272,6 +1274,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/107934">Blue Ridge (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/865582">A Hero of Our Time (Zamanımızın Bir Kahramanı) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/215196">촌능력전쟁 (2013)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/429774">비치온더비치 (2016)</a></li>
@@ -2073,6 +2076,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/394151">Nosferatu: A Symphony of Horror (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1393140">If I Go Missing (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1132497">Falling Stars (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1187125">Last County (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1297860">인헤리턴스 (Inheritance) (2025)</a></li>
