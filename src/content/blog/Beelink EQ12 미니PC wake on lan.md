@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - 미니pc
-ogImage: /blog-images/2024/eq12-wol_2.png
+ogImage: /blog-images/2024/eq12-wol_3.png
 description: Beelink의 n100 미니PC 중 EQ12 모델의 wake on lan 내용과 WOL 프로그램을 하나 추천합니다.
 keywords:
   - EQ12
@@ -33,13 +33,17 @@ Beelink 미니pc 모델들이 wol 기능이 되는지 검색해보면 의외로 
 뭐 그런데 결과적으로는 아무 상관이 없었습니다.  
 
 아래와 같은 간단한 WOL 프로그램을 사용합니다.  
-[Wake On Lan](https://apps.microsoft.com/detail/9wzdncrdfshb?activetab=pivot%3Aoverviewtab&hl=en-us&gl=US) 
-![WOL](../../assets/blog-images/2024/eq12-wol_2.png)
- 
-디자인은 위와 같고 용량은 약 0.8MB.  윈도우용입니다.  
-2012년에 발표된 프로그램인데 디자인이 아주 현대적이고 심플합니다. 좀 놀랍네요.
+[MagicPacket](https://apps.microsoft.com/detail/9wzdncrcw1mx?hl=ko-kr&gl=KR) 
+![MagicPacket](../../assets/blog-images/2024/eq12-wol_3.png)
+![mac-address](../../assets/blog-images/2024/eq12-wol_5.png)
 
-공유기 설정에서 미니PC의 MAC 주소만 확인 후에 정보 입력하고 Wake !  클릭하니 WOL 기능이 잘 작동합니다.
+Name:  
+PC 이름을 입력합니다.  
+MAC address:  
+아래와 같이 CMD 창에서 `getmac /v` 명령어로 MAC 주소를 확인하고  
+3C-6P-10-30-4G-F3 형식으로 보이면 3C:6P:10:30:4G:F3 처럼 입력합니다.  
+2가지 정보만 입력해도 WOL 기능이 잘 작동합니다. 
 
-이제 미니pc를 보이지 않는 구석으로 보낼 수 있게 되었습니다.
+![mac-address](../../assets/blog-images/2024/eq12-wol_4.png)
+
 
