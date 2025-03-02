@@ -18,7 +18,7 @@ keywords:
 
 어짜피 몇 가지 리스트 중에서 하나를 선택하고 엔터 누를텐데 다른 정보는 필요없을 것 같습니다.  
 
-![ventoy-theme](/blog-images/2025/ventoy-theme_1.png)
+![ventoy-theme](../../assets/blog-images/2025/ventoy-theme_1.png)
 
 <details>
 <summary>theme.txt</summary>
