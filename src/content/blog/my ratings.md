@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-02-23
+pubDate: 2025-03-02
 slug: my-ratings
 featured: false
 draft: false
@@ -219,6 +219,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/10778">그 남자는 거기 없었다 (The Man Who Wasn't There) (2001)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/114527">미무추종 (迷雾追踪) (2020)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1039374">페르소나: 이상한 여자 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1102493">이처럼 사소한 것들 (Small Things Like These) (2024)</a></li>
@@ -1274,6 +1275,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/850439">저주 (The Damned)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/39279">AM1200 (2008)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/107934">Blue Ridge (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/107934">Blue Ridge (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/865582">A Hero of Our Time (Zamanımızın Bir Kahramanı) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/215196">촌능력전쟁 (2013)</a></li>
@@ -2076,6 +2080,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1053943">Spookt (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/394151">Nosferatu: A Symphony of Horror (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1393140">If I Go Missing (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1132497">Falling Stars (2024)</a></li>
@@ -2885,6 +2890,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/862029">Cursed (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1013243">Don't Talk to Strangers (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/629931">데스트랩 (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1028944">크롬의 저주 (Curse of Crom: The Legend of Halloween) (2022)</a></li>
