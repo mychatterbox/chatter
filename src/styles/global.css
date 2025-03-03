@@ -39,15 +39,7 @@
 @font-face {
   font-family: "CascadiaCode";
   font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(../fonts/CascadiaCode.woff2) format("woff2");
-}
-
-@font-face {
-  font-family: "CascadiaCode";
-  font-style: normal;
-  font-weight: 600;
+  font-weight: 400 600;
   font-display: swap;
   src: url(../fonts/CascadiaCode.woff2) format("woff2");
 }
@@ -70,39 +62,29 @@
 
 @layer components {
   :root {
-    --astro-code-foreground:#3f3f46; /* 글자색 */
-    --astro-code-background:#e8e8e9; /* 배경색 */
+    /* 공통 변수 */
     --astro-code-token-string: theme(colors.emerald.500);
-    --astro-code-token-function: theme(colors.zinc.500);
     --astro-code-token-comment: theme(colors.blue.600);
     --astro-code-token-keyword: #c73a49;
-    /* --astro-code-token-keyword: #efeff0; */
-    /* --astro-code-token-constant: var(--astro-code-foreground);
-    --astro-code-token-parameter: var(--astro-code-foreground);
-    --astro-code-token-string-expression: var(--astro-code-token-string);
-    --astro-code-token-punctuation: var(--astro-code-foreground);
-    --astro-code-token-link: var(--astro-code-token-string-expression); */
+
+    --astro-code-foreground: #3f3f46;
+    --astro-code-background: #e8e8e9;
+    --astro-code-token-function: theme(colors.zinc.500);
   }
 
   .dark {
-    --astro-code-foreground:#d4d4d8; /* 글자색 */
-    --astro-code-background:#202022; /* 배경색 */
+    --astro-code-foreground: #d4d4d8; /* 글자색 */
+    --astro-code-background: #202022; /* 배경색 */
     --astro-code-token-function: theme(colors.zinc.200);
-    --astro-code-token-string: theme(colors.emerald.500);
-    --astro-code-token-comment: theme(colors.blue.400);
-    --astro-code-token-keyword: #c73a49;
   }
 }
 
-blockquote {
-  font-style: normal !important; /* 이탤릭 효과 제거 */
-  quotes: none !important; /* 따옴표 제거 */
-}    
 .prose a {
   @apply break-words underline-offset-4 hover:text-blue-400 ;
 }  
 ::-webkit-scrollbar {
   @apply w-3;
+  
 }
 ::-webkit-scrollbar-track {
   @apply bg-zinc-100 dark:bg-zinc-900;
@@ -113,33 +95,19 @@ blockquote {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-zinc-400 dark:bg-zinc-400;
 }
-.prose code::before, 
-.prose code::after {
-    content: none !important;
+#root {
+
 }
+
 /* 인라인 코드 스타일 */
-.prose code:not(pre code) {
+/* .prose code:not(pre code) {
   color: #cc2323;
-  font-family: inherit; /* 기본 폰트로 설정 */
-  font-size: 1em; /* 인라인 코드(` ` 으로 감싸는 부분, */
+  font-family: inherit;
+  font-size: 1em;
 }
-
-/* 인라인 코드 스타일 (다크 모드) */
 .dark .prose code:not(pre code) {
-  
   color: #e94a3f;
-}
-
-/* 코드 블록 전체 스타일 */
-.prose pre {
-  /* background-color: var(--astro-code-color-background); */
-  /* background-color: var(--astro-code-background); */
-  /* color: var(--astro-code-color-text); */
-  /* padding: 1rem; */
-  font-family: "CascadiaCode", monospace; /* 고정폭 폰트 */
-  font-size: 1em; /* 코드 블록 폰트 크기 (일반 모드) */
-
-}
+} */
 
 /* css 파일을 사용해 색상이 다른 blockquote 세로막대 구현 
 웹만을 위함이라면 단순하고 편하지만 md 파일 내에 아래와 같은 div 코드를 삽입해야하므로 md 파일이 훼손됨, 해당부분(div)은 html 취급됨(예: 줄바꿈은 <br>)
