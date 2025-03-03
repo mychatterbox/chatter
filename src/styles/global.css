@@ -121,7 +121,7 @@ blockquote {
 .prose code:not(pre code) {
   color: #cc2323;
   font-family: inherit; /* 기본 폰트로 설정 */
-  font-size: 1rem; /* 인라인 코드 폰트 크기 (예: 16px) */
+  font-size: 1em; /* 인라인 코드(` ` 으로 감싸는 부분, */
 }
 
 /* 인라인 코드 스타일 (다크 모드) */
@@ -137,7 +137,8 @@ blockquote {
   /* color: var(--astro-code-color-text); */
   /* padding: 1rem; */
   font-family: "CascadiaCode", monospace; /* 고정폭 폰트 */
-  font-size: 0.875rem; /* 코드 블록 폰트 크기 (일반 모드) */
+  font-size: 1em; /* 코드 블록 폰트 크기 (일반 모드) */
+
 }
 
 /* css 파일을 사용해 색상이 다른 blockquote 세로막대 구현 

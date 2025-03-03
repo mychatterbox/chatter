@@ -7,10 +7,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Pretendard"', ...defaultTheme.fontFamily.sans],
-        mono: ['"CascadiaCode"', ...defaultTheme.fontFamily.mono],
+        // cv12 : ... 를 한국어화, zero = slash 0
+        sans: [['"Pretendard"', ...defaultTheme.fontFamily.sans], { fontFeatureSettings: '"cv12"'  },],
+        mono: [['"CascadiaCode"', ...defaultTheme.fontFamily.mono],   { fontFeatureSettings: '"zero"'  },],
       },
-      colors: {     // 배경색 추가
+      colors: {     // 모바일 기기 상단의 배경색
         'custom-dark': '#121212', 
       },
     },
