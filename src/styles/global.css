@@ -37,35 +37,35 @@
 }
 
 @font-face {
-  font-family: "Berkeley Mono";
+  font-family: "CascadiaCode";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../fonts/berkeley-mono.woff2) format("woff2");
+  src: url(../fonts/CascadiaCode.woff2) format("woff2");
 }
 
 @font-face {
-  font-family: "Berkeley Mono";
+  font-family: "CascadiaCode";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(../fonts/berkeley-mono-bold.woff2) format("woff2");
+  src: url(../fonts/CascadiaCode.woff2) format("woff2");
 }
 
 @font-face {
-  font-family: "Berkeley Mono";
+  font-family: "CascadiaCode";
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url(../fonts/berkeley-mono-italic.woff2) format("woff2");
+  src: url(../fonts/CascadiaCode.woff2) format("woff2");
 }
 
 @font-face {
-  font-family: "Berkeley Mono";
+  font-family: "CascadiaCode";
   font-style: italic;
   font-weight: 600;
   font-display: swap;
-  src: url(../fonts/berkeley-mono-bolditalic.woff2) format("woff2");
+  src: url(../fonts/CascadiaCode.woff2) format("woff2");
 }
 
 @layer components {
@@ -136,7 +136,7 @@ blockquote {
   /* background-color: var(--astro-code-background); */
   /* color: var(--astro-code-color-text); */
   /* padding: 1rem; */
-  font-family: "Berkeley Mono", monospace; /* 고정폭 폰트 */
+  font-family: "CascadiaCode", monospace; /* 고정폭 폰트 */
   font-size: 0.875rem; /* 코드 블록 폰트 크기 (일반 모드) */
 }
 
