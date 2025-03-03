@@ -226,13 +226,14 @@ code {
 	color:#fb5152;  /* 강조색 */
 	background: none;
 	
-	    white-space: pre; /* 줄바꿈 방지 */
+	    /* white-space: pre; */
     word-wrap: normal; /* 단어 줄바꿈 방지 */
     word-break: normal; /* 단어 줄바꿈 방지 */
 }
 
 body.wordWrap pre {
 	white-space: pre-wrap;
+	white-space: pre;
 }
 
 pre:not(.hljs),
