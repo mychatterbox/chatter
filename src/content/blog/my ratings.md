@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-03-02
+pubDate: 2025-03-03
 slug: my-ratings
 featured: false
 draft: false
@@ -93,6 +93,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/549509">브루탈리스트 (The Brutalist) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/91186">심플 라이프 (桃姐) (2011)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/125935">애봇 초등학교 (Abbott Elementary) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/185">A Clockwork Orange (1971)</a></li>
