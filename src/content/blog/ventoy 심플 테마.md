@@ -59,7 +59,7 @@ terminal-border: "0"
 <details>
 <summary>ventoy.json</summary>
 
-```
+```json
 {
     "control":[
         { "VTOY_SECONDARY_BOOT_MENU": "0" },
