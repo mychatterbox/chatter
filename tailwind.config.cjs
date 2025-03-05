@@ -4,15 +4,15 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   darkMode: "class",
   content: ["src/**/*.{astro,svelte,ts}"],
-    theme: {
+  theme: {
     extend: {
       fontFamily: {
-        // cv12 : ... 를 한국어화, zero = slash 0
-        sans: [['"Pretendard"', ...defaultTheme.fontFamily.sans], { fontFeatureSettings: '"cv12"'  },],
-        mono: [['"CascadiaCode"', ...defaultTheme.fontFamily.mono],   { fontFeatureSettings: '"zero"'  },],
+        sans: [['"Pretendard"', ...defaultTheme.fontFamily.sans], { fontFeatureSettings: '"cv12"' }],
+        mono: [['"CascadiaCode"', ...defaultTheme.fontFamily.mono], { fontFeatureSettings: '"zero"' }],
       },
       colors: {     // 모바일 기기 상단의 배경색
-        'custom-dark': '#121212', 
+        'custom-dark': '#121212',
+        'custom-light': '#f5f7f9',
       },
       typography: {
         DEFAULT: {
@@ -41,11 +41,17 @@ module.exports = {
             'dark pre code': {
               color: 'inherit', // 코드 블록 색상 (기본값 유지)
             },
+            // hr 스타일 추가
+            hr: {
+              marginTop: '2rem', // my-8 (2rem)
+              marginBottom: '2rem', // my-8 (2rem)
+              borderTopWidth: '1px', // border-t-2
+              borderColor: 'currentColor',
+            },
           },
         },
       },
     },
   },
-  
   plugins: [require("@tailwindcss/typography")],
 };

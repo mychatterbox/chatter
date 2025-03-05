@@ -19,7 +19,7 @@ keywords:
 최근에는 [Syncthing](https://syncthing.net/) 를 사용하고 있는데, 점점 마음에 들지 않습니다.  
 앞으로는 윈도우에 내장된 명령인 robocopy 를 이용해 백업하기로 했습니다.  
 
-<hr>
+***
 
 원본 폴더는 c:\music 이고,  
 d:\music, 네트워크 공유된 MINI-pc의 e:\music 2군데로 동시에 백업하겠습니다.  
