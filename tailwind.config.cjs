@@ -10,9 +10,9 @@ module.exports = {
         sans: [['"Pretendard"', ...defaultTheme.fontFamily.sans], { fontFeatureSettings: '"cv12"' }],
         mono: [['"CascadiaCode"', ...defaultTheme.fontFamily.mono], { fontFeatureSettings: '"zero"' }],
       },
-      colors: {     // 모바일 기기 상단의 배경색
-        'custom-dark': '#121212',
-        'custom-light': '#f5f7f9',
+      colors: {
+        'custom-dark': '#121212',  // 다크모드 배경색
+        'custom-light': '#f5f7f9',  // 다크모드 글자색
       },
       typography: {
         DEFAULT: {
