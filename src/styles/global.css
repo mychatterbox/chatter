@@ -62,27 +62,24 @@
 
 @layer components {
   :root {
-    /* 공통 변수 */
     --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-comment: theme(colors.blue.600);
     --astro-code-token-keyword: #c73a49;
 
-    --astro-code-foreground: #3f3f46;
+    /* --astro-code-foreground: #3f3f46; */
+    --astro-code-foreground: red;
     --astro-code-background: #e8e8e9;
     --astro-code-token-function: theme(colors.zinc.500);
 
-    /* figcaption 변수 추가 */
-    /* --figcaption-bg: rgba(0, 0, 0, 0.1); */
     --figcaption-bg: rgba(0, 0, 0, 0.1);
     --figcaption-color: currentColor;
   }
 
   .dark {
-    --astro-code-foreground: #d4d4d8; /* 글자색 */
-    --astro-code-background: #202022; /* 배경색 */
+    --astro-code-foreground: #d4d4d8;
+    --astro-code-background: #202022;
     --astro-code-token-function: theme(colors.zinc.200);
 
-    /* figcaption 변수 추가 */
     --figcaption-bg: rgba(255, 255, 255, 0.1);
     --figcaption-color: currentColor;
   }
