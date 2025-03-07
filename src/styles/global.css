@@ -66,8 +66,7 @@
     --astro-code-token-comment: theme(colors.blue.600);
     --astro-code-token-keyword: #c73a49;
 
-    /* --astro-code-foreground: #3f3f46; */
-    --astro-code-foreground: red;
+    --astro-code-foreground: #3f3f46;
     --astro-code-background: #e8e8e9;
     --astro-code-token-function: theme(colors.zinc.500);
 
