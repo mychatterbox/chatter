@@ -28,7 +28,7 @@ module.exports = {
               quotes: 'none', // 따옴표 제거
             },
             'code': {
-              color: '#d23b3b', // 인라인 코드 색상 (라이트 모드)
+              color: '#d75454', // 인라인 코드 색상 (라이트 모드)
               fontFamily: 'inherit',
               fontSize: '1em',
             },
