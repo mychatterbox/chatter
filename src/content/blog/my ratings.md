@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-03-03
+pubDate: 2025-03-08
 slug: my-ratings
 featured: false
 draft: false
@@ -220,6 +220,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/932801">The Universal Theory (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/10778">그 남자는 거기 없었다 (The Man Who Wasn't There) (2001)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/114527">미무추종 (迷雾追踪) (2020)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1039374">페르소나: 이상한 여자 (2025)</a></li>
@@ -665,6 +666,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/421228">누에치던 방 (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/989662">어 디프런트 맨 (A Different Man) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/35848">Hukkle (2002)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/274783">The Gentleman from the Courtyard (Cripta) (2014)</a></li>
@@ -2081,6 +2083,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/943788">From Black (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1190868">V/H/S/비욘드 (V/H/S/Beyond) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1018634">후드 위치 (Roqya) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1224993">검은 수녀들 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1053943">Spookt (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/394151">Nosferatu: A Symphony of Horror (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1393140">If I Go Missing (2024)</a></li>
@@ -3334,7 +3340,6 @@ description: "영화 TV 별점"
 <li> <a href="https://www.themoviedb.org/movie/701121">Children of the Corn (2020)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/24330">Seventh Moon (2008)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/329025">Ditch Day Massacre (2016)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/943788">From Black (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/741636">Bloodthirsty (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1106057">2퍼센트 (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/44097">Curse of the Blue Lights (1988)</a></li>
@@ -3354,6 +3359,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1443064">Woods of Ash (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1323577">We Kill Them All (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1145474">Down Below (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1239717">Hunters Lodge (2016)</a></li>
