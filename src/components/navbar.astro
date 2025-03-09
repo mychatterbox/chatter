@@ -8,7 +8,7 @@ import FilmSolidIcon from "icons/hero/solid/film.svelte";
 import FilmIcon from "icons/hero/outline/film.svelte";
 ---
 
-<header class="mb-8 flex items-center justify-between p-4 sm:px-8">
+<header class="fixed top-0 left-0 right-0 z-50 mb-8 flex items-center justify-between bg-custom-light/50 p-4 py-1 backdrop-blur-sm dark:bg-custom-dark/50">
   <div class="flex items-center space-x-4">
     <a
       aria-label="home"
@@ -24,18 +24,18 @@ import FilmIcon from "icons/hero/outline/film.svelte";
       }
     </a>
     <a
-    aria-label="Film Ratings"
-    href="/my-ratings"
-    class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
-  >
-    {
-      Astro.url.pathname.startsWith("/my-ratings") ? (
-        <FilmSolidIcon class="h-7 w-7" />
-      ) : (
-        <FilmIcon class="h-7 w-7" />
-      )
-    }
-  </a>
+      aria-label="Film Ratings"
+      href="/my-ratings"
+      class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
+    >
+      {
+        Astro.url.pathname.startsWith("/my-ratings") ? (
+          <FilmSolidIcon class="h-7 w-7" />
+        ) : (
+          <FilmIcon class="h-7 w-7" />
+        )
+      }
+    </a>
     <a
       aria-label="Site Info"
       href="/site-info"
@@ -49,7 +49,6 @@ import FilmIcon from "icons/hero/outline/film.svelte";
         )
       }
     </a>
-
   </div>
   <div class="flex-1"></div>
   <ColorSchemeToggle client:idle />
