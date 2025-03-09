@@ -18,7 +18,7 @@ filteredPub.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 <Html title="mychatterbox" description="이런 것도 팁이 되나 싶은 정보들">
   <Nav />
-  <main class="px-4 pb-12">
+  <main class="px-4 pb-12 pt-16">
     <ul class="mx-auto max-w-screen-lg font-medium">
       {filteredPub.map((entry) => <FeedItem entry={entry} />)} <!-- 필터링된 배열 사용 -->
     </ul>
