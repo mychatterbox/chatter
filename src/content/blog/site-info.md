@@ -20,7 +20,7 @@ pub.sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 
 [https://github.com/mrmcc3/vibing-dev][repo] 
 
-위 블로그가 astro v4 를 기준으로 만들어졌을 때를 기본으로 해서 ChatGPT 4, Claude 3.5 sonnet 등 AI 의 도움을 받아 조금씩 수정하면서  astro v5 까지 업데이트했습니다.  
+위 블로그가 astro v4 를 기준으로 만들어졌을 때를 기본으로 해서 ChatGPT 4, Claude 3.5 sonnet 등 AI 의 도움을 받아 조금씩 수정하면서 astro v5 까지 업데이트했고, 그 이후는 deepseek 가 수정하고 있습니다.  
 ~~코파일럿은 수준이 많이 떨어집니다.~~  
 하지만 VS code와 Github의 도움을 많이 받고 있으므로 MS에게도 감사드립니다. 배당금도 잘 나오더라구요.  
 원 제작자분은 더 미니멀하게 디자인과 구조를 갈아엎은 상태입니다.  
@@ -40,7 +40,7 @@ Code snippets and the code for the site itself are [MIT Licensed][mit].
 아마 github 에서 공개 설정으로 해두고 써야될걸요?  
 
 제 코드도 혹시라도 쓰실 분은 마음대로 갖다 쓰세요.  
-폰트, 색상 설정은 global.css 파일과 prose.astro 파일을 수정하면 됩니다.  
+폰트, 색상 설정은 global.css, prose.astro, tailwind.config.cjs 파일을 수정하면 됩니다.  
 
 
 ### 출처
