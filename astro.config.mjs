@@ -10,7 +10,7 @@ export default defineConfig({
 
   trailingSlash: "never", // URL 끝의 `/` 제거
   build: {
-    format: 'file', // build.format을 'file'로 설정
+    format: 'directory', // build.format을 'file'로 설정
   },
   integrations: [
     svelte(),
