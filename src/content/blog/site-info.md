@@ -66,4 +66,3 @@ to : [https://github.com/mychatterbox/chatter][repo2]
 [mono]: https://berkeleygraphics.com/typefaces/berkeley-mono/
 [astro]: https://astro.build/
 [tailwind]: https://tailwindcss.com/
-[astro-paper]:https://astro-paper.pages.dev/
