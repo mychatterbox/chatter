@@ -3360,6 +3360,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1361740">Replicator (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1443064">Woods of Ash (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1323577">We Kill Them All (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1145474">Down Below (2024)</a></li>
