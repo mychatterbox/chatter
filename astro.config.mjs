@@ -8,7 +8,10 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://chatter.kr',
 
-  trailingSlash: "ignore",
+  trailingSlash: "never", // URL 끝의 `/` 제거
+  build: {
+    format: 'file', // build.format을 'file'로 설정
+  },
   integrations: [
     svelte(),
     tailwind(),
