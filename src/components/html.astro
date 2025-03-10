@@ -87,6 +87,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <slot name="head" />
     <ClientRouter />
     <meta name="naver-site-verification" content="e782519ae8e3850a5acf6d2089279ece14da7dac" />
+
+    <!-- <script define:vars={{ canonicalURL }}>
+      console.log("canonicalURL:", canonicalURL);
+    </script> -->
   </head>
   <body class="flex h-full flex-col bg-custom-light dark:bg-custom-dark">
     <slot />
