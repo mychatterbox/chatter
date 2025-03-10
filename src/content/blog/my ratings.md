@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-03-08
+pubDate: 2025-03-09
 slug: my-ratings
 featured: false
 draft: false
@@ -1278,7 +1278,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
-<li> <a href="https://www.themoviedb.org/movie/850439">저주 (The Damned)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/259188">Drifting Away (漂白) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/850439">저주 (The Damned) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/39279">AM1200 (2008)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/107934">Blue Ridge (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/107934">Blue Ridge (2012)</a></li>
