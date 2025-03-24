@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-03-09
+pubDate: 2025-03-23
 slug: my-ratings
 featured: false
 draft: false
@@ -1278,6 +1278,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1141182">다이 얼론 (Die Alone) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1147598">Snakeeater (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/566805">매드 하이디 (Mad Heidi) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/259188">Drifting Away (漂白) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/850439">저주 (The Damned) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/39279">AM1200 (2008)</a></li>
@@ -2084,6 +2087,11 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1304106">Blood Star (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1210938">계시록 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/236994">드래곤볼 다이마 (ドラゴンボールDAIMA) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1269108">Curse of the Seven Seas (Santet Segoro Pitu) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1367344">Wanita Ahli Neraka (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/943788">From Black (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1190868">V/H/S/비욘드 (V/H/S/Beyond) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1018634">후드 위치 (Roqya) (2023)</a></li>
@@ -2898,6 +2906,12 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1303593">둠벙 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1286663">컨트롤 프릭 (Control Freak) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1186274">Goldilocks and the Three Bears: Death & Porridge (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1215834">The Windigo (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1190025">Dante's Hotel (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/710295">울프맨 (Wolf Man) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/862029">Cursed (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1013243">Don't Talk to Strangers (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/629931">데스트랩 (2018)</a></li>
@@ -3360,6 +3374,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1418280">The Ruck March (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1361740">Replicator (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1443064">Woods of Ash (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1323577">We Kill Them All (2025)</a></li>
