@@ -9,25 +9,20 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write ./**/*.astro ./**/*.mdoc ./**/*.svelte ."
+    "format": "prettier --write ./**/*.astro ./**/*.mdoc ."
   },
   "dependencies": {
     "@astrojs/markdoc": "^0.12.4",
     "@astrojs/rss": "^4.0.10",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/svelte": "^7.0.2",
     "@astrojs/tailwind": "^5.1.4",
-    "@astrojs/vercel": "^8.0.1",
     "@tailwindcss/typography": "^0.5.13",
-    "@vercel/speed-insights": "^1.0.12",
     "astro": "^5.1.1",
     "date-fns": "^3.6.0",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-svelte": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "sharp": "^0.33.4",
-    "svelte": "^5.16.0",
     "tailwindcss": "^3.4.4"
   }
 }

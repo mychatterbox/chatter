@@ -72,6 +72,7 @@
 
     --figcaption-bg: rgba(0, 0, 0, 0.1);
     --figcaption-color: currentColor;
+
   }
 
   .dark {
@@ -81,6 +82,8 @@
 
     --figcaption-bg: rgba(255, 255, 255, 0.1);
     --figcaption-color: currentColor;
+
+
   }
 }
 

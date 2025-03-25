@@ -1,0 +1,18 @@
+---
+import SunIcon from "../../icons/sun.astro";
+import MoonIcon from "../../icons/moon.astro";
+---
+
+<button
+  id="theme-toggle"
+  class="inline-flex items-center p-1 transition duration-200 motion-reduce:transition-none sm:motion-safe:hover:rotate-12 sm:motion-safe:hover:scale-110"
+  aria-label="Switch color scheme"
+  onclick="window.toggleTheme && window.toggleTheme()"
+>
+  <span class="h-6 w-6 dark:hidden">
+    <SunIcon class="text-gray-900" />
+  </span>
+  <span class="hidden h-6 w-6 dark:block">
+    <MoonIcon class="text-white" />
+  </span>
+</button>

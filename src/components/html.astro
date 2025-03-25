@@ -2,10 +2,10 @@
 import ColorScheme from "components/colorscheme/head.astro";
 import font from "fonts/PretendardGOV-Medium.subset.woff2";
 import at_icon from "images/apple-touch-icon.png";
-import banner from "images/banner.jpg";
 import icon from "images/icon.svg";
 import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
+import { themeColors } from "components/colorscheme/theme.ts";
 
 export interface Props {
   title: string;
@@ -15,9 +15,9 @@ export interface Props {
   ogType?: "website" | "article";
   ogTitle?: string;
   ogDescription?: string;
-  ogImage?: string; // ogImage를 props로 받아옴
+  ogImage?: string;
   themeColor?: string;
-  pubDate?: Date; // pubDate를 props로 받아옴
+  pubDate?: Date;
 }
 
 const {
@@ -28,31 +28,23 @@ const {
   ogType = "website",
   ogTitle = title,
   ogDescription = description,
-  ogImage, // ogImage를 받아옴
-  themeColor = "#121212",
-  pubDate, // pubDate는 Date 객체로 전달됨
+  ogImage,
+  themeColor = themeColors.light, // themeColors 사용
+  pubDate,
 } = Astro.props;
 
-// 현재 페이지의 URL 경로에서 파일명(slug) 추출
+// const isDarkMode = false;
+
 const pathname = Astro.url.pathname; // 예: /ventoy-theme/
-const url2 = pathname.split('/').filter(Boolean).pop(); // 예: ventoy-theme
+// const url2 = pathname.split('/').filter(Boolean).pop();
 
-// pubDate를 문자열로 변환 (YYYY-MM-DD 형식)
 const pubDateString = pubDate ? pubDate.toLocaleDateString('en-CA') : null;
+// const year = pubDateString ? pubDateString.split('-')[0] : null;
 
-// pubDateString에서 연도 추출
-const year = pubDateString ? pubDateString.split('-')[0] : null;
-
-// ogImage가 없으면 기본 이미지 사용
 const defaultOgImage = "https://chatter.kr/images/no_ogimage.png";
-//console.log("defaultOgImage:", defaultOgImage);
-
-// ogImage가 있으면 해당 이미지 사용, 없으면 기본 이미지 사용
 const finalOgImage = ogImage
   ? new URL(ogImage, Astro.url).toString() // ogImage가 상대 경로일 경우 절대 경로로 변환
   : defaultOgImage;
-  // console.log("finalOgImage:", finalOgImage);
-
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -61,6 +53,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <html class="h-full antialiased" lang="ko">
   <head>
     <meta charset="utf-8" />
+    <meta name="theme-color" content={themeColor} />
+    <meta name="color-scheme" content="light dark" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
     {searchTitle && <meta name="title" content={searchTitle} />}
@@ -79,7 +73,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" href={icon.src} />
     <link rel="apple-touch-icon" href={at_icon.src} />
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
-    {themeColor && <meta name="theme-color" content={themeColor} />}
     <ColorScheme />
     <link rel="preload" href={font} as="font" type="font/woff2" crossorigin />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -88,9 +81,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <ClientRouter />
     <meta name="naver-site-verification" content="e782519ae8e3850a5acf6d2089279ece14da7dac" />
 
-    <!-- <script define:vars={{ canonicalURL }}>
-      console.log("canonicalURL:", canonicalURL);
-    </script> -->
+    <script define:vars={{ canonicalURL }}>
+      console.log('현재 테마:', localStorage.getItem('theme'));
+    </script>
+    
   </head>
   <body class="flex h-full flex-col bg-custom-light dark:bg-custom-dark">
     <slot />

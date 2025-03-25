@@ -1,18 +1,35 @@
-<meta name="color-scheme" content="light dark" />
 <script is:inline>
-  if (!globalThis.applyColorScheme) {
-    const pref = globalThis.matchMedia("(prefers-color-scheme: dark)");
-    const applyColorScheme = () => {
-      const html = document.documentElement.classList;
-      const cs = localStorage.colorScheme;
-      cs === "dark" || (cs !== "light" && pref.matches) ? html.add("dark") : html.remove("dark");
-      document
-        .querySelector('meta[name="color-scheme"]')
-        ?.setAttribute("content", cs || "light dark");
+  if (!window.__themeInitialized) {
+    window.__themeInitialized = true;
+    
+    const applyTheme = (isDark) => {
+      document.documentElement.classList.toggle('dark', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.querySelector('meta[name="theme-color"]').content = isDark ? '#121212' : '#ffffff';
     };
-    applyColorScheme();
-    pref.addEventListener("change", applyColorScheme);
-    Object.assign(globalThis, { applyColorScheme });
-    document.addEventListener("astro:after-swap", applyColorScheme);
+  
+    const initTheme = () => {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return savedTheme ? savedTheme === 'dark' : prefersDark;
+    };
+    
+    applyTheme(initTheme());
+  
+    window.toggleTheme = () => {
+      const isDark = !document.documentElement.classList.contains('dark');
+      applyTheme(isDark);
+      return isDark ? 'dark' : 'light';
+    };
+  
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches);
+      }
+    });
+  
+    document.addEventListener('astro:after-swap', () => {
+      applyTheme(initTheme());
+    });
   }
 </script>

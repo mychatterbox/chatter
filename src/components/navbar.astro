@@ -1,11 +1,8 @@
 ---
-import ColorSchemeToggle from "components/colorscheme/toggle.svelte";
-import HomeModernIcon from "icons/hero/outline/home-modern.svelte";
-import InfoIcon from "icons/hero/outline/info-circle.svelte";
-import HomeModernSolidIcon from "icons/hero/solid/home-modern.svelte";
-import InfoSolidIcon from "icons/hero/solid/info-circle.svelte";
-import FilmSolidIcon from "icons/hero/solid/film.svelte";
-import FilmIcon from "icons/hero/outline/film.svelte";
+import HomeModernIcon from "../icons/HomeModern.astro";
+import InfoIcon from "../icons/InfoCircle.astro";
+import FilmIcon from "../icons/Film.astro";
+import ThemeToggle from "../components/colorscheme/ThemeToggle.astro";
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 mb-8 flex items-center justify-between bg-custom-light/50 p-4 py-1 backdrop-blur-sm dark:bg-custom-dark/50">
@@ -15,41 +12,37 @@ import FilmIcon from "icons/hero/outline/film.svelte";
       href="/"
       class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
     >
-      {
-        Astro.url.pathname === "/" ? (
-          <HomeModernSolidIcon class="h-7 w-7" />
-        ) : (
-          <HomeModernIcon class="h-7 w-7" />
-        )
-      }
+      <HomeModernIcon 
+        class="h-7 w-7 text-gray-900 dark:text-white"
+        isSolid={Astro.url.pathname === "/"} 
+      />
     </a>
+    
     <a
       aria-label="Film Ratings"
       href="/my-ratings"
       class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
     >
-      {
-        Astro.url.pathname.startsWith("/my-ratings") ? (
-          <FilmSolidIcon class="h-7 w-7" />
-        ) : (
-          <FilmIcon class="h-7 w-7" />
-        )
-      }
+      <FilmIcon 
+        class="h-7 w-7 text-gray-900 dark:text-white"
+        isSolid={Astro.url.pathname.startsWith("/my-ratings")} 
+      />
     </a>
+    
     <a
       aria-label="Site Info"
       href="/site-info"
       class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
     >
-      {
-        Astro.url.pathname.startsWith("/site-info") ? (
-          <InfoSolidIcon class="h-7 w-7" />
-        ) : (
-          <InfoIcon class="h-7 w-7" />
-        )
-      }
+      <InfoIcon 
+        class="h-7 w-7 text-gray-900 dark:text-white"
+        isSolid={Astro.url.pathname.startsWith("/site-info")} 
+      />
     </a>
   </div>
+  
   <div class="flex-1"></div>
-  <ColorSchemeToggle client:idle />
+  
+
+  <ThemeToggle />
 </header>

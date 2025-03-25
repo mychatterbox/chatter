@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import svelte from "@astrojs/svelte";
 import markdoc from "@astrojs/markdoc";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -13,7 +12,6 @@ export default defineConfig({
     format: 'preserve', // build.format을 'file'로 설정
   },
   integrations: [
-    svelte(),
     tailwind(),
     markdoc(),
     sitemap({

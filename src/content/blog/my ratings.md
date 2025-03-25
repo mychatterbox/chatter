@@ -2087,6 +2087,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1267643">Mother Father Sister Brother Frank (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1304106">Blood Star (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1210938">계시록 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/236994">드래곤볼 다이마 (ドラゴンボールDAIMA) (2024)</a></li>
