@@ -1,4 +1,6 @@
+// theme.ts
 export const themeColors = {
-  light: "#ffffff",
-  dark: "#121212",
+  light: "#f5f7f9",
+  dark: "#121212"
 } as const;
+
