@@ -11,8 +11,8 @@ module.exports = {
         mono: [['"CascadiaCode"', ...defaultTheme.fontFamily.mono], { fontFeatureSettings: '"zero"' }],
       },
       colors: {
-        'custom-dark': '#121212',  // 다크모드 배경색
-        'custom-light': '#f5f7f9',  // 다크모드 글자색
+        'custom-dark': '#121212',
+        'custom-light': '#f5f7f9',
       },
       typography: {
         DEFAULT: {
