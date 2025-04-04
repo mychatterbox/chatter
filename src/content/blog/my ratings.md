@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-03-23
+pubDate: 2025-04-01
 slug: my-ratings
 featured: false
 draft: false
@@ -1278,13 +1278,14 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1204886">백수아파트 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1084199">컴패니언 (Companion) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1141182">다이 얼론 (Die Alone) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1147598">Snakeeater (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/566805">매드 하이디 (Mad Heidi) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/259188">Drifting Away (漂白) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/850439">저주 (The Damned) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/39279">AM1200 (2008)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/107934">Blue Ridge (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/107934">Blue Ridge (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/865582">A Hero of Our Time (Zamanımızın Bir Kahramanı) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/215196">촌능력전쟁 (2013)</a></li>
@@ -2087,6 +2088,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1106714">빚가리 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1124620">더 몽키 (The Monkey) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1267643">Mother Father Sister Brother Frank (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1304106">Blood Star (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1210938">계시록 (2025)</a></li>
@@ -2907,6 +2910,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1169791">Stereoscope (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1046729">Cannibal Comedian (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1373741">Bewitched Hands (Manos brujas) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1303593">둠벙 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1286663">컨트롤 프릭 (Control Freak) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1186274">Goldilocks and the Three Bears: Death & Porridge (2024)</a></li>
@@ -3375,6 +3381,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1327881">Voice of Shadows (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1418280">The Ruck March (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1361740">Replicator (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1443064">Woods of Ash (2025)</a></li>
