@@ -42,7 +42,7 @@ Code snippets and the code for the site itself are [MIT Licensed][mit].
 ### 출처
 
 - Icons on the site are [heroicons][icons] & [tablericons][tabler]
-- Fonts are [Pretendard][sans] and [Berkeley Mono][mono]
+- Fonts are [Pretendard][sans] and [CascadiaCode][mono]
 - Site is built using [Astro][astro] and [Tailwind CSS][tailwind]
 
 
@@ -59,6 +59,6 @@ to : [https://github.com/mychatterbox/chatter][repo2]
 [icons]: https://github.com/tailwindlabs/heroicons
 [tabler]: https://tabler-icons.io/
 [sans]: https://github.com/orioncactus/pretendard
-[mono]: https://berkeleygraphics.com/typefaces/berkeley-mono/
+[mono]: https://github.com/microsoft/cascadia-code
 [astro]: https://astro.build/
 [tailwind]: https://tailwindcss.com/
