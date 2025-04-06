@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import markdoc from "@astrojs/markdoc";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
@@ -13,7 +12,6 @@ export default defineConfig({
   },
   integrations: [
     tailwind(),
-    markdoc(),
     sitemap({
       filter: (p) => !p.includes("/draft/"),
     }),
