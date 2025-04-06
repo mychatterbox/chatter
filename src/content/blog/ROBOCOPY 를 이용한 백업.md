@@ -51,8 +51,8 @@ Exit
 /r:2 옵션은 오류일 경우 재시도 횟수입니다. 지정하지 않으면 기본옵션으로 백만번 재시도 합니다.
 
 
-robocopy %s% %d% %opt% /log:c:\robocopy\\_music-CD-%date%.log /NFL /NDL  
-robocopy %s% %d% %opt% /log:c:\robocopy\\_music-CE-%date%.log /NFL /NDL  
+robocopy %s% %d1% %opt% /log:c:\robocopy\\_music-CD-%date%.log /NFL /NDL  
+robocopy %s% %d2% %opt% /log:c:\robocopy\\_music-CE-%date%.log /NFL /NDL  
 c:\robocopy 폴더에 `_music-CD-2024-05-25.log`, `_music-CE-2024-05-25.log`와 같은 이름을 가진 로그 파일을 만들어주는데, 변경된 내용만 간단하게 보여줍니다.  
 만약 뒤의 /NFL /NDL 을 제거하면 모든 파일과 디렉토리, 변경사항을 자세하게 기록합니다.
 
