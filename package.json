@@ -12,7 +12,6 @@
     "format": "prettier --write ./**/*.astro ./**/*.mdoc ."
   },
   "dependencies": {
-    "@astrojs/markdoc": "^0.12.4",
     "@astrojs/rss": "^4.0.10",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.4",
