@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-04-01
+pubDate: 2025-04-06
 slug: my-ratings
 featured: false
 draft: false
@@ -666,6 +666,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/tv/233686">악연 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/421228">누에치던 방 (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/989662">어 디프런트 맨 (A Different Man) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/35848">Hukkle (2002)</a></li>
@@ -2910,6 +2911,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1222064">River of Blood (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1282980">825 Forest Road (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1169791">Stereoscope (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1046729">Cannibal Comedian (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1373741">Bewitched Hands (Manos brujas) (2023)</a></li>
