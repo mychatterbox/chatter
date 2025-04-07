@@ -2089,6 +2089,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1323911">Drained (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1106714">빚가리 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1124620">더 몽키 (The Monkey) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1267643">Mother Father Sister Brother Frank (2024)</a></li>
