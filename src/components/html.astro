@@ -29,29 +29,32 @@ const {
   ogTitle = title,
   ogDescription = description,
   ogImage,
-  themeColor = themeColors.light, // themeColors 사용
+  themeColor = themeColors.light.meta,
   pubDate,
 } = Astro.props;
 
-// const isDarkMode = false;
-
-const pathname = Astro.url.pathname; // 예: /ventoy-theme/
-// const url2 = pathname.split('/').filter(Boolean).pop();
-
+const pathname = Astro.url.pathname;
 const pubDateString = pubDate ? pubDate.toLocaleDateString('en-CA') : null;
-// const year = pubDateString ? pubDateString.split('-')[0] : null;
 
 const defaultOgImage = "https://chatter.kr/images/no_ogimage.png";
 const finalOgImage = ogImage
-  ? new URL(ogImage, Astro.url).toString() // ogImage가 상대 경로일 경우 절대 경로로 변환
+  ? new URL(ogImage, Astro.url).toString()
   : defaultOgImage;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html class="h-full antialiased" lang="ko">
+<html class="h-full antialiased" lang="ko" >
   <head>
+    <script is:inline>
+      // 초기 테마 설정 (localStorage + OS 설정)
+      const storedTheme = localStorage.getItem("theme");
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (storedTheme === "dark" || (!storedTheme && systemDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
     <meta charset="utf-8" />
     <meta name="theme-color" content={themeColor} />
     <meta name="color-scheme" content="light dark" />
@@ -81,8 +84,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <ClientRouter />
     <meta name="naver-site-verification" content="e782519ae8e3850a5acf6d2089279ece14da7dac" />
   </head>
-  <!-- <body class="flex h-full flex-col bg-custom-light dark:bg-custom-dark transition-colors duration-500"> -->
-    <body class="flex h-full flex-col bg-custom-light dark:bg-custom-dark">
+  <body class="flex h-full flex-col bg-custom-light dark:bg-custom-dark">
     <slot />
   </body>
 </html>
