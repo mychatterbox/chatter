@@ -2912,6 +2912,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1435971">Halloween Candy (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1222064">River of Blood (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1282980">825 Forest Road (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1169791">Stereoscope (2024)</a></li>

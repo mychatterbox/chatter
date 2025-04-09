@@ -29,7 +29,7 @@ const {
   ogTitle = title,
   ogDescription = description,
   ogImage,
-  themeColor = themeColors.light.meta,
+  themeColor = themeColors.dark.meta, // light 모드에서는 페이지 이동 시 주소표시줄 깜빡임, 픽셀폰만의 문제인건지 도저히 해결 불가, 다른 블로그들도 마찬가지
   pubDate,
 } = Astro.props;
 
@@ -47,14 +47,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!doctype html>
 <html class="h-full antialiased" lang="ko" >
   <head>
-    <script is:inline>
+    <!-- <script is:inline>
       // 초기 테마 설정 (localStorage + OS 설정)
       const storedTheme = localStorage.getItem("theme");
       const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       if (storedTheme === "dark" || (!storedTheme && systemDark)) {
         document.documentElement.classList.add("dark");
       }
-    </script>
+      
+    </script> -->
     <meta charset="utf-8" />
     <meta name="theme-color" content={themeColor} />
     <meta name="color-scheme" content="light dark" />
