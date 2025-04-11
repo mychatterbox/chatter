@@ -25,6 +25,8 @@ pub.sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 하지만 VS code와 Github의 도움을 많이 받고 있으므로 MS에게도 감사드립니다. 배당금도 잘 나오더라구요.  
 원 제작자분은 더 미니멀하게 디자인과 구조를 갈아엎은 상태입니다.  
 
+블로그 상단 주소표시줄(theme-color) 깜빡임 증상을 해결하기 어려웠으나, [https://github.com/richLpf/blog-a](https://github.com/richLpf/blog-a) 제작자의 코드를 기반으로 해결했습니다. 감사합니다.  
+
 [RSS Feed](/rss.xml) 는 이렇게 되어 있는데, 잘 될런지? 요즘도 해외에선 RSS 쓰나보죠?
 
 ### 라이센스
