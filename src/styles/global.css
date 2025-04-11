@@ -156,3 +156,42 @@ figcaption {
   transition: background-color 0.5s ease;
 }
  */
+
+ ::view-transition-new(theme-transition) {
+  animation: theme-fade-in 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+}
+
+::view-transition-old(theme-transition) {
+  animation: none;
+  z-index: -1;
+}
+
+@keyframes theme-fade-in {
+  from {
+    clip-path: inset(var(--from-direction));
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+html.dark {
+  --from-direction: 0 0 100% 0; /* 아래에서 위로 */
+}
+
+html:not(.dark) {
+  --from-direction: 0 0 100% 0; /* 위에서 아래로 */
+}
+
+/* 폴백 애니메이션 */
+@supports not (view-transition-name: none) {
+  html:not([data-theme-transition]) {
+    transition: background-color 0.3s ease-out;
+  }
+}
+
+/* 테마 전환 중 다른 애니메이션 비활성화 */
+html[data-theme-transition] * {
+  transition: none !important;
+}
