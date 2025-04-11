@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-04-06
+pubDate: 2025-04-11
 slug: my-ratings
 featured: false
 draft: false
@@ -2913,6 +2913,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/549703">Girls Just Wanna Have Blood (2020)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1435971">Halloween Candy (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1222064">River of Blood (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1282980">825 Forest Road (2025)</a></li>
