@@ -100,9 +100,12 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-zinc-400 dark:bg-zinc-400;
 }
-#root {
 
-}
+/* .prose code:not(pre code) {
+  text-decoration: #d95d5d wavy underline;
+  text-underline-offset: 4px;
+} */
+
 
 /* 인라인 코드 스타일 */
 /* .prose code:not(pre code) {
