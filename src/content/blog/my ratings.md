@@ -1279,6 +1279,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/696506">미키 17 (Mickey 17) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1204886">백수아파트 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1084199">컴패니언 (Companion) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1141182">다이 얼론 (Die Alone) (2024)</a></li>
@@ -2916,6 +2917,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/859051">Murder on Maple Drive (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1460265">Crazy Texas (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1241726">Candlewood (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/549703">Girls Just Wanna Have Blood (2020)</a></li>
