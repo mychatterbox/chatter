@@ -2089,6 +2089,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1353117">Home Sweet Home: Rebirth (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1227003">Shadow of God (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1084031">Chhorii 2 (छोरी 2) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1312833">A Knight's War (2025)</a></li>
@@ -2915,6 +2916,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1460265">Crazy Texas (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1241726">Candlewood (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/549703">Girls Just Wanna Have Blood (2020)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1435971">Halloween Candy (2025)</a></li>
