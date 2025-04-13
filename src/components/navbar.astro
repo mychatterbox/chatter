@@ -5,44 +5,49 @@ import FilmIcon from "../icons/Film.astro";
 import ThemeToggle from "../components/colorscheme/ThemeToggle.astro";
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 mb-8 flex items-center justify-between bg-custom-light/50 p-4 py-1 backdrop-blur-sm dark:bg-custom-dark/50">
-  <div class="flex items-center space-x-4">
-    <a
-      aria-label="home"
-      href="/"
-      class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
-    >
-      <HomeModernIcon 
-        class="h-7 w-7 text-gray-900 dark:text-white"
-        isSolid={Astro.url.pathname === "/"} 
-      />
-    </a>
-    
-    <a
-      aria-label="Film Ratings"
-      href="/my-ratings"
-      class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
-    >
-      <FilmIcon 
-        class="h-7 w-7 text-gray-900 dark:text-white"
-        isSolid={Astro.url.pathname.startsWith("/my-ratings")} 
-      />
-    </a>
-    
-    <a
-      aria-label="Site Info"
-      href="/site-info"
-      class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
-    >
-      <InfoIcon 
-        class="h-7 w-7 text-gray-900 dark:text-white"
-        isSolid={Astro.url.pathname.startsWith("/site-info")} 
-      />
-    </a>
-  </div>
-  
-  <div class="flex-1"></div>
-  
+<!-- 전체 헤더를 감싸는 컨테이너 (고정되지 않음) -->
+<div class="top-1 left-6"> <!-- 높이를 명시적으로 지정 -->
+  <!-- 일반 네비게이션 부분 -->
+  <header class="flex items-center justify-between">
+    <div class="relative top-1 left-4  flex items-center space-x-4">
+      <a
+        aria-label="home"
+        href="/"
+        class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
+      >
+        <HomeModernIcon 
+          class="h-7 w-7 text-gray-900 dark:text-white"
+          isSolid={Astro.url.pathname === "/"} 
+        />
+      </a>
+      <a
+        aria-label="Film Ratings"
+        href="/my-ratings"
+        class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
+      >
+        <FilmIcon 
+          class="h-7 w-7 text-gray-900 dark:text-white"
+          isSolid={Astro.url.pathname.startsWith("/my-ratings")} 
+        />
+      </a>
+      <a
+        aria-label="Site Info"
+        href="/site-info"
+        class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
+      >
+        <InfoIcon 
+          class="h-7 w-7 text-gray-900 dark:text-white"
+          isSolid={Astro.url.pathname.startsWith("/site-info")} 
+        />
+      </a>
+    </div>
 
-  <ThemeToggle />
-</header>
+    <!-- ThemeToggle과 동일한 크기의 더미 요소로 공간 확보 -->
+
+  </header>
+
+  <!-- 고정된 ThemeToggle (절대 위치로 정렬) -->
+  <div class="fixed top-1.5 right-4 ">
+    <ThemeToggle />
+  </div>
+</div>
