@@ -5,7 +5,7 @@ import Nav from "components/navbar.astro";
 import Prose from "components/prose.astro";
 import { format } from "date-fns";
 import { render } from "astro:content";
-
+import { fade } from 'astro:transitions';
 export async function getStaticPaths() {
   const pub = await getCollection("blog");
   return pub.map((entry) => ({
@@ -32,10 +32,10 @@ const draft = entry.id.startsWith("draft/");
   robots={draft ? "noindex" : undefined}
 >
   <Nav />
-  <main class="flex-1 px-4 pb-12 sm:pb-24 pt-16"> <!-- pt-20 추가 -->
+  <main class="flex-1 px-4 pb-12 sm:pb-24 pt-8"> <!-- pt-20 추가 -->
     <article class="mx-auto max-w-screen-lg break-words font-medium">
       <div class="mb-5 flex flex-col items-start">
-        <h1 
+        <h1       transition:name={`title-${entry.id}`}
           class="text-xl font-black leading-tight text-gray-900 dark:text-white"
         >
           {title}
