@@ -5,7 +5,7 @@ import Nav from "components/navbar.astro";
 import Prose from "components/prose.astro";
 import { format } from "date-fns";
 import { render } from "astro:content";
-import { fade } from 'astro:transitions';
+
 export async function getStaticPaths() {
   const pub = await getCollection("blog");
   return pub.map((entry) => ({
@@ -40,12 +40,6 @@ const draft = entry.id.startsWith("draft/");
         >
           {title}
         </h1>  
-        <!-- <h1 
-          class="text-xl font-black leading-tight text-gray-900 dark:text-white"
-          transition:name={`title-${entry.id}`}
-        >
-          {title}
-        </h1>           -->
         <div class="flex items-center space-x-1 pl-1">
           <div class="text-sm text-zinc-600 dark:text-zinc-400">
             {
