@@ -1,69 +1,52 @@
 <script is:inline define:vars={{ lightTheme: '#f5f7f9', darkTheme: '#121212' }}>
   // 단일 실행 보장
   if (!window.__themeInitialized) {
-    window.__themeInitialized = true;
-    
-    // 테마 적용 함수 - 모든 테마 변경 작업을 한 곳에서 처리
-    const applyTheme = (isDark, doc = document) => {
-      // 클래스 적용
-      doc.documentElement.classList.toggle('dark', isDark);
-      // 메타 태그 업데이트
-      const metaTheme = doc.querySelector('meta[name="theme-color"]');
-      if (metaTheme) {
-        metaTheme.content = isDark ? darkTheme : lightTheme;
-      }
-      
-      // 로컬 스토리지는 현재 문서에서만 저장
-      if (doc === document) {
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      }
-    };
+  window.__themeInitialized = true;
   
-    // 초기 테마 판단 함수
-    const getTheme = () => {
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return savedTheme ? savedTheme === 'dark' : prefersDark;
-    };
+  // 테마 적용 함수 - 모든 테마 변경 작업을 한 곳에서 처리
+  const applyTheme = (isDark, doc = document) => {
+    // 클래스 적용
+    doc.documentElement.classList.toggle('dark', isDark);
+    // 메타 태그 업데이트
+    const metaTheme = doc.querySelector('meta[name="theme-color"]');
+    if (metaTheme) {
+      metaTheme.content = isDark ? darkTheme : lightTheme;
+    }
     
-    // 초기 테마 적용 (최우선 실행)
-    applyTheme(getTheme());
+    // 로컬 스토리지는 현재 문서에서만 저장
+    if (doc === document) {
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+  };
+
+  // 초기 테마 판단 함수
+  const getTheme = () => {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return savedTheme ? savedTheme === 'dark' : prefersDark;
+  };
   
-    // Astro 페이지 전환 전 테마 유지 - 중요!
-    document.addEventListener('astro:before-swap', ({ newDocument }) => {
-      applyTheme(getTheme(), newDocument);
-    });
-  
-    // 전역 함수 등록 - 다른 컴포넌트에서 사용할 단일 진입점
-    window.toggleTheme = () => {
-  const isDark = !document.documentElement.classList.contains('dark');
-  
-  // View Transitions API를 사용하여 부드러운 전환 제공
-  if (document.startViewTransition) {
-    document.documentElement.style.setProperty('view-transition-name', 'theme-transition');
-    document.documentElement.setAttribute('data-theme-transition', '');
-    
-    const themeTransition = document.startViewTransition(() => {
-      applyTheme(isDark);
-    });
-    
-    themeTransition.finished.then(() => {
-      document.documentElement.style.removeProperty('view-transition-name');
-      document.documentElement.removeAttribute('data-theme-transition');
-    });
-  } else {
-    // View Transitions API가 없는 경우 기본 동작
+  // 초기 테마 적용 (최우선 실행)
+  applyTheme(getTheme());
+
+  // Astro 페이지 전환 전 테마 유지 - 중요!
+  document.addEventListener('astro:before-swap', ({ newDocument }) => {
+    applyTheme(getTheme(), newDocument);
+  });
+
+  // 전역 함수 등록 - 다른 컴포넌트에서 사용할 단일 진입점
+  window.toggleTheme = () => {
+    const isDark = !document.documentElement.classList.contains('dark');
+    // 즉시 테마 적용 (전환 효과 없음)
     applyTheme(isDark);
-  }
-  
-  return isDark ? 'dark' : 'light';
-};
-  
-    // 시스템 설정 변경 감지
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        applyTheme(e.matches);
-      }
-    });
-  }
+    return isDark ? 'dark' : 'light';
+  };
+
+  // 시스템 설정 변경 감지
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(e.matches);
+    }
+  });
+}
 </script>
