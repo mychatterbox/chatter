@@ -19,17 +19,22 @@ keywords:
 
 ![everything](../../assets/blog-images/2025/everything-with-totalcommander_1.png)  
 
-Everything 검색 결과에서  
-파일을 더블클릭(or <kbd>Enter</kbd>)하면 실행되고 (기본 설정)  
-경로를 클릭하거나 파일을 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> 해도 아무 반응이 없지만 (기본 설정)  
-일반-검색 결과-'경로 칸을 더블클릭해서 폴더 열기'를 체크할 경우, 경로를 더블클릭(or 파일을 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>)하면 탐색기로 폴더를 보여주는데  
-아래처럼 설정할 경우 경로를 더블클릭(or 파일을 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>)하면 탐색기가 아닌 토탈커맨더의 설정된 패널에 파일을 보여주고, 포커스합니다.  
-굳이 번거롭게 마우스 우클릭 메뉴를 띄울 필요 없습니다.  
+#### Everything 기본 설정  
+- 파일 더블클릭 or <kbd>Enter</kbd> -> 실행  
+- 파일 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> -> 아무런 기능을 하지 않음
+- 경로 클릭 -> 아무런 기능을 하지 않음  
 
+#### 설정(일반-검색 결과-'경로 칸을 더블클릭해서 폴더 열기'를 체크) 변경 후 동작
+- 경로 더블클릭 or 파일 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> -> 탐색기로 해당 폴더 열기
+
+#### 추가 설정 변경 후 동작
+- 경로 더블클릭 or 파일 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> -> 토탈커맨더의 설정된 패널에 파일을 보여주고, 포커스
+
+#### 추가 설정 방법
 ![everything-setting](../../assets/blog-images/2025/everything-with-totalcommander_2.png) | ![everything-setting](../../assets/blog-images/2025/everything-with-totalcommander_3.png)
 --- | --- |
 
-입력할 명령은 아래와 같습니다.  
+#### 입력할 명령
    ```
     $exec("d:\Programs\All\FileDISK\TotalCommander\totalcmd64.exe" /O /A /R="%1" /P=R)
    ```
