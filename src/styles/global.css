@@ -2,8 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
-
 @font-face {
   font-family: "Pretendard";
   font-style: normal;
@@ -62,16 +60,17 @@
 
 @layer components {
   :root {
-    --astro-code-token-string: theme(colors.emerald.500);
-    --astro-code-token-comment: theme(colors.blue.600);
-    --astro-code-token-keyword: #c73a49;
-
     --astro-code-foreground: #3f3f46;
     --astro-code-background: #e8e8e9;
     --astro-code-token-function: theme(colors.zinc.500);
 
-    --figcaption-bg: rgba(0, 0, 0, 0.1);
+    --kbd-color: #cececf;
+    --figcaption-bg: rgba(7, 6, 6, 0.1);
     --figcaption-color: currentColor;
+
+    --astro-code-token-string: theme(colors.emerald.500);
+    --astro-code-token-comment: theme(colors.blue.600);
+    --astro-code-token-keyword: #c73a49;
   }
 
   .dark {
@@ -79,6 +78,7 @@
     --astro-code-background: #202022;
     --astro-code-token-function: theme(colors.zinc.200);
 
+    --kbd-color: #525253;
     --figcaption-bg: rgba(255, 255, 255, 0.1);
     --figcaption-color: currentColor;
   }
@@ -101,6 +101,31 @@
   @apply bg-zinc-400 dark:bg-zinc-400;
 }
 
+figcaption {
+  margin-top: -30px !important;
+  color: var(--figcaption-color) !important;
+  text-align: center;
+  font-style: italic;
+  background-color: var(--figcaption-bg);
+  
+  border-radius: 0.25rem; /* 둥근 모서리 */
+  transition: background-color 0.3s ease; /* 배경색 전환 효과 */
+}
+
+kbd {
+  /* background-color: var(--kbd-color); */
+  border-color: var(--kbd-color);
+  vertical-align: 5%;
+  border-width: 1px;
+}
+
+mark {
+  /* background-color: var(--custom-light-dark); */
+  background-color: inherit;
+  color: #d95d5d;
+  font-size: 1em;
+  font-weight: 600;
+}
 /* .prose code:not(pre code) {
   text-decoration: #d95d5d wavy underline;
   text-underline-offset: 4px;
@@ -144,16 +169,7 @@
   margin: -10px !important;
   color: currentColor !important;
 } */
-figcaption {
-  margin-top: -30px !important;
-  color: var(--figcaption-color) !important;
-  text-align: center;
-  font-style: italic;
-  background-color: var(--figcaption-bg);
-  
-  border-radius: 0.25rem; /* 둥근 모서리 */
-  transition: background-color 0.3s ease; /* 배경색 전환 효과 */
-}
+
 
 /* body, pre, header {
   transition: background-color 0.5s ease;
