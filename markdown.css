@@ -223,8 +223,9 @@ blockquote {
 code {
 
 	font-size: 1em;
-
-	color:#d75454;  /* 강조색 */
+	font-weight: 600;
+	font-family: inherit;
+	color:#d95d5d;  /* 강조색 */
 	background: none;
 	
 	    /* white-space: pre; */
@@ -288,3 +289,32 @@ pre {
 .vscode-dark td {
 	border-color: rgba(255, 255, 255, 0.18);
 }
+
+mark {
+  /* background-color: var(--custom-light-dark); */
+  background-color: inherit;
+  color: #d95d5d;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+figcaption {
+	margin-top: -30px !important;
+	color: var(--figcaption-color) !important;
+	text-align: center;
+	font-style: italic;
+	background-color: var(--figcaption-bg);
+	
+	border-radius: 0.25rem; /* 둥근 모서리 */
+	transition: background-color 0.3s ease; /* 배경색 전환 효과 */
+  }
+  
+  kbd {
+	/* background-color: var(--kbd-color); */
+	/* background-color: var(--vscode-editor-background); */
+	background-color: #39393b;
+	/* padding: 8px px; */
+	font-size: 1em;
+	/* color: #333; */
+	font-family: "CascadiaCode", monospace;
+  }
