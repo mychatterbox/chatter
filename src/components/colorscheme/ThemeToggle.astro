@@ -1,6 +1,6 @@
 ---
-import SunIcon from "../../icons/sun.astro";
-import MoonIcon from "../../icons/moon.astro";
+import Sun from "../../icons/hero/solid/sun.svg";
+import Moon from "../../icons/hero/solid/moon.svg";
 ---
 
 <button
@@ -10,9 +10,9 @@ import MoonIcon from "../../icons/moon.astro";
   onclick="toggleTheme()"
 >
   <span class="h-6 w-6 dark:hidden">
-    <SunIcon class="text-gray-900" />
+    <Sun class="h-full w-full text-gray-900" />
   </span>
   <span class="hidden h-6 w-6 dark:block">
-    <MoonIcon class="text-white" />
+    <Moon class="h-full w-full text-white" />
   </span>
 </button>
