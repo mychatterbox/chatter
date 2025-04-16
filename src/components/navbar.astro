@@ -10,39 +10,45 @@ import ThemeToggle from "../components/colorscheme/ThemeToggle.astro";
 
 <div class="top-1 left-6">
   <header class="flex items-center justify-between">
-    <div class="relative top-1 left-4 flex items-center space-x-4" >
+    <div class="relative top-1 left-4 flex items-center space-x-4">
       <a
         aria-label="home"
         href="/"
-        class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110" 
+        class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
       >
-        {Astro.url.pathname === "/" ? (
-          <HomeModernSolid />
-        ) : (
-          <HomeModernOutline />
-        )}
+        <div class="dark:invert">
+          {Astro.url.pathname === "/" ? (
+            <HomeModernSolid />
+          ) : (
+            <HomeModernOutline />
+          )}
+        </div>
       </a>
       <a
         aria-label="Film Ratings"
         href="/my-ratings"
         class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
       >
-        {Astro.url.pathname.startsWith("/my-ratings") ? (
-          <FilmSolid />
-        ) : (
-          <FilmOutline />
-        )}
+        <div class="dark:invert">
+          {Astro.url.pathname.startsWith("/my-ratings") ? (
+            <FilmSolid />
+          ) : (
+            <FilmOutline />
+          )}
+        </div>
       </a>
       <a
         aria-label="Site Info"
         href="/site-info"
         class="flex items-center p-1 transition-all motion-reduce:transition-none sm:hover:motion-safe:scale-110"
       >
-        {Astro.url.pathname.startsWith("/site-info") ? (
-          <InfoSolid />
-        ) : (
-          <InfoOutline />
-        )}
+        <div class="dark:invert">
+          {Astro.url.pathname.startsWith("/site-info") ? (
+            <InfoSolid/>
+          ) : (
+            <InfoOutline/>
+          )}
+        </div>
       </a>
     </div>
   </header>
