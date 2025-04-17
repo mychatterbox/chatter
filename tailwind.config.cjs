@@ -28,7 +28,7 @@ module.exports = {
               quotes: 'none', // 따옴표 제거
             },
             'code': {
-              color: '#d95d5d', // 인라인 코드 색상 (라이트 모드)
+              // color: '#d95d5d', // 인라인 코드 색상 (라이트 모드)
               fontFamily: 'inherit',
               fontSize: '1em',
             },
@@ -36,7 +36,7 @@ module.exports = {
               color: 'inherit', // 코드 블록 색상 (기본값 유지)
             },
             '.dark code': {
-              color: '#d95d5d', // 인라인 코드 색상 (다크 모드)
+              // color: '#d95d5d', // 인라인 코드 색상 (다크 모드)
             },
             '.dark pre code': {
               color: 'inherit', // 코드 블록 색상 (기본값 유지)
