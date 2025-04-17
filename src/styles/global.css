@@ -120,21 +120,19 @@ mark {
   font-weight: 600;
 }
 
-/* .prose code:not(pre code) {
-  text-decoration: #d95d5d wavy underline;
-  text-underline-offset: 4px;
-} */
 
-
-/* 인라인 코드 스타일 */
 /* .prose code:not(pre code) {
-  color: #cc2323;
+  background-color: var(--astro-code-foreground);
+  color: var(--astro-code-background);
   font-family: inherit;
   font-size: 1em;
+  font-weight: inherit;
 }
 .dark .prose code:not(pre code) {
-  color: #e94a3f;
+  background-color: var(--astro-code-foreground);
+  color: var(--astro-code-background);
 } */
+
 
 /* css 파일을 사용해 색상이 다른 blockquote 세로막대 구현 
 웹만을 위함이라면 단순하고 편하지만 md 파일 내에 아래와 같은 div 코드를 삽입해야하므로 md 파일이 훼손됨, 해당부분(div)은 html 취급됨(예: 줄바꿈은 <br>)
@@ -158,29 +156,4 @@ mark {
 /* img {
   margin-top: 0.5em !important;
   margin-bottom: 1em !important;
-} */
-/* figcaption {
-  margin: -10px !important;
-  color: currentColor !important;
-} */
-
-
-/* body, pre, header {
-  transition: background-color 0.5s ease;
-}
- */
-
-
-
-
-/* 폴백 애니메이션 */
-/* @supports not (view-transition-name: none) {
-  html:not([data-theme-transition]) {
-    transition: background-color 0.3s ease-out;
-  }
-} */
-
-/* 테마 전환 중 다른 애니메이션 비활성화 */
-/* html[data-theme-transition] * {
-  transition: none !important;
 } */
