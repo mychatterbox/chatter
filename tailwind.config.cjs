@@ -11,12 +11,14 @@ module.exports = {
         mono: [['"CascadiaCode"', ...defaultTheme.fontFamily.mono], { fontFeatureSettings: '"zero"' }],
       },
       colors: {
-        'custom-dark': '#121212',
-        'custom-light': '#f5f7f9',
+        'custom-bg-dark': '#100F0F',
+        // 'custom-dark': '#121212',
+        'custom-bg-light': '#f5f7f9',
       },
       typography: {
         DEFAULT: {
           css: {
+            '--tw-prose-body': 'var(bg-sky-500/100)',
             'code': {
               // color: '#d95d5d', // 인라인 코드 색상 (라이트 모드)
               fontFamily: 'inherit',
@@ -26,7 +28,6 @@ module.exports = {
               fontStyle: 'normal', // 이탤릭 효과 제거
               quotes: 'none', // 따옴표 제거
             },
-            // hr 스타일 추가
             hr: {
               marginTop: '2rem', // my-8 (2rem)
               marginBottom: '2rem', // my-8 (2rem)
