@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-04-13
+pubDate: 2025-04-19
 slug: my-ratings
 featured: false
 draft: false
@@ -2091,6 +2091,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1250846">The Painted (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1086867">미스트: 인류 종말 (Cora) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1353117">Home Sweet Home: Rebirth (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1227003">Shadow of God (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1084031">Chhorii 2 (छोरी 2) (2025)</a></li>
