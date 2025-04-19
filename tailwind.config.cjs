@@ -12,26 +12,25 @@ module.exports = {
       },
       colors: {
         'custom-bg-dark': '#100F0F',
-        // 'custom-dark': '#121212',
         'custom-bg-light': '#f5f7f9',
       },
       typography: {
         DEFAULT: {
           css: {
-            '--tw-prose-body': 'var(bg-sky-500/100)',
+            '--tw-prose-body': '#3f3f46',
+            '--tw-prose-invert-body': '#d4d4d8',
             'code': {
-              // color: '#d95d5d', // 인라인 코드 색상 (라이트 모드)
               fontFamily: 'inherit',
               fontSize: '1em',
             },
             blockquote: {
-              fontStyle: 'normal', // 이탤릭 효과 제거
-              quotes: 'none', // 따옴표 제거
+              fontStyle: 'normal',
+              quotes: 'none',
             },
             hr: {
-              marginTop: '2rem', // my-8 (2rem)
-              marginBottom: '2rem', // my-8 (2rem)
-              borderTopWidth: '1px', // border-t-2
+              marginTop: '2rem',
+              marginBottom: '2rem',
+              borderTopWidth: '1px',
               borderColor: 'currentColor',
             },
           },

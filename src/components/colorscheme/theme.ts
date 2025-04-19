@@ -1,10 +1,10 @@
 export const themeColors = {
   light: {
-    background: "#f5f7f9",
-    meta: "#f5f7f9"
+    meta: "#f5f7f9",
+    background: "#f5f7f9"
   },
   dark: {
-    background: "#121212",
-    meta: "#121212"
+    meta: "#100F0F",
+    background: "#100F0F"
   }
-};
+} as const;

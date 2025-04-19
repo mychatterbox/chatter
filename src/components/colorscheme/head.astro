@@ -1,4 +1,11 @@
-<script is:inline define:vars={{ lightTheme: '#f5f7f9', darkTheme: '#121212' }}>
+---
+import { themeColors } from "components/colorscheme/theme.ts";
+---
+
+<script is:inline define:vars={{
+  lightTheme: themeColors.light.meta,
+  darkTheme: themeColors.dark.meta
+}}>
   // 단일 실행 보장
   if (!window.__themeInitialized) {
   window.__themeInitialized = true;
