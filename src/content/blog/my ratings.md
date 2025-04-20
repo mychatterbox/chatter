@@ -2091,6 +2091,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1145221">It Feeds (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1400274">Gothic Slayers (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1250846">The Painted (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1086867">미스트: 인류 종말 (Cora) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1353117">Home Sweet Home: Rebirth (2025)</a></li>
