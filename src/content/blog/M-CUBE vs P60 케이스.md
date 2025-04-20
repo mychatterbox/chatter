@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
    - 하드웨어
-ogImage: /assets/blog-images/2024/mcube-vs-p60_1.jpg
+ogImage: /blog-images/2024/mcube-vs-p60_1.jpg
 description: 파워트레인 P60 케이스에 눈이 가는데 쿨링이 걱정인가요. 괜찮은 편입니다.
 keywords:
    - P60 케이스

@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - WOW
-ogImage: /assets/blog-images/2024/wow-dbm-volume_1.jpg
+ogImage: /blog-images/2024/wow-dbm-volume_1.jpg
 description: 바닥 피하세요! DBM 경고가 큰 소리로 디스코드를 통해 상대방에게 전달되어 부끄럽나요? DBM 경고, 알림, 목소리 크기를 조절해봅시다.
 keywords:
   - dbm 볼륨

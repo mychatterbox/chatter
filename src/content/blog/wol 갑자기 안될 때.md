@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - 윈도우
-ogImage: /assets/blog-images/2024/wol-fast-startup.png
+ogImage: /blog-images/2024/wol-fast-startup.png
 description: 잘 되던 WOL 기능이 안될 때 확인해야될 것
 keywords:
   - 24H2 wol
