@@ -1,7 +1,5 @@
 ---
 import ColorScheme from "components/colorscheme/head.astro";
-// import font from "fonts/PretendardGOV-Medium.subset.woff2";
-// import font from "fonts/PretendardGOV-SemiBold.subset.woff2";
 import at_icon from "images/apple-touch-icon.png";
 import icon from "images/icon.svg";
 import "styles/global.css";
@@ -35,22 +33,31 @@ const {
   pubDate,
 } = Astro.props;
 
-// const pathname = Astro.url.pathname;
-// const pubDateString = pubDate ? pubDate.toLocaleDateString('en-CA') : null;
-
 const defaultOgImage = "https://chatter.kr/images/no_ogimage.png";
-let finalOgImage = defaultOgImage;
-if (ogImage) {
-  const imagePath = ogImage.replace('/assets/', '/src/assets/');
-  const imageModule = await import(imagePath);
-  const optimizedImage = await getImage({
-    src: imageModule.default,
-    format: 'webp'
-  });
-  finalOgImage = new URL(optimizedImage.src, Astro.url).toString();
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// 이미지 처리 함수 (수정된 버전)
+async function getOptimizedImageUrl(imagePath: string) {
+  try {
+    // 정확한 이미지 경로 생성
+    const imageUrl = new URL(imagePath.startsWith('/') 
+      ? imagePath 
+      : `/${imagePath}`, import.meta.url);
+    
+    const optimized = await getImage({
+      src: imageUrl.toString(),
+      format: 'webp'
+    });
+    return new URL(optimized.src, Astro.site).toString();
+  } catch (error) {
+    console.error('OG 이미지 처리 오류:', error);
+    return defaultOgImage;
+  }
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const finalOgImage = ogImage 
+  ? await getOptimizedImageUrl(ogImage)
+  : defaultOgImage;
 ---
 
 <!doctype html>

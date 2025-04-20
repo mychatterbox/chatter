@@ -10,8 +10,8 @@ const blog = defineCollection({
     pubDate: z.date(),
     kind: z.enum(['article', 'note']),
     list: z.boolean().optional(),
-    ogImage: z.string().refine((val) => val.startsWith('/assets/'), {
-      message: "ogImage must start with '/assets/'",
+    ogImage: z.string().refine(val => val.startsWith('/assets/'), {
+      message: "OG 이미지 경로는 '/assets/'로 시작해야 합니다"
     }),
   })
   .transform((o) => {
