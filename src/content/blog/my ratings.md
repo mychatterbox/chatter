@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - tmdb
-ogImage: /blog-images/2025/my-ratings.png
+ogImage: /assets/blog-images/2025/my-ratings.png
 description: "영화 TV 별점"
 ---
 

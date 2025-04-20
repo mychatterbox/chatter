@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - 윈도우
-ogImage: /blog-images/2024/ssd-pe-uefi-boot_1.png
+ogImage: /assets/blog-images/2024/ssd-pe-uefi-boot_1.png
 description: D 드라이브에 PE를 설치하고, UEFI 부팅메뉴에 추가하는 방법을 설명합니다.
 keywords:
   - PE 멀티부팅

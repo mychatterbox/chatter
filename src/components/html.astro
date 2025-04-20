@@ -38,40 +38,23 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const defaultOgImage = "https://chatter.kr/images/no_ogimage.png";
 
-async function resolveImagePath(rawPath: string) {
-  // 1. 빈 문자열 처리
-  if (!rawPath.trim()) return null;
-
-  // 2. 상대 경로 → 절대 경로 변환
-  const normalizedPath = rawPath.startsWith("/") 
-    ? rawPath 
-    : `/${rawPath}`;
-
-  // 3. 구형 경로(/blog-images/) → 새 경로(/assets/) 매핑
-  const assetPath = normalizedPath.replace(
-    /^\/blog-images\//, 
-    "/assets/blog-images/"
-  );
-
-  return assetPath;
-}
-
-async function getOptimizedImageUrl(rawPath: string) {
+// 개선된 이미지 처리 함수
+async function getOptimizedImageUrl(imagePath: string) {
+  if (!imagePath) return defaultOgImage; // 빈 문자열 처리
+  
   try {
-    const imagePath = await resolveImagePath(rawPath);
-    if (!imagePath) return defaultOgImage;
-
-    // Vite 호환 경로로 변환
-    const vitePath = imagePath.replace(/^\/assets\//, "/src/assets/");
-    const imageModule = await import(/* @vite-ignore */ vitePath);
-    
+    const physicalPath = imagePath.startsWith('/assets/')
+      ? imagePath.replace('/assets/', '/src/assets/')
+      : imagePath;
+      
+    const imageModule = await import(/* @vite-ignore */ physicalPath);
     const optimized = await getImage({
       src: imageModule.default,
-      format: "webp"
+      format: 'webp'
     });
     return new URL(optimized.src, Astro.site).toString();
   } catch (error) {
-    console.error(`이미지 처리 실패 (${rawPath}):`, error);
+    console.error('OG 이미지 처리 오류:', error);
     return defaultOgImage;
   }
 }

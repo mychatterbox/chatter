@@ -10,11 +10,15 @@ const blog = defineCollection({
     pubDate: z.date(),
     kind: z.enum(['article', 'note']),
     list: z.boolean().optional(),
-    ogImage: z.union([
-      z.literal(""), // 빈 문자열 허용
-      z.string().startsWith("/assets/"), // 공식 경로
-      z.string().startsWith("/blog-images/") // 기존 경로 호환
-    ]).optional().transform(val => val || "") // undefined → 빈 문자열
+    ogImage: z.string()
+      .optional()
+      .transform((val) => val || "") // null/undefined를 빈 문자열로 변환
+      .refine(
+        (val) => val === "" || val.startsWith('/assets/'), 
+        {
+          message: "ogImage는 반드시 빈 문자열(\"\")이거나 '/assets/'로 시작해야 합니다"
+        }
+      ),
   })
   .transform((o) => {
     return { ...o, draft: !(o.title && o.description && o.pubDate) };

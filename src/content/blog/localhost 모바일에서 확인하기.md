@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - astro
-ogImage: /blog-images/2025/astro-localhost-on-mobile.png
+ogImage: /assets/blog-images/2025/astro-localhost-on-mobile.png
 description: astro 개발 localhost 모바일로 확인하기
 keywords:
   - localost 모바일에서
