@@ -7,6 +7,7 @@ import icon from "images/icon.svg";
 import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
 import { themeColors } from "components/colorscheme/theme.ts";
+import { getImage } from 'astro:assets';
 
 export interface Props {
   title: string;
@@ -38,9 +39,16 @@ const {
 // const pubDateString = pubDate ? pubDate.toLocaleDateString('en-CA') : null;
 
 const defaultOgImage = "https://chatter.kr/images/no_ogimage.png";
-const finalOgImage = ogImage
-  ? new URL(ogImage, Astro.url).toString()
-  : defaultOgImage;
+let finalOgImage = defaultOgImage;
+if (ogImage) {
+  const imagePath = ogImage.replace('/assets/', '/src/assets/');
+  const imageModule = await import(imagePath);
+  const optimizedImage = await getImage({
+    src: imageModule.default,
+    format: 'webp'
+  });
+  finalOgImage = new URL(optimizedImage.src, Astro.url).toString();
+}
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
