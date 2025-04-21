@@ -8,7 +8,7 @@ export default defineConfig({
 
   trailingSlash: "never", // URL 끝의 `/` 제거
   build: {
-    format: 'preserve', // build.format을 'file'로 설정
+    format: 'preserve',
   },
   integrations: [
     tailwind(),
