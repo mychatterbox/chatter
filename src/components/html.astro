@@ -2,8 +2,9 @@
 import ColorScheme from "components/colorscheme/head.astro";
 // import font from "fonts/PretendardGOV-Medium.subset.woff2";
 // import font from "fonts/PretendardGOV-SemiBold.subset.woff2";
-// import at_icon from "images/apple-touch-icon.png";
-// import icon from "../../public/icon/icon-512.png";
+import at_icon from "icons/apple-touch-icon.png";
+import icon from "icons/favicon.svg";
+import icon192 from "icons/icon-192.png";
 import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
 import { themeColors } from "components/colorscheme/theme.ts";
@@ -65,9 +66,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       {finalOgImage && <meta property="og:image" content={finalOgImage} />}
       <meta property="twitter:card" content="summary_large_image" />
     </slot>
-    <link rel="icon" href={"https://chatter.kr/favicon.svg"} type="image/svg+xml"/>
-    <link rel="icon" href={"https://chatter.kr/icon-192.png"} type="image/png"/>
-    <link rel="apple-touch-icon" href={"https://chatter.kr/apple-touch-icon.png"} />
+    <link rel="icon" href={icon.src} type="image/svg+xml"/>
+    <link rel="icon192" href={icon192.src} type="image/png"/>
+    <link rel="apple-touch-icon" href={at_icon.src} />
     <ColorScheme />
     <!-- <link rel="preload" href={font} as="font" type="font/woff2" crossorigin /> -->
     <link rel="sitemap" href="/sitemap-index.xml" />
