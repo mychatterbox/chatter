@@ -66,8 +66,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       {finalOgImage && <meta property="og:image" content={finalOgImage} />}
       <meta property="twitter:card" content="summary_large_image" />
     </slot>
-    <link rel="icon" href={icon.src} type="image/svg+xml"/>
-    <link rel="icon192" href={icon192.src} type="image/png"/>
+    <link rel="shortcut icon" href={icon.src} type="image/svg+xml"/>
+    <link rel="icon" href={icon192.src} type="image/png"/>
     <link rel="apple-touch-icon" href={at_icon.src} />
     <ColorScheme />
     <!-- <link rel="preload" href={font} as="font" type="font/woff2" crossorigin /> -->
