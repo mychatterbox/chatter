@@ -2,8 +2,8 @@
 import ColorScheme from "components/colorscheme/head.astro";
 // import font from "fonts/PretendardGOV-Medium.subset.woff2";
 // import font from "fonts/PretendardGOV-SemiBold.subset.woff2";
-import at_icon from "icons/apple-touch-icon.png";
-import icon from "icons/favicon.svg";
+// import at_icon from "icons/apple-touch-icon.png";
+// import icon from "icons/favicon.svg";
 import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
 import { themeColors } from "components/colorscheme/theme.ts";
@@ -65,8 +65,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       {finalOgImage && <meta property="og:image" content={finalOgImage} />}
       <meta property="twitter:card" content="summary_large_image" />
     </slot>
-    <link rel="icon" href={icon.src} type="image/svg+xml" />
-    <link rel="apple-touch-icon" href={at_icon.src} />
+    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <!-- <link rel="apple-touch-icon" href={at_icon.src} /> -->
     <ColorScheme />
     <!-- <link rel="preload" href={font} as="font" type="font/woff2" crossorigin /> -->
     <link rel="sitemap" href="/sitemap-index.xml" />
