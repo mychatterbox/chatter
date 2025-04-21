@@ -42,6 +42,7 @@ const finalOgImage = ogImage
   : defaultOgImage;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const isStatic = !import.meta.env.SSR;
 ---
 
 <!doctype html>
@@ -65,7 +66,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       {finalOgImage && <meta property="og:image" content={finalOgImage} />}
       <meta property="twitter:card" content="summary_large_image" />
     </slot>
-    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <!-- <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" /> -->
+    {isStatic && (
+      <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    )}
     <!-- <link rel="apple-touch-icon" href={at_icon.src} /> -->
     <ColorScheme />
     <!-- <link rel="preload" href={font} as="font" type="font/woff2" crossorigin /> -->
