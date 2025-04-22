@@ -666,6 +666,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1212742">룰 오브 제니 펜 (The Rule of Jenny Pen) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/233686">악연 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/421228">누에치던 방 (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/989662">어 디프런트 맨 (A Different Man) (2024)</a></li>
