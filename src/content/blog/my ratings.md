@@ -1280,6 +1280,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/931349">애쉬 (Ash) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1006724">데드 탤런트 소사이어티 (鬼才之道) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/696506">미키 17 (Mickey 17) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1204886">백수아파트 (2025)</a></li>

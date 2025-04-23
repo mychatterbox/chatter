@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [['"Pretendard"', ...defaultTheme.fontFamily.sans], { fontFeatureSettings: '"cv12"' }],
-        mono: [['"CascadiaCode"', ...defaultTheme.fontFamily.mono], { fontFeatureSettings: '"zero"' }],
+        mono: [['"CascadiaCode"', '"Pretendard"', ...defaultTheme.fontFamily.mono], { fontFeatureSettings: '"zero"' }],
       },
       colors: {
         'custom-bg-dark': '#100F0F',
@@ -17,8 +17,8 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            '--tw-prose-body': '#3f3f46',
-            '--tw-prose-invert-body': '#d4d4d8',
+            // '--tw-prose-body': '#3f3f46',
+            // '--tw-prose-invert-body': '#d4d4d8',
             'code': {
               fontFamily: 'inherit',
               fontSize: '1em',

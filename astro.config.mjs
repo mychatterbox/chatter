@@ -18,7 +18,13 @@ export default defineConfig({
   ],
 
   markdown: {
-     shikiConfig: { theme: 'css-variables' }
+     shikiConfig: { 
+      themes: {
+        light: 'vitesse-light',
+        dark: 'vitesse-dark',
+      },
+      // defaultColor: false,
+    }
   },
   wrap: true,
   scopedStyleStrategy: "where",

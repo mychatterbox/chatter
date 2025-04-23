@@ -52,30 +52,47 @@
 
 @layer components {
   :root {
-    --astro-code-foreground: #3f3f46;
+    /* --astro-code-foreground: #3f3f46; */
+    /* --astro-code-foreground: 'red';
     --astro-code-background: #e8e8e9;
-    --astro-code-token-function: theme(colors.zinc.500);
+
+    --astro-code-token-function: theme(colors.zinc.500); */
 
     --kbd-color: #cececf;
     --figcaption-bg: rgba(7, 6, 6, 0.1);
     --figcaption-color: currentColor;
     --mark-text-color: black;
 
-    --astro-code-token-string: theme(colors.emerald.500);
+    /* --astro-code-token-string: theme(colors.emerald.500);
     --astro-code-token-comment: theme(colors.blue.600);
-    --astro-code-token-keyword: #c73a49;
+    --astro-code-token-keyword: #c73a49; */
   }
 
-  .dark {
-    --astro-code-foreground: #d4d4d8;
-    --astro-code-background: #202022;
-    --astro-code-token-function: theme(colors.zinc.200);
-
+  .dark 
+  {
     --kbd-color: #525253;
     --figcaption-bg: rgba(255, 255, 255, 0.1);
     --figcaption-color: currentColor;
     --mark-text-color:  white;
+    
+    .astro-code, .astro-code span {
+      color: var(--shiki-dark) !important;
+      background-color: var(--shiki-dark-bg) !important;
+    }
+    /* --astro-code-foreground: #d4d4d8;
+    --astro-code-background: #202022;
+    --astro-code-token-function: theme(colors.zinc.200); */
+
+
+    
   }
+
+/* .dark   .astro-code,
+.astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+ } */
+
 }
 
 .prose a {
@@ -156,4 +173,11 @@ mark {
 /* img {
   margin-top: 0.5em !important;
   margin-bottom: 1em !important;
+} */
+
+
+
+/* @media (prefers-color-scheme: light) {
+
+  }
 } */
