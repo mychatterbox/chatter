@@ -56,6 +56,10 @@
     --figcaption-bg: rgba(7, 6, 6, 0.1);
     --figcaption-color: currentColor;
     --mark-text-color: black;
+    
+    .astro-code, .astro-code span {
+      background-color: #ededed !important;
+    }
   }
 
   .dark 
@@ -101,7 +105,6 @@ figcaption {
 }
 
 kbd {
-  /* background-color: var(--kbd-color); */
   border-color: var(--kbd-color);
   vertical-align: 5%;
   border-width: 1px;
@@ -111,7 +114,7 @@ mark {
   background-color: transparent;
   color: var(--mark-text-color);
   font-size: 1em;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 
