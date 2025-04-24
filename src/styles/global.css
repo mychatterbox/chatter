@@ -52,20 +52,10 @@
 
 @layer components {
   :root {
-    /* --astro-code-foreground: #3f3f46; */
-    /* --astro-code-foreground: 'red';
-    --astro-code-background: #e8e8e9;
-
-    --astro-code-token-function: theme(colors.zinc.500); */
-
     --kbd-color: #cececf;
     --figcaption-bg: rgba(7, 6, 6, 0.1);
     --figcaption-color: currentColor;
     --mark-text-color: black;
-
-    /* --astro-code-token-string: theme(colors.emerald.500);
-    --astro-code-token-comment: theme(colors.blue.600);
-    --astro-code-token-keyword: #c73a49; */
   }
 
   .dark 
@@ -74,25 +64,12 @@
     --figcaption-bg: rgba(255, 255, 255, 0.1);
     --figcaption-color: currentColor;
     --mark-text-color:  white;
-    
+
     .astro-code, .astro-code span {
       color: var(--shiki-dark) !important;
       background-color: var(--shiki-dark-bg) !important;
     }
-    /* --astro-code-foreground: #d4d4d8;
-    --astro-code-background: #202022;
-    --astro-code-token-function: theme(colors.zinc.200); */
-
-
-    
   }
-
-/* .dark   .astro-code,
-.astro-code span {
-  color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
- } */
-
 }
 
 .prose a {
@@ -134,21 +111,19 @@ mark {
   background-color: transparent;
   color: var(--mark-text-color);
   font-size: 1em;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 
-/* .prose code:not(pre code) {
-  background-color: var(--astro-code-foreground);
-  color: var(--astro-code-background);
+.prose code:not(pre code) {
+  @apply bg-custom-bg-dark text-custom-bg-light;
   font-family: inherit;
   font-size: 1em;
   font-weight: inherit;
 }
 .dark .prose code:not(pre code) {
-  background-color: var(--astro-code-foreground);
-  color: var(--astro-code-background);
-} */
+  @apply bg-custom-bg-light text-custom-bg-dark;
+}
 
 
 /* css 파일을 사용해 색상이 다른 blockquote 세로막대 구현 

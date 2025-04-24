@@ -20,7 +20,7 @@ keywords:
 ---
 ![eq12](../../assets/blog-images/2024/eq12-wol_1.png)
 
-많은 n100 미니pc 중의 하나인 `Beelink EQ12` 모델입니다.  
+많은 n100 미니pc 중의 하나인 <mark>Beelink EQ12</mark> 모델입니다.  
 [PD 충전기](https://chatter.kr/minipc-pdcharger) 에 연결해서 잘 사용해왔고 문제가 없었기 때문에 이제는 보이지 않는 곳에 두고 wake on lan 기능으로 사용해보려고 합니다.
 
 Beelink 미니pc 모델들이 wol 기능이 되는지 검색해보면 의외로 정보가 별로 없습니다.  

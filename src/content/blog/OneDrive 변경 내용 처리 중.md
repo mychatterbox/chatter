@@ -20,5 +20,5 @@ OneDrive를 업데이트했거나, 계정이름을 변경했거나, 원드라이
 ```
 "C:\Program Files\Microsoft OneDrive\onedrive.exe" /reset
 ```
-본인의 `원드라이브 설치 위치에 맞게 수정`하고 <kbd>Win</kbd>+<kbd>R</kbd> 실행창에 입력합니다.  
+본인의 <mark>원드라이브 설치 위치에 맞게 수정</mark>하고 <kbd>Win</kbd>+<kbd>R</kbd> 실행창에 입력합니다.  
 정상적으로 /reset 되면 OneDrive가 자체적으로 초기화하고 오류가 있다면 무슨 오류인지 보여주므로 해결합시다.

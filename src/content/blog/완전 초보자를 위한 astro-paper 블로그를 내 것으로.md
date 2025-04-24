@@ -24,7 +24,7 @@ keywords:
 
 여기까지 어찌어찌 찾아오셨다는 것은 여러분이 [astro-paper](https://astro-paper.pages.dev/) 블로그에 관심이 있다는 것이겠지요. 
 
-우리같이 아무 것도 모르는 초보자는 그저 남들 글을 그대로 따라해서라도 내 블로그로 만들어보고 싶은데, 도통 무슨 말인지 모르겠고, 생략을 너무 많이 해서 `똑같이 따라할 수도 없고!` `똑같이 따라해도 안되고!` `push`, `pull`, `git`, `리포지토리` 등등 몰라 어쿠 무셔!
+우리같이 아무 것도 모르는 초보자는 그저 남들 글을 그대로 따라해서라도 내 블로그로 만들어보고 싶은데, 도통 무슨 말인지 모르겠고, 생략을 너무 많이 해서 <mark>똑같이 따라할 수도 없고! 똑같이 따라해도 안되고!</mark> `push`, `pull`, `git`, <mark>리포지토리</mark> 등등 몰라 어쿠 무셔!
 
 정말정말 컴맹이거나, abcd 모르는 분들을 제외하면 충분히 따라할 수 있습니다.  
 "이 블로그 애드센스 달 수 있나요?" "댓글 기능이 없네요?"  
@@ -42,7 +42,7 @@ keywords:
 - [VS Code](https://code.visualstudio.com) Windows x64 버전 다운, 설치합니다. (블로그 편집, 수정)
 - [GitHub Desktop](https://desktop.github.com) 설치 (편집, 수정한 블로그를 업로드하는 프로그램)
 
-`GitHub 같은 외국 사이트 접속만해도 온통 영어뿐이라 현기증나고 무서워서 못하겠다` 하시면 곤란하고요.  
+<mark>GitHub 같은 외국 사이트 접속만해도 온통 영어뿐이라 현기증나고 무서워서 못하겠다</mark> 하시면 곤란하고요.  
 위 사이트 회원가입과 프로그램 설치하기도 버거운 분들은 시간을 내서 구글 검색으로 해결하고 오시고...  
 일단 위 4가지를 마무리 해야 지금 astro-paper 혹은 나중에라도 남들의 블로그를 베껴다가 쓸 수 있습니다.
 
@@ -58,22 +58,22 @@ GitHub에 제작자가 등록, 공개한 astro-paper 를 내 저장공간으로 
 >
 > 동일하게 astro-paper 입력합니다. (저는 이미 만든 상태라 오류 메세지입니다만)
 > ![github](../../assets/blog-images/2024/my-astro-paper_2.png)
-> Create fork 클릭하면 잠시 후 화면이 제작자의 `satnaing / astro-paper` 가 아닌 나의 `chobo / astro-paper` 로 바뀝니다.  
+> Create fork 클릭하면 잠시 후 화면이 제작자의 <mark>satnaing / astro-paper</mark> 가 아닌 나의 <mark>chobo / astro-paper</mark> 로 바뀝니다.  
 > 이제 이 astro-paper 는 내꺼가 되었습니다. 요래요래 조물딱하려면 내 것으로 해야겠지요.  
->`https://github.com/chobo/astro-paper` 즐겨찾기 등록합니다. (`chobo` 대신 여러분의 ID)
+><mark>https://github.com/chobo/astro-paper</mark> 즐겨찾기 등록합니다. (`chobo` 대신 여러분의 ID)
 
 ### astro-paper를 내 사이트에서 확인해보기
 
-이거 따라하면 진짜 되기는 되나? 싶은 분들을 위해 지금 바로 나의 `chobo` 사이트 주소를 만들고, astro-paper 블로그를 그대로 올려서 확인 해보겠습니다.
+이거 따라하면 진짜 되기는 되나? 싶은 분들을 위해 지금 바로 나의 <mark>chobo</mark> 사이트 주소를 만들고, astro-paper 블로그를 그대로 올려서 확인 해보겠습니다.
 
 > 준비단계에서 가입했던 https://www.netlify.com/ 접속, 로그인합니다.  
-> 왼쪽 Sites 메뉴 클릭 후 우측 `Add new site` 클릭, `Import an existing project` 클릭  
+> 왼쪽 Sites 메뉴 클릭 후 우측 <mark>Add new site</mark> 클릭, <mark>Import an existing project</mark> 클릭  
 >![netlify](../../assets/blog-images/2024/my-astro-paper_3.png)  
-> 우리가 가입했던 GitHub 가 보입니다. `Deploy with GitHub` 클릭  
+> 우리가 가입했던 GitHub 가 보입니다. <mark>Deploy with GitHub</mark> 클릭  
 >![netlify](../../assets/blog-images/2024/my-astro-paper_4.png)  
-> `astro-paper` 클릭합니다.
+> <mark>astro-paper</mark> 클릭합니다.
 > ![netlify](../../assets/blog-images/2024/my-astro-paper_5.png)  
-> 다음 단계인 Let's deploy your project 화면에서는 수정할 것이 없고, 제일 밑의 `Deploy astro-paper` 클릭합니다.
+> 다음 단계인 Let's deploy your project 화면에서는 수정할 것이 없고, 제일 밑의 <mark>Deploy astro-paper</mark> 클릭합니다.
 > 잠시 후 아래와 비슷한 결과가 나옵니다.
 > ![netlify](../../assets/blog-images/2024/my-astro-paper_6.png) 
 >
@@ -88,6 +88,6 @@ GitHub에 제작자가 등록, 공개한 astro-paper 를 내 저장공간으로 
 
 ### 앞으로 해야할 것 들  
 이후엔 이보다 더 간단합니다.  
-여러분의 `https://github.com/chobo/astro-paper` 저장공간에 어떤 파일(블로그 글)을 업로드 하기만 하면 `netlify` 사이트가 지금처럼 수동이 아닌, 앞으로는 자동으로 작업을 해서 우리 블로그를 업데이트 해줍니다.  
+여러분의 <mark>https://github.com/chobo/astro-paper</mark> 저장공간에 어떤 파일(블로그 글)을 업로드 하기만 하면 <mark>netlify</mark> 사이트가 지금처럼 수동이 아닌, 앞으로는 자동으로 작업을 해서 우리 블로그를 업데이트 해줍니다.  
 
 업로드 하는 방법은 Github Desktop 프로그램에서 github.com 의 내 저장공간(repo)을 연결해 준 뒤, 파일을 추가, 수정 후 업로드 하면 됩니다. 
