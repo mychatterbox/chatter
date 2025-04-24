@@ -74,7 +74,7 @@ The blockquote element represents content that is quoted from another source, op
 
 #### Syntax
 
-```markdown
+```
 > Tiam, ad mint andaepu dandae nostion secatur sequo quae.  
 > **Note** that you can use _Markdown syntax_ within a blockquote.
 ```
@@ -88,7 +88,7 @@ The blockquote element represents content that is quoted from another source, op
 
 #### Syntax
 
-```markdown
+```
 > Don't communicate by sharing memory, share memory by communicating.<br>
 > — <cite>Rob Pike[^1]</cite>
 ```
@@ -104,7 +104,7 @@ The blockquote element represents content that is quoted from another source, op
 
 #### Syntax
 
-```markdown
+```
 | Italics   | Bold     | Code   |
 | --------- | -------- | ------ |
 | _italics_ | **bold** | `code` |
@@ -122,7 +122,7 @@ The blockquote element represents content that is quoted from another source, op
 
 we can use 3 backticks ``` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntac, write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
 
-````markdown
+````
 ```html
 <!doctype html>
 <html lang="en">
@@ -158,7 +158,7 @@ Output
 
 #### Syntax
 
-```markdown
+```
 1. First item
 2. Second item
 3. Third item
@@ -174,7 +174,7 @@ Output
 
 #### Syntax
 
-```markdown
+```
 - List item
 - Another item
 - And another item
@@ -190,7 +190,7 @@ Output
 
 #### Syntax
 
-```markdown
+```
 - Fruit
   - Apple
   - Orange
@@ -214,7 +214,7 @@ Output
 
 #### Syntax
 
-```markdown
+```
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
 
 H<sub>2</sub>O
