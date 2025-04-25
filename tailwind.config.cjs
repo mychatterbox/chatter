@@ -17,6 +17,7 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
+            '--tw-prose-body': '#28272b',
             // '--tw-prose-body': '#3f3f46',
             // '--tw-prose-invert-body': '#d4d4d8',
             'code': {

@@ -58,6 +58,7 @@
     --mark-text-color: black;
     
     .astro-code, .astro-code span {
+      /* color: var(--shiki-light) !important; */
       background-color: #ededed !important;
     }
   }
