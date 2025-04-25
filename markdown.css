@@ -15,7 +15,7 @@ html, body {
 
 body {
 	padding-top: 1em;
-	background-color: rgb(18,18,18); /* 본문 배경색 */
+	background-color: #100f0f; /* 본문 배경색 */
 	color: rgb(213,213,217); /* 본문 글자색 */
 }
 
@@ -89,7 +89,7 @@ body.showEditorSelection li.code-line:hover:before {
 }
 
 .vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
+	/* border-left: 3px solid rgba(255, 255, 255, 0.4); */
 }
 
 .vscode-dark.showEditorSelection .code-line:hover:before {
@@ -225,8 +225,8 @@ code {
 	font-size: 1em;
 	font-weight: 600;
 	font-family: inherit;
-	color:#d95d5d;  /* 강조색 */
-	background: none;
+	color: #121212;  /* 강조색 */
+	background: #f5f7f9;
 	
 	    /* white-space: pre; */
     word-wrap: normal; /* 단어 줄바꿈 방지 */
@@ -259,7 +259,7 @@ pre code {
 pre {
 	margin-top: 2em;
 	margin-bottom: 2em;
-	background-color: rgb(32, 32, 34); /* 코드블럭 배경색 */
+	background-color: rgb(18, 18, 18); /* 코드블럭 배경색 */
 	border: 1px solid var(--vscode-widget-border);
 
 }
@@ -291,12 +291,11 @@ pre {
 }
 
 mark {
-  /* background-color: var(--custom-light-dark); */
-  background-color: inherit;
-  color: #d95d5d;
-  font-size: 1em;
-  font-weight: 600;
-}
+	background-color: transparent;
+	color: var(--mark-text-color);
+	font-size: 1em;
+	font-weight: 600;
+  }
 
 figcaption {
 	margin-top: -30px !important;
