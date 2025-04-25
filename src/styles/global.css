@@ -129,6 +129,7 @@ mark {
 }
 
 
+
 /* css 파일을 사용해 색상이 다른 blockquote 세로막대 구현 
 웹만을 위함이라면 단순하고 편하지만 md 파일 내에 아래와 같은 div 코드를 삽입해야하므로 md 파일이 훼손됨, 해당부분(div)은 html 취급됨(예: 줄바꿈은 <br>)
 <div class="warning">
@@ -159,3 +160,31 @@ mark {
 
   }
 } */
+li.task-list-item input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: #c2c3c5; /* 빨간색 배경 */
+  border-radius: 3px;
+  /* cursor: pointer; */
+  position: relative;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+li.task-list-item input[type="checkbox"]:checked {
+  background-color: #c2c3c5; /* 빨간색 배경 */
+}
+
+li.task-list-item input[type="checkbox"]:checked::before {
+  content: "✓";
+  color: #000000;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: bold;
+}
