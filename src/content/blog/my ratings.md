@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-04-19
+pubDate: 2025-04-25
 slug: my-ratings
 featured: false
 draft: false
@@ -2093,6 +2093,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/999243">헬 오브 어 썸머 (Hell of a Summer) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1145221">It Feeds (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1400274">Gothic Slayers (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1250846">The Painted (2024)</a></li>
