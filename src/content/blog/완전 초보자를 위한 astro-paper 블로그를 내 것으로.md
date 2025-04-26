@@ -21,8 +21,7 @@ keywords:
 
 ### 나도 흔한 블로그 말고 다른 블로그 좀... 뭐 그런 생각?
 
-
-여기까지 어찌어찌 찾아오셨다는 것은 여러분이 [astro-paper](https://astro-paper.pages.dev/) 블로그에 관심이 있다는 것이겠지요. 
+여기까지 어찌어찌 찾아오셨다는 것은 여러분이 [astro-paper](https://astro-paper.pages.dev/) 블로그에 관심이 있다는 것이겠지요.
 
 우리같이 아무 것도 모르는 초보자는 그저 남들 글을 그대로 따라해서라도 내 블로그로 만들어보고 싶은데, 도통 무슨 말인지 모르겠고, 생략을 너무 많이 해서 <mark>똑같이 따라할 수도 없고! 똑같이 따라해도 안되고!</mark> `push`, `pull`, `git`, <mark>리포지토리</mark> 등등 몰라 어쿠 무셔!
 
@@ -60,7 +59,7 @@ GitHub에 제작자가 등록, 공개한 astro-paper 를 내 저장공간으로 
 > ![github](../../assets/blog-images/2024/my-astro-paper_2.png)
 > Create fork 클릭하면 잠시 후 화면이 제작자의 <mark>satnaing / astro-paper</mark> 가 아닌 나의 <mark>chobo / astro-paper</mark> 로 바뀝니다.  
 > 이제 이 astro-paper 는 내꺼가 되었습니다. 요래요래 조물딱하려면 내 것으로 해야겠지요.  
-><mark>https://github.com/chobo/astro-paper</mark> 즐겨찾기 등록합니다. (`chobo` 대신 여러분의 ID)
+> <mark>https://github.com/chobo/astro-paper</mark> 즐겨찾기 등록합니다. (`chobo` 대신 여러분의 ID)
 
 ### astro-paper를 내 사이트에서 확인해보기
 
@@ -68,26 +67,26 @@ GitHub에 제작자가 등록, 공개한 astro-paper 를 내 저장공간으로 
 
 > 준비단계에서 가입했던 https://www.netlify.com/ 접속, 로그인합니다.  
 > 왼쪽 Sites 메뉴 클릭 후 우측 <mark>Add new site</mark> 클릭, <mark>Import an existing project</mark> 클릭  
->![netlify](../../assets/blog-images/2024/my-astro-paper_3.png)  
+> ![netlify](../../assets/blog-images/2024/my-astro-paper_3.png)  
 > 우리가 가입했던 GitHub 가 보입니다. <mark>Deploy with GitHub</mark> 클릭  
->![netlify](../../assets/blog-images/2024/my-astro-paper_4.png)  
+> ![netlify](../../assets/blog-images/2024/my-astro-paper_4.png)  
 > <mark>astro-paper</mark> 클릭합니다.
 > ![netlify](../../assets/blog-images/2024/my-astro-paper_5.png)  
 > 다음 단계인 Let's deploy your project 화면에서는 수정할 것이 없고, 제일 밑의 <mark>Deploy astro-paper</mark> 클릭합니다.
 > 잠시 후 아래와 비슷한 결과가 나옵니다.
-> ![netlify](../../assets/blog-images/2024/my-astro-paper_6.png) 
+> ![netlify](../../assets/blog-images/2024/my-astro-paper_6.png)
 >
-> 이제 확인해봅시다.  <br>
+> 이제 확인해봅시다. <br>
 >
 > 위쪽의 https://glittery-fox-1933d4.netlify.app 가 여러분의 사이트 주소입니다.  
->자신의 화면에서 클릭해보면 본인의 astro-paper 블로그를 확인할 수 있습니다.   
->`glittery-fox-1933d4` 부분을 수정합시다.  
->netlify 홈 - 왼쪽 메뉴에서 Sites 클릭 - 생성한 사이트 클릭 - Site configuration - Site details - Change site name 클릭 - 원하는 사이트이름 입력  
->내 사이트를 즐겨찾기 등록합니다.  
+> 자신의 화면에서 클릭해보면 본인의 astro-paper 블로그를 확인할 수 있습니다.  
+> `glittery-fox-1933d4` 부분을 수정합시다.  
+> netlify 홈 - 왼쪽 메뉴에서 Sites 클릭 - 생성한 사이트 클릭 - Site configuration - Site details - Change site name 클릭 - 원하는 사이트이름 입력  
+> 내 사이트를 즐겨찾기 등록합니다.
 
+### 앞으로 해야할 것 들
 
-### 앞으로 해야할 것 들  
 이후엔 이보다 더 간단합니다.  
-여러분의 <mark>https://github.com/chobo/astro-paper</mark> 저장공간에 어떤 파일(블로그 글)을 업로드 하기만 하면 <mark>netlify</mark> 사이트가 지금처럼 수동이 아닌, 앞으로는 자동으로 작업을 해서 우리 블로그를 업데이트 해줍니다.  
+여러분의 <mark>https://github.com/chobo/astro-paper</mark> 저장공간에 어떤 파일(블로그 글)을 업로드 하기만 하면 <mark>netlify</mark> 사이트가 지금처럼 수동이 아닌, 앞으로는 자동으로 작업을 해서 우리 블로그를 업데이트 해줍니다.
 
-업로드 하는 방법은 Github Desktop 프로그램에서 github.com 의 내 저장공간(repo)을 연결해 준 뒤, 파일을 추가, 수정 후 업로드 하면 됩니다. 
+업로드 하는 방법은 Github Desktop 프로그램에서 github.com 의 내 저장공간(repo)을 연결해 준 뒤, 파일을 추가, 수정 후 업로드 하면 됩니다.

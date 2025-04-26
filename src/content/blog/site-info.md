@@ -7,39 +7,40 @@ slug: site-info
 ---
 
 ### 알림
+
 이 블로그는 제가 만든 것이 아닙니다.  
-저는 무슨 개발자도 아니고 그냥 일반인이라 아무것도 모릅니다.  
+저는 무슨 개발자도 아니고 그냥 일반인이라 아무것도 모릅니다.
 
 ```
-pub.sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());  
+pub.sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 {pub.map((entry) => <FeedItem entry={entry} />)}
 ```
 
 이런 코드는 대략 단어로 느낌만 핥는 수준입니다.  
-그래서 댓글시스템도 못 달고 있습니다.  
+그래서 댓글시스템도 못 달고 있습니다.
 
-[https://github.com/mrmcc3/vibing-dev][repo] 
+[https://github.com/mrmcc3/vibing-dev][repo]
 
 위 블로그가 astro v4 를 기준으로 만들어졌을 때를 기본으로 해서 ChatGPT 4, Claude 3.5 sonnet 등 AI 의 도움을 받아 조금씩 수정하면서 astro v5 까지 업데이트했고, 그 이후는 deepseek 가 수정하고 있습니다.  
 ~~코파일럿은 수준이 많이 떨어집니다.~~  
 하지만 VS code와 Github의 도움을 많이 받고 있으므로 MS에게도 감사드립니다. 배당금도 잘 나오더라구요.  
-원 제작자분은 더 미니멀하게 디자인과 구조를 갈아엎은 상태입니다.  
+원 제작자분은 더 미니멀하게 디자인과 구조를 갈아엎은 상태입니다.
 
-블로그 상단 주소표시줄(theme-color) 깜빡임 증상을 해결하기 어려웠으나, [https://github.com/richLpf/blog-a](https://github.com/richLpf/blog-a) 제작자의 코드를 기반으로 해결했습니다. 감사합니다.  
+블로그 상단 주소표시줄(theme-color) 깜빡임 증상을 해결하기 어려웠으나, [https://github.com/richLpf/blog-a](https://github.com/richLpf/blog-a) 제작자의 코드를 기반으로 해결했습니다. 감사합니다.
 
 [RSS Feed](/rss.xml) 는 이렇게 되어 있는데, 잘 될런지? 요즘도 해외에선 RSS 쓰나보죠?
 
 ### 라이센스
+
 Except where otherwise noted, content on this site is licensed under [CC BY 4.0][cc].  
 Code snippets and the code for the site itself are [MIT Licensed][mit].
 
 원 제작자의 라이센스는 위와 같은데, 대략 콘텐츠는 건드리지 말고 코드는 알아서 잘 갖다쓰라는 의미인 것 같습니다.  
 다만, 사이트 잘 보이는 곳에 원 제작자를 표시해야겠지요.  
-아마 github 에서 공개 설정으로 해두고 써야될걸요?  
+아마 github 에서 공개 설정으로 해두고 써야될걸요?
 
 제 코드도 혹시라도 쓰실 분은 마음대로 갖다 쓰세요.  
-폰트, 색상 설정은 global.css, prose.astro, tailwind.config.cjs 파일을 수정하면 됩니다.  
-
+폰트, 색상 설정은 global.css, prose.astro, tailwind.config.cjs 파일을 수정하면 됩니다.
 
 ### 출처
 
@@ -47,12 +48,8 @@ Code snippets and the code for the site itself are [MIT Licensed][mit].
 - Fonts are [Pretendard][sans] and [CascadiaCode][mono]
 - Site is built using [Astro][astro] and [Tailwind CSS][tailwind]
 
-
-
-
 from : [https://github.com/mrmcc3/vibing-dev][repo]  
 to : [https://github.com/mychatterbox/chatter][repo2]
-
 
 [cc]: https://creativecommons.org/licenses/by/4.0/
 [mit]: https://github.com/mrmcc3/vibing-dev/blob/main/LICENSE

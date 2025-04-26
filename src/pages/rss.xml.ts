@@ -7,10 +7,15 @@ export async function GET(context: RSSOptions) {
   pub.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
   // context.site가 string인지 URL 객체인지 확인
-  const siteHref = typeof context.site === "string" && context.site.trim() ? context.site : context.site?.href;
+  const siteHref =
+    typeof context.site === "string" && context.site.trim()
+      ? context.site
+      : context.site?.href;
 
   // context.site의 후행 슬래시 제거
-  const siteUrl = siteHref?.endsWith("/") ? siteHref.slice(0, -1) : siteHref || "https://chatter.kr";
+  const siteUrl = siteHref?.endsWith("/")
+    ? siteHref.slice(0, -1)
+    : siteHref || "https://chatter.kr";
 
   return rss({
     title: "mychatterbox",

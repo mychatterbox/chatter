@@ -4,6 +4,6 @@ export default {
   plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   overrides: [
     { files: "*.astro", options: { parser: "astro" } },
-    { files: "*.mdoc", options: { parser: "markdown" } },
+    { files: "*.md", options: { parser: "markdown" } },
   ],
 };

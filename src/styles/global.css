@@ -56,21 +56,22 @@
     --figcaption-bg: rgba(7, 6, 6, 0.1);
     --figcaption-color: currentColor;
     --mark-text-color: black;
-    
-    .astro-code, .astro-code span {
+
+    .astro-code,
+    .astro-code span {
       /* color: var(--shiki-light) !important; */
       background-color: #ededed !important;
     }
   }
 
-  .dark 
-  {
+  .dark {
     --kbd-color: #525253;
     --figcaption-bg: rgba(255, 255, 255, 0.1);
     --figcaption-color: currentColor;
-    --mark-text-color:  white;
+    --mark-text-color: white;
 
-    .astro-code, .astro-code span {
+    .astro-code,
+    .astro-code span {
       color: var(--shiki-dark) !important;
       background-color: var(--shiki-dark-bg) !important;
     }
@@ -78,11 +79,10 @@
 }
 
 .prose a {
-  @apply break-words underline-offset-4 hover:text-blue-400 ;
-}  
+  @apply break-words underline-offset-4 hover:text-blue-400;
+}
 ::-webkit-scrollbar {
   @apply w-3;
-  
 }
 ::-webkit-scrollbar-track {
   @apply bg-zinc-100 dark:bg-zinc-900;
@@ -100,7 +100,7 @@ figcaption {
   text-align: center;
   font-style: italic;
   background-color: var(--figcaption-bg);
-  
+
   border-radius: 0.25rem; /* 둥근 모서리 */
   transition: background-color 0.3s ease; /* 배경색 전환 효과 */
 }
@@ -118,7 +118,6 @@ mark {
   font-weight: 600;
 }
 
-
 .prose code:not(pre code) {
   @apply bg-custom-bg-dark text-custom-bg-light;
   font-family: inherit;
@@ -128,8 +127,6 @@ mark {
 .dark .prose code:not(pre code) {
   @apply bg-custom-bg-light text-custom-bg-dark;
 }
-
-
 
 /* css 파일을 사용해 색상이 다른 blockquote 세로막대 구현 
 웹만을 위함이라면 단순하고 편하지만 md 파일 내에 아래와 같은 div 코드를 삽입해야하므로 md 파일이 훼손됨, 해당부분(div)은 html 취급됨(예: 줄바꿈은 <br>)
@@ -155,8 +152,6 @@ mark {
   margin-bottom: 1em !important;
 } */
 
-
-
 /* @media (prefers-color-scheme: light) {
 
   }
@@ -175,8 +170,9 @@ li.task-list-item input[type="checkbox"] {
   margin-right: 8px;
 }
 
+/* 체크박스  */
 li.task-list-item input[type="checkbox"]:checked {
-  background-color: #c2c3c5; /* 빨간색 배경 */
+  background-color: #c2c3c5;
 }
 
 li.task-list-item input[type="checkbox"]:checked::before {
@@ -189,3 +185,16 @@ li.task-list-item input[type="checkbox"]:checked::before {
   font-size: 14px;
   font-weight: bold;
 }
+
+/* 테이블 정렬 */
+td[align="right"], th[align="right"] { 
+  text-align: right; 
+}
+td[align="center"], th[align="center"] { 
+  text-align: center; 
+}
+
+/* 테이블 세로줄 보이게 하려면*/
+/* th:not([class]), td:not([class]) {
+	border: 0.01rem solid currentColor;
+} */

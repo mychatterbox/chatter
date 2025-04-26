@@ -17,18 +17,18 @@ keywords:
 ---
 
 cloudflare 로 배포하는 astro 사이트의 후행 슬래시 제거가 잘 안되나요?  
-build format을 file로 설정해도 후행 슬래시가 잘 제거되지만 canonicalURL이 문제될 수 있습니다.  
+build format을 file로 설정해도 후행 슬래시가 잘 제거되지만 canonicalURL이 문제될 수 있습니다.
 
-아래 설정을 시도해봅시다.  
+아래 설정을 시도해봅시다.
 
 astro.config
 
-  ```astro
-    export default defineConfig({
-    trailingSlash: "never",
+```astro
+  export default defineConfig({
+  trailingSlash: "never",
     build: {
     format: 'preserve',
     },
-    ......
-    });
-  ```
+  ......
+  });
+```

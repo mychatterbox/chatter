@@ -1,15 +1,15 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import FlexokiDark from '/src/styles/Flexoki-Dark-color-theme.json';
-import FlexokiLight from '/src/styles/Flexoki-Light-color-theme.json';
+import FlexokiDark from "/src/styles/Flexoki-Dark-color-theme.json";
+import FlexokiLight from "/src/styles/Flexoki-Light-color-theme.json";
 
 export default defineConfig({
-  site: 'https://chatter.kr',
+  site: "https://chatter.kr",
 
   trailingSlash: "never", // URL 끝의 `/` 제거
   build: {
-    format: 'preserve',
+    format: "preserve",
   },
   integrations: [
     tailwind(),
@@ -19,7 +19,7 @@ export default defineConfig({
   ],
 
   markdown: {
-     shikiConfig: { 
+    shikiConfig: {
       themes: {
         // light: 'vitesse-light',
         light: FlexokiLight,
@@ -28,8 +28,7 @@ export default defineConfig({
       },
       // defaultColor: false,
     },
-
-},
+  },
   wrap: true,
   scopedStyleStrategy: "where",
   output: "static",

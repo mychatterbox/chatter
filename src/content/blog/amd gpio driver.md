@@ -14,6 +14,6 @@ keywords:
   - ACPI\AMDIF031\0
 ---
 
-ACPI\AMDIF031\0  
+ACPI\AMDIF031\0
 
-AMD GPIO Controller 입니다.  
+AMD GPIO Controller 입니다.
