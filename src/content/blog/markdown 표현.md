@@ -590,7 +590,7 @@ Underscores
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
 ```
 
-[![화요비-그런일은](https://img.youtube.com/vi/brM5QZvBl3Y/0.jpg)](https://www.youtube.com/watch?v=brM5QZvBl3Y)
+[![화요비-그런일은](https://img.youtube.com/vi/21mqS5O1kWs/0.jpg)](https://www.youtube.com/watch?v=brM5QZvBl3Y)
 
 ```
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -605,7 +605,7 @@ Underscores
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe 
-    src="https://www.youtube.com/embed/brM5QZvBl3Y" 
+    src="https://www.youtube.com/embed/21mqS5O1kWs" 
     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" 
     allowfullscreen 
     title="화요비 - 그런일은">
