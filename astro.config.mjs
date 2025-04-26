@@ -5,9 +5,9 @@ import FlexokiDark from "/src/styles/Flexoki-Dark-color-theme.json";
 import FlexokiLight from "/src/styles/Flexoki-Light-color-theme.json";
 
 export default defineConfig({
-  site: "https://chatter.kr",
+  site: "https://chatter.kr/",
 
-  trailingSlash: "never", // URL 끝의 `/` 제거
+  // trailingSlash: "never",
   build: {
     format: "preserve",
   },
