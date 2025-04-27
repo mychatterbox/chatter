@@ -20,9 +20,9 @@ id !== "my-ratings" && id !== "site-info" && (
       class="font-semibold leading-tight decoration-zinc-900 decoration-2 underline-offset-2 hover:underline dark:decoration-white" 
       href={`/${id}`} 
     >
-      <h2 
+      <h2 transition:name={`title-${entry.id}`}
       class="text-xl font-black leading-tight text-custom-bg-dark/90 dark:text-custom-bg-light/90"
-      transition:name={`title-${entry.id}`}
+      
     >
     {title}
     </h2>
