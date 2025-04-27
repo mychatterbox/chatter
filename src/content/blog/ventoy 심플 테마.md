@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - 소프트웨어
-ogImage: /blog-images/2025/ventoy-theme_1.png
+ogImage: /blog-images/2025/ventoy-theme_1.webp
 description: 심플한 Ventoy 테마 만드는 방법, 간단한 수정, 다른 테마를 찾고 적용하는 방법을 설명합니다.
 keywords:
   - 벤토이 테마
@@ -18,7 +18,7 @@ keywords:
 
 어짜피 몇 가지 리스트 중에서 하나를 선택하고 엔터 누를텐데 다른 정보는 필요없을 것 같습니다.
 
-![ventoy-theme](../../assets/blog-images/2025/ventoy-theme_1.png)
+![ventoy-theme](../../assets/blog-images/2025/ventoy-theme_1.webp)
 
 <details>
 <summary>theme.txt</summary>
@@ -96,10 +96,10 @@ terminal-border: "0"
 #### **배치**
 
 일단 배경화면(background.png)을 하나 만들거나 준비합니다.  
-![background](../../assets/blog-images/2025/ventoy-theme_3.png)
+![background](../../assets/blog-images/2025/ventoy-theme_3.webp)
 저는 검은 바탕(#000000)에 Sarpanch 폰트로 위쪽에 간단하게 Ventoy 글자만 넣었습니다.
 
-![ventoy-theme](../../assets/blog-images/2025/ventoy-theme_2.png)
+![ventoy-theme](../../assets/blog-images/2025/ventoy-theme_2.webp)
 
 그 다음 리스트가 출력될 공간을 생각합니다.  
 어짜피 한 번에 만족스러운 결과가 나오기는 어려우므로 left, top, width 같은 수치는 일단 그대로 따라하고 나중에 수정합니다.  

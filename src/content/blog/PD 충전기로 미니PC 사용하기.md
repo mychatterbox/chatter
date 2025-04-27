@@ -9,7 +9,7 @@ draft: false
 tags:
   - 미니pc
   - 충전기
-ogImage: /blog-images/2024/minipc-pdcharger_1.png
+ogImage: /blog-images/2024/minipc-pdcharger_1.webp
 description: N100 등 미니PC 를 일반 PD 충전기로 사용할 때 주의할 점과 팁을 알아봅시다.
 keywords:
   - n100 충전기
@@ -21,10 +21,10 @@ keywords:
 알리에서 흔히 볼 수 있는 여러 충전기들 중 하나입니다. 약 2만원.  
 65W + 30W + 25W 라서 120W 충전기로 표기합니다.
 
-![충전기](../../assets/blog-images/2024/minipc-pdcharger_1.png)
+![충전기](../../assets/blog-images/2024/minipc-pdcharger_1.webp)
 
-![충전기](../../assets/blog-images/2024/minipc-pdcharger_2.png)
-![충전기](../../assets/blog-images/2024/minipc-pdcharger_3.png)
+![충전기](../../assets/blog-images/2024/minipc-pdcharger_2.webp)
+![충전기](../../assets/blog-images/2024/minipc-pdcharger_3.webp)
 
 포트 개수가 많은 충전기들은 대부분 위처럼 어떤 특정한 규칙이 있고, 판매 페이지에 표기하고 있습니다.  
 흔히 말하는 고정출력, 가변출력을 확인하기 위함인데요.  
@@ -59,5 +59,5 @@ C1 포트에 연결해서 65W 출력으로 여유롭게 사용하다가, <mark>C
 Beelink 제품은 5.5mm x 2.5mm 입니다.  
 검색을 해보면 5.5mm 는 공통이고 2.5mm 인지 2.1mm 인지가 명확하지 않은데, 2.5mm 와 2.1mm 는 호환이 되기도 하고 안되기도 하는 것 같습니다.
 
-![케이블](../../assets/blog-images/2024/minipc-pdcharger_4.png)
-![젠더](../../assets/blog-images/2024/minipc-pdcharger_5.png)
+![케이블](../../assets/blog-images/2024/minipc-pdcharger_4.webp)
+![젠더](../../assets/blog-images/2024/minipc-pdcharger_5.webp)

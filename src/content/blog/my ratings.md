@@ -2,13 +2,13 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-04-25
+pubDate: 2025-04-27
 slug: my-ratings
 featured: false
 draft: false
 tags:
   - tmdb
-ogImage: /blog-images/2025/my-ratings.png
+ogImage: /blog-images/2025/my-ratings.webp
 description: "영화 TV 별점"
 ---
 
@@ -1280,6 +1280,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1189735">프레와카 (Fréamhacha) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/931349">애쉬 (Ash) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1006724">데드 탤런트 소사이어티 (鬼才之道) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/696506">미키 17 (Mickey 17) (2025)</a></li>
@@ -2093,6 +2094,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1304096">오 마이 갓 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1304096">공포특급 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1022892">Drive Back (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/999243">헬 오브 어 썸머 (Hell of a Summer) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1145221">It Feeds (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1400274">Gothic Slayers (2025)</a></li>
