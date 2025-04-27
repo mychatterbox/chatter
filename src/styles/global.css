@@ -102,7 +102,7 @@ mark {
   background-color: transparent;
   color: var(--mark-text-color);
   font-size: 1em;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .prose code:not(pre code) {
