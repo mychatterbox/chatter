@@ -61,7 +61,7 @@
     .astro-code,
     .astro-code span {
       /* color: var(--shiki-light) !important; */
-      background-color: #ededed !important;
+      background-color: #f1f2f3 !important;
     }
   }
 
@@ -75,7 +75,7 @@
     .astro-code,
     .astro-code span {
       color: var(--shiki-dark) !important;
-      background-color: var(--shiki-dark-bg) !important;
+      background-color: #161515 !important;
     }
   }
 }
