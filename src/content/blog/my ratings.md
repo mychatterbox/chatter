@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-04-27
+pubDate: 2025-04-30
 slug: my-ratings
 featured: false
 draft: false
@@ -1280,6 +1280,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1355326">The Waves of Madness (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1189735">프레와카 (Fréamhacha) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/931349">애쉬 (Ash) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1006724">데드 탤런트 소사이어티 (鬼才之道) (2024)</a></li>
@@ -3588,6 +3589,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>    
+<li> <a href="https://www.themoviedb.org/movie/1424817">Armed (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1358329">The House on Laura Anne Dr. (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/953683">Earth Virus of the Dead (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1245526">Smell No Evil (2021)</a></li>
