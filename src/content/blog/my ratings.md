@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-04-30
+pubDate: 2025-05-02
 slug: my-ratings
 featured: false
 draft: false
@@ -1280,6 +1280,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/859935">Minore (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1355326">The Waves of Madness (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1189735">프레와카 (Fréamhacha) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/931349">애쉬 (Ash) (2025)</a></li>
