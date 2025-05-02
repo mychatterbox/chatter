@@ -71,7 +71,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="alternate" type="application/rss+xml"  href={new URL("rss.xml", Astro.site)} title="rss" />
     <slot name="head" />
     <ClientRouter />
-    <meta name="naver-site-verification" content="e782519ae8e3850a5acf6d2089279ece14da7dac" />
   </head>
   <body class="flex h-full flex-col bg-custom-bg-light dark:bg-custom-bg-dark">
     <slot />
