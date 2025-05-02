@@ -7,27 +7,25 @@ const { entry } = Astro.props;
 const {
   id,
   data: { title, description, pubDate, kind },
+  // data: { title, description, pubDate, kind, tags },
 } = entry;
 const { Content } = await render(entry);
 const draft = entry.id.startsWith("draft/");
-
-// 콘텐츠 사전 로드 - 빌드 타임에 실행됨
-const renderedContent = kind === "note" ? await render(entry) : null;
 ---
-
 {
 id !== "my-ratings" && id !== "site-info" && (
-<li class="pb-20">
-  <div class="mb-5 flex flex-col items-start">
+<li class="pb-20" >
+  <div class="mb-5 flex flex-col items-start" >
     <a
       class="font-semibold leading-tight decoration-zinc-900 decoration-2 underline-offset-2 hover:underline dark:decoration-white" 
       href={`/${id}`} 
     >
       <h2 transition:name={`title-${entry.id}`}
-        class="text-xl font-black leading-tight text-custom-bg-dark/90 dark:text-custom-bg-light/90"
-      >
-        {title}
-      </h2>
+      class="text-xl font-black leading-tight text-custom-bg-dark/90 dark:text-custom-bg-light/90"
+      
+    >
+    {title}
+    </h2>
     </a>
     <div class="flex items-center space-x-1 pl-1">
       <div class="text-sm text-zinc-600 dark:text-zinc-400">
@@ -52,9 +50,16 @@ id !== "my-ratings" && id !== "site-info" && (
     </div>
   </div>
   <Prose>
+    <!-- {
+      kind === "article" ? (
+        <p class="break-words" set:html={description}></p>
+      ) : kind === "note" ? (
+        <Content />
+      ) : null
+    } -->
     {
       kind === "article" ? (
-        <Fragment set:html={description} />
+        <p class="break-words">{description}</p>
       ) : kind === "note" ? (
         <Content />
       ) : null
