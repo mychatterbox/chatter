@@ -3,6 +3,9 @@ import ColorScheme from "components/colorscheme/head.astro";
 import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
 import { themeColors } from "components/colorscheme/theme.ts";
+import font1 from "fonts/PretendardGOV-ExtraBold.subset.woff2";
+import font2 from "fonts/PretendardGOV-Medium.subset.woff2";
+import font3 from "fonts/CascadiaCode.woff2";
 
 export interface Props {
   title: string;
@@ -65,7 +68,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="apple-mobile-web-app-title" content="chatter" />
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
     <ColorScheme />
-    <!-- <link rel="preload" href={font} as="font" type="font/woff2" crossorigin /> -->
+    <link rel="preload" href={font1} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <!-- <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="rss" /> -->
     <link rel="alternate" type="application/rss+xml"  href={new URL("rss.xml", Astro.site)} title="rss" />
