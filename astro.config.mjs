@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import FlexokiDark from "/src/styles/Flexoki-Dark-color-theme.json";
 import FlexokiLight from "/src/styles/Flexoki-Light-color-theme.json";
+import purgecss from 'astro-purgecss';
 
 export default defineConfig({
   site: "https://chatter.kr/",
