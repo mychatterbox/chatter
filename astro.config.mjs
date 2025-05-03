@@ -12,7 +12,6 @@ export default defineConfig({
     format: "preserve",
   },
   integrations: [
-    [(await import("@playform/inline")).default()],
     tailwind(),
     sitemap({
       filter: (p) => !p.includes("/draft/"),
