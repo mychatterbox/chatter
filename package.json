@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write ./**/*.astro ./**/*.mdoc ."
+    "format": "prettier --write ./**/*.astro ./**/*.md ."
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.10",
