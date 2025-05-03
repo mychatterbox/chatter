@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-05-02
+pubDate: 2025-05-03
 slug: my-ratings
 featured: false
 draft: false
@@ -2931,6 +2931,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1225572">스크림보트 (Screamboat) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/859051">Murder on Maple Drive (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1460265">Crazy Texas (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1241726">Candlewood (2024)</a></li>
