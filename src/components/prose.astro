@@ -5,10 +5,20 @@
     "prose-pre:border-y-2 prose-pre:border-zinc-400/10",
     "prose-pre:font-mono prose-pre:text-base",
     "prose-code:rounded prose-code:py-0.5 prose-code:px-0.5",
+    "prose-code:before:content-[] prose-code:after:content-[]",
+    "prose-code:bg-custom-bg-dark prose-code:text-custom-bg-light",
+    "dark:prose-code:bg-custom-bg-light dark:prose-code:text-custom-bg-dark",
     "prose-blockquote:border-zinc-900 prose-blockquote:dark:border-zinc-100",
     "prose-img:mx-auto prose-img:rounded-md",
-    "prose-code:before:content-[] prose-code:after:content-[]",
+    "prose-a:break-words prose-a:underline prose-a:underline-offset-4 hover:prose-a:text-blue-400",
   ]}
 >
   <slot />
+  <style is:global>
+    /* 코드 블록 배경색 재정의 */
+    .prose pre code {
+      background-color: transparent !important;
+      color: inherit !important; 
+    }
+  </style>
 </div>
