@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-05-09
+pubDate: 2025-05-11
 slug: my-ratings
 featured: false
 draft: false
@@ -25,67 +25,137 @@ description: "영화 TV 별점"
         align-items: center;
         list-style: none;
         cursor: pointer;
-        /* width: 100%; */
         transition: transform 0.2s ease;
     }
     summary:hover {
         transform: scale(1.2);
     }
     .rating-image {
-        /* filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1)); */
         line-height: 0.8;
         margin-bottom: 0.5rem;
     }
     .rating-count {
-        /* font-size: 18px; */
-        /* color: #666; */
-        /* background:rgb(255, 255, 255); */
-        /* padding: 2px 12px;
-        border-radius: 8px; */
-        /* line-height: 1.1; */
-        /* margin-top: -0.25rem; */
+        font-size: 14px;
+        padding: 2px 12px;
+        border-radius: 12px;
+        margin-top: -5px;
     }
-    /* details[open] summary {
-        margin-bottom: 0.5rem;
-    } */
-    /* ul {
-        padding-left: 2rem;
-        line-height: 1.6;
-    } */
-    /* a {
-        color: #2c3e50;
+.movie-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        /* margin-top: 15px; */
+    }
+    .movie-item {
+        text-align: center;
+    }
+    .movie-item img {
+        width: 100%;
+        max-width: 780px;
+        border-radius: 8px;
+        transition: transform 0.2s;
+    }
+    .movie-item img:hover {
+        transform: scale(1.05);
+    }
+    .movie-list {
+        padding-left: 20px;
+    }
+    .movie-list li {
+        margin-bottom: 10px;
+    }
+    .movie-list a {
         text-decoration: none;
-        transition: color 0.2s ease;
+        color: #2c3e50;
     }
-    a:hover {
+    .movie-list a:hover {
         color: #0066cc;
-    } */
+    }
 </style>
 </head>
 <body>
-    <details open>
-        <summary style="list-style: none; cursor: pointer;">
-            <img src="/images/10.png" class="rating-image">
+    <details>
+        <summary>
+            <img src="/images/10.png" class="rating-image" alt="Rating 10">
             <span class="rating-count"></span>
         </summary>
-        <ul>
-<li> <a href="https://www.themoviedb.org/movie/17654">District 9 (2009)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/11423">살인의 추억 (2003)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/745">The Sixth Sense (1999)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/180">Minority Report (2002)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/13345">서유기: 월광보합 (1995)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/21835">서유기: 선리기연 (1995)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/644">A.I. Artificial Intelligence (2001)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/13363">The Man from Earth (2007)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/129586">똑바로 살아라 (2002)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/2173">연애시대 (2006)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/5717">허준 (1999)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/14183">환상의 커플 (2006)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/83199">솔약국집 아들들 (2009)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/64840">시그널 (2016)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/75820">미스터 션샤인 (2018)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/93405/season/1">오징어 게임 (2021) 시즌 1</a></li>  
-        </ul>
+        <div class="movie-grid">
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/movie/17654">
+                    <img src="https://image.tmdb.org/t/p/w780/tuGlQkqLxnodDSk6mp5c2wvxUEd.jpg" alt="District 9 (2009)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/movie/11423">
+                    <img src="https://image.tmdb.org/t/p/w780/QqyXQvd95XWZwi8UtOkN82KNr3.jpg" alt="살인의 추억 (2003)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/movie/745">
+                    <img src="https://image.tmdb.org/t/p/w780/mPq0Rt6jxYjl0QIlwmpwJBai1Ez.jpg" alt="The Sixth Sense (1999)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/movie/180">
+                    <img src="https://image.tmdb.org/t/p/w500/qtgFcnwh9dAFLocsDk2ySDVS8UF.jpg" alt="Minority Report (2002)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/movie/13345">
+                    <img src="https://image.tmdb.org/t/p/w500/2Jfl1VI3fLr3VmG8bdtsLUH2cAn.jpg" alt="서유기: 월광보합 (1995)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/movie/21835">
+                    <img src="https://image.tmdb.org/t/p/w500/vEiJhunvmxOzUYAzKsRhedc8DtJ.jpg" alt="서유기: 선리기연 (1995)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/movie/644">
+                    <img src="https://image.tmdb.org/t/p/w500/8MZSGX5JORoO72EfuAEcejH5yHn.jpg" alt="A.I. Artificial Intelligence (2001)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/movie/13363">
+                    <img src="https://image.tmdb.org/t/p/w500/V086R82gNgWrotaXZFO4JhdgB1.jpg" alt="The Man from Earth (2007)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/tv/129586">
+                    <img src="https://image.tmdb.org/t/p/w500/z2eMgOMTxLHUIYYaLkvZ0Cr7gYe.jpg" alt="똑바로 살아라 (2002)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/tv/2173">
+                    <img src="https://image.tmdb.org/t/p/w500/xdouJIGDVVixnrE7kfooxe9IO7z.jpg" alt="연애시대 (2006)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/tv/5717">
+                    <img src="https://image.tmdb.org/t/p/w500/uiJfJhdKk8dnzLYbuIBccj0YHbS.jpg" alt="허준 (1999)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/tv/83199">
+                    <img src="https://image.tmdb.org/t/p/w500/edN59WQ9Np8kKhfR6gup8dqqv5S.jpg" alt="솔약국집 아들들 (2009)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/tv/64840">
+                    <img src="https://image.tmdb.org/t/p/w500/f6VlRI0fkeysKA1T8DvORxxG7RJ.jpg" alt="시그널 (2016)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/tv/75820">
+                    <img src="https://image.tmdb.org/t/p/w500/uSavP0BSfnyUaJe62f0ZTXIHLs8.jpg" alt="미스터 션샤인 (2018)">
+                </a>
+            </div>
+            <div class="movie-item">
+                <a href="https://www.themoviedb.org/tv/93405">
+                    <img src="https://image.tmdb.org/t/p/w500/yACIAqAkSLkX4coHafpyLWAtQjw.jpg" alt="오징어 게임 (2021) 시즌 1">
+                </a>
+            </div>
+        </div>
     </details>
     <details>
         <summary style="list-style: none; cursor: pointer;">
@@ -95,6 +165,7 @@ description: "영화 TV 별점"
         <ul>
 <li> <a href="https://www.themoviedb.org/movie/549509">브루탈리스트 (The Brutalist) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/91186">심플 라이프 (桃姐) (2011)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/14183">환상의 커플 (2006)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/125935">애봇 초등학교 (Abbott Elementary) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/185">A Clockwork Orange (1971)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1255">괴물 (2006)</a></li> 
@@ -3676,14 +3747,31 @@ description: "영화 TV 별점"
 <li> <a href="https://www.themoviedb.org/movie/31127">R.O.T.O.R. (1987)</a></li>
         </ul>
     </details>
-<script client:load>
-  const detailsList = document.querySelectorAll('details');
-  detailsList.forEach(details => {
-    const ul = details.querySelector('ul');
-    const count = ul.querySelectorAll('li').length;
-    const countSpan = details.querySelector('.rating-count');
-    countSpan.textContent = `(${count})`;
-  });
-</script>
+    <script>
+        // 페이지 로드 시 작품 개수 표시 함수 실행
+        document.addEventListener('DOMContentLoaded', function() {
+            // 모든 details 요소를 순회하며 작품 개수 계산
+            const ratingDetails = document.querySelectorAll('details');
+            ratingDetails.forEach(detail => {
+                let count = 0;
+                const countElement = detail.querySelector('.rating-count');
+                // 10점인 경우 (movie-grid 형식)
+                const movieGrid = detail.querySelector('.movie-grid');
+                if (movieGrid) {
+                    count = movieGrid.querySelectorAll('.movie-item').length;
+                }
+                // 그 외 점수인 경우 (텍스트 리스트 형식)
+                else {
+                    const list = detail.querySelector('ul');
+                    if (list) {
+                        count = list.querySelectorAll('li').length;
+                    }
+                }
+                if (countElement) {
+                    countElement.textContent = `(${count})`;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
