@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-05-03
+pubDate: 2025-05-09
 slug: my-ratings
 featured: false
 draft: false
@@ -666,6 +666,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/760497">승부 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/946932">Mimì – Prince of Darkness (Mimì - Il principe delle tenebre) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1212742">룰 오브 제니 펜 (The Rule of Jenny Pen) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/233686">악연 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/421228">누에치던 방 (2018)</a></li>
@@ -2096,7 +2098,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
-<li> <a href="https://www.themoviedb.org/movie/1304096">오 마이 갓 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1229910">Kryptic (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1102231">Desert Fiends (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1005860">Seeds (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1469662">오 마이 갓 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1304096">공포특급 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1022892">Drive Back (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/999243">헬 오브 어 썸머 (Hell of a Summer) (2025)</a></li>
@@ -2931,6 +2936,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1139623">The Beast of Walton St. (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1225475">Vadakkan (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1148040">Booger (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1322593">소롭 (Sorop) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1225572">스크림보트 (Screamboat) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/859051">Murder on Maple Drive (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1460265">Crazy Texas (2025)</a></li>
