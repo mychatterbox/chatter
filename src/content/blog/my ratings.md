@@ -291,6 +291,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1284120">어글리 스텝시스터 (Den stygge stesøsteren) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/932801">The Universal Theory (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/10778">그 남자는 거기 없었다 (The Man Who Wasn't There) (2001)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/114527">미무추종 (迷雾追踪) (2020)</a></li>
@@ -1353,6 +1354,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1153714">데스 오브 유니콘 (Death of a Unicorn) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/859935">Minore (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1355326">The Waves of Madness (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1189735">프레와카 (Fréamhacha) (2025)</a></li>
@@ -3007,6 +3009,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1088619">The Unheard (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1139623">The Beast of Walton St. (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1225475">Vadakkan (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1148040">Booger (2024)</a></li>
@@ -3490,6 +3493,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1285637">Biaz: Kara İyenin Laneti (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1327881">Voice of Shadows (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1418280">The Ruck March (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1361740">Replicator (2024)</a></li>
