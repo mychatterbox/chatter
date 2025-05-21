@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-05-11
+pubDate: 2025-05-21
 slug: my-ratings
 featured: false
 draft: false
@@ -163,6 +163,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/tv/219246">폭싹 속았수다 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/549509">브루탈리스트 (The Brutalist) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/91186">심플 라이프 (桃姐) (2011)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/14183">환상의 커플 (2006)</a></li>
@@ -291,6 +292,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/34637">중세에서 온 사람들 (The Navigator: A Medieval Odyssey) (1988)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1284120">어글리 스텝시스터 (Den stygge stesøsteren) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/932801">The Universal Theory (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/10778">그 남자는 거기 없었다 (The Man Who Wasn't There) (2001)</a></li>
@@ -1354,6 +1356,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/455108">리틀 스트레인저 (The Little Stranger) (2018)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/251608">못된 생각들 (Bad Thoughts) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1153714">데스 오브 유니콘 (Death of a Unicorn) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/859935">Minore (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1355326">The Waves of Madness (2024)</a></li>
@@ -2171,6 +2175,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1171630">부모 바보 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1196686">I Want to Live on Mars (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1229910">Kryptic (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1102231">Desert Fiends (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1005860">Seeds (2024)</a></li>
@@ -3009,6 +3015,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1236471">Everyone is Going to Die (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1088619">The Unheard (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1139623">The Beast of Walton St. (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1225475">Vadakkan (2025)</a></li>
@@ -3493,6 +3500,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1291526">Womb (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1285637">Biaz: Kara İyenin Laneti (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1327881">Voice of Shadows (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1418280">The Ruck March (2025)</a></li>
@@ -3675,6 +3683,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>    
+<li> <a href="https://www.themoviedb.org/movie/375991">Good Mourning, Lucille (2014)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/986677">Grinders (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1424817">Armed (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1358329">The House on Laura Anne Dr. (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/953683">Earth Virus of the Dead (2022)</a></li>
