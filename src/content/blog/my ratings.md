@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-05-21
+pubDate: 2025-05-23
 slug: my-ratings
 featured: false
 draft: false
@@ -2175,6 +2175,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1297028">Rosario (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1171630">부모 바보 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1196686">I Want to Live on Mars (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1229910">Kryptic (2024)</a></li>
