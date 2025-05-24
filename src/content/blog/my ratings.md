@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-05-23
+pubDate: 2025-05-24
 slug: my-ratings
 featured: false
 draft: false
@@ -1356,6 +1356,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1208983">네이버후드 왓치 (Neighborhood Watch) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/455108">리틀 스트레인저 (The Little Stranger) (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/251608">못된 생각들 (Bad Thoughts) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1153714">데스 오브 유니콘 (Death of a Unicorn) (2025)</a></li>
@@ -2175,6 +2176,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1001414">피어 스트리트: 프롬 퀸 (Fear Street: Prom Queen) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1339206">The Surrender (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1006228">Breakwater (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1232546">언틸 던: 무한루프 데스게임 (Until Dawn) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1297028">Rosario (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1171630">부모 바보 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1196686">I Want to Live on Mars (2023)</a></li>
@@ -3501,6 +3506,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1306542">Pale Horse (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1291526">Womb (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1285637">Biaz: Kara İyenin Laneti (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1327881">Voice of Shadows (2024)</a></li>
