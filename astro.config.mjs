@@ -6,11 +6,11 @@ import FlexokiLight from "/src/styles/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
 
 export default defineConfig({
-  site: 'https://chatter.kr',
+  site: 'https://chatter.kr/',
 
-  trailingSlash: "never",
+  // trailingSlash: "never",
   build: {
-    format: "file",
+    format: "preserve",
   },
   integrations: [
     tailwind(),
