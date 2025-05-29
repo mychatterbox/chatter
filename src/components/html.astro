@@ -39,7 +39,11 @@ const finalOgImage = ogImage
   ? new URL(ogImage, Astro.url).toString()
   : defaultOgImage;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const _requestUrl = new URL(Astro.request.url);
+const site = String(Astro.site).replace(/\/+$/, '');
+const canonicalURL = `${site}${_requestUrl.pathname}`;
+
 ---
 
 <!doctype html>
