@@ -8,7 +8,7 @@ import umami from "@yeskunall/astro-umami";
 export default defineConfig({
   site: 'https://chatter.kr/',
 
-  trailingSlash: "never",
+  trailingSlash: "ignore",
   build: {
     format: "preserve",
   },
