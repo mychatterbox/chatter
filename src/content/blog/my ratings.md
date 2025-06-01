@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-05-24
+pubDate: 2025-06-01
 slug: my-ratings
 featured: false
 draft: false
@@ -292,6 +292,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/tv/245703">사건수사대 Q (Dept. Q) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/34637">중세에서 온 사람들 (The Navigator: A Medieval Odyssey) (1988)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1284120">어글리 스텝시스터 (Den stygge stesøsteren) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/932801">The Universal Theory (2023)</a></li>
@@ -740,6 +741,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/16307">위커맨 (The Wicker Man) (1973)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/760497">승부 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/946932">Mimì – Prince of Darkness (Mimì - Il principe delle tenebre) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1212742">룰 오브 제니 펜 (The Rule of Jenny Pen) (2025)</a></li>
@@ -1356,6 +1358,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/378160">아브룹티오 (Abruptio) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/14235">에덴 로그 (Eden Log) (2007)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1208983">네이버후드 왓치 (Neighborhood Watch) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/455108">리틀 스트레인저 (The Little Stranger) (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/251608">못된 생각들 (Bad Thoughts) (2025)</a></li>
@@ -2176,6 +2180,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1231010">The Severed Sun (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1397832">위도우 게임 (La viuda negra) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1155285">The Apartment (El Apartamento) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/931628">베를린 노바디 (A Sacrifice) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1001414">피어 스트리트: 프롬 퀸 (Fear Street: Prom Queen) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1339206">The Surrender (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1006228">Breakwater (2023)</a></li>
@@ -3021,6 +3029,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1355011">통증의 풍경 (2021)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1355983">Espantaho (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1236471">Everyone is Going to Die (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1088619">The Unheard (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1139623">The Beast of Walton St. (2023)</a></li>
@@ -3506,6 +3516,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1446474">Revenge of the Boogeyman (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1306542">Pale Horse (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1291526">Womb (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1285637">Biaz: Kara İyenin Laneti (2024)</a></li>
@@ -3690,6 +3701,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>    
+<li> <a href="https://www.themoviedb.org/movie/1436668">What Happens After the Massacre? (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/375991">Good Mourning, Lucille (2014)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/986677">Grinders (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1424817">Armed (2025)</a></li>
