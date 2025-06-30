@@ -8,6 +8,11 @@ import umami from "@yeskunall/astro-umami";
 export default defineConfig({
   site: 'https://chatter.kr/',
 
+  image: {
+    responsiveStyles: true,
+    layout: 'constrained',
+  },
+
   trailingSlash: "ignore",
   build: {
     format: "preserve",
