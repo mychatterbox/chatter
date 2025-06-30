@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-06-01
+pubDate: 2025-06-30
 slug: my-ratings
 featured: false
 draft: false
@@ -292,6 +292,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/170">28일 후 (28 Days Later) (2002)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1046758">Sew Torn (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/245703">사건수사대 Q (Dept. Q) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/34637">중세에서 온 사람들 (The Navigator: A Medieval Odyssey) (1988)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1284120">어글리 스텝시스터 (Den stygge stesøsteren) (2025)</a></li>
@@ -741,6 +743,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/tv/93405/season/3">오징어 게임 (2025) 시즌 3</a></li>
+<li> <a href="https://www.themoviedb.org/tv/227191">나인 퍼즐 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/16307">위커맨 (The Wicker Man) (1973)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/760497">승부 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/946932">Mimì – Prince of Darkness (Mimì - Il principe delle tenebre) (2023)</a></li>
@@ -1358,6 +1362,16 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1081196">Four Mothers (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1212855">파이트 오어 플라이트 (Fight or Flight) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1328956">Alma & the Wolf (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/574475">파이널 데스티네이션: 블러드라인 (Final Destination Bloodlines) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1239193">딥 커버 (Deep Cover) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/21198">차이나타운 탐정 1900 (唐探1900) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/21198">House of Voices (Saint Ange) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1115379">강변의 착오 (河边的错误) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/247522">타이어! (Tires) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/22494">시간 여행에 관한 FAQ (Frequently Asked Questions About Time Travel) (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/378160">아브룹티오 (Abruptio) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/14235">에덴 로그 (Eden Log) (2007)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1208983">네이버후드 왓치 (Neighborhood Watch) (2025)</a></li>
@@ -2180,6 +2194,15 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1145531">Faceless After Dark (2023))</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1327649">Let's Start a Cult (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1275248">시스터 미드나이트 (Sister Midnight) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1134048">Marshmallow (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/793387">거룩한 밤: 데몬 헌터스 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1137160">2035: 더 그린라이트 (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1186509">Daruma (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1356236">Saint Catherine (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1094836">Uncontained (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1231010">The Severed Sun (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1397832">위도우 게임 (La viuda negra) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1155285">The Apartment (El Apartamento) (2023)</a></li>
@@ -3029,6 +3052,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1407861">블랙 크록 (The Bayou) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1234905">Bogieville (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1305926">The Last 7 Days (Sebelum 7 Hari) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1355011">통증의 풍경 (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1355983">Espantaho (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1236471">Everyone is Going to Die (2025)</a></li>
@@ -3516,6 +3542,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1362052">The Sound (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1470736">OPEN (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1436732">Evil Bong-A-Thon! (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1375895">The Woods (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1446474">Revenge of the Boogeyman (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1306542">Pale Horse (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1291526">Womb (2025)</a></li>
@@ -3701,6 +3731,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>    
+<li> <a href="https://www.themoviedb.org/movie/691196">Moon of the Blood Beast (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1436668">What Happens After the Massacre? (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/375991">Good Mourning, Lucille (2014)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/986677">Grinders (2023)</a></li>
