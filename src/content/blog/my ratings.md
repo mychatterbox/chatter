@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-06-30
+pubDate: 2025-07-08
 slug: my-ratings
 featured: false
 draft: false
@@ -163,6 +163,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/41245">박하사탕 (2000)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/219246">폭싹 속았수다 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/549509">브루탈리스트 (The Brutalist) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/91186">심플 라이프 (桃姐) (2011)</a></li>
@@ -292,6 +293,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/26722">나인 마일즈 다운 (Nine Miles Down) (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/170">28일 후 (28 Days Later) (2002)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1046758">Sew Torn (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/245703">사건수사대 Q (Dept. Q) (2025)</a></li>
@@ -1362,6 +1364,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1151031">브링 허 백 (Bring Her Back) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1081196">Four Mothers (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1212855">파이트 오어 플라이트 (Fight or Flight) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1328956">Alma & the Wolf (2025)</a></li>
@@ -2194,7 +2197,14 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
-<li> <a href="https://www.themoviedb.org/movie/1145531">Faceless After Dark (2023))</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1189370">Silent Thunder (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/628446">Killer Sofa (2019)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/101791">Elfie Hopkins (2012)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/406427">The Noonday Witch (Polednice) (2016)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1008549">내가 못 나가는 것도 아닌데 (2022)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1232933">심연의 공포 (Fear Below) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1278950">리추얼 (The Ritual) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1145531">Faceless After Dark (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1327649">Let's Start a Cult (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1275248">시스터 미드나이트 (Sister Midnight) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1134048">Marshmallow (2025)</a></li>
@@ -3731,6 +3741,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>    
+<li> <a href="https://www.themoviedb.org/movie/1503002">Dr. Jason (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/691196">Moon of the Blood Beast (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1436668">What Happens After the Massacre? (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/375991">Good Mourning, Lucille (2014)</a></li>
