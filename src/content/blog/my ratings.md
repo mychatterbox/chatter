@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-07-08
+pubDate: 2025-07-09
 slug: my-ratings
 featured: false
 draft: false
@@ -745,6 +745,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/tv/31500">미란다 (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/93405/season/3">오징어 게임 (2025) 시즌 3</a></li>
 <li> <a href="https://www.themoviedb.org/tv/227191">나인 퍼즐 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/16307">위커맨 (The Wicker Man) (1973)</a></li>
@@ -3552,6 +3553,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1136382">Moon Ghost (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1362052">The Sound (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1470736">OPEN (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1436732">Evil Bong-A-Thon! (2025)</a></li>
