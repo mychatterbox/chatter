@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-07-09
+pubDate: 2025-07-12
 slug: my-ratings
 featured: false
 draft: false
@@ -2198,6 +2198,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/tv/281967">메스를 든 사냥꾼 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1189370">Silent Thunder (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/628446">Killer Sofa (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/101791">Elfie Hopkins (2012)</a></li>
@@ -3553,6 +3554,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1382472">Koston enkeli (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1136382">Moon Ghost (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1362052">The Sound (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1470736">OPEN (2025)</a></li>
