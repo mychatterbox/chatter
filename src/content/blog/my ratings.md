@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-07-12
+pubDate: 2025-07-16
 slug: my-ratings
 featured: false
 draft: false
@@ -293,6 +293,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/tv/92916">마리안 (Marianne) (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/26722">나인 마일즈 다운 (Nine Miles Down) (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/170">28일 후 (28 Days Later) (2002)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1046758">Sew Torn (2024)</a></li>
@@ -1365,6 +1366,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/793058">하이파이브 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1151031">브링 허 백 (Bring Her Back) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1081196">Four Mothers (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1212855">파이트 오어 플라이트 (Fight or Flight) (2025)</a></li>
@@ -1829,7 +1831,7 @@ description: "영화 TV 별점"
 <li> <a href="https://www.themoviedb.org/movie/523593">물괴 (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/544089">명당 (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/48492">狄仁傑之通天帝國 (2010)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/506763">狄仁杰之四大天王 (2018)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/506763">적인걸 3: 사대천왕 (狄仁杰之四大天王) (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/505513">唐人街探案2 (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/373200">唐人街探案 (2015)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/563103">도어락 (2018)</a></li>
@@ -3745,6 +3747,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>    
+<li> <a href="https://www.themoviedb.org/movie/850060">Dead Till Death (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1503002">Dr. Jason (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/691196">Moon of the Blood Beast (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1436668">What Happens After the Massacre? (2025)</a></li>
