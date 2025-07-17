@@ -1,0 +1,7 @@
+{
+  "name": "chatter",
+  "compatibility_date": "2025-07-16",
+  "assets": {
+    "directory": "./dist"
+  }
+}
