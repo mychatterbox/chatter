@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-07-16
+pubDate: 2025-07-17
 slug: my-ratings
 featured: false
 draft: false
@@ -746,6 +746,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1063574">미세리코르디아 (Miséricorde) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/31500">미란다 (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/93405/season/3">오징어 게임 (2025) 시즌 3</a></li>
 <li> <a href="https://www.themoviedb.org/tv/227191">나인 퍼즐 (2025)</a></li>
@@ -1292,6 +1293,7 @@ description: "영화 TV 별점"
 <li> <a href="https://www.themoviedb.org/tv/18197">The Langoliers (1995)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/84308">新萧十一郎 (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/62644">프로듀사 (2015)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/979">Irréversible (2002)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/58761">응답하라 1994 (2013)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/43135">신사의 품격 (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/70957">추리의 여왕 (2017)</a></li>
@@ -1856,7 +1858,6 @@ description: "영화 TV 별점"
 <li> <a href="https://www.themoviedb.org/movie/244267">I Origins (2014)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/84204">Grabbers (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/75638">Red Lights (2012)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/979">Irréversible (2002)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/268105">Los parecidos (2015)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/354251">Southbound (2015)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/10518">Marathon Man (1976)</a></li>
@@ -2200,7 +2201,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
-<li> <a href="https://www.themoviedb.org/movie/1425045">브릭 (Brick)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1071585">메간 2.0 (M3GAN 2.0) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/536554">메간 (M3GAN) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/207768">네 무덤에 침을 뱉어라 2 (I Spit on Your Grave 2) (2013)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1425045">브릭 (Brick) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/281967">메스를 든 사냥꾼 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1189370">Silent Thunder (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/628446">Killer Sofa (2019)</a></li>
