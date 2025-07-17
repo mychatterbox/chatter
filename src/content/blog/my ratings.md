@@ -2200,6 +2200,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1425045">브릭 (Brick)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/281967">메스를 든 사냥꾼 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1189370">Silent Thunder (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/628446">Killer Sofa (2019)</a></li>
@@ -3066,6 +3067,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1409850">The Death of Snow White (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1289004">Sijjin 7 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1407861">블랙 크록 (The Bayou) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1234905">Bogieville (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1305926">The Last 7 Days (Sebelum 7 Hari) (2025)</a></li>
@@ -3556,6 +3559,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1239468">Death Streamer (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1382472">Koston enkeli (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1136382">Moon Ghost (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1362052">The Sound (2025)</a></li>
