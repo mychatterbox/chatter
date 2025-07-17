@@ -6,7 +6,7 @@ export const GET: APIRoute = async (context) => {
   const posts = await getCollection("blog", ({ id }) => !id.startsWith("draft/"));
   
   const site = context.site;
-  const siteUrl = site ? new URL(site).origin : "https://chatter.kr/";
+  const siteUrl = site ? new URL(site).origin : "https://chatter.kr";
   
   // 현재 요청의 URL을 사용하여 실제 RSS 피드 위치 결정
   const rssPath = context.url.pathname;
