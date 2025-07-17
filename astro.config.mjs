@@ -13,7 +13,8 @@ export default defineConfig({
     layout: 'constrained',
   },
 
-  trailingSlash: "ignore",
+    // trailingSlash: "never",
+    
   build: {
     format: "preserve",
   },
@@ -38,5 +39,4 @@ export default defineConfig({
   },
   wrap: true,
   scopedStyleStrategy: "where",
-  output: "static",
 });
