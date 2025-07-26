@@ -1,5 +1,6 @@
 {
   "name": "chatter",
+  "main": "_worker.js",
   "compatibility_date": "2025-07-16",
   "assets": {
     "directory": "./dist"
