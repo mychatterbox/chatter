@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-07-17
+pubDate: 2025-07-27
 slug: my-ratings
 featured: false
 draft: false
@@ -293,6 +293,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1339592">아침바다 갈매기는 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/92916">마리안 (Marianne) (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/26722">나인 마일즈 다운 (Nine Miles Down) (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/170">28일 후 (28 Days Later) (2002)</a></li>
@@ -1368,6 +1369,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1119563">기문둔갑: 진격의 수호자 (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1353467">잡종 (Mongrels) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/14295">유 캔 카운트 온 미 (You Can Count on Me) (2001)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/793058">하이파이브 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1151031">브링 허 백 (Bring Her Back) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1081196">Four Mothers (2025)</a></li>
@@ -2201,6 +2205,13 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1241470">Osiris (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1026222">세인트 클레어 (Saint Clare) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1191318">I Will Never Leave You Alone (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/960470">Woken (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1429834">가족이라 하기엔 (Família, Pero no Mucho) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1269208">84제곱미터 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/706739">Singsot (2016)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1071585">메간 2.0 (M3GAN 2.0) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/536554">메간 (M3GAN) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/207768">네 무덤에 침을 뱉어라 2 (I Spit on Your Grave 2) (2013)</a></li>
@@ -2535,7 +2546,7 @@ description: "영화 TV 별점"
 <li> <a href="https://www.themoviedb.org/movie/861027">镇魔司：西域异兽 (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1081582">幻术先生 (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/885207">神龙诀之千年灵狐 (2019)</a></li>
-<li> <a href="https://www.themoviedb.org/movie/1155323">奇门飞甲 (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1155323">기문둔갑: 기은문 (奇门飞甲) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1153574">寧古塔 (2020)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/615116">夺命剑2之喋血江湖 (2018)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/504071">青面修罗 (2022)</a></li>
@@ -3071,6 +3082,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1285965">데인저러스 애니멀스 (Dangerous Animals) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1234487">코넬의 상자 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1409850">The Death of Snow White (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1289004">Sijjin 7 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1407861">블랙 크록 (The Bayou) (2025)</a></li>
@@ -3563,6 +3576,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/993164">카니발 군도 2 (Anthropophagus II) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1239468">Death Streamer (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1382472">Koston enkeli (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1136382">Moon Ghost (2023)</a></li>
