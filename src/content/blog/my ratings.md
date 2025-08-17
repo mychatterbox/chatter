@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-07-27
+pubDate: 2025-08-17
 slug: my-ratings
 featured: false
 draft: false
@@ -747,6 +747,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/988885">빨간마스크 KF94 (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1063574">미세리코르디아 (Miséricorde) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/31500">미란다 (2009)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/93405/season/3">오징어 게임 (2025) 시즌 3</a></li>
@@ -1369,6 +1370,12 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1422052">아버지라는 것 (Descendent) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/14397">위스퍼 (Whisper) (2007)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/296834">김용무협세계: 화산논검 2025 (华山论剑)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1241624">괴기열차 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/990278">모서리 (2022)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1137640">작두 (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1119563">기문둔갑: 진격의 수호자 (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1353467">잡종 (Mongrels) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/14295">유 캔 카운트 온 미 (You Can Count on Me) (2001)</a></li>
@@ -1483,7 +1490,7 @@ description: "영화 TV 별점"
 <li> <a href="https://www.themoviedb.org/movie/891933">Sometimes I Think About Dying (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1272890">Lowlifes (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/210913">블러드 글래셔: 알프스의 살인빙하 (2013)</a></li>
-<li> <a href="https://www.themoviedb.org/tv/235351">사조영웅전 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/235351">김용무협세계: 사조영웅전(철혈단심) 2024 (金庸武侠世界)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/334536">The Blackcoat's Daughter (2017)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/743815">그녀가 죽었다 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/844380">Nix (2022)</a></li>
@@ -2205,6 +2212,16 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+
+<li> <a href="https://www.themoviedb.org/movie/1194963">노이즈 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1254624">밤은 늘 찾아온다 (Night Always Comes) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1149159">피디님이 책임지세요 (2022)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/605722">디스턴트 (Long Distance) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1280444">The Occupant (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1184233">헌팅 데이즈 (Jour de chasse) (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1452176">Abraham's Boys: A Dracula Story (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/919798">저 ㄴ을 어떻게 죽이지? (2021)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1100988">28년 후 (28 Years Later) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1241470">Osiris (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1026222">세인트 클레어 (Saint Clare) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1191318">I Will Never Leave You Alone (2024)</a></li>
@@ -3082,6 +3099,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1339166">Shaman (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1189546">십장생 (2021)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1217585">Outbreak (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1285965">데인저러스 애니멀스 (Dangerous Animals) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1234487">코넬의 상자 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1409850">The Death of Snow White (2025)</a></li>
@@ -3576,6 +3596,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+
+<li> <a href="https://www.themoviedb.org/movie/1353333">Mouseboat Massacre (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1358210">Bait (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1206083">Conjuring Tapes (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/993164">카니발 군도 2 (Anthropophagus II) (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1239468">Death Streamer (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1382472">Koston enkeli (2024)</a></li>
@@ -3769,6 +3793,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>    
+<li> <a href="https://www.themoviedb.org/movie/1118608">Crackcoon (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1323798">Leprechaun: The Beginning (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/850060">Dead Till Death (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1503002">Dr. Jason (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/691196">Moon of the Blood Beast (2019)</a></li>
