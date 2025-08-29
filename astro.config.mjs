@@ -16,7 +16,7 @@ export default defineConfig({
   trailingSlash: "never",
 
   build: {
-    format: "file",
+    format: "preserve",
   },
   integrations: [
     tailwind(),
