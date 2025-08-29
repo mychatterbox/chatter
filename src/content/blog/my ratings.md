@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-08-17
+pubDate: 2025-08-29
 slug: my-ratings
 featured: false
 draft: false
@@ -293,6 +293,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/926606">The Home (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1339592">아침바다 갈매기는 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/92916">마리안 (Marianne) (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/26722">나인 마일즈 다운 (Nine Miles Down) (2009)</a></li>
@@ -747,6 +748,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/40247">뉴욕에서 착하게 살아가는 법 (Please Give) (2010)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/53776">Nobody Else But You (Poupoupidou) (2011)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/462284">Metamorphosis (2012)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/988885">빨간마스크 KF94 (2022)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1063574">미세리코르디아 (Miséricorde) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/31500">미란다 (2009)</a></li>
@@ -1370,6 +1374,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/tv/254897">데스 밸리: 웨일스의 살인 사건 (Death Valley) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1103731">In Vitro (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/tv/71915">멋진 징조들 (Good Omens) (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1422052">아버지라는 것 (Descendent) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/14397">위스퍼 (Whisper) (2007)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/296834">김용무협세계: 화산논검 2025 (华山论剑)</a></li>
@@ -2213,6 +2220,7 @@ description: "영화 TV 별점"
         </summary>
         <ul>
 
+<li> <a href="https://www.themoviedb.org/movie/744653">목요일 살인 클럽 (The Thursday Murder Club) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1194963">노이즈 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1254624">밤은 늘 찾아온다 (Night Always Comes) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1149159">피디님이 책임지세요 (2022)</a></li>
@@ -3099,6 +3107,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1491333">구마수녀 - 들러붙었구나 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1339166">Shaman (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1189546">십장생 (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1217585">Outbreak (2025)</a></li>
@@ -3596,7 +3605,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
-
+<li> <a href="https://www.themoviedb.org/movie/1330167">M블러디 사이렌: 핵잠수함 USS 타이탄 (What Lurks Beneath) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1353333">Mouseboat Massacre (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1358210">Bait (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1206083">Conjuring Tapes (2025)</a></li>
