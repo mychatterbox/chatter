@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-08-29
+pubDate: 2025-09-16
 slug: my-ratings
 featured: false
 draft: false
@@ -748,6 +748,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1078605">웨폰 (Weapons) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1268811">우리 둘 사이에 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/40247">뉴욕에서 착하게 살아가는 법 (Please Give) (2010)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/53776">Nobody Else But You (Poupoupidou) (2011)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/462284">Metamorphosis (2012)</a></li>
@@ -1374,6 +1376,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1251683">Ba (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1500024">적인걸: 통천미안 (狄仁杰之通天谜案) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/282331">선지자의 밤 (2014)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/254897">데스 밸리: 웨일스의 살인 사건 (Death Valley) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1103731">In Vitro (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/71915">멋진 징조들 (Good Omens) (2019)</a></li>
@@ -2219,7 +2224,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
-
+<li> <a href="https://www.themoviedb.org/movie/605804">더 레치드: 악령의 저주 (The Wretched) (2019)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1535903">금지구역: 세 가지 파편 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/421049">The Watcher (2016)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1443894">포기브 어스 올 (Forgive Us All) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/744653">목요일 살인 클럽 (The Thursday Murder Club) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1194963">노이즈 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1254624">밤은 늘 찾아온다 (Night Always Comes) (2025)</a></li>
@@ -3107,6 +3115,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1221415">Brute 1976 (2024)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1101730">Killer Witches from Outer Space (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1354700">강령: 귀신놀이 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1514655">Dead Girl Summer (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1491333">구마수녀 - 들러붙었구나 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1339166">Shaman (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1189546">십장생 (2021)</a></li>
@@ -3605,6 +3617,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1110775">Behold! (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1416798">7인의 황후 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1330167">M블러디 사이렌: 핵잠수함 USS 타이탄 (What Lurks Beneath) (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1353333">Mouseboat Massacre (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1358210">Bait (2025)</a></li>
@@ -3802,6 +3816,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>    
+<li> <a href="https://www.themoviedb.org/movie/1365083">Witch Hunter (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1118608">Crackcoon (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1323798">Leprechaun: The Beginning (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/850060">Dead Till Death (2021)</a></li>
