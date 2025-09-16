@@ -6,7 +6,7 @@ import FlexokiLight from "/src/styles/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
 
 export default defineConfig({
-  site: 'https://chatter.kr',
+  site: 'https://chatter.kr/',
 
   image: {
     responsiveStyles: true,
@@ -16,7 +16,7 @@ export default defineConfig({
   // trailingSlash: "never",
 
   build: {
-    format: "preserve",
+    format: "file",
   },
   integrations: [
     tailwind(),
