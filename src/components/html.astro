@@ -81,6 +81,8 @@ const canonicalURL = pathname === '' ? `${site}/` : `${site}${pathname}`;
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="chatter" />
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
+        <link rel="preconnect" href="https://api-gateway.umami.dev" />
+    <link rel="dns-prefetch" href="https://api-gateway.umami.dev" />
     <ColorScheme />
     <link rel="preload" href={font1} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin />
