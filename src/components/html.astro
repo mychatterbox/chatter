@@ -64,8 +64,6 @@ const canonicalURL = pathname === '' ? `${site}/` : `${site}${pathname}`;
     <title>{title}</title>
     {searchTitle && <meta name="title" content={searchTitle} />}
     <meta name="description" content={description} />
-        <link rel="dns-prefetch" href="https://api-gateway.umami.dev" />
-    <link rel="preconnect" href="https://api-gateway.umami.dev" />
     <link rel="canonical" href={canonicalURL} />
     {robots && <meta name="robots" content={robots} />}
     <slot name="og">
