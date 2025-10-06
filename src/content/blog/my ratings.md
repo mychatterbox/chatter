@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-09-16
+pubDate: 2025-10-06
 slug: my-ratings
 featured: false
 draft: false
@@ -293,6 +293,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/tv/217553">중증외상센터 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/926606">The Home (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1339592">아침바다 갈매기는 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/92916">마리안 (Marianne) (2019)</a></li>
@@ -748,6 +749,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1535967">서부리 사나이 (2025) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/934456">아메리카나 (Americana) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/979660">기이한 이야기 (Freaky Tales) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1078605">웨폰 (Weapons) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1268811">우리 둘 사이에 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/40247">뉴욕에서 착하게 살아가는 법 (Please Give) (2010)</a></li>
@@ -1376,6 +1380,13 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1299372">통곡 (El llanto) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1106725">THE 자연인 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/15667">라스트 윈터 (The Last Winter) (2006)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1530875">All the Devils Are Here (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1257009">Primitive War (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/957121">지하실의 남자 (The Man in My Basement) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1306816">좀비딸 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1251683">Ba (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1500024">적인걸: 통천미안 (狄仁杰之通天谜案) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/282331">선지자의 밤 (2014)</a></li>
@@ -2224,6 +2235,11 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/338969">톡식 어벤저 (The Toxic Avenger) (2023)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1193824">래빗 트랩 (Rabbit Trap) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/257874">비니스 (Beneath) (2013)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1468660">Chiquita (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1107325">위치보드 (Witchboard) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/605804">더 레치드: 악령의 저주 (The Wretched) (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1535903">금지구역: 세 가지 파편 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/421049">The Watcher (2016)</a></li>
@@ -3115,6 +3131,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1121777">Hell Hath No Fury (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1221415">Brute 1976 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1101730">Killer Witches from Outer Space (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1354700">강령: 귀신놀이 (2025)</a></li>
@@ -3617,6 +3634,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/228915">Lord of Tears (2013)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1375402">Bitter Souls (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1110775">Behold! (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1416798">7인의 황후 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1330167">M블러디 사이렌: 핵잠수함 USS 타이탄 (What Lurks Beneath) (2024)</a></li>
@@ -3816,6 +3835,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>    
+<li> <a href="https://www.themoviedb.org/movie/1179323">검은 령 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1365083">Witch Hunter (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1118608">Crackcoon (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1323798">Leprechaun: The Beginning (2025)</a></li>
