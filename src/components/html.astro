@@ -1,9 +1,9 @@
 ---
 import ColorScheme from "components/colorscheme/head.astro";
 import { ClientRouter } from 'astro:transitions';
-// import "styles/global.css"; // ⚠️ 제거
+import stylesUrl from '../styles/global.css';
 import { themeColors } from "components/colorscheme/theme.ts";
-import font3 from "fonts/PretendardGOV-Medium.subset.woff2";
+import font3 from '../fonts/PretendardGOV-Medium.subset.woff2';
 
 export interface Props {
   title: string;
@@ -114,8 +114,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
     
     <!-- ⚠️ 전체 CSS는 비동기 로드 -->
-    <link rel="preload" as="style" href="/styles/global.css" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles/global.css"></noscript>
+    <link rel="preload" as="style" href={stylesUrl} onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href={stylesUrl}></noscript>
     
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" href={new URL("rss.xml", Astro.site)} title="rss" />
