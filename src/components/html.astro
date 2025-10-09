@@ -1,13 +1,9 @@
 ---
 import ColorScheme from "components/colorscheme/head.astro";
-import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
+// import "styles/global.css"; // ⚠️ 제거
 import { themeColors } from "components/colorscheme/theme.ts";
-import font1 from "fonts/PretendardGOV-ExtraBold.subset.woff2";
-import font2 from "fonts/PretendardGOV-SemiBold.subset.woff2";
 import font3 from "fonts/PretendardGOV-Medium.subset.woff2";
-import font4 from "fonts/CascadiaCode.woff2";
-
 
 export interface Props {
   title: string;
@@ -39,35 +35,70 @@ const finalOgImage = ogImage
   ? new URL(ogImage, Astro.url).toString()
   : defaultOgImage;
 
-// const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-// const site = String(Astro.site).replace(/\/+$/, '');
-// const pathname = Astro.url.pathname.replace(/\/+$/, '');
-// const canonicalURL = pathname === '' ? `${site}/` : `${site}${pathname}`;
-
-// const site = String(Astro.site).replace(/\/+$/, '');
-// const pathname = Astro.url.pathname
-//   .replace(/\.html$/, '')
-//   .replace(/\/+$/, '');
-
-// const canonicalURL = pathname === '' ? `${site}/` : `${site}${pathname}`;
+const site = String(Astro.site).replace(/\/+$/, '');
+const pathname = Astro.url.pathname
+  .replace(/\.html$/, '')
+  .replace(/\/+$/, '');
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 ---
 
 <!doctype html>
-<html class="h-full antialiased" lang="ko" >
+<html class="h-full antialiased" lang="ko">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    
+    <!-- ⚡ Critical CSS 인라인 (렌더링 차단 제거) -->
+    <style is:inline>
+      /* Tailwind Base - 최소화 버전 */
+      *,::before,::after{box-sizing:border-box;border:0 solid;}
+      html{-webkit-text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif;line-height:1.5;}
+      body{margin:0;line-height:inherit;}
+      h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;}
+      a{color:inherit;text-decoration:inherit;}
+      
+      /* Layout */
+      .h-full{height:100%;}
+      .flex{display:flex;}
+      .flex-col{flex-direction:column;}
+      .antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+      
+      /* Colors */
+      .bg-custom-bg-light{background-color:#f5f7f9;}
+      .dark .dark\:bg-custom-bg-dark{background-color:#100F0F;}
+      
+      /* 폰트 preload를 위한 기본 스타일 */
+      body{font-family:Pretendard,ui-sans-serif,system-ui,sans-serif;}
+    </style>
+    
+    <!-- ⚡ 폰트 정의 인라인 (font-display: swap) -->
+    <style is:inline>
+      @font-face{font-family:Pretendard;src:url(/fonts/PretendardGOV-Medium.subset.woff2) format('woff2');font-weight:500;font-display:swap;}
+      @font-face{font-family:Pretendard;src:url(/fonts/PretendardGOV-SemiBold.subset.woff2) format('woff2');font-weight:600;font-display:swap;}
+      @font-face{font-family:Pretendard;src:url(/fonts/PretendardGOV-ExtraBold.subset.woff2) format('woff2');font-weight:800;font-display:swap;}
+      @font-face{font-family:CascadiaCode;src:url(/fonts/CascadiaCode.woff2) format('woff2');font-weight:400;font-display:swap;}
+    </style>
+    
+    <!-- ⚡ Umami preconnect -->
+    <link rel="preconnect" href="https://api-gateway.umami.dev" crossorigin />
+    <link rel="dns-prefetch" href="https://api-gateway.umami.dev" />
+    
+    <!-- ⚡ 테마 스크립트 -->
+    <ColorScheme />
+    
+    <!-- ⚡ 폰트 preload -->
+    <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin />
+    
     <meta name="theme-color" content={themeColor} />
     <meta name="color-scheme" content="light dark" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    
     <title>{title}</title>
     {searchTitle && <meta name="title" content={searchTitle} />}
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     {robots && <meta name="robots" content={robots} />}
+    
     <slot name="og">
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content="chatter.kr" />
@@ -77,26 +108,30 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       {finalOgImage && <meta property="og:image" content={finalOgImage} />}
       <meta property="twitter:card" content="summary_large_image" />
     </slot>
-    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
-    <link rel="shortcut icon" href="/icons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="chatter" />
-    <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
-
     
-    <ColorScheme />
-    <link rel="prefetch" href={font1} as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin="anonymous" />
-    <link rel="prefetch" href={font4} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
+    
+    <!-- ⚠️ 전체 CSS는 비동기 로드 -->
+    <link rel="preload" as="style" href="/styles/global.css" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles/global.css"></noscript>
+    
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <!-- <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="rss" /> -->
-    <link rel="alternate" type="application/rss+xml"  href={new URL("rss.xml", Astro.site)} title="rss" />
+    <link rel="alternate" type="application/rss+xml" href={new URL("rss.xml", Astro.site)} title="rss" />
+    
     <slot name="head" />
-    <!-- <ClientRouter /> -->
+    <ClientRouter />
   </head>
   <body class="flex h-full flex-col bg-custom-bg-light dark:bg-custom-bg-dark">
     <slot />
+    
+    <!-- ⚡ Umami 스크립트 (defer + async) -->
+    <script 
+      defer
+      async
+      data-website-id="4811eb93-de23-464b-a636-82f4ab7af5b9" 
+      src="https://cloud.umami.is/script.js">
+    </script>
   </body>
 </html>
