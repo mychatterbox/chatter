@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-10-06
+pubDate: 2025-10-08
 slug: my-ratings
 featured: false
 draft: false
@@ -1380,6 +1380,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/696605">조시아가 본 것 (What Josiah Saw) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1299372">통곡 (El llanto) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1106725">THE 자연인 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/15667">라스트 윈터 (The Last Winter) (2006)</a></li>
@@ -2235,6 +2236,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/597652">올 머스트 다이 (Alle må dø) (2020)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1038392">컨저링: 마지막 의식 (The Conjuring: Last Rites) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1373445">V/H/S/할로윈 (V/H/S/HALLOWEEN) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/338969">톡식 어벤저 (The Toxic Avenger) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1193824">래빗 트랩 (Rabbit Trap) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/257874">비니스 (Beneath) (2013)</a></li>
@@ -3131,6 +3135,9 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1514364">Kill Me Again (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/414627">물 없는 바다 (2011)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/59392">Backlight (2010)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1121777">Hell Hath No Fury (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1221415">Brute 1976 (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1101730">Killer Witches from Outer Space (2023)</a></li>
