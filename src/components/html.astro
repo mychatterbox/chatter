@@ -1,6 +1,6 @@
 ---
 import ColorScheme from "components/colorscheme/head.astro";
-import rawStylesCSS from "styles/global.css?raw";
+import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
 import { themeColors } from "components/colorscheme/theme.ts";
 import font1 from "fonts/PretendardGOV-ExtraBold.subset.woff2";
@@ -38,19 +38,6 @@ const defaultOgImage = "https://chatter.kr/images/no_ogimage.png";
 const finalOgImage = ogImage
   ? new URL(ogImage, Astro.url).toString()
   : defaultOgImage;
-
-// const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-// const site = String(Astro.site).replace(/\/+$/, '');
-// const pathname = Astro.url.pathname.replace(/\/+$/, '');
-// const canonicalURL = pathname === '' ? `${site}/` : `${site}${pathname}`;
-
-// const site = String(Astro.site).replace(/\/+$/, '');
-// const pathname = Astro.url.pathname
-//   .replace(/\.html$/, '')
-//   .replace(/\/+$/, '');
-
-// const canonicalURL = pathname === '' ? `${site}/` : `${site}${pathname}`;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -90,7 +77,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="prefetch" href={font4} as="font" type="font/woff2" crossorigin="anonymous" />
-        <style is:inline set:html={rawStylesCSS}></style>
     <link rel="sitemap" href="/sitemap-index.xml" />
     <!-- <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="rss" /> -->
     <link rel="alternate" type="application/rss+xml"  href={new URL("rss.xml", Astro.site)} title="rss" />
