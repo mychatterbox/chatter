@@ -45,12 +45,14 @@ const finalOgImage = ogImage
 // const pathname = Astro.url.pathname.replace(/\/+$/, '');
 // const canonicalURL = pathname === '' ? `${site}/` : `${site}${pathname}`;
 
-const site = String(Astro.site).replace(/\/+$/, '');
-const pathname = Astro.url.pathname
-  .replace(/\.html$/, '')
-  .replace(/\/+$/, '');
+// const site = String(Astro.site).replace(/\/+$/, '');
+// const pathname = Astro.url.pathname
+//   .replace(/\.html$/, '')
+//   .replace(/\/+$/, '');
 
-const canonicalURL = pathname === '' ? `${site}/` : `${site}${pathname}`;
+// const canonicalURL = pathname === '' ? `${site}/` : `${site}${pathname}`;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 ---
 
@@ -84,10 +86,10 @@ const canonicalURL = pathname === '' ? `${site}/` : `${site}${pathname}`;
 
     
     <ColorScheme />
-    <link rel="preload" href={font1} as="font" type="font/woff2" crossorigin />
+    <link rel="prefetch" href={font1} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={font4} as="font" type="font/woff2" crossorigin />
+    <link rel="prefetch" href={font4} as="font" type="font/woff2" crossorigin />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <!-- <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="rss" /> -->
     <link rel="alternate" type="application/rss+xml"  href={new URL("rss.xml", Astro.site)} title="rss" />
