@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* @font-face {
+@font-face {
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 500;
@@ -24,7 +24,7 @@
   font-weight: 700;
   font-display: swap;
   src: url(../fonts/PretendardGOV-ExtraBold.subset.woff2) format("woff2");
-} */
+}
 
 @font-face {
   font-family: "General Sans";
