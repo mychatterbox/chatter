@@ -1,6 +1,7 @@
 ---
 import ColorScheme from "components/colorscheme/head.astro";
-import "styles/global.css";
+// import "styles/global.css";
+import gcss from "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
 import { themeColors } from "components/colorscheme/theme.ts";
 import font1 from "fonts/PretendardGOV-ExtraBold.subset.woff2";
@@ -72,7 +73,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
 
     
-    
+    <link rel="preload" href={gcss} as="style" >
     <link rel="preload" href={font1} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin />
