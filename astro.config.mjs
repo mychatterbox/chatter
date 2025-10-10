@@ -17,6 +17,7 @@ export default defineConfig({
 
   build: {
     format: "preserve",
+    inlineStylesheets: 'always',
   },
   integrations: [
     tailwind(),
