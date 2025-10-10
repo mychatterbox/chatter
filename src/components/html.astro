@@ -76,6 +76,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin />
     <link rel="prefetch" href={font4} as="font" type="font/woff2" crossorigin />
+    <link rel="preconnect" href="https://api-gateway.umami.dev" crossorigin />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <!-- <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="rss" /> -->
     <link rel="alternate" type="application/rss+xml"  href={new URL("rss.xml", Astro.site)} title="rss" />
@@ -84,5 +85,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body class="flex h-full flex-col bg-custom-bg-light dark:bg-custom-bg-dark">
     <slot />
+    <script defer async
+  data-website-id="4811eb93-de23-464b-a636-82f4ab7af5b9" 
+  src="https://cloud.umami.is/script.js">
+</script>
   </body>
 </html>
