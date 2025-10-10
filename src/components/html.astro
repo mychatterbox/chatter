@@ -45,8 +45,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!doctype html>
 <html class="h-full antialiased" lang="ko" >
   <head>
+    <ColorScheme />
     <meta charset="utf-8" />
-    <meta name="theme-color" content={themeColor} />
+    <!-- <meta name="theme-color" content={themeColor} /> -->
     <meta name="color-scheme" content="light dark" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
@@ -71,11 +72,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
 
     
-    <ColorScheme />
+    
     <link rel="preload" href={font1} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin />
-    <link rel="prefetch" href={font4} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={font4} as="font" type="font/woff2" crossorigin />
     <link rel="preconnect" href="https://api-gateway.umami.dev" crossorigin />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <!-- <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="rss" /> -->
