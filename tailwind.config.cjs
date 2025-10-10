@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          ['"Pretendard"', ...defaultTheme.fontFamily.sans],
+          ['"Pretendard Variable"', ...defaultTheme.fontFamily.sans],
           { fontFeatureSettings: '"cv12"' },
         ],
         mono: [
