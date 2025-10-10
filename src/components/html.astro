@@ -3,9 +3,9 @@ import ColorScheme from "components/colorscheme/head.astro";
 import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
 import { themeColors } from "components/colorscheme/theme.ts";
-// import font1 from "fonts/PretendardGOV-ExtraBold.subset.woff2";
-// import font2 from "fonts/PretendardGOV-SemiBold.subset.woff2";
-// import font3 from "fonts/PretendardGOV-Medium.subset.woff2";
+import font1 from "fonts/PretendardGOV-ExtraBold.subset.woff2";
+import font2 from "fonts/PretendardGOV-SemiBold.subset.woff2";
+import font3 from "fonts/PretendardGOV-Medium.subset.woff2";
 import font4 from "fonts/CascadiaCode.woff2";
 
 
@@ -72,11 +72,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     
     <ColorScheme />
-    <!-- <link rel="prefetch" href={font1} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={font1} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin /> -->
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-
+    <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin />
     <link rel="prefetch" href={font4} as="font" type="font/woff2" crossorigin />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <!-- <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="rss" /> -->
