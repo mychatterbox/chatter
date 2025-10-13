@@ -78,6 +78,11 @@
       background-color: #161515 !important;
     }
   }
+
+  .prose pre code {
+    background-color: transparent !important;
+    color: inherit !important; 
+    }
 }
 
 
