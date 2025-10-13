@@ -3,10 +3,10 @@ import ColorScheme from "components/colorscheme/head.astro";
 import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
 import { themeColors } from "components/colorscheme/theme.ts";
-// import font1 from "fonts/PretendardGOV-ExtraBold.subset.woff2";
-// import font2 from "fonts/PretendardGOV-SemiBold.subset.woff2";
-// import font3 from "fonts/PretendardGOV-Medium.subset.woff2";
-// import font4 from "fonts/CascadiaCode.woff2";
+import font1 from "fonts/PretendardGOV-ExtraBold.subset.woff2";
+import font2 from "fonts/PretendardGOV-SemiBold.subset.woff2";
+import font3 from "fonts/PretendardGOV-Medium.subset.woff2";
+import font4 from "fonts/CascadiaCode.woff2";
 
 export interface Props {
   title: string;
@@ -45,10 +45,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <html class="h-full antialiased" lang="ko" >
   <head>
     <meta charset="utf-8" />
-    <!-- <link rel="preload" href={font1} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={font1} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={font4} as="font" type="font/woff2" crossorigin /> -->
+    <link rel="preload" href={font4} as="font" type="font/woff2" crossorigin />
     <ColorScheme />
     <!-- <meta name="theme-color" content={themeColor} /> -->
     <meta name="color-scheme" content="light dark" />
@@ -74,9 +74,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="apple-mobile-web-app-title" content="chatter" />
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
 
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous">
+    <!-- <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous">
     <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" /> -->
 
     <link rel="preconnect" href="https://api-gateway.umami.dev" crossorigin />
     <link rel="sitemap" href="/sitemap-index.xml" />
