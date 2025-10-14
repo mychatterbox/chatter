@@ -7,9 +7,9 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = {
   dark: "#100F0F",        // head.astro: colors.dark와 동일
   light: "#f5f7f9",       // head.astro: colors.light와 동일
-  codeBlockDark: "#161515",
-  codeBlockLight: "#f1f2f3",
-  textDark: "#28272b",
+  // codeBlockDark: "#9b0c0cff",
+  // codeBlockLight: "#f1f2f3",
+  // textDark: "#28272b",
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -31,13 +31,13 @@ module.exports = {
       colors: {
         "custom-bg-dark": colors.dark,
         "custom-bg-light": colors.light,
-        "custom-code-dark": colors.codeBlockDark,
-        "custom-code-light": colors.codeBlockLight,
+        // "custom-code-dark": colors.codeBlockDark,
+        // "custom-code-light": colors.codeBlockLight,
       },
       typography: {
         DEFAULT: {
           css: {
-            "--tw-prose-body": colors.textDark,
+            // "--tw-prose-body": colors.textDark,
             code: {
               fontFamily: "inherit",
               fontSize: "1em",
