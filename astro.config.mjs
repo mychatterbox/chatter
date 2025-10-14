@@ -29,12 +29,9 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       themes: {
-        // light: 'vitesse-light',
         light: FlexokiLight,
-        // dark: 'vitesse-dark',
         dark: FlexokiDark,
       },
-      // defaultColor: false,
     },
   },
   // wrap: true,
