@@ -24,7 +24,7 @@ module.exports = {
           { fontFeatureSettings: '"cv12"' },
         ],
         mono: [
-          ['"CascadiaCode"', '"Pretendard Variable"', ...defaultTheme.fontFamily.mono],
+          ['"Cascadia Code"', '"Pretendard Variable"', ...defaultTheme.fontFamily.mono],
           { fontFeatureSettings: '"zero"' },
         ],
       },
