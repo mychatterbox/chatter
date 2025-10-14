@@ -73,7 +73,7 @@
   .dark .astro-code,
   .dark .astro-code span {
     color: var(--shiki-dark) !important;
-    background-color: theme('colors.custom-code-dark') !important;
+    background-color: var(--shiki-dark-bg) !important;
   }
 
   .prose pre code {
