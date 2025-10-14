@@ -2,7 +2,6 @@
 import ColorScheme from "components/colorscheme/head.astro";
 import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
-import { themeColors } from "components/colorscheme/theme.ts";
 import font1 from "fonts/PretendardGOV-ExtraBold.subset.woff2";
 import font2 from "fonts/PretendardGOV-SemiBold.subset.woff2";
 import font3 from "fonts/PretendardGOV-Medium.subset.woff2";
@@ -17,7 +16,6 @@ export interface Props {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
-  themeColor?: string;
   pubDate?: Date;
 }
 
@@ -30,7 +28,6 @@ const {
   ogTitle = title,
   ogDescription = description,
   ogImage,
-  themeColor = themeColors.dark.meta,
 } = Astro.props;
 
 const defaultOgImage = "https://chatter.kr/images/no_ogimage.png";
@@ -42,7 +39,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html class="h-full antialiased" lang="ko" >
+<html class="h-full antialiased" lang="ko">
   <head>
     <meta charset="utf-8" />
     <link rel="preload" href={font1} as="font" type="font/woff2" crossorigin />
@@ -50,7 +47,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={font4} as="font" type="font/woff2" crossorigin />
     <ColorScheme />
-    <!-- <meta name="theme-color" content={themeColor} /> -->
     <meta name="color-scheme" content="light dark" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
@@ -58,6 +54,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     {robots && <meta name="robots" content={robots} />}
+    
     <slot name="og">
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content="chatter.kr" />
@@ -67,6 +64,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       {finalOgImage && <meta property="og:image" content={finalOgImage} />}
       <meta property="twitter:card" content="summary_large_image" />
     </slot>
+    
     <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     <link rel="shortcut icon" href="/icons/favicon.ico" />
@@ -74,19 +72,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="apple-mobile-web-app-title" content="chatter" />
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
 
-    <!-- <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous">
-    <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" /> -->
-
     <link rel="preconnect" href="https://api-gateway.umami.dev" crossorigin />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <!-- <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="rss" /> -->
-    <link rel="alternate" type="application/rss+xml"  href={new URL("rss.xml", Astro.site)} title="rss" />
+    <link rel="alternate" type="application/rss+xml" href={new URL("rss.xml", Astro.site)} title="rss" />
+    
     <slot name="head" />
     <ClientRouter />
-    </head>
+  </head>
+  
   <body class="flex h-full flex-col bg-custom-bg-light dark:bg-custom-bg-dark">
     <slot />
-
   </body>
 </html>

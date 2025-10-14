@@ -1,29 +1,31 @@
 ---
-// head.astro
-import { themeColors } from "components/colorscheme/theme.ts";
-
-export interface Props {
-  themeColor?: string;
-}
-
-const { themeColor } = Astro.props;
+const colors = {
+  dark: "#100F0F",
+  light: "#f5f7f9",
+};
 ---
 
-<meta name="theme-color" content={themeColor || themeColors.dark.meta} />
+<!-- 브라우저 UI 테마 색상 (모바일 상단바, PWA 등) -->
+<meta name="theme-color" content={colors.dark} />
 
 <script is:inline define:vars={{
-  lightTheme: themeColors.light.meta,
-  darkTheme: themeColors.dark.meta
+  lightTheme: colors.light,
+  darkTheme: colors.dark
 }}>
   if (!window.__themeInitialized) {
     window.__themeInitialized = true;
     
     const applyTheme = (isDark, doc = document) => {
+      // HTML에 'dark' 클래스 토글 (Tailwind용)
       doc.documentElement.classList.toggle('dark', isDark);
+      
+      // 브라우저 테마 색상 업데이트
       const metaTheme = doc.querySelector('meta[name="theme-color"]');
       if (metaTheme) {
         metaTheme.content = isDark ? darkTheme : lightTheme;
       }
+      
+      // localStorage에 저장
       if (doc === document) {
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       }
@@ -35,18 +37,22 @@ const { themeColor } = Astro.props;
       return savedTheme ? savedTheme === 'dark' : prefersDark;
     };
     
+    // 초기 테마 적용
     applyTheme(getTheme());
 
+    // Astro View Transitions 지원
     document.addEventListener('astro:before-swap', ({ newDocument }) => {
       applyTheme(getTheme(), newDocument);
     });
 
+    // 전역 테마 토글 함수
     window.toggleTheme = () => {
       const isDark = !document.documentElement.classList.contains('dark');
       applyTheme(isDark);
       return isDark ? 'dark' : 'light';
     };
 
+    // 시스템 테마 변경 감지
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem('theme')) {
         applyTheme(e.matches);

@@ -1,5 +1,17 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
+// ============================================
+// 색상 정의
+// ============================================
+// ⚠️ 중요: head.astro의 colors와 동일하게 유지하세요!
+const colors = {
+  dark: "#100F0F",        // head.astro: colors.dark와 동일
+  light: "#f5f7f9",       // head.astro: colors.light와 동일
+  codeBlockDark: "#161515",
+  codeBlockLight: "#f1f2f3",
+  textDark: "#28272b",
+};
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
@@ -17,15 +29,15 @@ module.exports = {
         ],
       },
       colors: {
-        "custom-bg-dark": "#100F0F",
-        "custom-bg-light": "#f5f7f9",
+        "custom-bg-dark": colors.dark,
+        "custom-bg-light": colors.light,
+        "custom-code-dark": colors.codeBlockDark,
+        "custom-code-light": colors.codeBlockLight,
       },
       typography: {
         DEFAULT: {
           css: {
-            "--tw-prose-body": "#28272b",
-            // '--tw-prose-body': '#3f3f46',
-            // '--tw-prose-invert-body': '#d4d4d8',
+            "--tw-prose-body": colors.textDark,
             code: {
               fontFamily: "inherit",
               fontSize: "1em",
@@ -39,7 +51,6 @@ module.exports = {
               marginBottom: "2rem",
               borderTopWidth: "1px",
               borderColor: "currentColor",
-              
             },
           },
         },
