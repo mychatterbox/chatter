@@ -20,11 +20,11 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          ['"Pretendard"', ...defaultTheme.fontFamily.sans],
+          ['"Pretendard Variable"', 'Pretendard', 'system-ui', ...defaultTheme.fontFamily.sans],
           { fontFeatureSettings: '"cv12"' },
         ],
         mono: [
-          ['"CascadiaCode"', '"Pretendard"', ...defaultTheme.fontFamily.mono],
+          ['"CascadiaCode"', '"Pretendard Variable"', ...defaultTheme.fontFamily.mono],
           { fontFeatureSettings: '"zero"' },
         ],
       },
