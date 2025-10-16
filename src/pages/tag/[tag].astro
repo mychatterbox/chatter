@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import FeedItem from "components/feed-item.astro";
+import Html from "components/html.astro";
+import Nav from "components/navbar.astro";
+
+export async function getStaticPaths() {
+  const pub = await getCollection("blog", ({ data }) => !data.draft);
+  const tagsSet = new Set<string>();
+  
+  pub.forEach((entry) => {
+    if (entry.data.tags) {
+      entry.data.tags.forEach((tag: string) => tagsSet.add(tag));
+    }
+  });
+  
+  return Array.from(tagsSet).map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+
+// 게시물을 가져오고 필터링 및 정렬
+const pub = await getCollection("blog", ({ data }) => !data.draft);
+const filteredPub = pub.filter((p) => p.data.tags?.includes(tag));
+filteredPub.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const title = `#${tag}`;
+const description = `${tag} 태그가 달린 게시물`;
+---
+
+<Html title={title} description={description}>
+  <Nav />
+  <main class="px-4 pb-12 pt-16">
+    <div class="mx-auto max-w-screen-lg mb-8">
+      <h1 class="text-xl lg:text-3xl font-extrabold text-custom-bg-dark/90 dark:text-custom-bg-light/90">
+        <span class="text-blue-600 dark:text-blue-400 mr-1">#</span>{tag}
+      </h1>
+      <div class="mt-6 border-t border-zinc-500 dark:border-zinc-500"></div>
+    </div>
+    <ul class="mx-auto max-w-screen-lg font-medium">
+      {filteredPub.map((entry) => <FeedItem entry={entry} />)}
+    </ul>
+  </main>
+</Html>

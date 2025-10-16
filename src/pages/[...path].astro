@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const {
-  data: { title, description, pubDate, kind, ogImage},
+  data: { title, description, pubDate, kind, ogImage, tags },
 } = entry;
 const { Content } = await render(entry);
 
@@ -32,7 +32,7 @@ const draft = entry.id.startsWith("draft/");
   robots={draft ? "noindex" : undefined}
 >
   <Nav />
-  <main class="flex-1 px-4 pb-12 sm:pb-24 pt-8"> <!-- pt-20 추가 -->
+  <main class="flex-1 px-4 pb-12 sm:pb-24 pt-8">
     <article class="mx-auto max-w-screen-lg break-words font-medium">
       <div class="mb-5 flex flex-col items-start">
         <h1 transition:name={`title-${entry.id}`}
@@ -64,6 +64,22 @@ const draft = entry.id.startsWith("draft/");
       <Prose>
         <Content />
       </Prose>
+      
+      <!-- 태그 섹션 -->
+    {tags && tags.length > 0 && (
+        <div class="mt-12 pt-8 border-t border-zinc-500 dark:border-zinc-500">
+          <div class="flex flex-wrap gap-4">
+            {tags.map((tag: string) => (
+              <a
+                href={`/tag/${tag}`}
+                class="inline-flex items-center font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors"
+              >
+                <span class="text-blue-600 dark:text-blue-400 mr-1">#</span>{tag}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </article>
   </main>
 </Html>
