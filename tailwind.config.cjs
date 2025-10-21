@@ -21,7 +21,7 @@ module.exports = {
       fontFamily: {
         sans: [
           ['"Pretendard Variable"', 'Pretendard', 'system-ui', ...defaultTheme.fontFamily.sans],
-          { fontFeatureSettings: '"cv12"' },
+          { fontFeatureSettings: '"case", "cv12"' },
         ],
         mono: [
           ['"Cascadia Code"', '"Pretendard Variable"', ...defaultTheme.fontFamily.mono],
