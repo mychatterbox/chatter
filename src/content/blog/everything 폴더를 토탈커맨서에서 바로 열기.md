@@ -9,7 +9,7 @@ draft: false
 tags:
   - 윈도우
 ogImage: ""
-description: Everythingd에서 검색된 파일의 위치를 탐색기가 아닌 토탈커맨더의 패널에서 바로 확인하는 방법을 설명합니다.
+description: Everything에서 검색된 파일의 위치를 탐색기가 아닌 토탈커맨더의 패널에서 바로 확인하는 방법을 설명합니다.
 keywords:
   - everything 토탈커맨더
   - 토탈커맨더 everything
