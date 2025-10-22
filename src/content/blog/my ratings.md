@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-10-08
+pubDate: 2025-10-21
 slug: my-ratings
 featured: false
 draft: false
@@ -749,7 +749,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
-<li> <a href="https://www.themoviedb.org/movie/1535967">서부리 사나이 (2025) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1151272">시라트 (Sirāt) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1535967">서부리 사나이 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/934456">아메리카나 (Americana) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/979660">기이한 이야기 (Freaky Tales) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1078605">웨폰 (Weapons) (2025)</a></li>
@@ -2236,6 +2237,10 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1372260">Your Host (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1151766">살인자 리포트 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1290879">우먼 인 캐빈 10 (The Woman in Cabin 10) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1173185">The Fetus (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/597652">올 머스트 다이 (Alle må dø) (2020)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1038392">컨저링: 마지막 의식 (The Conjuring: Last Rites) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1373445">V/H/S/할로윈 (V/H/S/HALLOWEEN) (2025)</a></li>
@@ -3135,6 +3140,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/707150">T근본주의자 (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/466129">The Hatred (2017)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1514364">Kill Me Again (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/414627">물 없는 바다 (2011)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/59392">Backlight (2010)</a></li>
@@ -3641,6 +3648,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1216210">eVil Sublet (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/228915">Lord of Tears (2013)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1375402">Bitter Souls (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1110775">Behold! (2025)</a></li>
