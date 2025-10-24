@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - 미니pc
-  - 충전기
+  - 하드웨어
 ogImage: /blog-images/2024/minipc-pdcharger_1.webp
 description: N100 등 미니PC 를 일반 PD 충전기로 사용할 때 주의할 점과 팁을 알아봅시다.
 keywords:

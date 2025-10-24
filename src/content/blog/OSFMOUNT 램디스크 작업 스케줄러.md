@@ -9,6 +9,7 @@ draft: false
 tags:
   - 램디스크
   - OSFMOUNT
+  - 소프트웨어
 ogImage: ""
 description: OSFMOUNT 를 작업 스케줄러에 등록해 윈도우 시작 시 자동으로 폴더를 만드는 방법을 설명합니다.
 keywords:

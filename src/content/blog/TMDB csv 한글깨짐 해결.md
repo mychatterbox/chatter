@@ -8,6 +8,7 @@ featured: false
 draft: false
 tags:
   - tmdb
+  - 소프트웨어
 ogImage: ""
 description: TMDB 혹은 어디선가 받은 csv 파일 한글깨짐이 잘 해결이 안되나요?
 keywords:

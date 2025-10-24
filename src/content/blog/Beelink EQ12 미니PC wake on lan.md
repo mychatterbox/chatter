@@ -8,6 +8,7 @@ featured: false
 draft: false
 tags:
   - 미니pc
+  - 소프트웨어
 ogImage: /blog-images/2024/eq12-wol_3.webp
 description: Beelink의 n100 미니PC 중 EQ12 모델의 wake on lan 내용과 WOL 프로그램을 하나 추천합니다.
 keywords:
