@@ -5,14 +5,14 @@ import Moon from "../../icons/hero/solid/moon.svg";
 
 <button
   id="theme-toggle"
-  class="inline-flex items-center p-1 transition duration-1000 sm:motion-safe:hover:rotate-45 sm:motion-safe:hover:scale-125"
+  class="theme-toggle"
   aria-label="Switch color scheme"
   onclick="toggleTheme()"
 >
-  <span class="h-6 w-6 dark:hidden">
-    <Sun class="h-full w-full text-gray-900" />
+  <span class="theme-toggle-icon theme-toggle-sun">
+    <Sun />
   </span>
-  <span class="hidden h-6 w-6 dark:block">
-    <Moon class="h-full w-full text-white" />
+  <span class="theme-toggle-icon theme-toggle-moon">
+    <Moon />
   </span>
 </button>

@@ -7,35 +7,35 @@ const { entry } = Astro.props;
 const {
   id,
   data: { title, description, pubDate, kind },
-  // data: { title, description, pubDate, kind, tags },
 } = entry;
 const { Content } = await render(entry);
 const draft = entry.id.startsWith("draft/");
 ---
+
 {
 id !== "my-ratings" && id !== "site-info" && (
-<li class="pb-20" >
-  <div class="mb-5 flex flex-col items-start" >
+<li class="feed-item">
+  <div class="article-header">
     <a
-      class="decoration-zinc-900 decoration-2 underline-offset-4 hover:underline dark:decoration-white" 
+      class="title-link" 
       href={`/${id}`} 
     >
-      <h2 transition:name={`title-${entry.id}`}
-      class="text-xl font-bold leading-tight text-custom-bg-dark/90 dark:text-custom-bg-light/90"
-      
-    >
-    {title}
-    </h2>
+      <h2 
+        transition:name={`title-${entry.id}`}
+        class="title-main"
+      >
+        {title}
+      </h2>
     </a>
-    <div class="flex items-center space-x-1 pl-1">
-      <div class="text-sm text-zinc-600 dark:text-zinc-400">
+    <div class="article-meta">
+      <div class="text-sm text-muted">
         {
           kind === "article" ? (
-          <a href={`/kind/${kind}`} class="font-medium text-blue-600 dark:text-blue-400 pr-2">
+            <a href={`/kind/${kind}`} class="link-blue pr-2">
               Article
             </a>
           ) : kind === "note" ? (
-          <a href={`/kind/${kind}`} class="font-medium text-emerald-700 dark:text-emerald-400 pr-2">
+            <a href={`/kind/${kind}`} class="link-emerald pr-2">
               Note
             </a>
           ) : null
@@ -44,7 +44,7 @@ id !== "my-ratings" && id !== "site-info" && (
       </div>
       {
         draft && (
-          <div class="text-sm font-black uppercase text-rose-600 dark:text-rose-600">draft</div>
+          <div class="text-sm font-black uppercase text-rose">draft</div>
         )
       }
     </div>
@@ -57,13 +57,6 @@ id !== "my-ratings" && id !== "site-info" && (
         <Content />
       ) : null
     }
-    {/* {
-      kind === "article" ? (
-        <p class="break-words">{description}</p>
-      ) : kind === "note" ? (
-        <Content />
-      ) : null
-    } */}
   </Prose>
 </li>
 )

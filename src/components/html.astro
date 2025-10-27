@@ -2,11 +2,6 @@
 import ColorScheme from "components/colorscheme/head.astro";
 import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
-// import font1 from "fonts/PretendardGOV-ExtraBold.subset.woff2";
-// import font2 from "fonts/PretendardGOV-SemiBold.subset.woff2";
-// import font3 from "fonts/PretendardGOV-Medium.subset.woff2";
-// import font4 from "fonts/CascadiaCode.woff2";
-// import font5 from "fonts/PretendardStdVariable.woff2";
 
 export interface Props {
   title: string;
@@ -40,26 +35,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html class="h-full antialiased" lang="ko">
+<html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <!-- <link rel="preload" href={font1} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={font2} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={font3} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={font4} as="font" type="font/woff2" crossorigin /> -->
-<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">   -->
-     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous">
-     <!-- <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" /> -->
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-<!-- <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
-<link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" /> -->
+
     <ColorScheme />
     <meta name="color-scheme" content="light dark" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -86,7 +71,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="apple-mobile-web-app-title" content="chatter" />
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
 
-    <!-- <link rel="preconnect" href="https://api-gateway.umami.dev" crossorigin /> -->
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" href={new URL("rss.xml", Astro.site)} title="rss" />
     
@@ -94,7 +78,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <ClientRouter />
   </head>
   
-  <body class="flex h-full flex-col bg-custom-bg-light dark:bg-custom-bg-dark">
+  <body>
     <slot />
   </body>
 </html>

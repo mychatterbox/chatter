@@ -1,19 +1,18 @@
 ---
-
 import { getCollection } from "astro:content";
 import FeedItem from "components/feed-item.astro";
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
-// import { format } from "date-fns";
-
 
 const pub = await getCollection("blog", ({ data }) => !data.draft);
 pub.sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 ---
+
 <Html title="mychatterbox" description="이런 것도 팁이 되나 싶은 정보들">
   <Nav />
-  <main class="px-4 pb-12 pt-8">
-    <ul class="mx-auto max-w-screen-lg font-medium">
+
+  <main class="main-container">
+    <ul class="feed-list article-container">
       {pub.map((entry) => <FeedItem entry={entry} />)}
     </ul>
   </main>

@@ -1,8 +1,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
-import FlexokiDark from "/src/styles/Flexoki-Dark-color-theme.json";
-import FlexokiLight from "/src/styles/Flexoki-Light-color-theme.json";
+import FlexokiDark from "./src/styles/Flexoki-Dark-color-theme.json";
+import FlexokiLight from "./src/styles/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
 
 export default defineConfig({
@@ -19,7 +18,6 @@ export default defineConfig({
     format: "preserve",
   },
   integrations: [
-    tailwind(),
     sitemap({
       filter: (p) => !p.includes("/draft/"),
     }),
@@ -34,6 +32,6 @@ export default defineConfig({
       },
     },
   },
-  // wrap: true,
+  
   scopedStyleStrategy: "where",
 });

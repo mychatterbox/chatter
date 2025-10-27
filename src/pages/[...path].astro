@@ -32,23 +32,24 @@ const draft = entry.id.startsWith("draft/");
   robots={draft ? "noindex" : undefined}
 >
   <Nav />
-  <main class="flex-1 px-4 pb-12 sm:pb-24 pt-8">
-    <article class="mx-auto max-w-screen-lg break-words font-medium">
-      <div class="mb-5 flex flex-col items-start">
-        <h1 transition:name={`title-${entry.id}`}
-          class="text-xl lg:text-3xl font-extrabold leading-tight text-custom-bg-dark/90 dark:text-custom-bg-light/90"
+  <main class="main-container">
+    <article class="article-container">
+      <div class="article-header">
+        <h1 
+          transition:name={`title-${entry.id}`}
+          class="title-xl"
         >
           {title}
         </h1>  
-        <div class="flex items-center space-x-1 pl-1">
-          <div class="text-sm text-zinc-600 dark:text-zinc-400">
+        <div class="article-meta">
+          <div class="text-sm text-muted">
             {
               kind === "article" ? (
-                <a href={`/kind/${kind}`} class="font-medium text-blue-600 dark:text-blue-400 pr-2">
+                <a href={`/kind/${kind}`} class="link-blue pr-2">
                   Article
                 </a>
               ) : kind === "note" ? (
-                <a href={`/kind/${kind}`} class="font-medium text-emerald-700 dark:text-emerald-400 pr-2">
+                <a href={`/kind/${kind}`} class="link-emerald pr-2">
                   Note
                 </a>
               ) : null
@@ -56,25 +57,25 @@ const draft = entry.id.startsWith("draft/");
           </div>
           {
             draft && (
-              <div class="text-sm font-black uppercase text-rose-600 dark:text-rose-600">draft</div>
+              <div class="text-sm font-black uppercase text-rose">draft</div>
             )
           }
         </div>
       </div>
       <Prose>
         <Content />
-      </Prose>
+    </Prose>
       
       <!-- 태그 섹션 -->
-    {tags && tags.length > 0 && (
-        <div class="mt-12 pt-8 border-t border-zinc-500 dark:border-zinc-500">
-          <div class="flex flex-wrap gap-4">
+      {tags && tags.length > 0 && (
+        <div class="tags-container">
+          <div class="tags-wrapper">
             {tags.map((tag: string) => (
               <a
                 href={`/tag/${tag}`}
-                class="inline-flex items-center font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors"
+                class="link-tag"
               >
-                <span class="text-blue-600 dark:text-blue-400 mr-1">#</span>{tag}
+                <span class="tag-hash">#</span>{tag}
               </a>
             ))}
           </div>
