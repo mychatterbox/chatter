@@ -42,14 +42,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <ColorScheme />
     <meta name="color-scheme" content="light dark" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    
     <title>{title}</title>
     {searchTitle && <meta name="title" content={searchTitle} />}
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     {robots && <meta name="robots" content={robots} />}
 
-    <!-- Open Graph -->
+    <!-- ✅ Font Preload -->
+    <link rel="preload" href="/fonts/PretendardGOV-Medium.subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/PretendardGOV-SemiBold.subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/PretendardGOV-ExtraBold.subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/CascadiaCode.woff2" as="font" type="font/woff2" crossorigin>
+
     <slot name="og">
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content="chatter.kr" />
@@ -60,12 +64,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <meta property="twitter:card" content="summary_large_image" />
     </slot>
 
-    <!-- 폰트 preload 최적화 -->
-    <link rel="preload" href="/fonts/PretendardGOV-Medium.subset.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/PretendardGOV-SemiBold.subset.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/PretendardGOV-ExtraBold.subset.woff2" as="font" type="font/woff2" crossorigin>
-
-    <!-- 아이콘 및 manifest -->
+    <!-- Icons -->
     <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     <link rel="shortcut icon" href="/icons/favicon.ico" />
@@ -73,22 +72,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="apple-mobile-web-app-title" content="chatter" />
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
 
-    <!-- RSS / Sitemap -->
+    <!-- Sitemap & RSS -->
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" href={new URL("rss.xml", Astro.site)} title="rss" />
 
-    <!-- 사전 연결: Umami API -->
-    <link rel="preconnect" href="https://api-gateway.umami.dev" crossorigin>
-
-    <!-- Open slot -->
     <slot name="head" />
-
     <ClientRouter />
-    
-    <!-- Umami Analytics 스크립트: defer -->
-    <script async defer src="https://analytics.umami.is/script.js" data-website-id="YOUR_UMAMI_ID"></script>
   </head>
-
+  
   <body>
     <slot />
   </body>
