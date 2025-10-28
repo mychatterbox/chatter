@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/PretendardGOV-Medium.subset.woff2") format("woff2");
+}
+
+/* Pretendard GOV SemiBold */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/PretendardGOV-SemiBold.subset.woff2") format("woff2");
+}
+
+/* Pretendard GOV ExtraBold */
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/PretendardGOV-ExtraBold.subset.woff2") format("woff2");
+}
+
+/* Cascadia Code */
+@font-face {
+  font-family: "CascadiaCode";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/CascadiaCode.woff2") format("woff2");
+}

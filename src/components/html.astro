@@ -1,6 +1,7 @@
 ---
 import ColorScheme from "components/colorscheme/head.astro";
 import "styles/global.css";
+import "styles/fonts.css";
 import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
@@ -38,13 +39,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-
     <ColorScheme />
     <meta name="color-scheme" content="light dark" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -53,7 +47,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     {robots && <meta name="robots" content={robots} />}
-    
+
+    <!-- ✅ Font Preload -->
+    <link rel="preload" href="/fonts/PretendardGOV-Medium.subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/PretendardGOV-SemiBold.subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/PretendardGOV-ExtraBold.subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/CascadiaCode.woff2" as="font" type="font/woff2" crossorigin>
+
     <slot name="og">
       <meta property="og:type" content={ogType} />
       <meta property="og:site_name" content="chatter.kr" />
@@ -63,7 +63,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       {finalOgImage && <meta property="og:image" content={finalOgImage} />}
       <meta property="twitter:card" content="summary_large_image" />
     </slot>
-    
+
+    <!-- Icons -->
     <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     <link rel="shortcut icon" href="/icons/favicon.ico" />
@@ -71,9 +72,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="apple-mobile-web-app-title" content="chatter" />
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
 
+    <!-- Sitemap & RSS -->
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" href={new URL("rss.xml", Astro.site)} title="rss" />
-    
+
     <slot name="head" />
     <ClientRouter />
   </head>
