@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-10-21
+pubDate: 2025-10-30
 slug: my-ratings
 featured: false
 draft: false
@@ -293,6 +293,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1235746">데드 오브 윈터 (Dead of Winter) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/217553">중증외상센터 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/926606">The Home (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1339592">아침바다 갈매기는 (2024)</a></li>
@@ -749,6 +750,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1316719">얼굴 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1151272">시라트 (Sirāt) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1535967">서부리 사나이 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/934456">아메리카나 (Americana) (2025)</a></li>
@@ -1381,6 +1383,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1327445">A Fishermen's Tale (Un cuento de pescadores) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/696605">조시아가 본 것 (What Josiah Saw) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1299372">통곡 (El llanto) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1106725">THE 자연인 (2025)</a></li>
@@ -2237,6 +2240,13 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1244953">Trust (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1319482">Traumatika (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1310871">The Cavern Crimes (La huella del mal) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/10790">어밴던드 (The Abandoned) (2006)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1314452">Other (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1306525">불사의 약 (Abadi Nan Jaya) (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/638238">Sunod (2019)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1372260">Your Host (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1151766">살인자 리포트 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1290879">우먼 인 캐빈 10 (The Woman in Cabin 10) (2025)</a></li>
@@ -3140,6 +3150,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1128619">Garden of Eden (2025)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1405318">The Healing (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/707150">T근본주의자 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/466129">The Hatred (2017)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1514364">Kill Me Again (2025)</a></li>
@@ -3648,6 +3660,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1094962">Sorority of the Damned (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1216210">eVil Sublet (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/228915">Lord of Tears (2013)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1375402">Bitter Souls (2024)</a></li>
