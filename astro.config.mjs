@@ -3,7 +3,6 @@ import sitemap from "@astrojs/sitemap";
 import FlexokiDark from "./src/styles/Flexoki-Dark-color-theme.json";
 import FlexokiLight from "./src/styles/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
-import { imageService } from "@unpic/astro/service";
 
 export default defineConfig({
   site: 'https://chatter.kr/',
@@ -11,15 +10,9 @@ export default defineConfig({
   image: {
     responsiveStyles: true,
     layout: 'constrained',
-    service: imageService({
-      placeholder: "blurhash",
-      // layout: "constrained",
-      priority: true,
-    }
-    ),
   },
 
-  trailingSlash: "never",
+  // trailingSlash: "never",
 
   build: {
     format: "preserve",
@@ -27,6 +20,17 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (p) => !p.includes("/draft/"),
+      serialize: (item) => {
+        // URL 객체로 파싱
+        const url = new URL(item.url);
+        
+        // 경로가 루트(/)인 경우에만 trailing slash 추가
+        if (url.pathname === '/' || url.pathname === '') {
+          item.url = url.origin + '/';
+        }
+        
+        return item;
+      },
     }),
     umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }),
   ],
