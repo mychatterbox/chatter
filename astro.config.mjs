@@ -15,7 +15,7 @@ export default defineConfig({
   trailingSlash: "never",
 
   build: {
-    format: "preserve",
+    format: "file",
   },
   integrations: [
     sitemap({
