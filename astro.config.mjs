@@ -12,7 +12,7 @@ export default defineConfig({
     layout: 'constrained',
   },
 
-  trailingSlash: "ignore",
+  trailingSlash: "never",
 
   build: {
     format: "preserve",
