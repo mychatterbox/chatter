@@ -5,10 +5,75 @@ import Nav from "components/navbar.astro";
 
 <Html title="No Vibe" description="Not Found" robots="noindex">
   <Nav />
-  <main class="px-4 text-center">
-    <div class="py-12">
-      <p class="font-mono text-2xl font-bold text-rose-500">404</p>
-      <h1 class="text-4xl font-bold">Page not found</h1>
+  <main class="main-container">
+    <div class="article-container">
+      <div class="error-container">
+        <p class="error-code">404</p>
+        <h1 class="error-title">Page not found</h1>
+        <p class="error-message">The page you're looking for doesn't exist or has been moved.</p>
+        <a href="/" class="error-link">
+          ← Back to home
+        </a>
+      </div>
     </div>
   </main>
 </Html>
+
+<style>
+  .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--spacing-12) 0;
+    min-height: 50vh;
+  }
+
+  .error-code {
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-rose);
+    margin-bottom: var(--spacing-4);
+  }
+
+  @media (min-width: 640px) {
+    .error-code {
+      font-size: 4rem;
+    }
+  }
+
+  .error-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-4);
+  }
+
+  @media (min-width: 640px) {
+    .error-title {
+      font-size: 2.5rem;
+    }
+  }
+
+  .error-message {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-8);
+    max-width: 28rem;
+  }
+
+  .error-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    color: var(--color-blue);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .error-link:hover {
+    color: var(--color-blue-hover);
+  }
+</style>
