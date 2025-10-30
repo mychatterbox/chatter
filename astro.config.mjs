@@ -12,10 +12,10 @@ export default defineConfig({
     layout: 'constrained',
   },
 
-  trailingSlash: "never",
+  trailingSlash: "always",
 
   build: {
-    format: "directory",
+    format: "preserve",
   },
   integrations: [
   sitemap({
