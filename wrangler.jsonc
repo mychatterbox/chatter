@@ -1,8 +1,9 @@
 {
   "name": "chatter",
-  "main": "_worker.js",
   "compatibility_date": "2025-10-27",
-  "compatibility_flags": ["nodejs_compat"],
-  "vars": {},
-  "kv_namespaces": []
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "drop-trailing-slash"
+  }
 }
