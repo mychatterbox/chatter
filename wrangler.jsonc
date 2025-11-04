@@ -2,8 +2,7 @@
   "name": "chatter",
   "main": "_worker.js",
   "compatibility_date": "2025-10-27",
-  "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS"
-  }
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {},
+  "kv_namespaces": []
 }

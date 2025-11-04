@@ -1,35 +1,36 @@
+import { getAssetFromKV } from "@cloudflare/kv-asset-handler";
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-
-    // ✅ Worker 동작 확인 로그 (여기!)
     console.log("Worker is running:", url.pathname);
 
     // ✅ 루트("/") → index.html
     if (url.pathname === "/") {
-      return env.ASSETS.fetch(request);
+      return await getAssetFromKV({ request, waitUntil: ctx.waitUntil.bind(ctx) }, { mapRequestToAsset: req => req });
     }
 
-    // ✅ trailing slash 제거 리디렉션 (301)
+    // ✅ 슬래시 제거 리디렉션
     if (url.pathname.endsWith("/") && url.pathname !== "/") {
       url.pathname = url.pathname.slice(0, -1);
       return Response.redirect(url.toString(), 301);
     }
 
-    // ✅ /page → /page/index.html 로 매핑 (정적 자산 탐색)
-    const pageRequest = new Request(url.origin + url.pathname + "/index.html", request);
-    let res = await env.ASSETS.fetch(pageRequest);
-    if (res.status !== 404) {
-      return res;
+    // ✅ 정적 자산 서빙
+    try {
+      return await getAssetFromKV(
+        { request, waitUntil: ctx.waitUntil.bind(ctx) },
+        {
+          mapRequestToAsset: (req) => {
+            const pathname = new URL(req.url).pathname;
+            if (pathname.endsWith(".html")) return req;
+            return new Request(`${url.origin}${pathname}/index.html`, req);
+          },
+        }
+      );
+    } catch (err) {
+      console.error("Asset fetch failed:", err);
+      return new Response("404 Not Found", { status: 404 });
     }
-
-    // ✅ 일반 파일 (이미지, css 등)
-    res = await env.ASSETS.fetch(request);
-    if (res.status !== 404) {
-      return res;
-    }
-
-    // ✅ 404 fallback
-    return new Response("404 Not Found", { status: 404 });
   },
 };
