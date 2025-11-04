@@ -32,13 +32,12 @@ const finalOgImage = ogImage
   ? new URL(ogImage, Astro.url).toString()
   : defaultOgImage;
 
-// const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// ✅ canonical: 홈은 "/", 나머지는 슬래시 제거
 const pathname = Astro.url.pathname;
 const canonicalURL = new URL(
-  pathname === '/' ? '/' : pathname.replace(/\/$/, ''),
+  pathname === "/" ? "/" : pathname.replace(/\/$/, ""),
   Astro.site
 ).toString();
-
 ---
 
 <!doctype html>
@@ -46,46 +45,25 @@ const canonicalURL = new URL(
   <head>
     <meta charset="utf-8" />
     <ColorScheme />
-    <meta name="color-scheme" content="light dark" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
     {searchTitle && <meta name="title" content={searchTitle} />}
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
+    <link rel="canonical" href={canonicalURL} /> <!-- ✅ 동일 주소체계 -->
     {robots && <meta name="robots" content={robots} />}
 
-    <!-- ✅ Font Preload -->
-    <link rel="preload" href="/fonts/PretendardGOV-Medium.subset.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/PretendardGOV-SemiBold.subset.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/PretendardGOV-ExtraBold.subset.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/CascadiaCode.woff2" as="font" type="font/woff2" crossorigin>
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="chatter.kr" />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:url" content={canonicalURL} /> <!-- ✅ 동일 주소체계 -->
+    {finalOgImage && <meta property="og:image" content={finalOgImage} />}
+    <meta property="twitter:card" content="summary_large_image" />
 
-    <slot name="og">
-      <meta property="og:type" content={ogType} />
-      <meta property="og:site_name" content="chatter.kr" />
-      <meta property="og:title" content={ogTitle} />
-      <meta property="og:description" content={ogDescription} />
-      <meta property="og:url" content={canonicalURL} />
-      {finalOgImage && <meta property="og:image" content={finalOgImage} />}
-      <meta property="twitter:card" content="summary_large_image" />
-    </slot>
-
-    <!-- Icons -->
-    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
-    <link rel="shortcut icon" href="/icons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="chatter" />
-    <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
-
-    <!-- Sitemap & RSS -->
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" href={new URL("rss.xml", Astro.site)} title="rss" />
-    <script defer data-domain="chatter.kr" src="https://chickadee.mychatterbox.workers.dev/script.js"></script>
-    <slot name="head" />
     <ClientRouter />
   </head>
-  
   <body>
     <slot />
   </body>
