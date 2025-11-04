@@ -5,26 +5,37 @@ import FlexokiLight from "./src/styles/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
 
 export default defineConfig({
-  site: "https://chatter.kr",
-  trailingSlash: "never", // ✅ 모든 경로에서 슬래시 제거
+  site: "https://chatter.kr/",
+
+  image: {
+    responsiveStyles: true,
+    layout: "constrained",
+  },
+
   build: {
-    format: "file",
+    format: "preserve",
   },
 
   integrations: [
-sitemap({
-  filter: (p) => !p.includes("/draft/"),
-  serialize: (item) => {
-    const url = new URL(item.url);
+    sitemap({
+      filter: (p) => !p.includes("/draft/"),
+      serialize: (item) => {
+        const url = new URL(item.url);
 
-    // ✅ 루트('/')는 그대로 유지, 나머지는 trailing slash 제거
-    if (url.pathname !== "/" && url.pathname.endsWith("/")) {
-      url.pathname = url.pathname.slice(0, -1);
-      item.url = url.toString();
-    }
-    return item;
-  },
-}),
+        // ✅ 루트('/')는 항상 유지
+        if (url.pathname === "") {
+          url.pathname = "/";
+        }
+
+        // ✅ 나머지는 trailing slash 제거
+        if (url.pathname !== "/" && url.pathname.endsWith("/")) {
+          url.pathname = url.pathname.slice(0, -1);
+        }
+
+        item.url = url.toString();
+        return item;
+      },
+    }),
     umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }),
   ],
 

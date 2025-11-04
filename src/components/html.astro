@@ -33,9 +33,9 @@ const finalOgImage = ogImage
   : defaultOgImage;
 
 // ✅ canonical: 홈은 "/", 나머지는 슬래시 제거
-const pathname = Astro.url.pathname;
+const pathname = Astro.url.pathname.replace(/\.html?$/, ''); // ✅ 확장자 제거
 const canonicalURL = new URL(
-  pathname === "/" ? "/" : pathname.replace(/\/$/, ""),
+  pathname === '/' ? '/' : pathname.replace(/\/$/, ''),
   Astro.site
 ).toString();
 ---
