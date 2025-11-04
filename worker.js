@@ -1,4 +1,4 @@
-// _worker.js
+// worker.js
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -22,6 +22,7 @@ export default {
     }
     
     if (redirect) {
+      // 301 Permanent Redirect로 명시적 지정
       return Response.redirect(url.toString(), 301);
     }
     
