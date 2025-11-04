@@ -23,5 +23,8 @@ export const GET: APIRoute = async (context) => {
       <language>ko-kr</language>
       <atom:link href="${site}/rss.xml" rel="self" type="application/rss+xml" />
     `,
+    xmlns: {
+      atom: "http://www.w3.org/2005/Atom", // ✅ 누락된 네임스페이스 추가
+    },
   });
 };

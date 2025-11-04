@@ -12,18 +12,18 @@ export default defineConfig({
   },
 
   integrations: [
-    sitemap({
-      filter: (p) => !p.includes("/draft/"),
-      serialize: (item) => {
-        // ✅ URL 끝 슬래시 제거 (홈 제외)
-        const url = new URL(item.url);
-        if (url.pathname !== "/" && url.pathname.endsWith("/")) {
-          url.pathname = url.pathname.slice(0, -1);
-          item.url = url.toString();
-        }
-        return item;
-      },
-    }),
+sitemap({
+  filter: (p) => !p.includes("/draft/"),
+  serialize: (item) => {
+    const url = new URL(item.url);
+    // ✅ "/" 는 그대로, 나머지 URL 끝 "/" 제거
+    if (url.pathname !== "/" && url.pathname.endsWith("/")) {
+      url.pathname = url.pathname.slice(0, -1);
+      item.url = url.toString();
+    }
+    return item;
+  },
+}),
     umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }),
   ],
 
