@@ -10,11 +10,12 @@ export default {
       redirect = true;
     }
     
-    // Trailing slash 제거 (루트 및 정적 파일 제외)
+    // Trailing slash 제거 (루트 및 파일 확장자 있는 URL 제외)
+    const hasFileExtension = /\.[a-zA-Z0-9]{2,4}$/.test(url.pathname.split('/').pop() || '');
     const shouldRemoveTrailingSlash = 
       url.pathname.endsWith('/') && 
       url.pathname.length > 1 &&
-      !url.pathname.includes('.');
+      !hasFileExtension;
     
     if (shouldRemoveTrailingSlash) {
       url.pathname = url.pathname.slice(0, -1);
@@ -22,8 +23,7 @@ export default {
     }
     
     if (redirect) {
-      // 301 Permanent Redirect로 명시적 지정
-      return Response.redirect(url.toString(), 301);
+      return Response.redirect(url.toString(), 301); // 301 명시적 지정
     }
     
     return env.ASSETS.fetch(request);
