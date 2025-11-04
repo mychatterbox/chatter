@@ -8,7 +8,7 @@ export default defineConfig({
   site: "https://chatter.kr",
   trailingSlash: "never", // ✅ 모든 경로에서 슬래시 제거
   build: {
-    format: "preserve",
+    format: "file",
   },
 
   integrations: [
