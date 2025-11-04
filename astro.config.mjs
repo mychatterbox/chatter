@@ -16,11 +16,17 @@ sitemap({
   filter: (p) => !p.includes("/draft/"),
   serialize: (item) => {
     const url = new URL(item.url);
-    // ✅ "/" 는 그대로, 나머지 URL 끝 "/" 제거
-    if (url.pathname !== "/" && url.pathname.endsWith("/")) {
-      url.pathname = url.pathname.slice(0, -1);
-      item.url = url.toString();
+
+    // ✅ index.html → /
+    if (url.pathname.endsWith("/index.html")) {
+      url.pathname = "/";
     }
+    // ✅ 그 외 /로 끝나면 슬래시 제거
+    else if (url.pathname !== "/" && url.pathname.endsWith("/")) {
+      url.pathname = url.pathname.slice(0, -1);
+    }
+
+    item.url = url.toString();
     return item;
   },
 }),
