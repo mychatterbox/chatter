@@ -1,6 +1,6 @@
 ---
 kind: note
-title: TMDB csv 한글깨짐
+title: TMDB에서 받은 csv파일의 한글이 깨질 때
 author: mychatterbox
 pubDate: 2024-02-18
 slug: tmdb-csv-utf
