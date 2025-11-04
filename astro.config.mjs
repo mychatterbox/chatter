@@ -18,15 +18,11 @@ sitemap({
     const url = new URL(item.url);
 
     // ✅ 루트 경로 보정
-    if (url.pathname === "") {
+    if (url.pathname === "" || url.pathname === "/index.html") {
       url.pathname = "/";
     }
 
-    // ✅ index.html → /
-    if (url.pathname.endsWith("/index.html")) {
-      url.pathname = "/";
-    }
-    // ✅ 그 외 /로 끝나면 슬래시 제거
+    // ✅ /로 끝나는 경로는 슬래시 제거
     else if (url.pathname !== "/" && url.pathname.endsWith("/")) {
       url.pathname = url.pathname.slice(0, -1);
     }
