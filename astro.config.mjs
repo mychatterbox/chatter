@@ -17,6 +17,11 @@ sitemap({
   serialize: (item) => {
     const url = new URL(item.url);
 
+    // ✅ 루트 경로 보정
+    if (url.pathname === "") {
+      url.pathname = "/";
+    }
+
     // ✅ index.html → /
     if (url.pathname.endsWith("/index.html")) {
       url.pathname = "/";
