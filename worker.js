@@ -1,4 +1,5 @@
-// worker.jsexport default {
+// worker.js (최종 수정 버전)
+export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     let redirect = false;
@@ -10,9 +11,7 @@
     }
     
     // 2. Trailing slash 제거 (/path/ -> /path)
-    // 루트 경로 ('/') 제외, 파일 확장자 있는 URL 제외
     const isRoot = url.pathname === '/';
-    // 쿼리 파라미터나 해시(#) 앞의 경로에 확장자가 있는지 확인
     const hasExtension = /\.[a-zA-Z0-9]{2,4}(\?|#|$)/.test(url.pathname); 
     
     const shouldRemoveTrailingSlash = 
@@ -21,20 +20,25 @@
       !hasExtension;
     
     if (shouldRemoveTrailingSlash) {
-      // 끝의 슬래시만 제거합니다.
       url.pathname = url.pathname.slice(0, -1);
-      // 쿼리나 해시는 url 객체에 이미 유지되지만, 명시적으로 리다이렉트 대상 URL을 구성합니다.
       redirect = true;
     }
     
     // 리다이렉트가 필요한 경우 301 영구 이동 응답 반환
     if (redirect) {
-      // Response.redirect()는 기본적으로 302/307을 사용하지만, 두 번째 인수로 301을 명시합니다.
-      // url.toString()은 https://chatter.kr/ssd-pe-uefi-boot 와 같은 
-      // 완전한 URL (Absolute URL)을 반환합니다.
-      return Response.redirect(url.toString(), 301); 
+      // 🚨 핵심 수정: Response.redirect() 대신 new Response로 직접 Location 헤더와 301 상태를 설정
+      return new Response(null, {
+        status: 301,
+        headers: {
+          // url.toString()을 사용하여 'https://chatter.kr/path'와 같은 절대 경로를 반환합니다.
+          'Location': url.toString(), 
+          // 브라우저 및 엣지 캐시가 이 리다이렉트 응답을 캐시하지 않도록 설정
+          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate' 
+        }
+      });
     }
     
     // 리다이렉트가 필요 없는 경우, Cloudflare Workers의 정적 자산 서빙을 호출합니다.
     return env.ASSETS.fetch(request);
-  }}
+  }
+}
