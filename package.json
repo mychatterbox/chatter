@@ -12,6 +12,7 @@
     "format": "prettier --write ./**/*.astro ./**/*.md ."
   },
   "dependencies": {
+        "@cloudflare/kv-asset-handler": "^0.3.0",
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
     "@yeskunall/astro-umami": "^0.0.7",
