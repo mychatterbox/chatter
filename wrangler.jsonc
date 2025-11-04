@@ -1,6 +1,7 @@
 {
   "name": "chatter",
   "compatibility_date": "2025-10-27",
+  "main": "./worker.js",
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page",
