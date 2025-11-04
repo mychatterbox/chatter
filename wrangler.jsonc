@@ -1,11 +1,8 @@
 {
   "name": "chatter",
-  "main": "_worker.ts",
   "compatibility_date": "2025-10-27",
   "assets": {
     "directory": "./dist",
-    "binding": "ASSETS",
-    "html_handling": "none",
     "not_found_handling": "404-page"
   }
 }

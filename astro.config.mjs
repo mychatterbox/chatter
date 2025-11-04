@@ -17,17 +17,11 @@ sitemap({
   serialize: (item) => {
     const url = new URL(item.url);
 
-    // ✅ 루트 경로 보정
-    if (url.pathname === "" || url.pathname === "/index.html") {
-      url.pathname = "/";
-    }
-
-    // ✅ /로 끝나는 경로는 슬래시 제거
-    else if (url.pathname !== "/" && url.pathname.endsWith("/")) {
+    // ✅ 루트('/')는 그대로 유지, 나머지는 trailing slash 제거
+    if (url.pathname !== "/" && url.pathname.endsWith("/")) {
       url.pathname = url.pathname.slice(0, -1);
+      item.url = url.toString();
     }
-
-    item.url = url.toString();
     return item;
   },
 }),
