@@ -2,6 +2,9 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
+    // ✅ Worker 동작 확인 로그 (여기!)
+    console.log("Worker is running:", url.pathname);
+
     // ✅ 루트("/") → index.html
     if (url.pathname === "/") {
       return env.ASSETS.fetch(request);
