@@ -103,7 +103,7 @@ body {
 
 .article-container {
   margin: 0 auto;
-  max-width: 1024px;
+  max-width: var(--breakpoint-lg);
   overflow-wrap: break-word;
   font-weight: 500;
 }
@@ -120,10 +120,12 @@ body {
 
 
 .prose img {
-  display: block; 
-  margin: auto;
-  margin-bottom: 1em;
-  border-radius: 0.375rem;
+    max-width: 100%; /* 확실하게 적용 */
+    height: auto;    /* 종횡비 유지 */
+    display: block; 
+    margin: auto;
+    margin-bottom: 1em;
+    border-radius: 0.375rem;
 }
 
 /* ============================================
@@ -778,3 +780,9 @@ mark {
   font-size: 1em;
   /* font-weight: bold; */
 }
+
+/* img {
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+} */
