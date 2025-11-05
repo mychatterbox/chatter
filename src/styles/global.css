@@ -639,10 +639,6 @@ a {
   margin-top: -1rem;
 }
 
-.article-meta > * + * {
-  margin-left: var(--spacing-1);
-}
-
 /* Tags Container */
 .tags-container {
   margin-top: var(--spacing-12);
