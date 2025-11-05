@@ -2,7 +2,7 @@
 kind: article
 title: 영화, TV 별점
 author: mychatterbox
-pubDate: 2025-10-30
+pubDate: 2025-11-05
 slug: my-ratings
 featured: false
 draft: false
@@ -293,6 +293,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1381465">The Bitter Taste (2024)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1235746">데드 오브 윈터 (Dead of Winter) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/tv/217553">중증외상센터 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/926606">The Home (2025)</a></li>
@@ -750,6 +751,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/696605">The Cleaners (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1316719">얼굴 (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1151272">시라트 (Sirāt) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1535967">서부리 사나이 (2025)</a></li>
@@ -1383,6 +1385,8 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/38810">송곳니 (Κυνόδοντας) (2012)</a></li>
+<li> <a href="https://www.themoviedb.org/movie/1101763">The Man from Rome (De man uit Rome) (2023)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1327445">A Fishermen's Tale (Un cuento de pescadores) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/696605">조시아가 본 것 (What Josiah Saw) (2021)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1299372">통곡 (El llanto) (2025)</a></li>
@@ -2240,6 +2244,7 @@ description: "영화 TV 별점"
             <span class="rating-count"></span>
         </summary>
         <ul>
+<li> <a href="https://www.themoviedb.org/movie/1535290">숙주 (แม่ซื้อ) (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1244953">Trust (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1319482">Traumatika (2025)</a></li>
 <li> <a href="https://www.themoviedb.org/movie/1310871">The Cavern Crimes (La huella del mal) (2025)</a></li>
