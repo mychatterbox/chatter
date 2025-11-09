@@ -5,34 +5,37 @@ const colors = {
 };
 ---
 
-<meta name="theme-color" content={colors.dark} />
+<!-- 기본 theme-color 선언 -->
+<meta name="theme-color" content={colors.light} />
 
-<script is:inline define:vars={{
-  lightTheme: colors.light,
-  darkTheme: colors.dark
-}}>
-  if (!window.__themeInitialized) {
+<script
+  is:inline
+  define:vars={{
+    lightTheme: colors.light,
+    darkTheme: colors.dark
+  }}
+>
+  // ✅ 페인트 이후로 테마 적용 지연
+  requestAnimationFrame(() => {
+    if (window.__themeInitialized) return;
     window.__themeInitialized = true;
-    
+
     const applyTheme = (isDark, doc = document) => {
       doc.documentElement.classList.toggle('dark', isDark);
-      
       const metaTheme = doc.querySelector('meta[name="theme-color"]');
-      if (metaTheme) {
-        metaTheme.content = isDark ? darkTheme : lightTheme;
-      }
-      
-      if (doc === document) {
+      if (metaTheme) metaTheme.content = isDark ? darkTheme : lightTheme;
+
+      if (doc === document)
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      }
     };
 
     const getTheme = () => {
-      const savedTheme = localStorage.getItem('theme');
+      const saved = localStorage.getItem('theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return savedTheme ? savedTheme === 'dark' : prefersDark;
+      return saved ? saved === 'dark' : prefersDark;
     };
-    
+
+    // ⚡ 초기 적용 — 페인트 후 실행되므로 리플로우 방지
     applyTheme(getTheme());
 
     document.addEventListener('astro:before-swap', ({ newDocument }) => {
@@ -45,10 +48,8 @@ const colors = {
       return isDark ? 'dark' : 'light';
     };
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        applyTheme(e.matches);
-      }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) applyTheme(e.matches);
     });
-  }
+  });
 </script>
