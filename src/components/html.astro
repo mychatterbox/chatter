@@ -53,7 +53,8 @@ const canonicalURL = new URL(
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     {robots && <meta name="robots" content={robots} />}
-
+    <link rel="preconnect" href="https://chickadee.mychatterbox.workers.dev" crossorigin>
+    <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
     <!-- ✅ Font Preload -->
     <link rel="preload" href="/fonts/PretendardGOV-Medium.subset.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/PretendardGOV-SemiBold.subset.woff2" as="font" type="font/woff2" crossorigin>
@@ -82,10 +83,17 @@ const canonicalURL = new URL(
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" href={new URL("rss.xml", Astro.site)} title="rss" />
     <link rel="preconnect" href="https://static.cloudflareinsights.com">
-    <script defer data-domain="chatter.kr" src="https://chickadee.mychatterbox.workers.dev/script.js"></script>
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b1e9f6e1435046a19b449682f88c5806"}'></script>
+    <script>
+      window.addEventListener('load', () => {
+      const s1 = document.createElement('script');
+      s1.src = 'https://chickadee.mychatterbox.workers.dev/script.js';
+      s1.defer = true;
+      document.body.appendChild(s1);
+      });
+    </script>
+    <script async src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b1e9f6e1435046a19b449682f88c5806"}'></script>
     <slot name="head" />
-    <ClientRouter />
+    <!-- <ClientRouter /> -->
   </head>
   
   <body>
