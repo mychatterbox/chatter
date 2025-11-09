@@ -19,22 +19,18 @@ export default defineConfig({
   build: {
     format: "preserve",
   },
-  integrations: [
-    sitemap({
-    filter: (p) => !p.includes("/draft/"),
-    serialize: (item) => {
-      // URL의 pathname이 '/'가 아닌 경우에만 trailing slash 제거
-      const url = new URL(item.url);
-      if (url.pathname !== '/' && url.pathname.endsWith('/')) {
-        url.pathname = url.pathname.slice(0, -1);
-        item.url = url.toString();
-      }
-      return item;
-    },
-    }), 
-    umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }), 
-    crittersSlim()
-  ],
+  integrations: [sitemap({
+  filter: (p) => !p.includes("/draft/"),
+  serialize: (item) => {
+    // URL의 pathname이 '/'가 아닌 경우에만 trailing slash 제거
+    const url = new URL(item.url);
+    if (url.pathname !== '/' && url.pathname.endsWith('/')) {
+      url.pathname = url.pathname.slice(0, -1);
+      item.url = url.toString();
+    }
+    return item;
+  },
+  }), umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }), crittersSlim()],
 
   markdown: {
     shikiConfig: {
