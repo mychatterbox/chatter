@@ -15,7 +15,7 @@
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
     "@yeskunall/astro-umami": "^0.0.7",
-    "astro": "^5.15.2",
+    "astro": "^5.15.4",
     "sharp": "^0.34.4"
   }
 }
