@@ -4,7 +4,7 @@ import FlexokiDark from "./src/styles/Flexoki-Dark-color-theme.json";
 import FlexokiLight from "./src/styles/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
 
-import crittersSlim from "astro-critters-slim";
+import otterlordcritters from "@otterlord/astro-critters";
 
 export default defineConfig({
   site: 'https://chatter.kr/',
@@ -30,7 +30,7 @@ export default defineConfig({
     }
     return item;
   },
-  }), umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }), crittersSlim()],
+  }), umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }), otterlordcritters()],
 
   markdown: {
     shikiConfig: {
