@@ -5,11 +5,10 @@
   --color-text-primary: rgba(16, 15, 15, 0.9);
   --color-text-secondary: #71717a;
   
-  --color-link-article: #2563eb;
-  --color-link-article-hover: #60a5fa;
-  --color-link-note: #047857;
-  --color-link-note-hover: #34d399;
+  --color-link-article: #3171B2;
+  --color-link-note: #2F968D;
   --color-text-draft: #dc2626;
+  --color-link-hover: #3171B2;
   
   --color-code-bg: #52525b;
   --color-code-text: #f5f7f9;
@@ -39,16 +38,14 @@
 
   --figcaption-bg: rgba(7, 6, 6, 0.1);
   --figcaption-color: currentColor;
-  --mark-text-color: #D14D41;
+  --mark-text-color: #AF3029;;
   scrollbar-color: #c9c9c9 transparent;
 }
 
 /* 다크모드 색상 오버라이드 */
 .dark {
-  --color-text-primary: rgba(245, 247, 249, 0.9);
+  --color-text-primary: #dee0e2;
   --color-text-secondary: #a1a1aa;
-  --color-link-article-hover: #60a5fa;
-  --color-link-note-hover: #34d399;
   --color-code-bg: #d4d4d8;
   --color-code-text: #100F0F;
   --color-hover-bg: #3f3f46;
@@ -272,7 +269,6 @@ a {
 }
 
 .link-article:hover {
-  color: var(--color-link-article-hover);
   text-decoration: underline;
 }
 
@@ -282,7 +278,6 @@ a {
 }
 
 .link-note:hover {
-  color: var(--color-link-note-hover);
   text-decoration: underline;
 }
 
@@ -393,7 +388,7 @@ a {
 }
 
 .prose a:hover {
-  color: var(--color-link-article-hover);
+  color: var(--color-link-hover);
 }
 
 /* Lists */
@@ -642,7 +637,7 @@ a {
 }
 
 .dark .tag-hash {
-  color: var(--color-link-article-hover);
+  color: var(--color-link-hover);
 }
 
 /* Theme Toggle Button */
@@ -773,6 +768,6 @@ figcaption {
 mark {
   background-color: transparent;
   color: var(--mark-text-color);
-  font-size: 1em;
-  /* font-weight: bold; */
+  /* font-size: 1em; */
+  /* font-weight: 600; */
 }
