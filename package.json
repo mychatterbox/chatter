@@ -14,10 +14,8 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
-    "@otterlord/astro-critters": "^1.1.41",
     "@yeskunall/astro-umami": "^0.0.7",
     "astro": "^5.15.2",
-    "deepmerge-ts": "^7.1.5",
     "sharp": "^0.34.4"
   }
 }
