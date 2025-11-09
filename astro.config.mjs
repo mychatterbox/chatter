@@ -4,6 +4,8 @@ import FlexokiDark from "./src/styles/Flexoki-Dark-color-theme.json";
 import FlexokiLight from "./src/styles/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
 
+import crittersSlim from "astro-critters-slim";
+
 export default defineConfig({
   site: 'https://chatter.kr/',
 
@@ -18,7 +20,7 @@ export default defineConfig({
     format: "preserve",
   },
   integrations: [
-  sitemap({
+    sitemap({
     filter: (p) => !p.includes("/draft/"),
     serialize: (item) => {
       // URL의 pathname이 '/'가 아닌 경우에만 trailing slash 제거
@@ -29,9 +31,10 @@ export default defineConfig({
       }
       return item;
     },
-  }),
-  umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }),
-],
+    }), 
+    umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }), 
+    crittersSlim()
+  ],
 
   markdown: {
     shikiConfig: {
