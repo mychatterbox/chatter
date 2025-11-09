@@ -45,6 +45,8 @@ const canonicalURL = new URL(
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
+    <link rel="preconnect" href="https://chickadee.mychatterbox.workers.dev" crossorigin>
+    <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
     <ColorScheme />
     <meta name="color-scheme" content="light dark" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -53,8 +55,7 @@ const canonicalURL = new URL(
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     {robots && <meta name="robots" content={robots} />}
-    <link rel="preconnect" href="https://chickadee.mychatterbox.workers.dev" crossorigin>
-    <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+
     <!-- ✅ Font Preload -->
     <link rel="preload" href="/fonts/PretendardGOV-Medium.subset.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/PretendardGOV-SemiBold.subset.woff2" as="font" type="font/woff2" crossorigin>
