@@ -11,8 +11,6 @@ const { Content } = await render(entry);
 const draft = entry.id.startsWith("draft/");
 ---
 
-{
-id !== "my-ratings" && id !== "site-info" && (
 <li class="feed-item">
   <div class="article-header">
     <a
@@ -43,7 +41,7 @@ id !== "my-ratings" && id !== "site-info" && (
       </div>
       {
         draft && (
-          <div class="text-sm font-black uppercase text-rose">draft</div>
+          <div class="text-sm font-black uppercase text-draft">draft</div>
         )
       }
     </div>
@@ -58,5 +56,3 @@ id !== "my-ratings" && id !== "site-info" && (
     }
   </Prose>
 </li>
-)
-}

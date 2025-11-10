@@ -26,11 +26,11 @@ import ThemeToggle from "../components/colorscheme/ThemeToggle.astro";
       </a>
       <a
         aria-label="Film Ratings"
-        href="/my-ratings"
+        href="/ratings"
         class="navbar-icon"
       >
         <div class="navbar-icon-svg">
-          {Astro.url.pathname.startsWith("/my-ratings") ? (
+          {Astro.url.pathname.startsWith("/ratings") ? (
             <FilmSolid />
           ) : (
             <FilmOutline />
@@ -49,7 +49,7 @@ import ThemeToggle from "../components/colorscheme/ThemeToggle.astro";
             <InfoOutline/>
           )}
         </div>
-      </a>
+      </a>      
     </div>
 
     <!-- theme-toggle-container를 navbar-header 내부로 이동 -->

@@ -1,0 +1,238 @@
+---
+import Html from "components/html.astro"; // 기본 레이아웃 컴포넌트
+import Nav from "components/navbar.astro"; // 네비게이션
+import Prose from "components/prose.astro"; // 콘텐츠 포매팅 컴포넌트
+import movieListData from "assets/movie.json";
+
+const groupedMovies = movieListData.reduce((acc, movie) => {
+    const rating = movie.rating || 0; // rating이 없을 경우 0으로 처리
+    if (!acc[rating]) {
+        acc[rating] = [];
+    }
+    acc[rating].push(movie);
+    return acc;
+}, {});
+
+const sortedRatings = Object.keys(groupedMovies)
+    .map(Number) // 키를 숫자로 변환
+    .filter(r => r >= 1 && r <= 9) // 1점에서 9점 사이만 필터링 (10점은 이미지 갤러리용이라고 하셨으므로)
+    .sort((a, b) => b - a); // 내림차순 정렬 (9, 8, 7, ...)
+---
+
+<Html
+  title="Responsive Image Gallery"
+  description="A sample responsive image gallery."
+  ogType="website"
+>
+  <Nav />
+  <main class="main-container">
+    <article class="article-container">
+      <div class="article-header">
+        <h1 class="title-xl">
+          영화, TV 별점
+        </h1> 
+      </div>
+      <Prose>
+                    <img src="/images/10.png" class="rating-image" alt="Rating 10"> <p></p>
+        <div class="gallery">
+
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/movie/17654">
+                    <img src="https://image.tmdb.org/t/p/w780/tuGlQkqLxnodDSk6mp5c2wvxUEd.jpg" alt="District 9" width="600" height="400">
+                </a>
+                <div class="desc">District 9</div>
+            </div>
+
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/movie/11423">
+                    <img src="https://image.tmdb.org/t/p/w780/QqyXQvd95XWZwi8UtOkN82KNr3.jpg" alt="살인의 추억" width="600" height="400">
+                </a>
+                <div class="desc">살인의 추억</div>
+            </div>
+
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/movie/745">
+                    <img src="https://image.tmdb.org/t/p/w780/mPq0Rt6jxYjl0QIlwmpwJBai1Ez.jpg" alt="The Sixth Sense" width="600" height="400">
+                </a>
+                <div class="desc">The Sixth Sense</div>
+            </div>
+
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/movie/180">
+                    <img src="https://image.tmdb.org/t/p/w500/qtgFcnwh9dAFLocsDk2ySDVS8UF.jpg" alt="Minority Report" width="600" height="400">
+                </a>
+                <div class="desc">Minority Report</div>
+            </div>
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/movie/13345">
+                    <img src="https://image.tmdb.org/t/p/w500/2Jfl1VI3fLr3VmG8bdtsLUH2cAn.jpg" alt="서유기: 월광보합" width="600" height="400">
+                </a>
+                <div class="desc">서유기: 월광보합</div>
+            </div>
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/movie/21835">
+                    <img src="https://image.tmdb.org/t/p/w500/vEiJhunvmxOzUYAzKsRhedc8DtJ.jpg" alt="서유기: 선리기연" width="600" height="400">
+                </a>
+                <div class="desc">서유기: 선리기연</div>
+            </div>
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/movie/644">
+                    <img src="https://image.tmdb.org/t/p/w500/8MZSGX5JORoO72EfuAEcejH5yHn.jpg" alt="A.I. Artificial Intelligence" width="600" height="400">
+                </a>
+                <div class="desc">A.I. Artificial Intelligence</div>
+            </div>
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/movie/13363">
+                    <img src="https://image.tmdb.org/t/p/w500/V086R82gNgWrotaXZFO4JhdgB1.jpg" alt="The Man from Earth" width="600" height="400">
+                </a>
+                <div class="desc">The Man from Earth</div>
+            </div>
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/tv/129586">
+                    <img src="https://image.tmdb.org/t/p/w500/z2eMgOMTxLHUIYYaLkvZ0Cr7gYe.jpg" alt="똑바로 살아라" width="600" height="400">
+                </a>
+                <div class="desc">똑바로 살아라</div>
+            </div>
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/tv/2173">
+                    <img src="https://image.tmdb.org/t/p/w500/xdouJIGDVVixnrE7kfooxe9IO7z.jpg" alt="연애시대" width="600" height="400">
+                </a>
+                <div class="desc">연애시대</div>
+            </div>
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/tv/5717">
+                    <img src="https://image.tmdb.org/t/p/w500/uiJfJhdKk8dnzLYbuIBccj0YHbS.jpg" alt="허준" width="600" height="400">
+                </a>
+                <div class="desc">허준</div>
+            </div>
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/tv/83199">
+                    <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/edN59WQ9Np8kKhfR6gup8dqqv5S.jpg" alt="솔약국집 아들들" width="600" height="400">
+                </a>
+                <div class="desc">솔약국집 아들들</div>
+            </div>
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/tv/64840">
+                    <img src="https://image.tmdb.org/t/p/w500/f6VlRI0fkeysKA1T8DvORxxG7RJ.jpg" alt="시그널" width="600" height="400">
+                </a>
+                <div class="desc">시그널</div>
+            </div>            
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/tv/75820">
+                    <img src="https://image.tmdb.org/t/p/w500/uSavP0BSfnyUaJe62f0ZTXIHLs8.jpg" alt="미스터 션샤인" width="600" height="400">
+                </a>
+                <div class="desc">미스터 션샤인</div>
+            </div>
+            <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/tv/93405/season/1">
+                    <img src="https://image.tmdb.org/t/p/w500/yACIAqAkSLkX4coHafpyLWAtQjw.jpg" alt="오징어 게임 - 시즌 1" width="600" height="400">
+                </a>
+                <div class="desc">오징어 게임 S1</div>
+            </div>               
+        </div>
+<p></p>
+
+{/* 별점 순서대로 리스트 렌더링 */}
+        {sortedRatings.map(rating => (
+            // rating이 9점인 리스트부터 1점인 리스트까지 반복
+            <details> 
+                        {/* <details open={rating >= 7}>  */}
+                <summary style="list-style: none; cursor: pointer;">
+                    {/* 별점 이미지 경로를 rating 변수를 사용하여 동적으로 생성합니다. */}
+                    {/* 예: rating이 9면 /images/9.png, 1이면 /images/1.png */}
+                    <img 
+                        src={`/images/${rating}.png`} 
+                        class="rating-image" 
+                        alt={`${rating}점 평점`}
+                    />
+                    {/* 리스트 제목 (예: 9점 영화 리스트) */}
+                    <span class="rating-count">({groupedMovies[rating].length})</span>
+                                        {/* <span class="rating-count">{rating}점 영화 리스트 ({groupedMovies[rating].length}개)</span> */}
+                </summary>
+                
+                {/* 별점별 영화 리스트 */}
+                <ul>
+                    {groupedMovies[rating].map(movie => (
+                        <li> 
+                            <a href={movie.url}>{movie.title}</a>
+                        </li>
+                    ))}
+                </ul>
+            </details>
+        ))}
+      </Prose>
+      
+    </article>
+  </main>
+</Html>
+
+{/* -------------------- 갤러리 전용 스타일 (Global) -------------------- */}
+
+<style>
+  /* <style is:global> */
+  div.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  div.gallery-item {
+    margin: 5px;
+    width: calc(20% - 10px); 
+  }
+
+  div.gallery-item:hover {
+    transform: scale(1.05);
+  }
+
+  div.gallery-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  div.gallery-item div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 768px) {
+    div.gallery-item {
+      width: calc(25% - 10px);
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    div.gallery-item {
+      width: calc(50% - 10px);
+    }
+  }
+  details summary {
+    /* list-style: none; 와 cursor: pointer; 는 summary의 style 속성에서 제거하고 여기에 넣는 것이 좋습니다. */
+    list-style: none; 
+    cursor: pointer;
+    
+    /* summary 내부 요소(이미지, 텍스트)를 중앙 정렬하기 위해 Flexbox를 사용합니다. */
+    display: flex;
+    flex-direction: column; /* 요소를 세로로 배치 (이미지 위에 텍스트가 가지 않도록) */
+    align-items: center; /* 가로 중앙 정렬 */
+    
+    /* 별점 섹션 자체의 위아래 간격 추가 (예: 20px) */
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* 2. rating-count (리스트 제목) 중앙 정렬 및 여백 조정 */
+  span.rating-count {
+    /* 이미 중앙 정렬되어 있지만, 텍스트 스타일을 위해 남겨둘 수 있습니다. */
+    text-align: center;
+    
+    /* 별점 이미지와 텍스트 사이의 간격 조정 (예: 이미지 아래 5px 여백) */
+    margin-top: 5px; 
+    font-weight: 600; /* 선택 사항: 제목을 강조 */
+  }
+
+  /* 3. 별점 이미지 간격 조정 (선택 사항) */
+  img.rating-image {
+    /* 이미지와 제목 외의 다른 요소와의 간격을 조절하려면 여기에 margin을 추가합니다. */
+  }
+</style>
