@@ -653,9 +653,11 @@ a {
   pointer-events: auto;
 }
 
-.theme-toggle:hover {
-    transform: rotate(45deg) scale(1.5);
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover {
+    transform: rotate(45deg) scale(1.05);
   }
+}
 
 .theme-toggle-icon {
   height: 1.5rem;
