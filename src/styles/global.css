@@ -665,7 +665,7 @@ a {
 }
 
 .theme-toggle-sun {
-  color: #18181b;
+  /* color: #18181b; */
 }
 
 .dark .theme-toggle-sun {
@@ -674,7 +674,6 @@ a {
 
 .theme-toggle-moon {
   display: none;
-  color: #ffffff;
 }
 
 .dark .theme-toggle-moon {
