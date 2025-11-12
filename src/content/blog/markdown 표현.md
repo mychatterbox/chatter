@@ -18,10 +18,10 @@ keywords:
 이 블로그에서 markdown 문법이 어떻게 표현되는지 확인할 수 있습니다.  
 출처 : [Full-Markdown.md by Alyson Silva](https://gist.github.com/allysonsilva/85fff14a22bbdf55485be947566cc09e)
 
-# Headers
+## Headers
 
 ```
-# h1 Heading 8-)
+# h1 Heading
 ## h2 Heading
 ### h3 Heading
 #### h4 Heading
@@ -37,7 +37,7 @@ Alt-H2
 ------
 ```
 
-# h1 Heading 8-)
+# h1 Heading
 
 ## h2 Heading
 
@@ -57,7 +57,7 @@ Alternatively, for H1 and H2, an underline-ish style:
 
 ---
 
-# Emphasis
+## Emphasis
 
 ```
 Emphasis, aka italics, with *asterisks* or _underscores_.
@@ -99,7 +99,7 @@ _This is italic text_
 
 ---
 
-# Lists
+## Lists
 
 ```
 1. First ordered list item
@@ -177,7 +177,7 @@ _This is italic text_
 
 ---
 
-# Task lists
+## Task lists
 
 ```
 - [x] Finish my changes
@@ -199,7 +199,7 @@ _This is italic text_
 
 ---
 
-# Ignoring Markdown formatting
+## Ignoring Markdown formatting
 
 You can tell GitHub to ignore (or escape) Markdown formatting by using \ before the Markdown character.
 
@@ -211,7 +211,7 @@ Let's rename \*our-new-project\* to \*our-old-project\*.
 
 ---
 
-# Links
+## Links
 
 ```
 [I'm an inline-style link](https://www.google.com)
@@ -261,7 +261,7 @@ Some text to show that the reference links can follow later.
 
 ---
 
-# Images
+## Images
 
 ```
 Here's our logo (hover to see the title text):
@@ -309,7 +309,7 @@ With a reference later in the document defining the URL location:
 
 ---
 
-# [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
+## [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
 
 ```
 Footnote 1 link[^first].
@@ -343,7 +343,7 @@ Duplicated footnote reference[^second].
 
 ---
 
-# Code and Syntax Highlighting
+## Code and Syntax Highlighting
 
 ```
 Inline `code` has `back-ticks around` it.
@@ -408,7 +408,7 @@ datahere
 
 ---
 
-# Tables
+## Tables
 
 ```
 Colons can be used to align columns.
@@ -498,7 +498,7 @@ raw Markdown line up prettily. You can also use inline Markdown.
 
 ---
 
-# Blockquotes
+## Blockquotes
 
 ```
 > Blockquotes are very handy in email to emulate reply text.
@@ -528,7 +528,7 @@ Quote break.
 
 ---
 
-# Inline HTML
+## Inline HTML
 
 ```
 <dl>
@@ -550,7 +550,7 @@ Quote break.
 
 ---
 
-# Horizontal Rules
+## Horizontal Rules
 
 ```
 Three or more...
@@ -584,7 +584,7 @@ Underscores
 
 ---
 
-# YouTube Videos
+## YouTube Videos
 
 ```
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
