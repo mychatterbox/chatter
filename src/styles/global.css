@@ -437,10 +437,16 @@ a {
   overflow-x: auto;
 }
 
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+  }
+
   .dark .astro-code,
   .dark .astro-code span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
   }
 
 .prose pre code {
