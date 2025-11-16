@@ -62,6 +62,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   display: flex;
   flex-direction: column;
@@ -410,12 +411,6 @@ a {
 
 .prose ol > li {
   padding-left: 0.375em;
-}
-
-/* Strong and emphasis */
-.prose strong {
-  font-weight: 600;
-  color: var(--color-text-primary);
 }
 
 .prose em {
