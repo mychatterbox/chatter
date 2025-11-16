@@ -62,12 +62,6 @@
   box-sizing: border-box;
 }
 
-html {
-  /* height: 100%; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -379,10 +373,10 @@ a {
 }
 
 /* Paragraphs */
-.prose p {
+/* .prose p {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
-}
+} */
 
 /* Links */
 .prose a {
