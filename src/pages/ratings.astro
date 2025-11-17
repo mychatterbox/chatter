@@ -1,11 +1,11 @@
 ---
-import Html from "components/html.astro"; // 기본 레이아웃 컴포넌트
-import Nav from "components/navbar.astro"; // 네비게이션
-import Prose from "components/prose.astro"; // 콘텐츠 포매팅 컴포넌트
+import Html from "components/html.astro";
+import Nav from "components/navbar.astro";
+import Prose from "components/prose.astro";
 import movieListData from "assets/movie.json";
 
 const groupedMovies = movieListData.reduce((acc, movie) => {
-    const rating = movie.rating || 0; // rating이 없을 경우 0으로 처리
+    const rating = movie.rating || 0;
     if (!acc[rating]) {
         acc[rating] = [];
     }
@@ -14,9 +14,9 @@ const groupedMovies = movieListData.reduce((acc, movie) => {
 }, {});
 
 const sortedRatings = Object.keys(groupedMovies)
-    .map(Number) // 키를 숫자로 변환
-    .filter(r => r >= 1 && r <= 9) // 1점에서 9점 사이만 필터링 (10점은 이미지 갤러리용이라고 하셨으므로)
-    .sort((a, b) => b - a); // 내림차순 정렬 (9, 8, 7, ...)
+    .map(Number)
+    .filter(r => r >= 1 && r <= 9)
+    .sort((a, b) => b - a);
 ---
 
 <Html
@@ -64,6 +64,12 @@ const sortedRatings = Object.keys(groupedMovies)
                 <div class="desc">Minority Report</div>
             </div>
             <div class="gallery-item">
+                <a target="_blank" href="https://www.themoviedb.org/movie/644">
+                    <img src="https://image.tmdb.org/t/p/w500/8MZSGX5JORoO72EfuAEcejH5yHn.jpg" alt="A.I. Artificial Intelligence" width="600" height="400">
+                </a>
+                <div class="desc">A.I. Artificial Intelligence</div>
+            </div>
+            <div class="gallery-item">
                 <a target="_blank" href="https://www.themoviedb.org/movie/13345">
                     <img src="https://image.tmdb.org/t/p/w500/2Jfl1VI3fLr3VmG8bdtsLUH2cAn.jpg" alt="서유기: 월광보합" width="600" height="400">
                 </a>
@@ -74,12 +80,6 @@ const sortedRatings = Object.keys(groupedMovies)
                     <img src="https://image.tmdb.org/t/p/w500/vEiJhunvmxOzUYAzKsRhedc8DtJ.jpg" alt="서유기: 선리기연" width="600" height="400">
                 </a>
                 <div class="desc">서유기: 선리기연</div>
-            </div>
-            <div class="gallery-item">
-                <a target="_blank" href="https://www.themoviedb.org/movie/644">
-                    <img src="https://image.tmdb.org/t/p/w500/8MZSGX5JORoO72EfuAEcejH5yHn.jpg" alt="A.I. Artificial Intelligence" width="600" height="400">
-                </a>
-                <div class="desc">A.I. Artificial Intelligence</div>
             </div>
             <div class="gallery-item">
                 <a target="_blank" href="https://www.themoviedb.org/movie/13363">
@@ -207,32 +207,22 @@ const sortedRatings = Object.keys(groupedMovies)
     }
   }
   details summary {
-    /* list-style: none; 와 cursor: pointer; 는 summary의 style 속성에서 제거하고 여기에 넣는 것이 좋습니다. */
     list-style: none; 
     cursor: pointer;
-    
-    /* summary 내부 요소(이미지, 텍스트)를 중앙 정렬하기 위해 Flexbox를 사용합니다. */
     display: flex;
-    flex-direction: column; /* 요소를 세로로 배치 (이미지 위에 텍스트가 가지 않도록) */
-    align-items: center; /* 가로 중앙 정렬 */
-    
-    /* 별점 섹션 자체의 위아래 간격 추가 (예: 20px) */
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
   }
   
-  /* 2. rating-count (리스트 제목) 중앙 정렬 및 여백 조정 */
   span.rating-count {
-    /* 이미 중앙 정렬되어 있지만, 텍스트 스타일을 위해 남겨둘 수 있습니다. */
     text-align: center;
-    
-    /* 별점 이미지와 텍스트 사이의 간격 조정 (예: 이미지 아래 5px 여백) */
     margin-top: 5px; 
-    font-weight: 600; /* 선택 사항: 제목을 강조 */
+    font-weight: 600;
   }
 
-  /* 3. 별점 이미지 간격 조정 (선택 사항) */
   img.rating-image {
-    /* 이미지와 제목 외의 다른 요소와의 간격을 조절하려면 여기에 margin을 추가합니다. */
+
   }
 </style>
