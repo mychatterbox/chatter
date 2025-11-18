@@ -30,7 +30,7 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   
-  --font-sans: "Pretendard Variable", system-ui, -apple-system, sans-serif;
+  --font-sans: "Pretendard", system-ui, -apple-system, sans-serif;
   --font-mono: "Cascadia Code", monospace;
   
   --breakpoint-sm: 640px;
