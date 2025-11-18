@@ -1,3 +1,5 @@
+/* @import url("styles/fonts2.css");  */
+
 :root {
   --color-bg-light: #f5f7f9;
   --color-bg-dark: #100F0F;
@@ -28,7 +30,7 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   
-  --font-sans: "Pretendard GOV Variable", system-ui, -apple-system, sans-serif;
+  --font-sans: "Pretendard Variable", system-ui, -apple-system, sans-serif;
   --font-mono: "Cascadia Code", monospace;
   
   --breakpoint-sm: 640px;
