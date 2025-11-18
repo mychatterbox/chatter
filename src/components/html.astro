@@ -1,6 +1,6 @@
 ---
 import ColorScheme from "components/colorscheme/head.astro";
-import "styles/fonts2.css";
+// import "styles/fonts2.css";
 import "styles/global.css";
 import { ClientRouter } from 'astro:transitions';
 
@@ -61,7 +61,12 @@ const canonicalURL = new URL(
     <link rel="preload" href="/fonts/CascadiaCode.woff2" as="font" type="font/woff2" crossorigin> -->
      <!-- <link rel="preload" as="style" crossorigin href=/fonts/fonts2.css" />
     <link rel="stylesheet" href="/fonts/fonts2.css" /> -->
-
+<link
+  rel="stylesheet preload"
+  as="style"
+  crossorigin=""
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css"
+/>
 
     <slot name="og">
       <meta property="og:type" content={ogType} />
@@ -85,7 +90,7 @@ const canonicalURL = new URL(
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" href={new URL("rss.xml", Astro.site)} title="rss" />
     <link rel="preconnect" href="https://static.cloudflareinsights.com">
-    <script defer data-domain="chatter.kr" src="https://chickadee.mychatterbox.workers.dev/script.js"></script>
+    <!-- <script defer data-domain="chatter.kr" src="https://chickadee.mychatterbox.workers.dev/script.js"></script> -->
     <script async src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b1e9f6e1435046a19b449682f88c5806"}'></script>
     <slot name="head" />
     <ClientRouter />
