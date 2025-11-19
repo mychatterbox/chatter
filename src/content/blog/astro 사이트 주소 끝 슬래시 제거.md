@@ -22,11 +22,11 @@ build format을 file로 설정해도 후행 슬래시가 잘 제거되지만 can
 아래 설정을 시도해봅시다.
 
 astro.config
-```astro
+```
   export default defineConfig({
   trailingSlash: "never",
     build: {
-    format: 'preserve',
+    format: 'preserve',
     },
   ......
   });
