@@ -1,5 +1,4 @@
 ---
-import Prose from "components/prose.astro";
 import { render } from "astro:content";
 
 const { entry } = Astro.props;
@@ -46,7 +45,6 @@ const draft = entry.id.startsWith("draft/");
       }
     </div>
   </div>
-  <Prose>
     {
       kind === "article" ? (
         <Fragment set:html={description} />
@@ -54,5 +52,4 @@ const draft = entry.id.startsWith("draft/");
         <Content />
       ) : null
     }
-  </Prose>
 </li>

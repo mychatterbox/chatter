@@ -1,7 +1,6 @@
 ---
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
-import Prose from "components/prose.astro";
 import movieListData from "assets/movie.json";
 
 const groupedMovies = movieListData.reduce((acc, movie) => {
@@ -32,7 +31,7 @@ const sortedRatings = Object.keys(groupedMovies)
           영화, TV 별점
         </h1> 
       </div>
-      <Prose>
+      
                     <img src="/images/10.png" class="rating-image" alt="Rating 10"> <p></p>
         <div class="gallery">
 
@@ -160,7 +159,7 @@ const sortedRatings = Object.keys(groupedMovies)
                 </ul>
             </details>
         ))}
-      </Prose>
+      
       
     </article>
   </main>
