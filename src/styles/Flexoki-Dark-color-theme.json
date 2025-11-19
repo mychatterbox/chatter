@@ -2,7 +2,7 @@
   "name": "Flexoki",
   "type": "dark",
   "colors": {
-    "editor.background": "#121212",
+    "editor.background": "#1a1a1a",
     "editor.foreground": "#CECDC3",
     "editor.hoverHighlightBackground": "#343331",
     "editor.lineHighlightBackground": "#1C1B1A",
