@@ -10,9 +10,8 @@ export async function getStaticPaths() {
   return Array.from(kind).map((kind) => ({ params: { kind } }));
 }
 
-// 게시물을 가져오고 필터링 및 정렬
 const pub = await getCollection("blog", ({ data }) => !data.draft);
-const filteredPub = pub.filter((p) => p.data.kind === Astro.params.kind); // 필터링하여 새로운 변수에 저장
+const filteredPub = pub.filter((p) => p.data.kind === Astro.params.kind);
 filteredPub.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
@@ -20,7 +19,7 @@ filteredPub.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
   <Nav />
   <main class="main-container">
     <ul class="feed-list article-container">
-      {filteredPub.map((entry) => <FeedItem entry={entry} />)} <!-- 필터링된 배열 사용 -->
+      {filteredPub.map((entry) => <FeedItem entry={entry} />)}
     </ul>
   </main>    
 </Html>
