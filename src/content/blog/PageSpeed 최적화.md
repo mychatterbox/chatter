@@ -48,10 +48,11 @@ Pretendard 폰트가 없는 기기에서는 어떻게 보일지 생각해봅니�
 브라우저의 폰트를 변경하지 않은 기본 설정인 상태에서는 PC는 맑은 고딕, 맥은 Apple SD Gothic Neo, 모바일은 해당 OS의 기본 폰트로 보이겠지요.  
 폰트를 이미 설치하고 브라우저의 폰트를 따로 설정한 경우 해당 폰트를 보여주므로 내가 생각한 우선 순위대로 설정합니다.  
 
-global.css 
+
 ```
-  --font-sans: 'Pretendard GOV Variable', 'Pretendard GOV', 'Pretendard', 'Noto Sans KR', 'OneUI Sans', sans-serif;
-  --font-mono: 'Cascadia Code', 'Noto Sans Mono', 'Roboto Mono' monospace;
+// global.css
+--font-sans: 'Pretendard GOV Variable', 'Pretendard GOV', 'Pretendard', 'Noto Sans KR', 'OneUI Sans', sans-serif;
+--font-mono: 'Cascadia Code', 'Noto Sans Mono', 'Roboto Mono' monospace;
 ```
 
 ### 최종 결과
