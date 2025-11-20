@@ -23,19 +23,21 @@ Reading progress bar는 현재 페이지의 진행 정도를 보여주는 바인
 ```css file="css"
 .reading-bar {
   position: fixed; 
-  top: 0;
-  left: 0;
-  width: 0%;
+  width: 100%;
   height: 5px;
   background-color: #AF3029;
-  z-index: 9999;
-  animation: fill linear forwards;
+  transform-origin: left;
+  animation: fill linear;
   animation-timeline: scroll(); 
 }
 
 @keyframes fill {
-  from { width: 0%; }
-  to { width: 100%; }
+  from { 
+    scale: 0 1;
+  }
+  to { 
+    scale: 1 1;
+  }
 }
 ```
 
