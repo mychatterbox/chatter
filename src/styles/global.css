@@ -742,14 +742,20 @@ mark {
   position: fixed; 
   top: 0;
   left: 0;
-  width: 0%;
+  width: 100%;  /* 전체 너비로 설정 */
   height: 5px;
   background-color: var(--mark-text-color);
   z-index: 9999;
+  transform-origin: left;  /* 왼쪽 기준으로 확대 */
   animation: fill linear;
   animation-timeline: scroll(); 
 }
 
 @keyframes fill {
-  to { width: 100%; }
+  from { 
+    scale: 0 1;  /* 가로 0, 세로 1 (보이지 않음) */
+  }
+  to { 
+    scale: 1 1;  /* 가로 1, 세로 1 (전체 표시) */
+  }
 }
