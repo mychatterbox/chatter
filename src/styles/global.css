@@ -746,11 +746,10 @@ mark {
   height: 5px;
   background-color: var(--mark-text-color);
   z-index: 9999;
-  animation: fill linear forwards;
+  animation: fill linear;
   animation-timeline: scroll(); 
 }
 
 @keyframes fill {
-  from { width: 0%; }
   to { width: 100%; }
 }
