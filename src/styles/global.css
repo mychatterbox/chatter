@@ -1,7 +1,8 @@
 :root {
   --color-bg-light: #f5f7f9;
   --color-bg-dark: #100F0F;
-  --color-text-primary: rgba(16, 15, 15, 0.9);
+  /* --color-text-primary: rgba(16, 15, 15, 0.9); */
+  --color-text-primary: #262626;
   --color-text-secondary: #71717a;
   --color-link-article: #2672CA;
   --color-link-note: #008075;
@@ -11,7 +12,7 @@
   --color-code-text: #f5f7f9;
   --color-thead-bg: #d4d4d8;
   --color-border: #71717a;
-  --color-border-light: rgba(113, 113, 122, 0.1);
+  --codeblock-filename-dot : #D14D41;
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
   --spacing-3: 0.75rem;
@@ -31,8 +32,7 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
 
-  --figcaption-bg: rgba(7, 6, 6, 0.1);
-  --figcaption-color: currentColor;
+  --figcaption-bg: #dddfe1;
   --mark-text-color: #AF3029;
   scrollbar-color: #c9c9c9 transparent;
 }
@@ -43,8 +43,7 @@
   --color-code-bg: #d4d4d8;
   --color-code-text: #100F0F;
   --color-thead-bg: #2f2f2f;
-  --figcaption-bg: rgba(255, 255, 255, 0.1);
-  --figcaption-color: currentColor;
+  --figcaption-bg: #282727;
   --mark-text-color: #D14D41;
   scrollbar-color: #656565 transparent;
 }
@@ -390,7 +389,7 @@ code {
   border-radius: 0.375rem;
   border-top: 2px solid rgba(161, 161, 170, 0.2);
   border-bottom: 2px solid rgba(161, 161, 170, 0.2);
-  padding: 1em 1em;
+  margin-top: 1.5em;
   overflow-x: auto;
 }
 
@@ -399,7 +398,6 @@ code {
     color: var(--shiki-light);
     background-color: var(--shiki-light-bg);
     font-size: 0.92rem;
-    /* padding-top: 1rem; */
   }
 
   .dark .astro-code,
@@ -412,13 +410,54 @@ pre code {
   background-color: transparent !important;
   border-width: 0;
   border-radius: 0;
-  padding: 0;
+  padding: 1rem;
   font-weight: inherit;
   color: inherit;
   font-size: inherit;
   font-family: var(--font-mono);
   line-height: inherit;
+  overflow-x: auto;
 }
+
+/* ============================================
+    Code Block FileName Label Styles
+    ============================================ */
+
+pre.has-code-file-label {
+  overflow: visible !important;
+  position: relative;
+  --code-file-offset: -0.75rem;
+}
+
+/* label 스타일 (기본) */
+.code-file-label {
+  position: absolute;
+  top: var(--code-file-offset);
+  left: 1rem;
+  padding: 0 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(113,113,122,0.2);
+  font-size: 0.8rem !important;
+}
+
+/* 녹색 dot 구현 (pseudo) */
+.code-file-label::before {
+  content: "";
+  display: inline-block;
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  /* background: #4CAF50; */
+  background: var(--codeblock-filename-dot);
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* hideDot 옵션 사용 시 dot 숨기기 */
+.code-file-label.no-dot::before {
+  display: none;
+}
+
 
 blockquote {
   font-weight: 500;
@@ -529,18 +568,14 @@ tbody td {
 .theme-toggle-container {
   position: fixed;
   top: var(--spacing-2);
-  /* 뷰포트 전체 너비를 기준으로 중앙 정렬 */
   left: 50%;
   transform: translateX(-50%);
-  /* navbar-header와 동일한 최대 너비 적용 */
   max-width: var(--breakpoint-lg);
   width: 100%;
-  /* 내부에서 오른쪽 정렬 */
   display: flex;
   justify-content: flex-end;
-  /* 양쪽 패딩 추가 */
   padding: 0 var(--spacing-3);
-  pointer-events: none; /* 컨테이너가 클릭 방해하지 않도록 */
+  pointer-events: none;
   z-index: 1000;
 }
 
@@ -692,7 +727,6 @@ li.task-list-item input[type="checkbox"]:checked::before {
 
 figcaption {
   margin-top: -15px !important;
-  color: var(--figcaption-color) !important;
   text-align: center;
   font-style: italic;
   background-color: var(--figcaption-bg);
@@ -702,5 +736,21 @@ figcaption {
 mark {
   background-color: transparent;
   color: var(--mark-text-color);
-  /* font-weight: 500; */
+}
+
+.reading-bar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background-color: var(--mark-text-color);
+  z-index: 9999;
+  animation: fill linear forwards;
+  animation-timeline: scroll(); 
+}
+
+@keyframes fill {
+  from { width: 0%; }
+  to { width: 100%; }
 }

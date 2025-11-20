@@ -3,6 +3,13 @@ import sitemap from "@astrojs/sitemap";
 import FlexokiDark from "./src/styles/Flexoki-Dark-color-theme.json";
 import FlexokiLight from "./src/styles/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
+import { transformerFileName } from "./src/styles/fileName.js";
+import { 
+  transformerNotationDiff, 
+  transformerNotationHighlight, 
+  transformerNotationWordHighlight 
+} from "@shikijs/transformers";
+
 
 export default defineConfig({
   site: 'https://chatter.kr/',
@@ -37,8 +44,10 @@ export default defineConfig({
         dark: FlexokiDark,
       },
       defaultColor: false,
+      transformers: [
+        transformerFileName(),
+      ],
     },
   },
-  
   scopedStyleStrategy: "where",
 });
