@@ -49,10 +49,11 @@ Pretendard 폰트가 없는 기기에서는 어떻게 보일지 생각해봅니�
 폰트를 이미 설치하고 브라우저의 폰트를 따로 설정한 경우 해당 폰트를 보여주므로 내가 생각한 우선 순위대로 설정합니다.  
 
 
-```
-// global.css
+```css file="global.css"
+:root {
 --font-sans: 'Pretendard GOV Variable', 'Pretendard GOV', 'Pretendard', 'Noto Sans KR', 'OneUI Sans', sans-serif;
 --font-mono: 'Cascadia Code', 'Noto Sans Mono', 'Roboto Mono' monospace;
+}
 ```
 
 ### 최종 결과
