@@ -77,12 +77,12 @@ body {
     ============================================ */
 .main-container {
   flex: 1;
-  padding: var(--spacing-8) var(--spacing-4) var(--spacing-12);
+  padding: var(--spacing-8) var(--spacing-2) var(--spacing-8);
 }
 
 @media (min-width: 640px) {
   .main-container {
-    padding-bottom: var(--spacing-24);
+  padding-inline: var(--spacing-4);
   }
 }
 
