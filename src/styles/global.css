@@ -1,8 +1,6 @@
 :root {
-  --color-bg-light: #f5f7f9;
-  --color-bg-dark: #100F0F;
-  /* --color-text-primary: rgba(16, 15, 15, 0.9); */
   --color-text-primary: #262626;
+  --color-bg-light: #f5f7f9;
   --color-text-secondary: #71717a;
   --color-link-article: #2672CA;
   --color-link-note: #008075;
@@ -39,6 +37,7 @@
 
 .dark {
   --color-text-primary: #dee0e2;
+  --color-bg-dark: #100F0F;
   --color-text-secondary: #a1a1aa;
   --color-code-bg: #d4d4d8;
   --color-code-text: #100F0F;
@@ -93,7 +92,6 @@ body {
   margin: 0 auto;
   max-width: var(--breakpoint-lg); /* 1024px로 변수화 */
   overflow-wrap: break-word;
-  font-weight: 500;
 }
 
 .feed-list {
@@ -721,7 +719,7 @@ li.task-list-item input[type="checkbox"]:checked::before {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
@@ -736,6 +734,7 @@ figcaption {
 mark {
   background-color: transparent;
   color: var(--mark-text-color);
+  font-weight: 500;
 }
 
 .reading-bar {
