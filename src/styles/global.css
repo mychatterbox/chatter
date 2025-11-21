@@ -340,13 +340,27 @@ a {
   color: inherit;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  text-decoration: underline;
+  text-decoration: none;
   text-underline-offset: 4px;
 }
 
 a:hover {
   color: var(--color-link-hover);
+  text-decoration: underline;
 }
+
+a[href^="https"]:not([href^="https://chatter.kr"]):not(:has(img))::after {  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: var(--color-link-hover);
+mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6m4-3h6v6m-11 5L21 3' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none' stroke='%23000000'%3E</path></svg>");  mask-size: cover;
+  vertical-align: -0.1rem;
+  margin-left: 0.2em;
+  font-weight: 600;
+}
+
+
 
 /* Lists */
 ul, ol {
@@ -746,6 +760,7 @@ mark {
   transform-origin: left;  /* 왼쪽 기준으로 확대 */
   animation: fill linear;
   animation-timeline: scroll(); 
+  z-index: 999;
 }
 
 @keyframes fill {
