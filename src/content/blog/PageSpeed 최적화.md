@@ -38,7 +38,9 @@ pagespeed lcp fcp 최적화, 뭐 이런 단어로 검색을 많이 해보고 살
 
 일단 무식하게 font.css 파일과 폰트 설정을 전부 제거하고 크롬 DevTools 의 Lighthouse 로 테스트 해봅니다.  
 이때 네트워크 속도는 Slow 4G 로 설정해야 실제 PageSpeed 테스트와 비슷한 결과를 얻을 수 있습니다.  
-오! 100점이 나옵니다.  
+그리고 네트워크 속도를 낮춰도 Performance 탭의 성능 측정은 실제와 많이 다릅니다.  꼭 Lighthouse 결과를 확인합니다.
+
+오! 100점!  
 역시 폰트가 문젠데, 그렇다면 이제 원하는 Pretendard 폰트를 어떻게 사용해야 하나...
 
 
