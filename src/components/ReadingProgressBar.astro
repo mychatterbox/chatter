@@ -1,0 +1,23 @@
+<div class="reading-bar"></div>
+
+<style>
+.reading-bar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: var(--mark-text-color, #AF3029);
+  transform-origin: left;
+  scale: 0 1;
+  animation: fill linear;
+  animation-timeline: scroll(); 
+  z-index: 1000;
+  pointer-events: none;
+}
+
+@keyframes fill {
+  from { scale: 0 1; }
+  to { scale: 1 1; }
+}
+</style>
