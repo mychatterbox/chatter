@@ -21,8 +21,8 @@ build format을 file로 설정해도 후행 슬래시가 잘 제거되지만 can
 
 아래 설정을 시도해봅시다.
 
-astro.config
-```
+
+```astro file="astro.config.mjs"
   export default defineConfig({
   trailingSlash: "never",
     build: {
@@ -31,9 +31,8 @@ astro.config
   ......
   });
 ```
-
-wrangler.jsonc  
-```
+  
+```jsonc file="wrangler.jsonc"
 {
   "name": "chatter",
   "compatibility_date": "2025-07-16",
