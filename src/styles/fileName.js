@@ -1,23 +1,18 @@
 export const transformerFileName = ({ className = "code-file-label", hideDot = false } = {}) => ({
   pre(node) {
-    // meta raw parsing (예: file="src/config/site.ts")
-    const raw = this.options.meta?.__raw?.split(" ");
+    // meta raw parsing - file 값만 추출하는 간단한 방법
+    const raw = this.options.meta?.__raw;
     if (!raw) return;
 
-    const metaMap = new Map();
-    for (const item of raw) {
-      const [key, value] = item.split("=");
-      if (!key || !value) continue;
-      metaMap.set(key, value.replace(/["'`]/g, ""));
-    }
+    // file="값" 패턴 찾기
+    const fileMatch = raw.match(/file=(["'`])(.*?)\1/);
+    if (!fileMatch) return;
 
-    const file = metaMap.get("file");
+    const file = fileMatch[2];
     if (!file) return;
 
     this.addClassToHast(node, "has-code-file-label");
     node.properties = node.properties || {};
-    const existingStyle = node.properties.style || "";
-    // node.properties.style = `${existingStyle}; --file-name-offset: -0.75rem;`;
     this.addClassToHast(node, "has-code-file-label code-file-offset");
 
     const labelSpan = {
