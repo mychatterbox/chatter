@@ -27,7 +27,7 @@ d:\music, 네트워크 공유된 MINI-pc의 e:\music 2군데로 동시에 백업
 따라하실 분은 테스트를 위해 C 드라이브에 music 폴더를 만들거나, 아래 내용을 각자 환경에 맞게 수정해서 적용합니다.  
 이제 임의의 위치에 파일을 하나 만들고 <mark>music C-DE.bat</mark> 처럼 알기 쉽게 파일명과 확장자를 변경한 후 아래 내용으로 저장합니다.
 
-```
+```txt file="music C-DE.bat"
 @echo off
 SET s="c:\music"
 SET d1="d:\music"
@@ -66,7 +66,7 @@ music C-DE.bat 파일을 실행하면 백업이 끝날때까지 로그 파일을
 팝업창이 뜨지 않도록 처리합시다.  
 music C-DE.bat 파일을 만든 위치나 임의의 위치에 <mark>music C-DE.vbs</mark> 처럼 알기 쉬운 이름으로 빈파일을 하나 만들고, 아래 내용을 적절하게 수정하고 저장합니다.
 
-```vb
+```vbs file="music C-DE.vbs"
 Dim WinScriptHost
 Set WinScriptHost = CreateObject("WScript.Shell")
 WinScriptHost.Run Chr(34) & "c:\robocopy\music C-DE.bat" & Chr(34), 0
