@@ -9,7 +9,6 @@ const schema = z.object({
   tags: z.array(z.string()).optional(),
 });
 
-// --- blog 컬렉션 (항상 로드됨)
 const blog = defineCollection({
   loader: glob({
     pattern: "**/*.{md,mdoc}",
@@ -18,14 +17,11 @@ const blog = defineCollection({
   schema,
 });
 
-// --- draft 컬렉션 (DEV에서만 로드 / PROD에서는 비어 있게)
 const draft = defineCollection({
-  loader: import.meta.env.DEV
-    ? glob({
-        pattern: "**/*.{md,mdoc}",
-        base: "./src/content/draft",
-      })
-    : async () => [],   // ★ null 대신 "빈 배열"을 반환하면 오류 없음
+  loader: glob({
+    pattern: "**/*.{md,mdoc}",
+    base: "./src/content/draft",
+  }),
   schema,
 });
 

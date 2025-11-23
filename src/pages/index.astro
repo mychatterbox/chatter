@@ -1,11 +1,21 @@
 ---
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import FeedItem from "components/feed-item.astro";
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
 
 const blogPosts = await getCollection("blog");
-const draftPosts = await getCollection("draft"); // PROD에서는 빈 배열
+
+let draftPosts: CollectionEntry<"draft">[] = [];
+
+if (import.meta.env.DEV) {
+  try {
+    draftPosts = await getCollection("draft");
+  } catch (error) {
+    console.warn("Draft collection is empty or does not exist");
+  }
+}
 
 const posts = [...blogPosts, ...draftPosts];
 posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
