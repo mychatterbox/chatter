@@ -66,7 +66,7 @@ music C-DE.bat 파일을 실행하면 백업이 끝날때까지 로그 파일을
 팝업창이 뜨지 않도록 처리합시다.  
 music C-DE.bat 파일을 만든 위치나 임의의 위치에 <mark>music C-DE.vbs</mark> 처럼 알기 쉬운 이름으로 빈파일을 하나 만들고, 아래 내용을 적절하게 수정하고 저장합니다.
 
-```vbs file="music C-DE.vbs"
+```vb file="music C-DE.vbs"
 Dim WinScriptHost
 Set WinScriptHost = CreateObject("WScript.Shell")
 WinScriptHost.Run Chr(34) & "c:\robocopy\music C-DE.bat" & Chr(34), 0
