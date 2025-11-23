@@ -17,7 +17,7 @@ keywords:
 
 ### 수정하기 전
 
-![PageSpeed Insights 2](../../assets/blog-images/2025/pagespeed-insights_1.png)
+![PageSpeed Insights 2](../../assets/blog-images/2025/pagespeed-insights_1.webp)
 
 <hr>
 
@@ -60,4 +60,4 @@ Pretendard 폰트가 없는 기기에서는 어떻게 보일지 생각해봅니�
 
 ### 최종 결과
 
-![PageSpeed Insights 2](../../assets/blog-images/2025/pagespeed-insights_2.png)
+![PageSpeed Insights 2](../../assets/blog-images/2025/pagespeed-insights_2.webp)
