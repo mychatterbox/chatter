@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
 import { render } from "astro:content";
+import ReadingProgressBar from "components/ReadingProgressBar.astro";
 
 export async function getStaticPaths() {
   const pub = await getCollection("blog");
@@ -29,6 +30,7 @@ const draft = entry.id.startsWith("draft/");
   ogType="article"
   robots={draft ? "noindex" : undefined}
 >
+  <ReadingProgressBar/>
   <Nav />
   <main class="main-container">
     <article class="article-container">
@@ -39,29 +41,27 @@ const draft = entry.id.startsWith("draft/");
         >
           {title}
         </h1>  
-        <div class="article-meta">
-          <div class="text-sm text-muted">
-            {
-              kind === "article" ? (
-                <a href={`/kind/${kind}`} class="link-article pr-2">
-                  Article
-                </a>
-              ) : kind === "note" ? (
-                <a href={`/kind/${kind}`} class="link-note pr-2">
-                  Note
-                </a>
-              ) : null
-            } {pubDate.toISOString().slice(0, 10)}
-          </div>
-          {
-            draft && (
-              <div class="text-sm font-black uppercase text-draft">draft</div>
-            )
-          }
-        </div>
+    <div class="article-meta text-small text-muted">
+        {
+          kind === "article" ? (
+              <a href={`/kind/${kind}`} class="link-article pr-2">
+              Article
+            </a>
+          ) : kind === "note" ? (
+            <a href={`/kind/${kind}`} class="link-note pr-2">
+              Note
+            </a>
+          ) : null
+        }
+        <span>{pubDate.toISOString().slice(0, 10)}</span>
+      {
+        draft && (
+          <div class="font-black uppercase text-draft">draft</div>
+        )
+      }
+    </div>
       </div>
         <Content />
-      
       <!-- 태그 섹션 -->
       {tags && tags.length > 0 && (
         <div class="tags-container">
