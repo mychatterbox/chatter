@@ -69,6 +69,8 @@ body {
 /* ============================================
     Layout Components
     ============================================ */
+
+
 .main-container {
   flex: 1;
   padding: var(--spacing-4) var(--spacing-2) var(--spacing-12);
@@ -89,6 +91,12 @@ body {
 .feed-list {
   list-style: none;
   padding: 0;
+}
+
+.feed-item {
+  padding-bottom: var(--spacing-8);
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 img {
@@ -173,7 +181,11 @@ h3 { font-size: 1.16rem; }
 
 .link-article { color: var(--color-link-article); }
 .link-note { color: var(--color-link-note); }
-.text-draft { color: var(--text-draft); }
+.text-draft { 
+  color: var(--color-text-draft); 
+  font-weight: 600;
+  padding-left: var(--spacing-4); 
+}
 
 .link-tag:hover {
   text-decoration: none;
@@ -553,13 +565,12 @@ tbody td {
     Description Toggle 
     ============================================ */
 
-/* 핵심: 항상 처음에는 숨김 상태 (JavaScript 무관) */
+/* 
 .feed-item-content {
   display: none !important;
     padding-bottom: var(--spacing-8);
 }
 
-/* JavaScript가 특정 클래스를 추가했을 때만 표시 */
 body.content-initialized.content-visible .feed-item-content {
   display: block !important;
 }
@@ -574,4 +585,4 @@ body.content-initialized.content-visible .feed-item-content {
 html.content-visible-pre .description-icon-down { opacity: 0; }
 html.content-visible-pre .description-icon-up { opacity: 1; }
 body.content-initialized.content-visible .description-icon-down { opacity: 0; }
-body.content-initialized.content-visible .description-icon-up { opacity: 1; }
+body.content-initialized.content-visible .description-icon-up { opacity: 1; } */
