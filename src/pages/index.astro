@@ -4,8 +4,11 @@ import FeedItem from "components/feed-item.astro";
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
 
-const pub = await getCollection("blog", ({ data }) => !data.draft);
-pub.sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
+const blogPosts = await getCollection("blog");
+const draftPosts = await getCollection("draft"); // PROD에서는 빈 배열
+
+const posts = [...blogPosts, ...draftPosts];
+posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
 <Html title="mychatterbox" description="이런 것도 팁이 되나 싶은 정보들">
@@ -13,7 +16,7 @@ pub.sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 
   <main class="main-container">
     <ul class="feed-list article-container">
-      {pub.map((entry) => <FeedItem entry={entry} />)}
+      {posts.map((entry) => <FeedItem entry={entry} />)}
     </ul>
   </main>
 </Html>

@@ -2,75 +2,63 @@
 import { getCollection } from "astro:content";
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
-import { render } from "astro:content";
 import ReadingProgressBar from "components/ReadingProgressBar.astro";
+import { render } from "astro:content";
 
 export async function getStaticPaths() {
-  const pub = await getCollection("blog");
-  return pub.map((entry) => ({
+  const blogPosts = await getCollection("blog");
+  const draftPosts = await getCollection("draft"); // PROD에서는 빈 배열
+
+  const posts = [...blogPosts, ...draftPosts];
+
+  return posts.map((entry) => ({
     params: { path: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const {
-  data: { title, description, pubDate, kind, ogImage, tags },
-} = entry;
 const { Content } = await render(entry);
 
-const draft = entry.id.startsWith("draft/");
+const { title, description, pubDate, kind, tags } = entry.data;
+
+// 태그 URL
+const tagLinks = tags?.map((tag) => ({ tag, url: `/tag/${tag}` })) ?? [];
 ---
 
 <Html
   title={title}
   description={description}
   pubDate={pubDate}
-  ogImage={ogImage}
   ogType="article"
-  robots={draft ? "noindex" : undefined}
 >
   <ReadingProgressBar/>
   <Nav />
+
   <main class="main-container">
     <article class="article-container">
       <div class="article-header">
-        <h1 
-          transition:name={`title-${entry.id}`}
-          class="title-xl"
-        >
+        <h1 class="title-xl" transition:name={`title-${entry.id}`}>
           {title}
-        </h1>  
-    <div class="article-meta text-small text-muted">
-        {
-          kind === "article" ? (
-              <a href={`/kind/${kind}`} class="link-article pr-2">
-              Article
-            </a>
-          ) : kind === "note" ? (
-            <a href={`/kind/${kind}`} class="link-note pr-2">
-              Note
-            </a>
-          ) : null
-        }
-        <span>{pubDate.toISOString().slice(0, 10)}</span>
-      {
-        draft && (
-          <div class="font-black uppercase text-draft">draft</div>
-        )
-      }
-    </div>
+        </h1>
+        <div class="article-meta text-small text-muted">
+          {kind === "article" && <a href="/kind/article" class="link-article pr-2">Article</a>}
+          {kind === "note" && <a href="/kind/note" class="link-note pr-2">Note</a>}
+          <span>{pubDate.toISOString().slice(0, 10)}</span>
+
+          {entry.collection === "draft" && (
+            <div class="text-draft">_____ Draft _____</div>
+          )}
+        </div>
       </div>
-        <Content />
-      <!-- 태그 섹션 -->
-      {tags && tags.length > 0 && (
+
+      <Content />
+
+      {tagLinks.length > 0 && (
         <div class="tags-container">
           <div class="tags-wrapper">
-            {tags.map((tag: string) => (
-              <a
-                href={`/tag/${tag}`}
-                class="link-tag"
-              >
+            {tagLinks.map(({ tag, url }) => (
+              <a href={url} class="link-tag">
                 <span class="tag-hash">#</span>{tag}
               </a>
             ))}

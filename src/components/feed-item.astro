@@ -2,54 +2,39 @@
 import { render } from "astro:content";
 
 const { entry } = Astro.props;
-const {
-  id,
-  data: { title, description, pubDate, kind },
-} = entry;
+const { id, data } = entry;
+const { title, description, pubDate, kind } = data;
+
 const { Content } = await render(entry);
-const draft = entry.id.startsWith("draft/");
+
+// DEV에서만 draft 표시
+const isDraft = entry.collection === "draft";
 ---
 
 <li class="feed-item">
   <div class="article-header">
-    <a
-      class="title-link" 
-      href={`/${id}`} 
-    >
-      <div 
-        transition:name={`title-${entry.id}`}
-        class="title-main"
-      >
+    <a class="title-link" href={`/${id}`}>
+      <div class="title-main" transition:name={`title-${entry.id}`}>
         {title}
-  </div>
+      </div>
     </a>
+
     <div class="article-meta text-small text-muted">
-        {
-          kind === "article" ? (
-              <a href={`/kind/${kind}`} class="link-article pr-2">
-              Article
-            </a>
-          ) : kind === "note" ? (
-            <a href={`/kind/${kind}`} class="link-note pr-2">
-              Note
-            </a>
-          ) : null
-        }
-        <span>{pubDate.toISOString().slice(0, 10)}</span>
-      {
-        draft && (
-          <div class="font-black uppercase text-draft">draft</div>
-        )
-      }
+      {kind === "article" && (
+        <a href="/kind/article" class="link-article pr-2">Article</a>
+      )}
+      {kind === "note" && (
+        <a href="/kind/note" class="link-note pr-2">Note</a>
+      )}
+
+      <span>{pubDate.toISOString().slice(0, 10)}</span>
+
+      {isDraft && <div class="text-draft">_____ Draft _____</div>}
     </div>
   </div>
-<div class="feed-item-content">
-  {
-    kind === "article" ? (
-      <Fragment set:html={description} />
-    ) : kind === "note" ? (
-      <Content />
-    ) : null
+
+  {kind === "article"
+    ? <Fragment set:html={description} />
+    : <Content />
   }
-</div>
 </li>
