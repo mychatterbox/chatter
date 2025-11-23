@@ -6,6 +6,7 @@ import FilmOutline from "../icons/hero/outline/film.svg";
 import InfoSolid from "../icons/hero/solid/information-circle.svg";
 import InfoOutline from "../icons/hero/outline/information-circle.svg";
 import ThemeToggle from "../components/colorscheme/ThemeToggle.astro";
+import DescriptionToggle from "./DescriptionToggle.astro";
 ---
 
 <div class="navbar-container">
@@ -49,12 +50,13 @@ import ThemeToggle from "../components/colorscheme/ThemeToggle.astro";
             <InfoOutline/>
           )}
         </div>
-      </a>      
-    </div>
+      </a>
+      
+    <DescriptionToggle />
 
-    <!-- theme-toggle-container를 navbar-header 내부로 이동 -->
     <div class="theme-toggle-container">
       <ThemeToggle />
     </div>
   </header>
+
 </div>

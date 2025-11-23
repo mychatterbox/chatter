@@ -1,0 +1,100 @@
+---
+import Description_toggle_down from "../icons/hero/outline/description_toggle_up.svg";
+import Description_toggle_up from "../icons/hero/outline/description_toggle_down.svg";
+---
+
+<script is:inline>
+  (function() {
+    const saved = sessionStorage.getItem('contentVisible');
+    if (saved === 'true') {
+      document.documentElement.classList.add('content-visible-pre');
+    }
+  })();
+</script>
+
+<div
+ class="navbar-icon"
+ id="description-toggle"
+ role="button"
+ tabindex="0"
+ aria-label="요약 보기"
+>
+ <div class="navbar-icon-svg">
+   <Description_toggle_up class="description-icon-up" />
+   <Description_toggle_down class="description-icon-down" />
+ </div>
+</div>
+
+<script is:inline>
+(function() {
+  if (window.__contentToggleInitialized) return;
+  window.__contentToggleInitialized = true;
+
+  const applyContentVisibility = (isVisible, doc = document) => {
+    const contentElements = doc.querySelectorAll('.feed-item-content');
+    const feedItems = doc.querySelectorAll('.feed-item');
+    const toggleBtn = doc.getElementById('description-toggle');
+
+    doc.documentElement.classList.remove('content-visible-pre');
+    
+    doc.body.classList.remove('content-visible', 'content-hidden');
+
+    doc.body.classList.toggle('content-visible', isVisible);
+    doc.body.classList.toggle('content-hidden', !isVisible);
+    doc.body.classList.add('content-initialized');
+
+    contentElements.forEach(el => { el.style.display = isVisible ? 'block' : 'none'; });
+    feedItems.forEach(item => { 
+      item.classList.toggle('content-visible', isVisible); 
+      item.classList.toggle('content-hidden', !isVisible); 
+    });
+
+    if (toggleBtn) { 
+      toggleBtn.setAttribute('title', isVisible ? '요약 숨기기' : '요약 보기'); 
+      toggleBtn.setAttribute('aria-label', isVisible ? '요약 숨기기' : '요약 보기'); 
+    }
+
+    if (doc === document) { 
+      sessionStorage.setItem('contentVisible', isVisible ? 'true' : 'false'); 
+    }
+  };
+
+  const getContentVisibility = () => {
+    const saved = sessionStorage.getItem('contentVisible');
+    return saved === 'true';
+  };
+
+  const initialState = getContentVisibility();
+  
+  requestAnimationFrame(() => { applyContentVisibility(initialState); });
+
+  document.addEventListener('astro:before-swap', ({ newDocument }) => { 
+    const state = getContentVisibility();
+    if (state) {
+      newDocument.documentElement.classList.add('content-visible-pre');
+    }
+    applyContentVisibility(state, newDocument); 
+  });
+
+  document.addEventListener('click', (event) => {
+    const btn = event.target.closest && event.target.closest('#description-toggle');
+    if (!btn) return;
+    const currentVisible = document.body.classList.contains('content-visible');
+    applyContentVisibility(!currentVisible);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const btn = document.getElementById('description-toggle');
+    if (document.activeElement === btn && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      const currentVisible = document.body.classList.contains('content-visible');
+      applyContentVisibility(!currentVisible);
+    }
+  });
+
+  document.addEventListener('astro:page-load', () => { 
+    requestAnimationFrame(() => { applyContentVisibility(getContentVisibility()); }); 
+  });
+
+})();
+</script>

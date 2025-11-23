@@ -16,18 +16,17 @@ const draft = entry.id.startsWith("draft/");
       class="title-link" 
       href={`/${id}`} 
     >
-      <h2 
+      <div 
         transition:name={`title-${entry.id}`}
         class="title-main"
       >
         {title}
-      </h2>
+  </div>
     </a>
-    <div class="article-meta">
-      <div class="text-sm text-muted">
+    <div class="article-meta text-small text-muted">
         {
           kind === "article" ? (
-            <a href={`/kind/${kind}`} class="link-article pr-2">
+              <a href={`/kind/${kind}`} class="link-article pr-2">
               Article
             </a>
           ) : kind === "note" ? (
@@ -37,19 +36,20 @@ const draft = entry.id.startsWith("draft/");
           ) : null
         }
         <span>{pubDate.toISOString().slice(0, 10)}</span>
-      </div>
       {
         draft && (
-          <div class="text-sm font-black uppercase text-draft">draft</div>
+          <div class="font-black uppercase text-draft">draft</div>
         )
       }
     </div>
   </div>
-    {
-      kind === "article" ? (
-        <Fragment set:html={description} />
-      ) : kind === "note" ? (
-        <Content />
-      ) : null
-    }
+<div class="feed-item-content">
+  {
+    kind === "article" ? (
+      <Fragment set:html={description} />
+    ) : kind === "note" ? (
+      <Content />
+    ) : null
+  }
+</div>
 </li>
