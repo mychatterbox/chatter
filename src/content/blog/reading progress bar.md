@@ -14,7 +14,7 @@ keywords:
   - reading progress bar
 ---
 
-![reading progress bar](../../assets/blog-images/2025/reading-progress-bar_1.png)
+![reading progress bar](../../assets/blog-images/2025/reading-progress-bar_1.webp)
 
 개떡같이 말해도 claude.ai 가 이미지를 잘 만들었습니다.  gemini는 너무 화려해서 마치 온라인 강의 혹은 책 표지처럼 만들어주네요.  
 
