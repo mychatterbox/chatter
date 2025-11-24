@@ -1,13 +1,13 @@
 :root {
-  --color-text-primary: #262626;
-  --color-bg: #f5f7f9;
+  --color-text-primary: #252734;
+  --color-bg: #f4f5f7;
   --color-text-muted: #5c5c5c;
   --color-link-article: #2672CA;
   --color-link-note: #008075;
   --color-text-draft: #dc2626;
   --color-link-hover: #3171B2;
   --color-code-bg: #52525b;
-  --color-code-text: #f5f7f9;
+  --color-code-text: #f4f5f7;
   --color-thead-bg: #d4d4d8;
   --color-border: #71717a;
   --codeblock-filename-dot : #D14D41;
@@ -84,7 +84,7 @@ body {
 
 .article-container {
   margin: 0 auto;
-  max-width: var(--breakpoint-lg);
+  max-width: var(--breakpoint-md);
   overflow-wrap: break-word;
 }
 
@@ -328,7 +328,7 @@ pre.has-code-file-label {
   align-items: center;
   justify-content: space-between;
   position: relative;
-  max-width: var(--breakpoint-lg);
+  /* max-width: var(--breakpoint-lg); */
   margin: 0 auto;
 }
 
@@ -369,7 +369,7 @@ pre.has-code-file-label {
   /* top: var(--spacing-2); */
   left: 50%;
   transform: translateX(-50%);
-  max-width: var(--breakpoint-lg);
+  /* max-width: var(--breakpoint-lg); */
   width: 100%;
   display: flex;
   justify-content: flex-end;
