@@ -19,15 +19,15 @@ const isDraft = entry.collection === "draft";
       </div>
     </a>
 
-    <div class="article-meta text-small text-muted">
+    <div class="article-meta text-small text-muted flex-wrap">
       {kind === "article" && (
-        <a href="/kind/article" class="link-article pr-2">Article</a>
+        <a href="/kind/article" class="link-article">Article</a>
       )}
       {kind === "note" && (
-        <a href="/kind/note" class="link-note pr-2">Note</a>
+        <a href="/kind/note" class="link-note">Note</a>
       )}
 
-      <span>{pubDate.toISOString().slice(0, 10)}</span>
+      <div>{pubDate.toISOString().slice(0, 10)}</div>
 
       {isDraft && <div class="text-draft">_____ Draft _____</div>}
     </div>
