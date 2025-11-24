@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - WOW
-ogImage: /blog-images/2024/wow-dbm-volume_1.webp
+ogImage: ./blog-images/2024/wow-dbm-volume_1.webp
 description: 바닥 피하세요! DBM 경고가 큰 소리로 디스코드를 통해 상대방에게 전달되어 부끄럽나요? DBM 경고, 알림, 목소리 크기를 조절해봅시다.
 keywords:
   - dbm 볼륨
@@ -23,5 +23,5 @@ keywords:
 아래 예시는 대화 채널로 설정했는데, 여기서 '대화' 채널이라는 것은 게임 내 npc 대사를 말하므로 혹시 대화 채널로 설정하고 볼륨을 낮추면 npc 대사가 작게 들립니다.  
 이리저리 테스트해보니 주음량으로 설정하고, 주음량을 낮추고 다른 소리를 키우는 것이 좋은 것 같습니다.
 
-![dbm 볼륨](../../assets/blog-images/2024/wow-dbm-volume_1.webp)
-![dbm 볼륨](../../assets/blog-images/2024/wow-dbm-volume_2.webp)
+![dbm 볼륨](./blog-images/2024/wow-dbm-volume_1.webp)
+![dbm 볼륨](./blog-images/2024/wow-dbm-volume_2.webp)

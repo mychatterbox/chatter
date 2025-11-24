@@ -296,7 +296,7 @@ Reference-style:
 
 [logo]: https://astro.build/assets/press/astro-icon-light.png "Logo Title Text 2"
 
-![markdown-astro](../../assets/blog-images/2025/markdown-style.webp)
+![markdown-astro](./blog-images/2025/markdown-style.webp)
 ![astro-logo-dark](https://astro.build/assets/press/astro-logo-dark.png "astro-logo-dark")
 
 Like links, Images also have a footnote style syntax

@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - astro
-ogImage: /blog-images/2025/astro-localhost-on-mobile.png
+ogImage: ./blog-images/2025/astro-localhost-on-mobile.png
 description: astro 개발 localhost 모바일로 확인하기
 keywords:
   - localost 모바일에서
@@ -24,4 +24,4 @@ astro 만 가능한지는 모르겠지만 아무런 설정을 하지 않아도 �
 npx astro dev -- --host
 ```
 
-![astro-localhost-on-mobile](../../assets/blog-images/2025/astro-localhost-on-mobile.png)
+![astro-localhost-on-mobile](./blog-images/2025/astro-localhost-on-mobile.png)

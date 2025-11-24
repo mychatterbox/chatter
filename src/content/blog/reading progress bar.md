@@ -8,13 +8,13 @@ featured: false
 draft: false
 tags:
   - astro
-ogImage: /blog-images/2025/reading-progress-bar.png
+ogImage: ./blog-images/2025/reading-progress-bar_1.webp
 description: 자바스크립트없이 css 만으로 페이지 상단에 reading progress bar 를 구현합니다.
 keywords:
   - reading progress bar
 ---
 
-![reading progress bar](../../assets/blog-images/2025/reading-progress-bar_1.webp)
+![reading progress bar](./blog-images/2025/reading-progress-bar_1.webp)
 
 개떡같이 말해도 claude.ai 가 이미지를 잘 만들었습니다.  gemini는 너무 화려해서 마치 온라인 강의 혹은 책 표지처럼 만들어주네요.  
 

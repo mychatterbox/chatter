@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - astro
-ogImage: /blog-images/2025/pagespeed-insights.png
+ogImage: ./blog-images/2025/pagespeed-insights_2.webp
 description: PageSpeed 100점을 받고 싶은가. 폰트 swap 설정해도 안되고 로컬 폰트를 이용해도 안되고, 가변 다이나믹 서브셋으로 설정해도 안되면 <mark>폰트를 제.거.한.다.</mark>
 keywords:
   - fcp lcp 최적화
@@ -17,7 +17,7 @@ keywords:
 
 ### 수정하기 전
 
-![PageSpeed Insights 2](../../assets/blog-images/2025/pagespeed-insights_1.webp)
+![PageSpeed Insights 2](./blog-images/2025/pagespeed-insights_1.webp)
 
 <hr>
 
@@ -60,4 +60,4 @@ Pretendard 폰트가 없는 기기에서는 어떻게 보일지 생각해봅니�
 
 ### 최종 결과
 
-![PageSpeed Insights 2](../../assets/blog-images/2025/pagespeed-insights_2.webp)
+![PageSpeed Insights 2](./blog-images/2025/pagespeed-insights_2.webp)

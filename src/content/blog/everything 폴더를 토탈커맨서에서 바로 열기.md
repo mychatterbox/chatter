@@ -18,7 +18,7 @@ keywords:
 
 아래와 같은 파일을 검색했습니다.
 
-![everything](../../assets/blog-images/2025/everything-with-totalcommander_1.png)
+![everything](./blog-images/2025/everything-with-totalcommander_1.png)
 
 #### Everything 기본 설정
 
@@ -36,7 +36,7 @@ keywords:
 
 #### 추가 설정 방법
 
-| ![everything-setting](../../assets/blog-images/2025/everything-with-totalcommander_2.png) | ![everything-setting](../../assets/blog-images/2025/everything-with-totalcommander_3.png) |
+| ![everything-setting](./blog-images/2025/everything-with-totalcommander_2.png) | ![everything-setting](./blog-images/2025/everything-with-totalcommander_3.png) |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 
 #### 입력할 명령

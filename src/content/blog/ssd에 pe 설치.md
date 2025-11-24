@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - 윈도우
-ogImage: /blog-images/2024/ssd-pe-uefi-boot_1.png
+ogImage: ./blog-images/2024/ssd-pe-uefi-boot_1.png
 description: D 드라이브에 PE를 설치하고, UEFI 부팅메뉴에 추가하는 방법을 설명합니다.
 keywords:
   - PE 멀티부팅
@@ -26,13 +26,13 @@ keywords:
 일단 순서대로 캡쳐부터 확인합시다.  
 아래에서 다시 정리하겠습니다.
 
-![disk](../../assets/blog-images/2024/ssd-pe-uefi-boot_1.png)
+![disk](./blog-images/2024/ssd-pe-uefi-boot_1.png)
 
-![bootice](../../assets/blog-images/2024/ssd-pe-uefi-boot_3.png)
+![bootice](./blog-images/2024/ssd-pe-uefi-boot_3.png)
 
-![folder](../../assets/blog-images/2024/ssd-pe-uefi-boot_2.png)
+![folder](./blog-images/2024/ssd-pe-uefi-boot_2.png)
 
-![bootice](../../assets/blog-images/2024/ssd-pe-uefi-boot_4.png)
+![bootice](./blog-images/2024/ssd-pe-uefi-boot_4.png)
 
 차근차근 확인합니다.
 
@@ -58,7 +58,7 @@ keywords:
 
 그래도 일반 멀티부팅 메뉴에 추가하는 것이 더 마음에 든다면
 
-![bootice](../../assets/blog-images/2024/ssd-pe-uefi-boot_5.png)
+![bootice](./blog-images/2024/ssd-pe-uefi-boot_5.png)
 
 PE 항목을 추가할 때 <mark>새 WIM 부팅항목 선택</mark>합니다.  
 <mark>디스크, 파티션을 적절하게 선택</mark>하고, <mark>SDI 파일을 클릭해서 위치를 설정</mark>합니다.  

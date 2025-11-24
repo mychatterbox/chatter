@@ -7,11 +7,12 @@ const schema = z.object({
   pubDate: z.date(),
   kind: z.enum(["article", "note"]),
   tags: z.array(z.string()).optional(),
+  ogImage: z.string().optional(),
 });
 
 const blog = defineCollection({
   loader: glob({
-    pattern: "**/*.{md,mdoc}",
+    pattern: ["**/*.{md,mdoc}", "!blog-images/**"],
     base: "./src/content/blog",
   }),
   schema,
@@ -19,7 +20,7 @@ const blog = defineCollection({
 
 const draft = defineCollection({
   loader: glob({
-    pattern: "**/*.{md,mdoc}",
+    pattern: ["**/*.{md,mdoc}", "!blog-images/**"],
     base: "./src/content/draft",
   }),
   schema,

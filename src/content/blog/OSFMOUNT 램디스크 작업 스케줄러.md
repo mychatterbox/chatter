@@ -68,7 +68,7 @@ OSFMOUNT는 항상 고정된 크기로만 사용할 수 있습니다.
 당황하지 말고 다른 디스크로 옮겨서 실행합니다.
 </div> -->
 
-![sample](../../assets/blog-images/2024/osfmount-ramdisk-scheduler_1.png)
-![sample](../../assets/blog-images/2024/osfmount-ramdisk-scheduler_2.png)
+![sample](./blog-images/2024/osfmount-ramdisk-scheduler_1.png)
+![sample](./blog-images/2024/osfmount-ramdisk-scheduler_2.png)
 
-![sample](../../assets/blog-images/2024/osfmount-ramdisk-scheduler_3.png)
+![sample](./blog-images/2024/osfmount-ramdisk-scheduler_3.png)

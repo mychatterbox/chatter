@@ -10,7 +10,7 @@ tags:
   - github
   - netlify
   - astro
-ogImage: /blog-images/2024/astropaper-og.webp
+ogImage: ./blog-images/2024/astropaper-og.webp
 description: astro-paper 블로그 디자인이나 기능이 마음에 드나요? 써봅시다.
 keywords:
   - astro-paper
@@ -53,10 +53,10 @@ GitHub에 제작자가 등록, 공개한 astro-paper 를 내 저장공간으로 
 
 > https://github.com/satnaing/astro-paper 제작자의 페이지에 접속합니다.  
 > 우측 상단 Fork 클릭한 후 + Create a new fork 를 선택합니다. (fork = copy 라고 생각하면 되겠습니다)
-> ![github](../../assets/blog-images/2024/my-astro-paper_1.png)
+> ![github](./blog-images/2024/my-astro-paper_1.png)
 >
 > 동일하게 astro-paper 입력합니다. (저는 이미 만든 상태라 오류 메세지입니다만)
-> ![github](../../assets/blog-images/2024/my-astro-paper_2.png)
+> ![github](./blog-images/2024/my-astro-paper_2.png)
 > Create fork 클릭하면 잠시 후 화면이 제작자의 <mark>satnaing / astro-paper</mark> 가 아닌 나의 <mark>chobo / astro-paper</mark> 로 바뀝니다.  
 > 이제 이 astro-paper 는 내꺼가 되었습니다. 요래요래 조물딱하려면 내 것으로 해야겠지요.  
 > <mark>https://github.com/chobo/astro-paper</mark> 즐겨찾기 등록합니다. (`chobo` 대신 여러분의 ID)
@@ -67,14 +67,14 @@ GitHub에 제작자가 등록, 공개한 astro-paper 를 내 저장공간으로 
 
 > 준비단계에서 가입했던 https://www.netlify.com/ 접속, 로그인합니다.  
 > 왼쪽 Sites 메뉴 클릭 후 우측 <mark>Add new site</mark> 클릭, <mark>Import an existing project</mark> 클릭  
-> ![netlify](../../assets/blog-images/2024/my-astro-paper_3.png)  
+> ![netlify](./blog-images/2024/my-astro-paper_3.png)  
 > 우리가 가입했던 GitHub 가 보입니다. <mark>Deploy with GitHub</mark> 클릭  
-> ![netlify](../../assets/blog-images/2024/my-astro-paper_4.png)  
+> ![netlify](./blog-images/2024/my-astro-paper_4.png)  
 > <mark>astro-paper</mark> 클릭합니다.
-> ![netlify](../../assets/blog-images/2024/my-astro-paper_5.png)  
+> ![netlify](./blog-images/2024/my-astro-paper_5.png)  
 > 다음 단계인 Let's deploy your project 화면에서는 수정할 것이 없고, 제일 밑의 <mark>Deploy astro-paper</mark> 클릭합니다.
 > 잠시 후 아래와 비슷한 결과가 나옵니다.
-> ![netlify](../../assets/blog-images/2024/my-astro-paper_6.png)
+> ![netlify](./blog-images/2024/my-astro-paper_6.png)
 >
 > 이제 확인해봅시다. <br>
 >

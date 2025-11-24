@@ -9,7 +9,7 @@ draft: false
 tags:
   - 미니pc
   - 소프트웨어
-ogImage: /blog-images/2024/eq12-wol_3.webp
+ogImage: ./blog-images/2024/eq12-wol_3.webp
 description: Beelink의 n100 미니PC 중 EQ12 모델의 wake on lan 내용과 WOL 프로그램을 하나 추천합니다.
 keywords:
   - EQ12
@@ -20,7 +20,7 @@ keywords:
   - beelink wol
 ---
 
-![eq12](../../assets/blog-images/2024/eq12-wol_1.webp)
+![eq12](./blog-images/2024/eq12-wol_1.webp)
 
 많은 n100 미니pc 중의 하나인 <mark>Beelink EQ12</mark> 모델입니다.  
 [PD 충전기](https://chatter.kr/minipc-pdcharger) 에 연결해서 잘 사용해왔고 문제가 없었기 때문에 이제는 보이지 않는 곳에 두고 wake on lan 기능으로 사용해보려고 합니다.
@@ -36,8 +36,8 @@ Beelink 미니pc 모델들이 wol 기능이 되는지 검색해보면 의외로 
 
 아래와 같은 간단한 WOL 프로그램을 사용합니다.  
 [MagicPacket](https://apps.microsoft.com/detail/9wzdncrcw1mx?hl=ko-kr&gl=KR)
-![MagicPacket](../../assets/blog-images/2024/eq12-wol_3.webp)
-![mac-address](../../assets/blog-images/2024/eq12-wol_5.webp)
+![MagicPacket](./blog-images/2024/eq12-wol_3.webp)
+![mac-address](./blog-images/2024/eq12-wol_5.webp)
 
 Name:  
 PC 이름을 입력합니다.  
@@ -46,4 +46,4 @@ MAC address:
 3C-6P-10-30-4G-F3 형식으로 보이면 3C:6P:10:30:4G:F3 처럼 입력합니다.  
 2가지 정보만 입력해도 WOL 기능이 잘 작동합니다.
 
-![mac-address](../../assets/blog-images/2024/eq12-wol_4.webp)
+![mac-address](./blog-images/2024/eq12-wol_4.webp)

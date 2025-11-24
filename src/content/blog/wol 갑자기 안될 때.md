@@ -8,7 +8,7 @@ featured: false
 draft: false
 tags:
   - 윈도우
-ogImage: /blog-images/2024/wol-fast-startup.png
+ogImage: ./blog-images/2024/wol-fast-startup.png
 description: 잘 되던 WOL 기능이 안될 때 확인해야될 것
 keywords:
   - 24H2 wol
@@ -21,4 +21,4 @@ keywords:
 
 검색(혹은 <kbd>Win</kbd>+<kbd>R</kbd>) - powercfg.cpl - 전원 단추 작동 설정 - 현재 사용할 수 없는 설정 변경 클릭 - <mark>빠른 시작 켜키를 비활성화</mark>
 
-![빠른시작켜기](../../assets/blog-images/2024/wol-fast-startup.png)
+![빠른시작켜기](./blog-images/2024/wol-fast-startup.png)
