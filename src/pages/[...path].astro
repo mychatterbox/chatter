@@ -30,6 +30,7 @@ const { Content } = await render(entry);
 
 const { title, description, pubDate, kind, tags, ogImage } = entry.data;
 const tagLinks = tags?.map((tag) => ({ tag, url: `/tag/${tag}` })) ?? [];
+const isDraft = entry.collection === "draft";
 
 let processedOgImage: string | undefined;
 
@@ -77,15 +78,18 @@ if (ogImage) {
           {title}
         </h1>
 
-        <div class="article-meta text-small text-muted">
-          {kind === "article" && <a href="/kind/article" class="link-article pr-2">Article</a>}
-          {kind === "note" && <a href="/kind/note" class="link-note pr-2">Note</a>}
-          <span>{pubDate.toISOString().slice(0, 10)}</span>
+    <div class="article-meta text-small text-muted flex-wrap">
+      {kind === "article" && (
+        <a href="/kind/article" class="link-article">Article</a>
+      )}
+      {kind === "note" && (
+        <a href="/kind/note" class="link-note">Note</a>
+      )}
 
-          {entry.collection === "draft" && (
-            <span class="text-draft ml-2">Draft</span>
-          )}
-        </div>
+      <div>{pubDate.toISOString().slice(0, 10)}</div>
+
+      {isDraft && <div class="text-draft">_____ Draft _____</div>}
+    </div>
       </div>
 
       <Content />
