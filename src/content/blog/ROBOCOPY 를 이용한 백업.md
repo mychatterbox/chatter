@@ -7,8 +7,7 @@ slug: robocopy-backup
 featured: false
 draft: false
 tags:
-  - robocopy
-  - 소프트웨어
+  - 윈도우
 ogImage: ""
 description: robocopy 를 이용한 백업 방법을 간단하게 설명합니다.
 keywords:

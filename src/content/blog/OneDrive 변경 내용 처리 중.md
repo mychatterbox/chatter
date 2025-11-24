@@ -7,7 +7,7 @@ slug: onedrive-stuck
 featured: false
 draft: false
 tags:
-  - 프로그램
+  - 소프트웨어
 ogImage: ""
 description: OneDrive "변경 내용 처리 중" 상태가 계속 되면...
 keywords:
