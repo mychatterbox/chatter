@@ -8,13 +8,14 @@ featured: false
 draft: false
 tags:
   - astro
-ogImage: /blog-images/2025/markdown-style.webp
+ogImage: ./blog-images/2025/markdown-style.webp
 description: markdown 문법이 어떻게 표현되는지를 보여주는 샘플 페이지입니다.
 keywords:
   - markdown style
   - 마크다운 스타일
 ---
 
+![markdown-example](./blog-images/2025/markdown-style.webp)  
 이 블로그에서 markdown 문법이 어떻게 표현되는지 확인할 수 있습니다.  
 출처 : [Full-Markdown.md by Alyson Silva](https://gist.github.com/allysonsilva/85fff14a22bbdf55485be947566cc09e)
 
