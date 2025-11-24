@@ -134,7 +134,7 @@ img {
 .title-xl {
   line-height: 1.25;
   margin-top: 0;
-  margin-bottom: -1.5rem;
+  margin-bottom: 0rem;
 }
 
 .title-main {
@@ -143,7 +143,7 @@ img {
   font-weight: 700;
   color: var(--color-text-primary);
   /* margin-top: 1rem; */
-  margin-bottom: -1.5rem;
+  /* margin-bottom: -1.5rem; */
 }
 @media (min-width: 768px) {
   .title-main {
@@ -184,7 +184,6 @@ h3 { font-size: 1.16rem; }
 .text-draft { 
   color: var(--color-text-draft); 
   font-weight: 600;
-  padding-left: var(--spacing-4); 
 }
 
 .link-tag:hover {
@@ -211,6 +210,12 @@ mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' vi
   vertical-align: -0.1rem;
   margin-left: 0.2em;
   font-weight: 600;
+}
+
+/* .data-footnote-backref, */
+sup::before { content: "["; }
+sup { color: var(--color-link-hover); }
+sup::after { content: "]";
 }
 
 /* ============================================
@@ -315,7 +320,7 @@ pre.has-code-file-label {
     ============================================ */
 
 .navbar-container {
-  padding: var(--spacing-2) var(--spacing-4) 0;
+  padding: var(--spacing-4) var(--spacing-4) 0;
 }
 
 .navbar-header {
@@ -336,7 +341,6 @@ pre.has-code-file-label {
 .navbar-icon {
   display: flex;
   align-items: center;
-  padding: 0.25rem;
 }
 
 .navbar-icon:hover { transform: scale(1.1); }
@@ -362,7 +366,7 @@ pre.has-code-file-label {
 /* Theme Toggle Container: fixed position을 유지하여 뷰포트 기준으로 배치 */
 .theme-toggle-container {
   position: fixed;
-  top: var(--spacing-2);
+  /* top: var(--spacing-2); */
   left: 50%;
   transform: translateX(-50%);
   max-width: var(--breakpoint-lg);
@@ -384,10 +388,11 @@ pre.has-code-file-label {
 
 .article-meta {
   display: flex;
-  align-items: center;
   padding-left: var(--spacing-1);
-  margin-top: 1.5rem;
+  padding-top: 0.3rem; 
   font-weight: 500;
+  gap: var(--spacing-2);
+  line-height: 1;
 }
 
 .tags-container {
@@ -405,6 +410,11 @@ pre.has-code-file-label {
 .tag-hash {
   color: var(--color-link-article);
   margin-right: var(--spacing-1);
+  padding-top: var(--spacing-4);
+}
+
+.tag-header {
+  padding-top: var(--spacing-4);
 }
 
 /* Theme Toggle Button */
