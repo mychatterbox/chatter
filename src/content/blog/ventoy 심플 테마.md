@@ -93,7 +93,7 @@ terminal-border: "0"
 
 </details>
 
-#### **배치**
+### 배치
 
 일단 배경화면(background.png)을 하나 만들거나 준비합니다.  
 ![background](./blog-images/2025/ventoy-theme_3.webp)
@@ -112,7 +112,7 @@ terminal-border: "0"
 "ventoy_color": "#000000",
 ```
 
-#### **아이콘**
+### 아이콘
 
 ventoy.json 파일에서 menu_class 부분을 참고합니다.  
 파일명에 `Key`에서 설정한 글자가 있으면 `class`에 설정한 아이콘이 표시됩니다.  
@@ -123,7 +123,7 @@ ventoy.json 파일에서 menu_class 부분을 참고합니다.
 
 아래 다시 소개할 [www.gnome-look.org](https://www.gnome-look.org/browse?cat=109&ord=rating) 에서 테마를 살펴보고 마음에 드는 아이콘이 있는 테마를 다운받아 사용하세요.
 
-#### **해상도**
+### 해상도
 
 UHD, FHD 모니터 2대로 테스트한 결과 `"gfxmode": "max"` 옵션일 때 자동으로 최대 해상도로 표시됩니다.  
 ("gfxmode": "auto" 일 경우 4K 모니터에서도 1920x1080 으로 출력되는 것 같습니다.)  
@@ -133,7 +133,7 @@ ventoy 사이트의 [About resolution_fit (1.0.86+)](https://www.ventoy.net/en/p
 > 나는 ventoy 제대로 설치한 것 같은데! 모르겠다... PE가 이상한가? 남들은 잘 쓰는 것 같던데... 해상도가 800x600 으로만 나온다면
 > https://nonlol.tistory.com/223 에서 수정된 ventoy_wimboot.img 파일을 받아서 교체합니다.
 
-#### **폰트**
+### 폰트
 
 최근 벤토이는 자체적으로 한글 출력을 지원하지만, 좋아하는 한글폰트가 있다면 ttf --> pf2 파일로 직접 변환해서 사용할 수 있습니다.  
 [grub-mkfont 윈도우용](https://m.blog.naver.com/a1jyh/221395655744)을 다운받은 뒤 사용법.txt 를 참고합니다.  
@@ -148,7 +148,7 @@ d:\downloads>grub-mkfont.exe -s 36 -o 나눔고딕36.pf2 나눔고딕.ttf
 폰트 크기를 줄이거나 item_height, item_padding 수치를 적절히 조정하거나, top 수치를 줄여서 전체 공간을 위로 올립니다.  
 위의 설정 그대로 적용하면 첫 화면에 10개의 리스트가 보이고, 스크롤로 아래쪽을 볼 수 있습니다.
 
-#### **다른 테마**
+### 다른 테마
 
 theme.txt 파일과 ventoy.json 파일의 내용을 대략 이해했다면, 이제 다른 테마로 변경하는 것은 쉽습니다.  
 Ventoy는 Grub 부트로더를 사용하므로 Grub 테마를 바로 사용할 수 있습니다.  
