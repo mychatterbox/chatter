@@ -1,16 +1,16 @@
 :root {
-  --color-text-primary: #252734;
-  --color-bg: #f4f5f7;
-  --color-text-muted: #5c5c5c;
-  --color-link-article: #2672CA;
-  --color-link-note: #008075;
-  --color-text-draft: #dc2626;
+  --color-text-primary: #222222;
+  --color-bg: #eeeeee;
+  --color-text-muted: #555555;
+  --color-link-article: #2a6eb2;
+  --color-link-note: #007a70;
+  --color-text-draft: #ff0000;
   --color-link-hover: #3171B2;
-  --color-code-bg: #52525b;
-  --color-code-text: #f4f5f7;
-  --color-thead-bg: #d4d4d8;
-  --color-border: #71717a;
-  --codeblock-filename-dot : #D14D41;
+  --color-code-bg: #555555;
+  --color-code-text: #eeeeee;
+  --color-thead-bg: #dddddd;
+  --color-border: #777777;
+  --codeblock-filename-dot : #dd4444;
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
   --spacing-3: 0.75rem;
@@ -30,21 +30,21 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
 
-  --figcaption-bg: #dddfe1;
-  --mark-text-color: #AF3029;
-  scrollbar-color: #c9c9c9 transparent;
+  --figcaption-bg: #dddddd;
+  --mark-text-color: #cc2222;
+  scrollbar-color: #aaaaaa transparent;
 }
 
 .dark {
-  --color-text-primary: #dee0e2;
-  --color-bg: #100F0F;
-  --color-text-muted: #a7a8aa;
-  --color-code-bg: #d4d4d8;
-  --color-code-text: #100F0F;
-  --color-thead-bg: #2f2f2f;
-  --figcaption-bg: #282727;
-  --mark-text-color: #D14D41;
-  scrollbar-color: #656565 transparent;
+  --color-text-primary: #eeeeee;
+  --color-bg: #111111;
+  --color-text-muted: #999999;
+  --color-code-bg: #dddddd;
+  --color-code-text: #111111;
+  --color-thead-bg: #333333;
+  --figcaption-bg: #222222;
+  --mark-text-color: #dd4444;
+  scrollbar-color: #555555 transparent;
 }
 
 /* ============================================
@@ -91,6 +91,9 @@ body {
 .feed-list {
   list-style: none;
   padding: 0;
+    margin: 0 auto;
+  max-width: var(--breakpoint-md);
+  overflow-wrap: break-word;
 }
 
 .feed-item {
@@ -392,7 +395,7 @@ pre.has-code-file-label {
   padding-top: 0.3rem; 
   font-weight: 500;
   gap: var(--spacing-2);
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .tags-container {
