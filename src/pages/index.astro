@@ -40,9 +40,7 @@ const sortedTags = Object.keys(tagCounts).sort(
   <main class="main-container">
     <div class="landing-content">
       <ul class="feed-list">
-        {posts.map((entry) => (
-          <FeedItem entry={entry} key={entry.id} />
-        ))}
+        {posts.map((entry) => (<FeedItem entry={entry} />))}
       </ul>
 
       <!-- Tags Sidebar -->
