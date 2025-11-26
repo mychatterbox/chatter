@@ -35,7 +35,7 @@ export default {
     // HTML과 정적 자산을 구분해서 캐시 헤더 적용
     let cacheControl = "public, max-age=31536000, immutable";
     if (contentType.includes("text/html")) {
-      cacheControl = "public, max-age=300";
+      cacheControl = "public, max-age=60";
     }
 
     return new Response(response.body, {
