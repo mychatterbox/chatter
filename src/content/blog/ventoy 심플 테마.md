@@ -23,7 +23,7 @@ keywords:
 <details>
 <summary>theme.txt</summary>
 
-```
+```txt file="theme.txt"
 # Main options
 title-text: ""
 desktop-image: "background.png"
@@ -60,7 +60,7 @@ terminal-border: "0"
 <details>
 <summary>ventoy.json</summary>
 
-```json
+```txt file="ventoy.json"
 {
   "control": [
     { "VTOY_SECONDARY_BOOT_MENU": "0" },
