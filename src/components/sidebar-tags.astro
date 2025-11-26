@@ -36,7 +36,10 @@ const { tags, counts } = Astro.props as Props;
     display: block;
     position: sticky;
     top: var(--spacing-20);
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
