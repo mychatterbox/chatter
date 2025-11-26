@@ -23,7 +23,7 @@
   --spacing-24: 6rem;
   
   --font-sans: 'Pretendard GOV Variable', 'Pretendard GOV', 'Pretendard', 'Noto Sans KR', 'OneUI Sans', sans-serif;
-  --font-mono: 'Cascadia Code', 'Noto Sans Mono', 'Roboto Mono' monospace;
+  --font-mono: 'Cascadia Code', 'Noto Sans Mono', 'Roboto Mono', monospace;
   
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -554,7 +554,7 @@ table {
   margin-bottom: 2em;
   font-size: 0.875em;
   border-spacing: 0;
-  border: 1px solid;
+  border: 1px solid var(--color-border);
 }
 
 thead { border-bottom: 1px solid #d4d4d8; }
@@ -566,13 +566,17 @@ thead th {
   padding-bottom: 0.5714286em;
   padding-left: 0.5714286em;
   padding-top : 0.5714286em;
-  border: 1px solid;
+  border: 1px solid var(--color-border);
   background-color: var(--color-thead-bg);
 }
 
 tbody td {
   padding: 0.5714286em;
-  border: 1px solid;
+  border: 1px solid var(--color-border);
+}
+
+table code {
+  white-space: nowrap;
 }
 
 /* ============================================
