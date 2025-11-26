@@ -20,7 +20,6 @@ if (import.meta.env.DEV) {
 const posts = [...blogPosts, ...draftPosts];
 posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-// 태그별 포스트 수 계산 (타입 안전)
 const tagCounts: Record<string, number> = {};
 posts.forEach((entry) => {
   entry.data.tags?.forEach((tag: string) => {
@@ -28,7 +27,6 @@ posts.forEach((entry) => {
   });
 });
 
-// 포스트 수 기준으로 정렬
 const sortedTags = Object.keys(tagCounts).sort(
   (a, b) => tagCounts[b] - tagCounts[a] || a.localeCompare(b)
 );
@@ -50,20 +48,16 @@ const sortedTags = Object.keys(tagCounts).sort(
 </Html>
 
 <style>
-/* Landing Content Layout */
 .landing-content {
-  display: block;
-  gap: var(--spacing-8);
+  display: flex;
   margin: 0 auto;
 }
 
 @media (min-width: 1025px) {
   .landing-content {
-    display: grid;
-    grid-template-columns: 1fr 200px;
-    max-width: 968px;
+    max-width: 1024px;
     align-items: flex-start;
   }
 }
-
 </style>
+
