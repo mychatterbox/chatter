@@ -6,7 +6,7 @@
   --color-link-note: #007a70;
   --color-text-draft: #ff0000;
   --color-link-hover: #3171B2;
-  --color-code-bg: #555555;
+  --color-code-bg: #999999;
   --color-code-text: #eeeeee;
   --color-thead-bg: #dddddd;
   --color-border: #777777;
@@ -39,7 +39,7 @@
   --color-text-primary: #eeeeee;
   --color-bg: #111111;
   --color-text-muted: #999999;
-  --color-code-bg: #dddddd;
+  --color-code-bg: #999999;
   --color-code-text: #111111;
   --color-thead-bg: #333333;
   --figcaption-bg: #222222;
@@ -604,3 +604,7 @@ html.content-visible-pre .description-icon-down { opacity: 0; }
 html.content-visible-pre .description-icon-up { opacity: 1; }
 body.content-initialized.content-visible .description-icon-down { opacity: 0; }
 body.content-initialized.content-visible .description-icon-up { opacity: 1; } */
+
+/* * {
+ outline: 1px solid red !important;
+} */
