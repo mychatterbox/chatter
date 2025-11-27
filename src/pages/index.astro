@@ -36,29 +36,41 @@ const sortedTags = Object.keys(tagCounts).sort(
   <Nav />
 
   <main class="main-container">
-    <div class="landing-content">
-      <ul class="feed-list">
-        {posts.map((entry) => (<FeedItem entry={entry} />))}
-      </ul>
+  <div class="landing-content">
+    <ul class="feed-list">
+      {posts.map((entry) => (<FeedItem entry={entry} />))}
+    </ul>
 
-      <!-- Tags Sidebar -->
+    <div class="sidebar-container">
       <TagsSidebar tags={sortedTags} counts={tagCounts} />
     </div>
+  </div>
   </main>
-</Html>
 
 <style>
 .landing-content {
   display: block;
 }
 
+.sidebar-container {
+  display: none;
+  position: sticky;
+  top: var(--spacing-20);
+}
+
 @media (min-width: 1025px) {
+  .main-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
   .landing-content {
     display: flex;
     align-items: flex-start;
     gap: 4rem;
   }
 
+  .sidebar-container {
+    display: block;
+  }
 }
-</style>
-
