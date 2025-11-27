@@ -14,9 +14,9 @@ const isDraft = entry.collection === "draft";
 <li class="feed-item">
   <div class="article-header">
     <a class="title-link" href={`/${id}`}>
-      <div class="title-main" transition:name={`title-${entry.id}`}>
+      <h2 class="title-index" transition:name={`title-${entry.id}`}>
         {title}
-      </div>
+      </h2>
     </a>
 
     <div class="article-meta text-small text-muted flex-wrap">
