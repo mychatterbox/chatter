@@ -36,10 +36,6 @@ const { tags, counts } = Astro.props as Props;
     display: block;
     position: sticky;
     top: var(--spacing-20);
-    /* padding-left: 2rem; */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 }
 
@@ -51,14 +47,12 @@ const { tags, counts } = Astro.props as Props;
 
 .tag-item {
   display: flex;
-  align-items: center;
   gap: 0.8rem;
   font-size: 0.875rem;
 }
 .tag-count {
   min-width: 2rem;
   text-align: right;
-  flex-shrink: 0;
 }
 
 .tag-name {
