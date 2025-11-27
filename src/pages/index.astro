@@ -54,13 +54,10 @@ const sortedTags = Object.keys(tagCounts).sort(
 
 .sidebar-container {
   display: none;
-  position: sticky;
-  top: var(--spacing-20);
 }
 
 @media (min-width: 1025px) {
   .main-container {
-    max-width: 1280px;
     margin: 0 auto;
   }
 
@@ -70,7 +67,13 @@ const sortedTags = Object.keys(tagCounts).sort(
     gap: 4rem;
   }
 
-  .sidebar-container {
+  .feed-list {
     display: block;
   }
+  .sidebar-container {
+    display: block;
+    position: sticky;
+    top: var(--spacing-20);
+  }
 }
+</style>
