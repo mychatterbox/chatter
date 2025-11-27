@@ -134,11 +134,11 @@ img {
   h5 { font-size: 0.92rem; }
   h6 { font-size: 0.84rem; }    
 
-.title-post {
-  line-height: 1.25;
-  margin-top: 0;
-  margin-bottom: 0;
-}
+@media (min-width: 768px) {
+h1 { font-size: 1.36rem; }
+h2 { font-size: 1.24rem; }
+h3 { font-size: 1.12rem; }
+}  
 
 .title-index {
   line-height: 1.2;
@@ -147,10 +147,10 @@ img {
   margin-bottom: 0;
 }
 
-@media (min-width: 768px) {
-h1 { font-size: 1.36rem; }
-h2 { font-size: 1.24rem; }
-h3 { font-size: 1.12rem; }
+.title-post {
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .text-small { font-size: 0.84rem; }
