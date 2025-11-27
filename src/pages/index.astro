@@ -49,15 +49,16 @@ const sortedTags = Object.keys(tagCounts).sort(
 
 <style>
 .landing-content {
-  display: flex;
-  margin: 0 auto;
+  display: block;
 }
 
 @media (min-width: 1025px) {
   .landing-content {
-    max-width: 1024px;
+    display: flex;
     align-items: flex-start;
+    gap: 4rem;
   }
+
 }
 </style>
 
