@@ -1,17 +1,18 @@
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-    
-    // 리다이렉트 로직 (동일)
+
+    // WWW 제거 (예: www.chatter.kr → chatter.kr)
     if (url.hostname === 'www.chatter.kr') {
       url.hostname = 'chatter.kr';
       return Response.redirect(url.toString(), 301);
     }
 
+    // Trailing slash 제거 (예: /about/ → /about)
     const hasFileExtension = /\.[a-zA-Z0-9]{2,4}$/.test(url.pathname.split('/').pop() || '');
-    const shouldRemoveTrailingSlash = 
-      url.pathname.endsWith('/') && 
-      url.pathname.length > 1 && 
+    const shouldRemoveTrailingSlash =
+      url.pathname.endsWith('/') &&
+      url.pathname.length > 1 &&
       !hasFileExtension;
 
     if (shouldRemoveTrailingSlash) {
@@ -19,27 +20,26 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
-    // 정적 자산 응답
+    // 정적 자산 응답 가져오기
     const response = await env.ASSETS.fetch(request);
-    
-    // 캐시 정책
+
+    // 캐시 정책 설정
     const contentType = response.headers.get("content-type") || "";
-    const cacheControl = contentType.includes("text/html") 
-      ? "public, max-age=60" 
-      : "public, max-age=31536000, immutable";
+    if (contentType.includes("text/html")) {
+      // HTML은 짧게 캐시
+      response.headers.set("cache-control", "public, max-age=60");
+    } else {
+      // 정적 자산은 길게 캐시
+      response.headers.set("cache-control", "public, max-age=31536000, immutable");
+    }
 
-    // 새로운 헤더 생성
-    const newHeaders = new Headers(response.headers);
-    newHeaders.set("cache-control", cacheControl);
-    newHeaders.set("strict-transport-security", "max-age=63072000; includeSubDomains; preload");
-    newHeaders.set("x-content-type-options", "nosniff");
-    newHeaders.set("x-frame-options", "DENY");
-    newHeaders.set("referrer-policy", "strict-origin-when-cross-origin");
+    // 보안 헤더 추가
+    response.headers.set("strict-transport-security", "max-age=63072000; includeSubDomains; preload");
+    response.headers.set("x-content-type-options", "nosniff");
+    response.headers.set("x-frame-options", "DENY");
+    response.headers.set("referrer-policy", "strict-origin-when-cross-origin");
 
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers: newHeaders
-    });
+    // 원본 Response 그대로 반환 (⚡ 스트리밍/본문 안전)
+    return response;
   }
 }
