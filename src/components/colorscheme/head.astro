@@ -14,47 +14,41 @@ const colors = {
     darkTheme: colors.dark
   }}
 >
-try {
-  const applyTheme = (isDark, doc = document) => {
-    doc.documentElement.classList.toggle('dark', isDark);
-    const metaTheme = doc.querySelector('meta[name="theme-color"]');
-    if (metaTheme) metaTheme.content = isDark ? darkTheme : lightTheme;
+  // ✅ 페인트 이후로 테마 적용 지연
+  requestAnimationFrame(() => {
+    if (window.__themeInitialized) return;
+    window.__themeInitialized = true;
 
-    if (doc === document)
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  };
+    const applyTheme = (isDark, doc = document) => {
+      doc.documentElement.classList.toggle('dark', isDark);
+      const metaTheme = doc.querySelector('meta[name="theme-color"]');
+      if (metaTheme) metaTheme.content = isDark ? darkTheme : lightTheme;
 
-  const getTheme = () => {
-    const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return saved ? saved === 'dark' : prefersDark;
-  };
+      if (doc === document)
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    };
 
-  // 초기 적용
-  applyTheme(getTheme());
+    const getTheme = () => {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return saved ? saved === 'dark' : prefersDark;
+    };
 
-  // View Transitions 지원
-  document.addEventListener('astro:before-swap', (ev) => {
-    applyTheme(getTheme(), ev.newDocument);
-  });
-
-  document.addEventListener('astro:page-load', () => {
+    // ⚡ 초기 적용 — 페인트 후 실행되므로 리플로우 방지
     applyTheme(getTheme());
-  });
 
-  // 테마 토글 함수
-  window.toggleTheme = () => {
-    const isDark = !document.documentElement.classList.contains('dark');
-    applyTheme(isDark);
-    return isDark ? 'dark' : 'light';
-  };
+    document.addEventListener('astro:before-swap', ({ newDocument }) => {
+      applyTheme(getTheme(), newDocument);
+    });
 
-  // 시스템 테마 변경 감지
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    if (!localStorage.getItem('theme')) applyTheme(e.matches);
+    window.toggleTheme = () => {
+      const isDark = !document.documentElement.classList.contains('dark');
+      applyTheme(isDark);
+      return isDark ? 'dark' : 'light';
+    };
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) applyTheme(e.matches);
+    });
   });
-} catch (error) {
-  console.error('Theme script error:', error);
-  // 오류가 나도 페이지는 계속 로드되도록
-}
 </script>
