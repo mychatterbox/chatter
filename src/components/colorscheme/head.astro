@@ -7,6 +7,13 @@ const colors = {
 
 <meta name="theme-color" content={colors.light} />
 
+<script is:inline>
+  // 🔍 디버깅: localStorage 확인
+  console.log('=== Theme Debug Start ===');
+  console.log('localStorage.theme:', localStorage.getItem('theme'));
+  console.log('document.readyState:', document.readyState);
+</script>
+
 <script
   is:inline
   define:vars={{
@@ -15,19 +22,26 @@ const colors = {
   }}
 >
 try {
+  console.log('Theme script running...');
+  
   const applyTheme = (isDark, doc = document) => {
+    console.log('applyTheme called, isDark:', isDark);
     doc.documentElement.classList.toggle('dark', isDark);
     const metaTheme = doc.querySelector('meta[name="theme-color"]');
     if (metaTheme) metaTheme.content = isDark ? darkTheme : lightTheme;
 
-    if (doc === document)
+    if (doc === document) {
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      console.log('Saved to localStorage:', isDark ? 'dark' : 'light');
+    }
   };
 
   const getTheme = () => {
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return saved ? saved === 'dark' : prefersDark;
+    const result = saved ? saved === 'dark' : prefersDark;
+    console.log('getTheme result:', result, 'saved:', saved, 'prefersDark:', prefersDark);
+    return result;
   };
 
   // 초기 적용
@@ -35,10 +49,12 @@ try {
 
   // View Transitions 지원
   document.addEventListener('astro:before-swap', (ev) => {
+    console.log('astro:before-swap fired');
     applyTheme(getTheme(), ev.newDocument);
   });
 
   document.addEventListener('astro:page-load', () => {
+    console.log('astro:page-load fired');
     applyTheme(getTheme());
   });
 
@@ -53,8 +69,10 @@ try {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
     if (!localStorage.getItem('theme')) applyTheme(e.matches);
   });
+  
+  console.log('=== Theme Debug End ===');
 } catch (error) {
-  console.error('Theme script error:', error);
-  // 오류가 나도 페이지는 계속 로드되도록
+  console.error('❌ Theme script error:', error);
+  console.error('Stack:', error.stack);
 }
 </script>
