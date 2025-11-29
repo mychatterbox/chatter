@@ -8,8 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "format": "prettier --write ./**/*.astro ./**/*.md ."
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.14",
