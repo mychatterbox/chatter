@@ -3,14 +3,14 @@ import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
 import movieListData from "assets/movie.json";
 
-const groupedMovies = movieListData.reduce((acc, movie) => {
+const groupedMovies = movieListData.reduce((acc: Record<number, any[]>, movie) => {
     const rating = movie.rating || 0;
     if (!acc[rating]) {
         acc[rating] = [];
     }
     acc[rating].push(movie);
     return acc;
-}, {});
+}, {} as Record<number, any[]>);
 
 const sortedRatings = Object.keys(groupedMovies)
     .map(Number)
