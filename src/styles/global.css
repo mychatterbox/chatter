@@ -319,16 +319,17 @@ pre.has-code-file-label {
     ============================================ */
 
 .navbar-container {
+  width: 100%;
   padding: var(--spacing-4) var(--spacing-4) 0;
 }
 
 .navbar-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: relative;
-  /* max-width: var(--breakpoint-lg); */
+  justify-content: space-between; /* 좌우 정렬 */
   margin: 0 auto;
+    width: 100%; /* 브라우저 전체 너비 */
+
 }
 
 .navbar-links {
@@ -341,6 +342,7 @@ pre.has-code-file-label {
   display: flex;
   align-items: center;
 }
+
 
 .navbar-icon:hover { transform: scale(1.1); }
 
@@ -358,24 +360,107 @@ pre.has-code-file-label {
   height: 1.5rem;
 }
 
+
 .dark .navbar-icon-svg {
   filter: invert(1);
 }
 
-/* Theme Toggle Container: fixed position을 유지하여 뷰포트 기준으로 배치 */
+/* ============================================
+    테마 토글 버튼 관련
+    ============================================ */
+
 .theme-toggle-container {
   position: fixed;
-  /* top: var(--spacing-2); */
-  left: 50%;
-  transform: translateX(-50%);
-  /* max-width: var(--breakpoint-lg); */
-  width: 100%;
+  right: 1rem;
+  /* z-index: 1000; */
   display: flex;
-  justify-content: flex-end;
-  padding: 0 var(--spacing-3);
-  pointer-events: none;
-  z-index: 1000;
+  /* align-items: center; */
 }
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    /* pointer-events: auto; */
+    /* position: relative; */
+}
+
+.theme-toggle-main-icon {
+    background: none;
+  border: none;
+  /* box-shadow: none; */
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    /* opacity: 1; */
+    /* transition: opacity 1.3s ease; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        z-index: 2; 
+        right: 0; 
+}
+
+
+.theme-toggle-buttons {
+    display: flex;
+    /* align-items: center; */
+    overflow: hidden;
+   width: calc(1.5rem * 3 + 0.5rem * 2);
+    opacity: 0; 
+    /* transition: width 1.3s ease-out, opacity 0s ease-out; */
+    /* padding: 0; */
+      pointer-events: none;
+    position: absolute; 
+    right: 0; 
+}
+
+.theme-toggle-buttons.expanded {
+    opacity: 1;
+      pointer-events: auto;
+}
+
+/* 개별 테마 버튼 */
+.theme-toggle-buttons button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    /* margin: 0; */
+    /* font-family: inherit; */
+    /* font-size: inherit; */
+    /* color: inherit; */
+    cursor: pointer;
+    /* outline: none; */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    
+    margin-right: 0.5rem;
+}
+
+.theme-toggle-buttons button:last-child {
+    margin-right: 0;
+}
+
+
+.theme-toggle-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    color: var(--color-text-primary);
+}
+
+.theme-toggle-buttons button:hover {
+  transform: scale(1.15) translateX(0);
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+#main-theme-icon:hover {
+  transform: scale(1.1);
+}
+
 
 .article-header {
   display: flex;
@@ -411,33 +496,11 @@ pre.has-code-file-label {
   margin-right: var(--spacing-1);
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem;
-  transition: transform 1s;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  pointer-events: auto;
-}
 
-@media (hover: hover) and (pointer: fine) {
-  .theme-toggle:hover {
-    transform: rotate(45deg) scale(1.05);
-  }
-}
-
-.theme-toggle-icon {
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
+/* 
 .dark .theme-toggle-sun { display: none; }
 .theme-toggle-moon { display: none; }
-.dark .theme-toggle-moon { display: block; }
+.dark .theme-toggle-moon { display: block; } */
 
 /* ============================================
     Utility Classes

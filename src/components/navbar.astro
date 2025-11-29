@@ -12,51 +12,25 @@ import ThemeToggle from "../components/colorscheme/ThemeToggle.astro";
 <div class="navbar-container">
   <header class="navbar-header">
     <div class="navbar-links">
-      <a
-        aria-label="home"
-        href="/"
-        class="navbar-icon"
-      >
+      <a aria-label="home" href="/" class="navbar-icon">
         <div class="navbar-icon-svg">
-          {Astro.url.pathname === "/" ? (
-            <HomeModernSolid />
-          ) : (
-            <HomeModernOutline />
-          )}
+          {Astro.url.pathname === "/" ? <HomeModernSolid /> : <HomeModernOutline />}
         </div>
       </a>
-      <a
-        aria-label="Film Ratings"
-        href="/ratings"
-        class="navbar-icon"
-      >
+      <a aria-label="Film Ratings" href="/ratings" class="navbar-icon">
         <div class="navbar-icon-svg">
-          {Astro.url.pathname.startsWith("/ratings") ? (
-            <FilmSolid />
-          ) : (
-            <FilmOutline />
-          )}
+          {Astro.url.pathname.startsWith("/ratings") ? <FilmSolid /> : <FilmOutline />}
         </div>
       </a>
-      <a
-        aria-label="Site Info"
-        href="/site-info"
-        class="navbar-icon"
-      >
+      <a aria-label="Site Info" href="/site-info" class="navbar-icon">
         <div class="navbar-icon-svg">
-          {Astro.url.pathname.startsWith("/site-info") ? (
-            <InfoSolid/>
-          ) : (
-            <InfoOutline/>
-          )}
+          {Astro.url.pathname.startsWith("/site-info") ? <InfoSolid /> : <InfoOutline />}
         </div>
       </a>
-      
-    <!-- <DescriptionToggle /> -->
+    </div>
 
     <div class="theme-toggle-container">
       <ThemeToggle />
     </div>
   </header>
-
 </div>

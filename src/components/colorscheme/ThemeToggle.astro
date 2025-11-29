@@ -1,18 +1,121 @@
 ---
-import Sun from "../../icons/hero/solid/sun.svg";
-import Moon from "../../icons/hero/solid/moon.svg";
+import SunSvg from "../../icons/hero/solid/sun.svg?raw";
+import MoonSvg from "../../icons/hero/solid/moon.svg?raw";
+import DeviceSvg from "../../icons/hero/solid/device.svg?raw";
+
+type ThemeMode = 'light' | 'dark' | 'device';
+
+const icons: Record<ThemeMode, string> = {
+  light: SunSvg,
+  dark: MoonSvg,
+  device: DeviceSvg,
+};
+
+// SSR 초기 아이콘은 device로 표시하고, 클라이언트에서 교정
+const initialTheme: ThemeMode = 'device';
 ---
 
-<button
-  id="theme-toggle"
-  class="theme-toggle"
-  aria-label="Switch color scheme"
-  onclick="toggleTheme()"
->
-  <span class="theme-toggle-icon theme-toggle-sun">
-    <Sun />
-  </span>
-  <span class="theme-toggle-icon theme-toggle-moon">
-    <Moon />
-  </span>
-</button>
+<div class="theme-toggle">
+  <button id="main-theme-icon" aria-label="Toggle Theme Options" class="theme-toggle-main-icon">
+    <span class="theme-toggle-icon" set:html={icons[initialTheme]} />
+  </button>
+  <div id="theme-buttons-group" class="theme-toggle-buttons"></div>
+</div>
+
+<script define:vars={{ icons }} is:inline>
+requestAnimationFrame(() => {
+  const iconMap = icons;
+
+  const mount = () => {
+    // 매 페이지 전환 후 새 DOM에 재초기화
+    const themeToggleContainer = document.querySelector('.theme-toggle');
+    const mainIconBtn = document.getElementById('main-theme-icon');
+    const buttonsGroup = document.getElementById('theme-buttons-group');
+
+    if (!themeToggleContainer || !mainIconBtn || !buttonsGroup) return;
+
+    const getCurrentTheme = () => {
+      const saved = localStorage.getItem('theme');
+      return saved ? saved : 'device';
+    };
+
+    const toggleButtonsVisibility = () => {
+      buttonsGroup.classList.toggle('expanded');
+      themeToggleContainer.classList.toggle('is-expanded');
+    };
+
+    const closeButtons = () => {
+      buttonsGroup.classList.remove('expanded');
+      themeToggleContainer.classList.remove('is-expanded');
+    };
+
+    const updateButtons = (currentTheme) => {
+      const iconSpan = mainIconBtn.querySelector('.theme-toggle-icon');
+      if (iconSpan) {
+        iconSpan.innerHTML = iconMap[currentTheme];
+      }
+
+      let otherThemes;
+      if (currentTheme === 'light') otherThemes = ['dark', 'device'];
+      else if (currentTheme === 'dark') otherThemes = ['light', 'device'];
+      else otherThemes = ['light', 'dark'];
+
+      buttonsGroup.innerHTML = '';
+      otherThemes.forEach(theme => {
+        const buttonHtml = `
+          <button aria-label="${theme} theme" onclick="window.setThemeAndToggle('${theme}')" data-theme="${theme}">
+            <span class="theme-toggle-icon">${iconMap[theme]}</span>
+          </button>
+        `;
+        buttonsGroup.insertAdjacentHTML('beforeend', buttonHtml);
+      });
+    };
+
+    // 테마 변경 + 닫기
+    window.setThemeAndToggle = (mode) => {
+      window.setTheme(mode);
+      updateButtons(mode);
+      closeButtons();
+    };
+
+    // 초기 교정
+    updateButtons(getCurrentTheme());
+
+    // 메인 아이콘 토글
+    mainIconBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      toggleButtonsVisibility();
+    });
+
+    // 바깥 클릭 시 닫기
+    document.addEventListener('click', (event) => {
+      if (themeToggleContainer.classList.contains('is-expanded') &&
+          !themeToggleContainer.contains(event.target)) {
+        closeButtons();
+      }
+    });
+
+    // head.astro에서 테마 변경 이벤트 수신 → 아이콘 갱신
+    const onThemeChange = (e) => {
+      const { mode } = e.detail || {};
+      if (mode) updateButtons(mode);
+    };
+    window.addEventListener('themechange', onThemeChange);
+
+    // 언마운트 대비(선택): 페이지 교체 시 중복 방지
+    const cleanup = () => {
+      window.removeEventListener('themechange', onThemeChange);
+    };
+    // astro:before-swap에서 정리해도 되고, 새 mount 때 기존 리스너 중복이 크게 문제되지 않으면 생략 가능
+    document.addEventListener('astro:before-swap', cleanup, { once: true });
+  };
+
+  // 최초 mount
+  mount();
+
+  // 페이지 교체 후 새 DOM에 재초기화
+  document.addEventListener('astro:after-swap', () => {
+    mount();
+  });
+});
+</script>
