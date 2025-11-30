@@ -176,7 +176,7 @@ h3 { font-size: 1.12rem; }
 
 .title-index {
   line-height: 1.2;
-  font-weight: 700;
+  /* font-weight: bold; */
   margin-top: 0;
   margin-bottom: 0;
 }
