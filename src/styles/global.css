@@ -431,6 +431,7 @@ pre.has-code-file-label {
     /* color: inherit; */
     cursor: pointer;
     /* outline: none; */
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     /* display: flex; */
