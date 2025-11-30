@@ -6,8 +6,8 @@
   --color-link-note: #007a70;
   --color-text-draft: #ff0000;
   --color-link-hover: #3171B2;
-  --color-code-bg: #999999;
-  --color-code-text: #eeeeee;
+  --color-code-bg: #777777;
+  --color-code-text: #ffffff;
   --color-thead-bg: #dddddd;
   --color-border: #777777;
   --codeblock-filename-dot : #dd4444;
@@ -39,8 +39,8 @@
   --color-text-primary: #eeeeee;
   --color-bg: #111111;
   --color-text-muted: #999999;
-  --color-code-bg: #999999;
-  --color-code-text: #111111;
+  --color-code-bg: #bbbbbb;
+  --color-code-text: #000000;
   --color-thead-bg: #333333;
   --figcaption-bg: #222222;
   --mark-text-color: #dd4444;
@@ -108,6 +108,39 @@ img {
   border-radius: 0.375rem;
   max-width: 100%; 
   height: auto;
+}
+.article-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.article-meta {
+  display: flex;
+  padding-left: var(--spacing-1);
+  padding-top: 0.3rem; 
+  font-weight: 500;
+  gap: var(--spacing-2);
+  line-height: 1.1;
+}
+
+.tags-container {
+  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.tag-hash {
+  color: var(--color-link-article);
+  margin-right: var(--spacing-1);
 }
 
 /* ============================================
@@ -242,19 +275,20 @@ ol > li { padding-left: 0.375em; }
     ============================================ */
 
 code {
-  font-size: 1rem;
   border-radius: 0.25rem;
   padding: 0.125rem 0.25rem;
   background-color: var(--color-code-bg);
   color: var(--color-code-text);
+  /* font-family: var(--font-mono); */
+  font-weight: 350;
+    font-family: var(--font-mono);
 }
 
 /* Pre (code blocks) - Shiki 듀얼 테마 지원 */
  pre {
   display: flex;
   border-radius: 0.375rem;
-  border-top: 2px solid rgba(161, 161, 170, 0.2);
-  border-bottom: 2px solid rgba(161, 161, 170, 0.2);
+  border: 1px solid rgba(161, 161, 170, 0.2);
   overflow-x: auto;
 }
 
@@ -274,8 +308,8 @@ code {
 pre code {
   background-color: transparent !important;
   padding: 1rem;
-  line-height: 1.5;
   overflow-x: auto;
+  line-height: 1.5rem;
 }
 
 /* ============================================
@@ -296,7 +330,7 @@ pre.has-code-file-label {
   border-radius: 0.375rem;
   border: 1px solid rgba(113,113,122,0.2);
   font-size: 0.8rem !important;
-  font-weight: 500;
+  font-family: var(--font-mono);
 }
 
 .code-file-label::before {
@@ -372,136 +406,82 @@ pre.has-code-file-label {
 .theme-toggle-container {
   position: fixed;
   right: 1rem;
-  /* z-index: 1000; */
   display: flex;
-  /* align-items: center; */
+  z-index: 5;
 }
 
 .theme-toggle {
-    display: flex;
-    align-items: center;
-    /* pointer-events: auto; */
-    /* position: relative; */
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .theme-toggle-main-icon {
-    background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: none;
   border: none;
-  /* box-shadow: none; */
-    width: 1.5rem;
-    height: 1.5rem;
-    cursor: pointer;
-    /* opacity: 1; */
-    /* transition: opacity 1.3s ease; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-        z-index: 2; 
-        right: 0; 
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-
-.theme-toggle-buttons {
-    display: flex;
-    /* align-items: center; */
-    overflow: hidden;
-   width: calc(1.5rem * 3 + 0.5rem * 2);
-    opacity: 0; 
-    /* transition: width 1.3s ease-out, opacity 0s ease-out; */
-    /* padding: 0; */
-      pointer-events: none;
-    position: absolute; 
-    right: 0; 
-}
-
-.theme-toggle-buttons.expanded {
-    opacity: 1;
-      pointer-events: auto;
-}
-
-/* 개별 테마 버튼 */
-.theme-toggle-buttons button {
-    background: none;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    /* margin: 0; */
-    /* font-family: inherit; */
-    /* font-size: inherit; */
-    /* color: inherit; */
-    cursor: pointer;
-    /* outline: none; */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    
-    margin-right: 0.5rem;
-}
-
-.theme-toggle-buttons button:last-child {
-    margin-right: 0;
-}
-
-
-.theme-toggle-icon svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    display: block;
-    color: var(--color-text-primary);
-}
-
-.theme-toggle-buttons button:hover {
-  transform: scale(1.15) translateX(0);
-  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-#main-theme-icon:hover {
+.theme-toggle-main-icon:hover {
   transform: scale(1.1);
 }
 
-
-.article-header {
+.theme-toggle-buttons {
+  position: absolute;
+  right: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 1.5rem;
-  margin-bottom: 1.25rem;
+  overflow: hidden;
+  width: calc(1.5rem * 3 + 0.5rem * 2);
+  opacity: 0;
+  pointer-events: none;
 }
 
-.article-meta {
+.theme-toggle-buttons.expanded {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.theme-toggle-buttons button {
   display: flex;
-  padding-left: var(--spacing-1);
-  padding-top: 0.3rem; 
-  font-weight: 500;
-  gap: var(--spacing-2);
-  line-height: 1.1;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-.tags-container {
-  margin-top: var(--spacing-12);
-  padding-top: var(--spacing-8);
-  border-top: 1px solid var(--color-border);
+.theme-toggle-buttons button:last-child {
+  margin-right: 0;
 }
 
-.tags-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-4);
+.theme-toggle-buttons button:hover {
+  transform: scale(1.15);
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.tag-hash {
-  color: var(--color-link-article);
-  margin-right: var(--spacing-1);
+.theme-toggle-icon svg {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-text-primary);
 }
-
-
-/* 
-.dark .theme-toggle-sun { display: none; }
-.theme-toggle-moon { display: none; }
-.dark .theme-toggle-moon { display: block; } */
 
 /* ============================================
     Utility Classes
@@ -630,32 +610,6 @@ tbody td {
 table code {
   white-space: nowrap;
 }
-
-/* ============================================
-    Description Toggle 
-    ============================================ */
-
-/* 
-.feed-item-content {
-  display: none !important;
-    padding-bottom: var(--spacing-8);
-}
-
-body.content-initialized.content-visible .feed-item-content {
-  display: block !important;
-}
-
-.description-icon-down { opacity: 1; }
-
-.description-icon-up {
-  opacity: 0;
-  position: absolute;
-}
-
-html.content-visible-pre .description-icon-down { opacity: 0; }
-html.content-visible-pre .description-icon-up { opacity: 1; }
-body.content-initialized.content-visible .description-icon-down { opacity: 0; }
-body.content-initialized.content-visible .description-icon-up { opacity: 1; } */
 
 /* * {
  outline: 1px solid red !important;
