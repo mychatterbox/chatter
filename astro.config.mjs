@@ -34,8 +34,7 @@ export default defineConfig({
     return item;
   },
 })
-],
-// , umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }),],
+, umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }),],
 
   markdown: {
     shikiConfig: {
