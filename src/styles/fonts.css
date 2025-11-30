@@ -20,7 +20,7 @@
   font-weight: 600;
   font-display: swap;
   src: url("/fonts/PretendardGOV-SemiBold.subset.woff2") format("woff2");
-}
+} */
 
 @font-face {
   font-family: "Pretendard GOV";
@@ -28,7 +28,7 @@
   font-weight: 700;
   font-display: swap;
   src: url("/fonts/PretendardGOV-ExtraBold.subset.woff2") format("woff2");
-} */
+}
 
 @font-face {
   font-family: "Cascadia Code";
