@@ -9,7 +9,8 @@
   --color-code-bg: #777777;
   --color-code-text: #ffffff;
   --color-thead-bg: #dddddd;
-  --color-border: #777777;
+  --color-border: rgba(128, 128, 128, 0.5);
+  
   --codeblock-filename-dot : #dd4444;
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
@@ -22,7 +23,7 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   
-  --font-sans: 'Pretendard GOV', 'Pretendard Variable', 'Pretendard GOV Variable', 'Pretendard', 'Noto Sans KR', 'OneUI Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Pretendard GOV', 'Pretendard', 'Noto Sans KR', 'OneUI Sans', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Cascadia Code', 'Noto Sans Mono', 'Roboto Mono', ui-monospace, monospace;
   
   --breakpoint-sm: 640px;
@@ -277,16 +278,15 @@ code {
   padding: 0.125rem 0.25rem;
   background-color: var(--color-code-bg);
   color: var(--color-code-text);
-  /* font-family: var(--font-mono); */
   font-weight: 350;
-    font-family: var(--font-mono);
+  font-family: var(--font-mono);
 }
 
 /* Pre (code blocks) - Shiki 듀얼 테마 지원 */
  pre {
   display: flex;
   border-radius: 0.375rem;
-  border: 1px solid rgba(161, 161, 170, 0.2);
+  border: 1px solid rgba(128, 128, 128, 0.2);
   overflow-x: auto;
 }
 
@@ -326,9 +326,8 @@ pre.has-code-file-label {
   left: 1rem;
   padding: 0 0.5rem;
   border-radius: 0.375rem;
-  border: 1px solid rgba(113,113,122,0.2);
+  border: 1px solid var(--color-border);
   font-size: 0.8rem !important;
-  font-family: var(--font-mono);
 }
 
 .code-file-label::before {
@@ -358,9 +357,9 @@ pre.has-code-file-label {
 .navbar-header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 좌우 정렬 */
+  justify-content: space-between;
   margin: 0 auto;
-    width: 100%; /* 브라우저 전체 너비 */
+    width: 100%;
 
 }
 
