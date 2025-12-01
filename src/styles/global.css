@@ -1,6 +1,6 @@
 :root {
   --color-text-primary: #222222;
-  --color-bg: #eeeeee;
+  --color-bg: #f1f2f3;
   --color-text-muted: #555555;
   --color-link-article: #2a6eb2;
   --color-link-note: #007a70;
@@ -22,11 +22,7 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   
-  /* --font-sans: 'Pretendard GOV Variable', 'Pretendard GOV', 'Pretendard', 'Noto Sans KR', 'OneUI Sans', sans-serif; */
   --font-sans: 'Pretendard GOV', 'Pretendard Variable', 'Pretendard GOV Variable', 'Pretendard', 'Noto Sans KR', 'OneUI Sans', ui-sans-serif, system-ui, sans-serif;
-
-  /* --font-sans: 'Pretendard Variable'; */
-
   --font-mono: 'Cascadia Code', 'Noto Sans Mono', 'Roboto Mono', ui-monospace, monospace;
   
   --breakpoint-sm: 640px;
