@@ -1,5 +1,5 @@
 :root {
-  --color-text-primary: #222222;
+  --color-text-primary: #101828;
   --color-bg: #f1f2f3;
   --color-text-muted: #555555;
   --color-link-article: #2a6eb2;
@@ -23,8 +23,9 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   
-  --font-sans: 'Pretendard GOV', 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', 'OneUI Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'Cascadia Code', 'Noto Sans Mono', 'Roboto Mono', ui-monospace, monospace;
+  --font-sans: 'Pretendard GOV', 'Pretendard', 'Apple SD Gothic Neo', 'OneUI Sans', 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Cascadia Code', 'D2Coding', 'Noto Sans Mono', 'Roboto Mono', ui-monospace, monospace;
+
   
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
