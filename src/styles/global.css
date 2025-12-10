@@ -93,7 +93,7 @@ body {
 .feed-list {
   list-style: none;
   padding: 0;
-    margin: auto auto;
+  margin: auto auto;
   max-width: var(--breakpoint-md);
   overflow-wrap: break-word;
 }
@@ -189,6 +189,13 @@ h3 { font-size: 1.12rem; }
 }
 
 .text-small { font-size: 0.84rem; }
+.text-big { 
+  font-size: 1.24rem;
+  font-weight: bold;
+  @media (min-width: 768px) {
+    font-size: 1.36rem;
+  }
+ }
 .text-muted { color: var(--color-text-muted); }
 .font-medium { font-weight: 500; }
 .font-bold { font-weight: 700; }
@@ -279,7 +286,6 @@ code {
   padding: 0.125rem 0.25rem;
   background-color: var(--color-code-bg);
   color: var(--color-code-text);
-  font-weight: 350;
   font-family: var(--font-mono);
 }
 
