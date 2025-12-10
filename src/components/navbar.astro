@@ -5,6 +5,8 @@ import FilmSolid from "../icons/hero/solid/film.svg";
 import FilmOutline from "../icons/hero/outline/film.svg";
 import InfoSolid from "../icons/hero/solid/information-circle.svg";
 import InfoOutline from "../icons/hero/outline/information-circle.svg";
+import TagsSolid from "../icons/hero/solid/tags.svg";
+import TagsOutline from "../icons/hero/outline/tags.svg";
 import ThemeToggle from "../components/colorscheme/ThemeToggle.astro";
 // import DescriptionToggle from "./DescriptionToggle.astro";
 ---
@@ -22,6 +24,11 @@ import ThemeToggle from "../components/colorscheme/ThemeToggle.astro";
           {Astro.url.pathname.startsWith("/ratings") ? <FilmSolid /> : <FilmOutline />}
         </div>
       </a>
+      <a aria-label="Tags" href="/tags" class="navbar-icon">
+        <div class="navbar-icon-svg">
+          {Astro.url.pathname.startsWith("/tags") ? <TagsSolid /> : <TagsOutline />}
+        </div>
+      </a>      
       <a aria-label="Site Info" href="/site-info" class="navbar-icon">
         <div class="navbar-icon-svg">
           {Astro.url.pathname.startsWith("/site-info") ? <InfoSolid /> : <InfoOutline />}
