@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import FeedItem from "components/feed-item.astro";
-import TagsSidebar from "components/sidebar-tags.astro";
 import Html from "components/html.astro";
 import Nav from "components/navbar.astro";
 
@@ -40,10 +39,6 @@ const sortedTags = Object.keys(tagCounts).sort(
     <ul class="feed-list">
       {posts.map((entry) => (<FeedItem entry={entry} />))}
     </ul>
-
-    <div class="sidebar-container">
-      <TagsSidebar tags={sortedTags} counts={tagCounts} />
-    </div>
   </div>
   </main>
 
