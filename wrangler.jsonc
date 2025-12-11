@@ -1,5 +1,5 @@
 {
-  "name": "chatter",
+  "name": "who",
   "compatibility_date": "2025-10-27",
   "main": "./worker.js",
   "assets": {
