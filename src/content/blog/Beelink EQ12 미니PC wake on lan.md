@@ -22,7 +22,7 @@ keywords:
 ![eq12](./blog-images/2024/eq12-wol_1.webp)
 
 많은 n100 미니pc 중의 하나인 <mark>Beelink EQ12</mark> 모델입니다.  
-[PD 충전기](https://chatter.kr/minipc-pdcharger) 에 연결해서 잘 사용해왔고 문제가 없었기 때문에 이제는 보이지 않는 곳에 두고 wake on lan 기능으로 사용해보려고 합니다.
+[PD 충전기](/minipc-pdcharger)에 연결해서 잘 사용해왔고 문제가 없었기 때문에 이제는 보이지 않는 곳에 두고 wake on lan 기능으로 사용해보려고 합니다.
 
 Beelink 미니pc 모델들이 wol 기능이 되는지 검색해보면 의외로 정보가 별로 없습니다.  
 공식 포럼에도 글이 별로 없으며, 이메일로 문의하면 설명서를 보내주겠다 정도의 답변만 달리는 것 같습니다.
@@ -34,7 +34,7 @@ Beelink 미니pc 모델들이 wol 기능이 되는지 검색해보면 의외로 
 뭐 그런데 결과적으로는 아무 상관이 없었습니다.
 
 아래와 같은 간단한 WOL 프로그램을 사용합니다.  
-[MagicPacket](https://apps.microsoft.com/detail/9wzdncrcw1mx?hl=ko-kr&gl=KR)
+<mark>[MagicPacket](https://apps.microsoft.com/detail/9wzdncrcw1mx?hl=ko-kr&gl=KR)</mark>
 ![MagicPacket](./blog-images/2024/eq12-wol_3.webp)
 ![mac-address](./blog-images/2024/eq12-wol_5.webp)
 

@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import Html from "components/html.astro";
-import Nav from "components/navbar.astro";
+import Html from "components/layout/html.astro";
+import Nav from "components/layout/navbar.astro";
 
 const blogPosts = await getCollection("blog");
 

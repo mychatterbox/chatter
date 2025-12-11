@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import FeedItem from "components/feed-item.astro";
-import Html from "components/html.astro";
-import Nav from "components/navbar.astro";
+import FeedItem from "components/content/feed-item.astro";
+import Html from "components/layout/html.astro";
+import Nav from "components/layout/navbar.astro";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");

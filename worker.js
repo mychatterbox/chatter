@@ -2,12 +2,6 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // WWW 제거
-    if (url.hostname === 'www.chatter.kr') {
-      url.hostname = 'chatter.kr';
-      return Response.redirect(url.toString(), 301);
-    }
-
     // Trailing slash 제거
     const hasFileExtension = /\.[a-zA-Z0-9]{2,4}$/.test(url.pathname.split('/').pop() || '');
     const shouldRemoveTrailingSlash =

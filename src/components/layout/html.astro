@@ -1,8 +1,9 @@
 ---
-import ColorScheme from "components/colorscheme/head.astro";
+import ColorScheme from "../features/colorscheme/head.astro";
 // import "styles/fonts.css";
-import "styles/global.css";
+import "../../styles/global.css";
 import { ClientRouter } from 'astro:transitions';
+import { SITE_OG_IMAGE, SITE_NAME } from '../../config/site';
 
 export interface Props {
   title: string;
@@ -27,7 +28,7 @@ const {
   ogImage,
 } = Astro.props;
 
-const defaultOgImage = "https://chatter.kr/images/no_ogimage.png";
+const defaultOgImage = SITE_OG_IMAGE;
 const finalOgImage = ogImage
   ? new URL(ogImage, Astro.url).toString()
   : defaultOgImage;
@@ -64,7 +65,7 @@ const canonicalURL = new URL(
 
     <slot name="og">
     <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content="chatter.kr" />
+    <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:url" content={canonicalURL} />
@@ -78,6 +79,8 @@ const canonicalURL = new URL(
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="chatter" />
     <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
+
+    <meta name="google-site-verification" content="fT_8C_gHAnUSbXUgKJA72vSZ5H8MIqLB85gdzCaTlHY" />
 
     <!-- Sitemap & RSS -->
     <link rel="sitemap" href="/sitemap-index.xml" />

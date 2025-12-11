@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import FlexokiDark from "./src/styles/Flexoki-Dark-color-theme.json";
-import FlexokiLight from "./src/styles/Flexoki-Light-color-theme.json";
+import FlexokiDark from "./src/styles/themes/Flexoki-Dark-color-theme.json";
+import FlexokiLight from "./src/styles/themes/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
 import { transformerFileName } from "./src/styles/fileName.js";
 import { 
@@ -9,10 +9,11 @@ import {
   transformerNotationHighlight, 
   transformerNotationWordHighlight 
 } from "@shikijs/transformers";
+import { SITE_URL_WITH_SLASH } from "./src/config/site.ts";
 
 
 export default defineConfig({
-  site: 'https://chatter.kr/',
+  site: SITE_URL_WITH_SLASH,
 
   image: {
     responsiveStyles: true,
