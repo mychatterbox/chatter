@@ -2,6 +2,20 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
+    if (url.pathname === "/googled1d1ec5d34fbe362.html") {
+      return new Response("google-site-verification: googled1d1ec5d34fbe362.html", {
+        headers: { "content-type": "text/html" }
+      });
+    }
+
+    if (url.pathname === "/navered165ef0969293dac6988ef5b181e332.html") {
+      return new Response("naver-site-verification: navered165ef0969293dac6988ef5b181e332.html", {
+        headers: { "content-type": "text/html" }
+      });
+    }
+
+
+
     // Trailing slash 제거
     const hasFileExtension = /\.[a-zA-Z0-9]{2,4}$/.test(url.pathname.split('/').pop() || '');
     const shouldRemoveTrailingSlash =
