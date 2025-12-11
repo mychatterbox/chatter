@@ -3,7 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import FlexokiDark from "./src/styles/themes/Flexoki-Dark-color-theme.json";
 import FlexokiLight from "./src/styles/themes/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
-import { transformerFileName } from "./src/styles/fileName.js";
+import { transformerFileName } from "./src/utils/fileName.js";
 import { 
   transformerNotationDiff, 
   transformerNotationHighlight, 

@@ -4,7 +4,7 @@ import Html from "components/layout/html.astro";
 import Nav from "components/layout/navbar.astro";
 import ReadingProgressBar from "components/features/ReadingProgressBar.astro";
 import type { CollectionEntry } from "astro:content";
-import type { ImageMetadata } from "astro";
+import { processOgImage } from "../utils/og-image";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
@@ -32,33 +32,7 @@ const { title, description, pubDate, kind, tags, ogImage } = entry.data;
 const tagLinks = tags?.map((tag) => ({ tag, url: `/tag/${tag}` })) ?? [];
 const isDraft = entry.collection === "draft";
 
-let processedOgImage: string | undefined;
-
-if (ogImage) {
-  if (ogImage.startsWith('http://') || ogImage.startsWith('https://')) {
-    processedOgImage = ogImage;
-  } else if (ogImage.startsWith('/')) {
-    processedOgImage = ogImage;
-  } else if (ogImage.startsWith('./') || ogImage.startsWith('../')) {
-    try {
-      const images = import.meta.glob<{ default: ImageMetadata }>(
-        '/src/content/blog/blog-images/**/*.{png,jpg,jpeg,webp,avif}',
-        { eager: true }
-      );
-      
-      const imagePath = ogImage.replace('./', '/src/content/blog/');
-      const imageModule = images[imagePath];
-      
-      if (imageModule?.default) {
-        processedOgImage = imageModule.default.src;
-      } else {
-        console.warn(`OG image not found: ${ogImage}`);
-      }
-    } catch (e) {
-      console.warn(`Failed to load OG image: ${ogImage}`, e);
-    }
-  }
-}
+const processedOgImage = await processOgImage(ogImage);
 ---
 
 <Html

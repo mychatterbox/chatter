@@ -2,15 +2,16 @@
 import Html from "components/layout/html.astro";
 import Nav from "components/layout/navbar.astro";
 import movieListData from "assets/movie.json";
+import type { Movie } from "../types/movie";
 
-const groupedMovies = movieListData.reduce((acc: Record<number, any[]>, movie) => {
+const groupedMovies = movieListData.reduce((acc: Record<number, Movie[]>, movie: Movie) => {
     const rating = movie.rating || 0;
     if (!acc[rating]) {
         acc[rating] = [];
     }
     acc[rating].push(movie);
     return acc;
-}, {} as Record<number, any[]>);
+}, {} as Record<number, Movie[]>);
 
 const sortedRatings = Object.keys(groupedMovies)
     .map(Number)

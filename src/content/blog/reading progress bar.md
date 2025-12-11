@@ -115,7 +115,7 @@ Reading progress bar는 현재 페이지의 진행 정도를 보여주는 바인
 ```
 
 ```astro file="[...path].astro"
-import ReadingProgressBar from "components/ReadingProgressBar.astro";
+import ReadingProgressBar from "components/features/ReadingProgressBar.astro";
 
 <Html
   title={title}
