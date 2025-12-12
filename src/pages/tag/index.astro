@@ -44,7 +44,7 @@ const description = "모든 태그 목록";
         {sortedTags.map((tag) => (
           <li class="tag-item flex">
             <span class="tag-count pr-2" aria-hidden="true">{tagCounts[tag]}</span>
-            <a class="link-tag" href={`/tag/${encodeURIComponent(tag)}`}># {tag}</a>
+            <a class="link-tag" href={`/tag/${encodeURIComponent(tag)}/1`}># {tag}</a>
           </li>
         ))}
       </ul>

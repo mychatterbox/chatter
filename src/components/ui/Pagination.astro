@@ -1,0 +1,235 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  baseUrl: string;
+}
+
+const { currentPage, totalPages, baseUrl } = Astro.props;
+
+const prevUrl =
+  currentPage > 1
+    ? `${baseUrl}${currentPage - 1 === 1 ? (baseUrl === "/" ? "" : "1") : currentPage - 1}`
+    : null;
+
+const getPageUrl = (page: number) => {
+  if (baseUrl === "/") {
+    return page === 1 ? "/" : `/${page}`;
+  }
+  return `${baseUrl.endsWith("/") ? baseUrl : baseUrl + "/"}${page}`;
+};
+
+const prevPageUrl =
+  totalPages > 1
+    ? currentPage > 1
+      ? getPageUrl(currentPage - 1)
+      : getPageUrl(totalPages)
+    : null;
+
+const nextPageUrl =
+  totalPages > 1
+    ? currentPage < totalPages
+      ? getPageUrl(currentPage + 1)
+      : getPageUrl(1)
+    : null;
+
+const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+---
+
+<script define:vars={{ currentPage }}>
+  function setupPagination() {
+    const wrapper = document.getElementById(
+      `pagination-wrapper-${currentPage}`,
+    );
+    const btn = document.getElementById(`pagination-btn-${currentPage}`);
+    const popover = document.getElementById(
+      `pagination-popover-${currentPage}`,
+    );
+
+    if (wrapper && btn && popover) {
+      const toggleHandler = (e) => {
+        e.stopPropagation();
+        const isVisible = popover.classList.contains("visible");
+
+        if (!isVisible) {
+          popover.style.display = "block";
+          requestAnimationFrame(() => {
+            popover.classList.add("visible");
+          });
+
+          document.addEventListener("click", documentClickHandler);
+
+          const activeItem = popover.querySelector(".page-list-item.active");
+          if (activeItem) {
+            activeItem.scrollIntoView({ block: "center" });
+          }
+        } else {
+          closePopover();
+        }
+      };
+
+      const closePopover = () => {
+        popover.classList.remove("visible");
+        popover.style.display = "none";
+        document.removeEventListener("click", documentClickHandler);
+      };
+
+      const documentClickHandler = (e) => {
+        if (!wrapper.contains(e.target)) {
+          closePopover();
+        }
+      };
+
+      const newBtn = btn.cloneNode(true);
+      btn.replaceWith(newBtn);
+
+      newBtn.addEventListener("click", toggleHandler);
+    }
+  }
+
+  setupPagination();
+
+  document.addEventListener("astro:page-load", setupPagination);
+</script>
+
+<div class="pagination-container" aria-label="Pagination">
+  {
+    totalPages > 1 && (
+      <a
+        href={prevPageUrl}
+        class="page-nav-btn prev"
+        aria-label="Previous page"
+      >
+        &lsaquo;
+      </a>
+    )
+  }
+
+  <div class="page-selector-wrapper" id={`pagination-wrapper-${currentPage}`}>
+    <button
+      type="button"
+      class="page-info-btn"
+      id={`pagination-btn-${currentPage}`}
+    >
+      {currentPage} / {totalPages}
+    </button>
+
+    <div
+      class="page-selector-popover"
+      id={`pagination-popover-${currentPage}`}
+      style="display: none;"
+    >
+      <div class="page-list">
+        {
+          pages.map((page) => (
+            <a
+              href={getPageUrl(page)}
+              class={`page-list-item ${page === currentPage ? "active" : ""}`}
+            >
+              {page}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  {
+    totalPages > 1 && (
+      <a href={nextPageUrl} class="page-nav-btn next" aria-label="Next page">
+        &rsaquo;
+      </a>
+    )
+  }
+</div>
+
+<style>
+  .pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem 0;
+    gap: 0.5rem;
+  }
+
+  .page-nav-btn {
+    font-size: 1.5rem;
+    text-decoration: none !important;
+    padding: 0rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .page-selector-wrapper {
+    position: relative;
+  }
+
+  .page-info-btn {
+    background-color: var(--color-thead-bg);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: var(--color-text-primary);
+    transition: all 0.2s;
+    font-family: var(--font-mono);
+  }
+
+  .page-info-btn:hover {
+    background-color: var(--color-border);
+  }
+
+  .page-selector-popover {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0.5rem;
+
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: var(--color-bg);
+    padding: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+    width: 80px;
+    max-height: 260px;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+
+  .page-selector-popover.visible {
+    display: block !important;
+  }
+
+  :global(.dark) .page-selector-popover {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+  }
+
+  .page-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    text-decoration: none !important;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-size: 0.84rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .page-list-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .page-list-item:hover {
+    background-color: var(--color-border);
+    color: var(--color-text-primary);
+  }
+
+  .page-list-item.active {
+    background-color: var(--color-border);
+    color: var(--color-text-primary);
+  }
+</style>

@@ -7,6 +7,8 @@ import InfoSolid from "../../icons/hero/solid/information-circle.svg";
 import InfoOutline from "../../icons/hero/outline/information-circle.svg";
 import TagsSolid from "../../icons/hero/solid/tags.svg";
 import TagsOutline from "../../icons/hero/outline/tags.svg";
+import SearchSolid from "../../icons/hero/solid/search.svg";
+import SearchOutline from "../../icons/hero/outline/search.svg";
 import ThemeToggle from "../features/colorscheme/ThemeToggle.astro";
 // import DescriptionToggle from "./DescriptionToggle.astro";
 ---
@@ -24,11 +26,16 @@ import ThemeToggle from "../features/colorscheme/ThemeToggle.astro";
           {Astro.url.pathname.startsWith("/ratings") ? <FilmSolid /> : <FilmOutline />}
         </div>
       </a>
-      <a aria-label="Tags" href="/tags" class="navbar-icon">
+      <a aria-label="Tags" href="/tag" class="navbar-icon">
         <div class="navbar-icon-svg">
-          {Astro.url.pathname.startsWith("/tags") ? <TagsSolid /> : <TagsOutline />}
+          {Astro.url.pathname === "/tag" || Astro.url.pathname === "/tag/" ? <TagsSolid /> : <TagsOutline />}
         </div>
-      </a>      
+      </a>    
+      <a aria-label="search" href="/search" class="navbar-icon">
+        <div class="navbar-icon-svg">
+          {Astro.url.pathname.startsWith("/search") ? <SearchSolid /> : <SearchOutline />}
+        </div>
+      </a>            
       <a aria-label="Site Info" href="/site-info" class="navbar-icon">
         <div class="navbar-icon-svg">
           {Astro.url.pathname.startsWith("/site-info") ? <InfoSolid /> : <InfoOutline />}

@@ -3,14 +3,17 @@ import { getCollection, render } from "astro:content";
 import Html from "components/layout/html.astro";
 import Nav from "components/layout/navbar.astro";
 import ReadingProgressBar from "components/features/ReadingProgressBar.astro";
+import Pagination from "components/ui/Pagination.astro";
+import FeedItem from "components/content/feed-item.astro";
 import type { CollectionEntry } from "astro:content";
 import { processOgImage } from "../utils/og-image";
+import { PAGE_SIZE } from "config/pagination";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
 
   let draftPosts: CollectionEntry<"draft">[] = [];
-  
+
   if (import.meta.env.DEV) {
     try {
       draftPosts = await getCollection("draft");
@@ -19,66 +22,158 @@ export async function getStaticPaths() {
     }
   }
 
-  return [...blogPosts, ...draftPosts].map((entry) => ({
+  const allPosts = [...blogPosts, ...draftPosts].sort(
+    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+  );
+
+  // 1. Generate paths for existing blog posts
+  const postPaths = allPosts.map((entry) => ({
     params: { path: entry.id },
-    props: { entry },
+    props: { entry, type: "post" as const },
   }));
+
+  // 2. Generate paths for pagination (page 2, 3...)
+  // We skip page 1 because it's handled by index.astro
+  const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
+  const paginationPaths = [];
+
+  for (let i = 2; i <= totalPages; i++) {
+    const start = (i - 1) * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+    const pagePosts = allPosts.slice(start, end);
+
+    paginationPaths.push({
+      params: { path: i.toString() },
+      props: {
+        type: "page" as const,
+        posts: pagePosts,
+        currentPage: i,
+        totalPages,
+      },
+    });
+  }
+
+  return [...postPaths, ...paginationPaths];
 }
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { type } = Astro.props;
 
-const { title, description, pubDate, kind, tags, ogImage } = entry.data;
-const tagLinks = tags?.map((tag) => ({ tag, url: `/tag/${tag}` })) ?? [];
-const isDraft = entry.collection === "draft";
+// For Posts
+const entry = type === "post" ? Astro.props.entry : null;
+const renderResult = entry ? await render(entry) : { Content: null };
+// @ts-ignore
+const { Content } = renderResult;
 
-const processedOgImage = await processOgImage(ogImage);
+if (type === "post" && !Content) {
+  console.error(
+    `[Context Check] Content is invalid/missing for entry: ${entry?.id}`,
+  );
+}
+
+// For Pages
+const { posts, currentPage, totalPages } =
+  type === "page" ? Astro.props : { posts: [], currentPage: 0, totalPages: 0 };
+
+// Common variables
+let title = "";
+let description = "";
+let pubDate;
+let kind;
+let isDraft = false;
+let processedOgImage;
+let tagLinks: { tag: string; url: string }[] = [];
+
+if (type === "post" && entry) {
+  const data = entry.data;
+  title = data.title;
+  description = data.description;
+  pubDate = data.pubDate;
+  kind = data.kind;
+  isDraft = entry.collection === "draft";
+  processedOgImage = await processOgImage(data.ogImage);
+  tagLinks = data.tags?.map((tag) => ({ tag, url: `/tag/${tag}/1` })) ?? [];
+} else {
+  title = `Page ${currentPage}`;
+  description = "Archived posts";
+}
 ---
 
-<Html
-  title={title}
-  description={description}
-  pubDate={pubDate}
-  ogType="article"
-  ogImage={processedOgImage}
->
-  <ReadingProgressBar/>
-  <Nav />
+{
+  type === "post" && entry ? (
+    <Html
+      title={title}
+      description={description}
+      pubDate={pubDate}
+      ogType="article"
+      ogImage={processedOgImage}
+    >
+      <ReadingProgressBar />
+      <Nav />
 
-  <main class="main-container">
-    <article class="article-container">
-      <div class="article-header">
-        <h1 class="title-post" transition:name={`title-${entry.id}`}>
-          {title}
-        </h1>
+      <main class="main-container">
+        <article class="article-container" data-pagefind-body>
+          <div class="article-header">
+            <h1 class="title-post" transition:name={`title-${entry?.id}`}>
+              {title}
+            </h1>
 
-    <div class="article-meta text-small text-muted flex-wrap">
-      {kind === "article" && (
-        <a href="/kind/article" class="link-article">Article</a>
-      )}
-      {kind === "note" && (
-        <a href="/kind/note" class="link-note">Note</a>
-      )}
+            <div class="article-meta text-small text-muted flex-wrap">
+              {kind === "article" && (
+                <a href="/kind/article" class="link-article">
+                  Article
+                </a>
+              )}
+              {kind === "note" && (
+                <a href="/kind/note" class="link-note">
+                  Note
+                </a>
+              )}
 
-      <div>{pubDate.toISOString().slice(0, 10)}</div>
+              <div>{pubDate?.toISOString().slice(0, 10)}</div>
 
-      {isDraft && <div class="text-draft">_____ Draft _____</div>}
-    </div>
-      </div>
-
-      <Content />
-
-      {tagLinks.length > 0 && (
-        <div class="tags-container">
-          <div class="tags-wrapper">
-            {tagLinks.map(({ tag, url }) => (
-              <a href={url} class="link-tag">
-                <span class="tag-hash">#</span>{tag}
-              </a>
-            ))}
+              {isDraft && <div class="text-draft">_____ Draft _____</div>}
+            </div>
           </div>
+
+          {Content ? (
+            <Content />
+          ) : (
+            <div class="error-message">Error loading content</div>
+          )}
+
+          {tagLinks.length > 0 && (
+            <div class="tags-container">
+              <div class="tags-wrapper">
+                {tagLinks.map(({ tag, url }) => (
+                  <a href={url} class="link-tag">
+                    <span class="tag-hash">#</span>
+                    {tag}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </article>
+      </main>
+    </Html>
+  ) : (
+    <Html title="mychatterbox" description="이런 것도 팁이 되나 싶은 정보들">
+      <Nav />
+      <main class="main-container">
+        <div class="landing-content">
+          <ul class="feed-list">
+            {posts.map((post) => (
+              <FeedItem entry={post} />
+            ))}
+          </ul>
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            baseUrl="/"
+          />
         </div>
-      )}
-    </article>
-  </main>
-</Html>
+      </main>
+    </Html>
+  )
+}

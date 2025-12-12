@@ -4,6 +4,8 @@ import type { CollectionEntry } from "astro:content";
 import FeedItem from "components/content/feed-item.astro";
 import Html from "components/layout/html.astro";
 import Nav from "components/layout/navbar.astro";
+import Pagination from "components/ui/Pagination.astro";
+import { PAGE_SIZE } from "config/pagination";
 
 const blogPosts = await getCollection("blog");
 
@@ -16,8 +18,11 @@ if (import.meta.env.DEV) {
   }
 }
 
-const posts = [...blogPosts, ...draftPosts];
-posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const allPosts = [...blogPosts, ...draftPosts];
+allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
+const posts = allPosts.slice(0, PAGE_SIZE);
 ---
 
 <Html title="mychatterbox" description="이런 것도 팁이 되나 싶은 정보들">
@@ -28,6 +33,12 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
     <ul class="feed-list">
       {posts.map((entry) => (<FeedItem entry={entry} />))}
     </ul>
+    
+    <Pagination 
+      currentPage={1}
+      totalPages={totalPages}
+      baseUrl="/"
+    />
   </div>
   </main>
 </Html>
