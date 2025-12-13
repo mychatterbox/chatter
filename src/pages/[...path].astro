@@ -91,7 +91,11 @@ if (type === "post" && entry) {
   kind = data.kind;
   isDraft = entry.collection === "draft";
   processedOgImage = await processOgImage(data.ogImage);
-  tagLinks = data.tags?.map((tag) => ({ tag, url: `/tag/${tag}/1` })) ?? [];
+  tagLinks =
+    data.tags?.map((tag) => ({
+      tag,
+      url: `/tag/${encodeURIComponent(tag)}`,
+    })) ?? [];
 } else {
   title = `Page ${currentPage}`;
   description = "Archived posts";
