@@ -49,13 +49,17 @@ export default defineConfig({
   // trailingSlash: "always",
 
   build: {
-    format: "file",
+    format: "preserve",
   },
   integrations: [
     sitemap({
       serialize: (item) => {
         const url = new URL(item.url);
-        if (url.pathname !== '/' && url.pathname.endsWith('/')) {
+        if (url.pathname === '/') {
+          // Root URL should have trailing slash
+          return { ...item, url: SITE_URL_WITH_SLASH };
+        }
+        if (url.pathname.endsWith('/')) {
           url.pathname = url.pathname.slice(0, -1);
           item.url = url.toString();
         }

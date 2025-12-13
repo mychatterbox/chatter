@@ -2,8 +2,8 @@
 import ColorScheme from "../features/colorscheme/head.astro";
 // import "styles/fonts.css";
 import "../../styles/global.css";
-import { ClientRouter } from 'astro:transitions';
-import { SITE_OG_IMAGE, SITE_NAME } from '../../config/site';
+import { ClientRouter } from "astro:transitions";
+import { SITE_OG_IMAGE, SITE_NAME } from "../../config/site";
 
 export interface Props {
   title: string;
@@ -36,10 +36,9 @@ const finalOgImage = ogImage
 // const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const pathname = Astro.url.pathname;
 const canonicalURL = new URL(
-  pathname === '/' ? '/' : pathname.replace(/\/$/, ''),
-  Astro.site
+  pathname === "/" ? "/" : pathname.replace(/\/$/, "").replace(/\.html$/, ""),
+  Astro.site,
 ).toString();
-
 ---
 
 <!doctype html>
@@ -62,31 +61,54 @@ const canonicalURL = new URL(
     <!-- <link rel="preload" href="/fonts/PretendardGOV-Bold.subset.woff2" as="font" type="font/woff2" crossorigin> -->
     <!-- <link rel="preload" href="/fonts/CascadiaCode.woff2" as="font" type="font/woff2" crossorigin> -->
 
-
     <slot name="og">
-    <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content={SITE_NAME} />
-    <meta property="og:title" content={ogTitle} />
-    <meta property="og:description" content={ogDescription} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={finalOgImage} />
-    <meta property="twitter:card" content="summary_large_image" />
+      <meta property="og:type" content={ogType} />
+      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:title" content={ogTitle} />
+      <meta property="og:description" content={ogDescription} />
+      <meta property="og:url" content={canonicalURL} />
+      <meta property="og:image" content={finalOgImage} />
+      <meta property="twitter:card" content="summary_large_image" />
     </slot>
 
     <!-- Icons -->
-    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/icons/favicon-96x96.png"
+      sizes="96x96"
+    />
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon.png"
+    />
     <meta name="apple-mobile-web-app-title" content="chatter" />
-    <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials" />
+    <link
+      rel="manifest"
+      href="/site.webmanifest"
+      crossorigin="use-credentials"
+    />
 
     <!-- Sitemap & RSS -->
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="alternate" type="application/rss+xml" href={new URL("rss.xml", Astro.site)} title="rss" />
-    <link rel="preconnect" href="https://static.cloudflareinsights.com">
-    <link rel="preconnect" href="https://api-gateway.umami.dev">
-    <script async src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b1e9f6e1435046a19b449682f88c5806"}'></script>
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2ea1476a8b8247729f1ddad89663055c"}'></script>
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href={new URL("rss.xml", Astro.site)}
+      title="rss"
+    />
+    <link rel="preconnect" href="https://static.cloudflareinsights.com" />
+    <link rel="preconnect" href="https://api-gateway.umami.dev" />
+    <script
+      async
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "b1e9f6e1435046a19b449682f88c5806"}'></script>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "2ea1476a8b8247729f1ddad89663055c"}'></script>
     <slot name="head" />
     <ClientRouter />
   </head>
