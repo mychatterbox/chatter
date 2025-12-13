@@ -3,20 +3,21 @@ interface Props {
   currentPage: number;
   totalPages: number;
   baseUrl: string;
+  separator?: string;
 }
 
-const { currentPage, totalPages, baseUrl } = Astro.props;
+const { currentPage, totalPages, baseUrl, separator = "/" } = Astro.props;
 
 const prevUrl =
   currentPage > 1
-    ? `${baseUrl}${currentPage - 1 === 1 ? (baseUrl === "/" ? "" : "1") : currentPage - 1}`
+    ? `${baseUrl}${separator}${currentPage - 1 === 1 ? (baseUrl === "/" ? "" : "1") : currentPage - 1}`
     : null;
 
 const getPageUrl = (page: number) => {
   if (baseUrl === "/") {
     return page === 1 ? "/" : `/${page}`;
   }
-  return `${baseUrl.endsWith("/") ? baseUrl : baseUrl + "/"}${page}`;
+  return `${baseUrl.endsWith("/") ? baseUrl : baseUrl + separator}${page}`;
 };
 
 const prevPageUrl =

@@ -49,7 +49,7 @@ export default defineConfig({
   // trailingSlash: "always",
 
   build: {
-    format: "preserve",
+    format: "file",
   },
   integrations: [
     sitemap({
