@@ -8,11 +8,6 @@ interface Props {
 
 const { currentPage, totalPages, baseUrl, separator = "/" } = Astro.props;
 
-const prevUrl =
-  currentPage > 1
-    ? `${baseUrl}${separator}${currentPage - 1 === 1 ? (baseUrl === "/" ? "" : "1") : currentPage - 1}`
-    : null;
-
 const getPageUrl = (page: number) => {
   if (page === 1) return baseUrl;
   if (baseUrl === "/") {
