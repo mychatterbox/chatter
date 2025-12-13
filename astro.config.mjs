@@ -66,7 +66,7 @@ export default defineConfig({
         return item;
       },
     }),
-    umami({ id: "bf4c21de-cf9b-4ad4-8661-190c35f41b3f" }),
+    umami({ id: "4811eb93-de23-464b-a636-82f4ab7af5b9" }),
     pagefind()
   ],
 
