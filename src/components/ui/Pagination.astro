@@ -14,8 +14,9 @@ const prevUrl =
     : null;
 
 const getPageUrl = (page: number) => {
+  if (page === 1) return baseUrl;
   if (baseUrl === "/") {
-    return page === 1 ? "/" : `/${page}`;
+    return `/${page}`;
   }
   return `${baseUrl.endsWith("/") ? baseUrl : baseUrl + separator}${page}`;
 };

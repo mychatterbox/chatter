@@ -25,12 +25,6 @@ export async function getStaticPaths() {
     const paths = [];
 
     for (const kind of kinds) {
-        // 1. Root kind path (for redirect) e.g. /kind/note
-        paths.push({
-            params: { path: kind },
-            props: { kind, isRedirect: true },
-        });
-
         const filteredPosts = allPosts.filter((p) => p.data.kind === kind);
         filteredPosts.sort(
             (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
@@ -40,14 +34,34 @@ export async function getStaticPaths() {
 
         if (totalPages === 0) continue;
 
-        for (let i = 1; i <= totalPages; i++) {
+        const page1Posts = filteredPosts.slice(0, PAGE_SIZE);
+
+        // 1. Root kind path (Render Page 1 directly)
+        paths.push({
+            params: { path: kind },
+            props: {
+                posts: page1Posts,
+                currentPage: 1,
+                totalPages,
+                kind,
+                isRedirect: false,
+            },
+        });
+
+        // 2. Explicit Page 1 path (Redirect to Root)
+        paths.push({
+            params: { path: `${kind}/1` },
+            props: { kind, isRedirect: true },
+        });
+
+        // 3. Page 2+
+        for (let i = 2; i <= totalPages; i++) {
             const start = (i - 1) * PAGE_SIZE;
             const end = start + PAGE_SIZE;
             const pagePosts = filteredPosts.slice(start, end);
 
-            // 2. Paged paths e.g. /kind/note-1
             paths.push({
-                params: { path: `${kind}-${i}` },
+                params: { path: `${kind}/${i}` },
                 props: {
                     posts: pagePosts,
                     currentPage: i,
@@ -65,8 +79,10 @@ export async function getStaticPaths() {
 const { posts, currentPage, totalPages, kind, isRedirect } = Astro.props;
 
 if (isRedirect) {
-    return Astro.redirect(`/kind/${kind}-1`);
+    return Astro.redirect(`/kind/${kind}`);
 }
+
+const title = `Kind: ${kind}`;
 ---
 
 <Html title="mychatterbox" description="이런 것도 팁이 되나 싶은 정보들">
@@ -87,7 +103,6 @@ if (isRedirect) {
                     currentPage={currentPage}
                     totalPages={totalPages}
                     baseUrl={`/kind/${kind}`}
-                    separator="-"
                 />
             )
         }

@@ -31,12 +31,6 @@ export async function getStaticPaths() {
     const paths = [];
 
     for (const tag of tagsSet) {
-        // 1. Root tag path (for redirect)
-        paths.push({
-            params: { path: tag },
-            props: { tag, isRedirect: true },
-        });
-
         const filteredPosts = allPosts.filter((p) =>
             p.data.tags?.includes(tag),
         );
@@ -45,17 +39,36 @@ export async function getStaticPaths() {
         );
 
         const totalPages = Math.ceil(filteredPosts.length / PAGE_SIZE);
-
         if (totalPages === 0) continue;
 
-        for (let i = 1; i <= totalPages; i++) {
+        const page1Posts = filteredPosts.slice(0, PAGE_SIZE);
+
+        // 1. Root tag path (Render Page 1 directly)
+        paths.push({
+            params: { path: tag },
+            props: {
+                posts: page1Posts,
+                currentPage: 1,
+                totalPages,
+                tag,
+                isRedirect: false,
+            },
+        });
+
+        // 2. Explicit Page 1 path (Redirect to Root)
+        paths.push({
+            params: { path: `${tag}/1` },
+            props: { tag, isRedirect: true },
+        });
+
+        // 3. Page 2+
+        for (let i = 2; i <= totalPages; i++) {
             const start = (i - 1) * PAGE_SIZE;
             const end = start + PAGE_SIZE;
             const pagePosts = filteredPosts.slice(start, end);
 
-            // 2. Paged paths
             paths.push({
-                params: { path: `${tag}-${i}` },
+                params: { path: `${tag}/${i}` },
                 props: {
                     posts: pagePosts,
                     currentPage: i,
@@ -73,7 +86,7 @@ export async function getStaticPaths() {
 const { posts, currentPage, totalPages, tag, isRedirect } = Astro.props;
 
 if (isRedirect) {
-    return Astro.redirect(`/tag/${encodeURIComponent(tag)}-1`);
+    return Astro.redirect(`/tag/${encodeURIComponent(tag)}`);
 }
 
 const title = `#${tag}`;
@@ -98,7 +111,6 @@ const description = `${tag} 태그가 달린 게시물`;
                     currentPage={currentPage}
                     totalPages={totalPages}
                     baseUrl={`/tag/${tag}`}
-                    separator="-"
                 />
             )
         }
