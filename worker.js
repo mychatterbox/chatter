@@ -20,8 +20,8 @@ export default {
 
     // 캐시 정책
     const cacheControl = contentType.includes("text/html")
-      ? "public, max-age=60"
-      : "public, max-age=31536000, immutable";
+      ? "public, max-age=3600"
+      : "public, max-age=2628000, immutable";
 
     // 헤더 복사 후 보강
     const newHeaders = new Headers(response.headers);
