@@ -24,30 +24,32 @@ import Nav from "components/layout/navbar.astro";
 
     const scriptSrc = "/pagefind/pagefind-ui.js";
 
-    if (typeof PagefindUI !== "undefined") {
-      new PagefindUI({
-        element: "#search",
-        showSubResults: true,
-        showImages: false,
-        pageSize: 20,
-        translations: {
-          placeholder: "검색어를 입력하세요...",
-          zero_results: "[SEARCH_TERM]에 대한 결과가 없습니다.",
-          one_result: "관련글 : [COUNT] 건",
-          many_results: "관련글 : [COUNT] 건",
-          clear_search: "clear",
-        },
-        processResult: function (result) {
-          result.url = result.url.replace(".html", "");
-          if (result.sub_results) {
-            result.sub_results.forEach((sub) => {
-              sub.url = sub.url.replace(".html", "");
-            });
-          }
-          return result;
-        },
-      });
+    // 공통 PagefindUI 설정
+    const pagefindConfig = {
+      element: "#search",
+      showSubResults: true,
+      showImages: false,
+      pageSize: 20,
+      translations: {
+        placeholder: "검색어를 입력하세요...",
+        zero_results: "[SEARCH_TERM]에 대한 결과가 없습니다.",
+        one_result: "관련글 : [COUNT] 건",
+        many_results: "관련글 : [COUNT] 건",
+        clear_search: "clear",
+      },
+      processResult: function (result) {
+        result.url = result.url.replace(".html", "");
+        if (result.sub_results) {
+          result.sub_results.forEach((sub) => {
+            sub.url = sub.url.replace(".html", "");
+          });
+        }
+        return result;
+      },
+    };
 
+    // 공통 input 핸들러 설정
+    function setupInputHandler() {
       setTimeout(() => {
         const input = searchDiv.querySelector("input");
         if (input) {
@@ -72,57 +74,18 @@ import Nav from "components/layout/navbar.astro";
           });
         }
       }, 100);
+    }
+
+    // PagefindUI 초기화
+    if (typeof PagefindUI !== "undefined") {
+      new PagefindUI(pagefindConfig);
+      setupInputHandler();
     } else {
       const script = document.createElement("script");
       script.src = scriptSrc;
       script.onload = () => {
-        new PagefindUI({
-          element: "#search",
-          showSubResults: true,
-          showImages: false,
-          pageSize: 20,
-          translations: {
-            placeholder: "검색어를 입력하세요...",
-            zero_results: "[SEARCH_TERM]에 대한 결과가 없습니다.",
-            one_result: "관련글 : [COUNT] 건",
-            many_results: "관련글 : [COUNT] 건",
-            clear_search: "clear",
-          },
-          processResult: function (result) {
-            result.url = result.url.replace(".html", "");
-            if (result.sub_results) {
-              result.sub_results.forEach((sub) => {
-                sub.url = sub.url.replace(".html", "");
-              });
-            }
-            return result;
-          },
-        });
-
-        setTimeout(() => {
-          const input = searchDiv.querySelector("input");
-          if (input) {
-            input.focus();
-
-            const urlParams = new URLSearchParams(window.location.search);
-            const query = urlParams.get("q");
-            if (query) {
-              input.value = query;
-              input.dispatchEvent(new Event("input", { bubbles: true }));
-            }
-
-            input.addEventListener("input", (e) => {
-              const term = e.target.value;
-              const url = new URL(window.location);
-              if (term) {
-                url.searchParams.set("q", term);
-              } else {
-                url.searchParams.delete("q");
-              }
-              history.replaceState(history.state, "", url);
-            });
-          }
-        }, 100);
+        new PagefindUI(pagefindConfig);
+        setupInputHandler();
       };
       document.head.appendChild(script);
     }
