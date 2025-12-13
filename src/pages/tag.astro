@@ -1,0 +1,68 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Html from "components/layout/html.astro";
+import Nav from "components/layout/navbar.astro";
+
+const blogPosts = await getCollection("blog");
+
+let draftPosts: CollectionEntry<"draft">[] = [];
+if (import.meta.env.DEV) {
+    try {
+        draftPosts = await getCollection("draft");
+    } catch (error) {
+        console.warn("Draft collection is empty or does not exist");
+    }
+}
+
+const allPosts = [...blogPosts, ...draftPosts];
+
+const tagCounts: Record<string, number> = {};
+allPosts.forEach((entry) => {
+    entry.data.tags?.forEach((tag: string) => {
+        tagCounts[tag] = (tagCounts[tag] ?? 0) + 1;
+    });
+});
+
+const sortedTags = Object.keys(tagCounts).sort(
+    (a, b) => tagCounts[b] - tagCounts[a] || a.localeCompare(b),
+);
+
+const title = "Tags";
+const description = "모든 태그 목록";
+---
+
+<Html title={title} description={description}>
+    <Nav />
+    <main class="main-container">
+        <article class="article-container pt-4 text-big">
+            <span class="tag-hash">#</span>Tags
+            <hr />
+        </article>
+
+        <ul class="feed-list">
+            {
+                sortedTags.map((tag) => (
+                    <li class="tag-item flex">
+                        <span class="tag-count pr-2" aria-hidden="true">
+                            {tagCounts[tag]}
+                        </span>
+                        <a
+                            class="link-tag"
+                            href={`/tag/${encodeURIComponent(tag)}/1`}
+                        >
+                            # {tag}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </main>
+</Html>
+
+<style>
+    .tag-count {
+        min-width: 2rem;
+        text-align: right;
+    }
+</style>

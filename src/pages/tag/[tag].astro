@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+    const blogPosts = await getCollection("blog");
+
+    let draftPosts: CollectionEntry<"draft">[] = [];
+    if (import.meta.env.DEV) {
+        try {
+            draftPosts = await getCollection("draft");
+        } catch {
+            // ignore
+        }
+    }
+
+    const allPosts = [...blogPosts, ...draftPosts];
+    const tagsSet = new Set<string>();
+
+    allPosts.forEach((entry) => {
+        if (entry.data.tags) {
+            entry.data.tags.forEach((tag: string) => tagsSet.add(tag));
+        }
+    });
+
+    return Array.from(tagsSet).map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+return Astro.redirect(`/tag/${encodeURIComponent(tag)}/1`);
+---
