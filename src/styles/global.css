@@ -86,8 +86,9 @@ body {
   }
 }
 
+.tags-header,
 .article-container,
-.search-wrapper {
+.search-container {
   margin: 0 auto;
   max-width: var(--breakpoint-md);
   overflow-wrap: break-word;
@@ -132,7 +133,7 @@ img {
   line-height: 1.1;
 }
 
-.tags-container {
+.article-footer {
   margin-top: var(--spacing-12);
   padding-top: var(--spacing-8);
   border-top: 1px solid var(--color-border);
@@ -226,16 +227,10 @@ h6 {
   }
 }
 
-
-.title-index {
+.title-index,
+.title-post {
   line-height: 1.2;
   font-weight: 700;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.title-post {
-  line-height: 1.25;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -292,20 +287,18 @@ a {
   overflow-wrap: break-word;
   word-wrap: break-word;
   text-decoration: none;
-  text-underline-offset: 4px;
 }
 
-a:hover,
-.title-link:hover,
-.link-note:hover,
-.link-article:hover,
-.article-container a {
+
+
+.article-header a:hover,
+.article-body a {
   text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-.title-link:hover {
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
+.article-header a:not(.link-article):not(.link-note):hover {
+    text-decoration-thickness: 2px;
 }
 
 .link-article {
@@ -318,11 +311,6 @@ a:hover,
 
 .text-draft {
   color: var(--color-text-draft);
-}
-
-.article-header a,
-.tags-container a {
-  text-decoration: none;
 }
 
 sup,
@@ -723,7 +711,6 @@ thead {
 }
 
 thead th {
-  /* font-weight: 500; */
   padding: 0.5rem;
   border: 1px solid var(--color-border);
   background-color: var(--color-thead-bg);
