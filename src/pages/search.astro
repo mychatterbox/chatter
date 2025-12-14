@@ -6,7 +6,7 @@ import Nav from "components/layout/navbar.astro";
 <Html title="Search" description="Search the blog">
   <Nav />
   <main class="main-container">
-    <div class="search-wrapper mt-12">
+    <div class="search-container mt-12">
       <h1>블로그 검색</h1>
       <div id="search"></div>
     </div>
@@ -122,24 +122,16 @@ import Nav from "components/layout/navbar.astro";
       font-size: 0.92rem;
     }
 
-    .pagefind-ui__results .pagefind-ui__result {
-      padding-bottom: var(--spacing-8);
-      padding-top: var(--spacing-4);
-      text-underline-offset: 4px;
-      text-decoration-thickness: 2px;
-    }
-
     .pagefind-ui__result-link {
       font-size: 1.16rem;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 2px;
     }
 
     @media (min-width: 768px) {
       .pagefind-ui__result-link {
         font-size: 1.24rem;
       }
-    }
-
-    .pagefind-ui__result-excerpt {
     }
 
     .pagefind-ui mark {
