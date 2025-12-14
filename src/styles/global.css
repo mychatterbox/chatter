@@ -26,7 +26,6 @@
   --font-sans: 'Pretendard GOV', 'Pretendard', 'Apple SD Gothic Neo', 'OneUI Sans', 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Cascadia Code', 'D2Coding', 'Noto Sans Mono', 'Roboto Mono', ui-monospace, monospace;
 
-
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
@@ -73,7 +72,6 @@ body {
 /* ============================================
     Layout Components
     ============================================ */
-
 
 .main-container {
   flex: 1;
@@ -289,8 +287,7 @@ a {
   text-decoration: none;
 }
 
-
-
+.feed-item a:hover,
 .article-header a:hover,
 .article-body a {
   text-decoration: underline;
@@ -298,7 +295,7 @@ a {
 }
 
 .article-header a:not(.link-article):not(.link-note):hover {
-    text-decoration-thickness: 2px;
+  text-decoration-thickness: 2px;
 }
 
 .link-article {
@@ -461,7 +458,6 @@ pre.has-code-file-label {
   justify-content: space-between;
   margin: 0 auto;
   width: 100%;
-
 }
 
 .navbar-links {
@@ -474,7 +470,6 @@ pre.has-code-file-label {
   display: flex;
   align-items: center;
 }
-
 
 .navbar-icon:hover {
   transform: scale(1.1);
@@ -494,7 +489,6 @@ pre.has-code-file-label {
   width: 1.5rem;
   height: 1.5rem;
 }
-
 
 .dark .navbar-icon-svg {
   filter: invert(1);
@@ -517,7 +511,8 @@ pre.has-code-file-label {
   align-items: center;
 }
 
-.theme-toggle-main-icon {
+.theme-toggle-main-icon,
+.theme-toggle-buttons button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -527,10 +522,14 @@ pre.has-code-file-label {
   border: none;
   padding: 0;
   cursor: pointer;
-  z-index: 2;
+
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+}
+
+.theme-toggle-main-icon {
+  z-index: 2;
 }
 
 .theme-toggle-main-icon:hover {
@@ -553,19 +552,7 @@ pre.has-code-file-label {
 }
 
 .theme-toggle-buttons button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
   margin-right: 0.5rem;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
 .theme-toggle-buttons button:last-child {
@@ -726,5 +713,5 @@ table code {
 }
 
 /* * {
- outline: 1px solid red !important;
+  outline: 1px solid red !important;
 } */
