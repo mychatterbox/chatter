@@ -146,7 +146,7 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
     align-items: center;
     justify-content: center;
     margin: 3rem 0;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 
   .page-nav-btn {
@@ -165,7 +165,7 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
   .page-info-btn {
-    background-color: var(--color-thead-bg);
+    background-color: var(--color-bg);
     border: 1px solid var(--color-border);
     cursor: pointer;
     padding: 0.5rem 1rem;
@@ -176,7 +176,7 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
   .page-info-btn:hover {
-    background-color: var(--color-border);
+    background-color: var(--color-thead-bg);
   }
 
   .page-selector-popover {
@@ -215,7 +215,7 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   .page-list-item.active,
   .page-list-item:hover {
-    background-color: var(--color-border);
+    background-color: var(--color-thead-bg);
     color: var(--color-text-primary);
     text-decoration: none;
   }
