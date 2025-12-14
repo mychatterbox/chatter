@@ -21,7 +21,12 @@ keywords:
 astro 만 가능한지는 모르겠지만 아무런 설정을 하지 않아도 됩니다.
 
 ```
-npx astro dev -- --host
+npx astro dev --host
+```
+
+build 후 preview 도 마찬가지입니다.
+```
+npx astro preview --host
 ```
 
 ![astro-localhost-on-mobile](./blog-images/2025/astro-localhost-on-mobile.png)
