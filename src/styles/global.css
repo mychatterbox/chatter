@@ -287,10 +287,23 @@ h6 {
     Links
     ============================================ */
 
+a {
+  color: inherit;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+a:hover,
 .title-link:hover,
-.pagefind-ui__result-link:hover {
+.link-note:hover,
+.link-article:hover,
+.article-container a {
   text-decoration: underline;
-  text-decoration-color: var(--color-text-primary);
+}
+
+.title-link:hover {
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
@@ -307,41 +320,21 @@ h6 {
   color: var(--color-text-draft);
 }
 
+.article-header a,
+.tags-container a {
+  text-decoration: none;
+}
+
+sup,
+a[data-footnote-ref],
+a[data-footnote-backref],
 .link-tag:hover {
   text-decoration: none;
   color: var(--color-link-hover);
 }
 
-a {
-  color: inherit;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  text-decoration: none;
-  text-underline-offset: 4px;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.article-container a[href^="https"] {
-  text-decoration: underline;
-}
-
-.page-list-item a,
-.tags-container a {
-  text-decoration: none !important;
-}
-
-
-
-/* .data-footnote-backref, */
 sup::before {
   content: "[";
-}
-
-sup {
-  color: var(--color-link-hover);
 }
 
 sup::after {
