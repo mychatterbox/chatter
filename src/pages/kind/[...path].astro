@@ -88,10 +88,10 @@ const title = `Kind: ${kind}`;
 <Html title={title} description="이런 것도 팁이 되나 싶은 정보들">
     <Nav />
     <main class="main-container">
-        <div class="kind-header pt-4 text-big">
+        <h1 class="kind-header pt-4">
             Kind: {kind}
             <hr />
-        </div>
+        </h1>
 
         <ul class="feed-list">
             {posts && posts.map((entry) => <FeedItem entry={entry} />)}
