@@ -78,7 +78,7 @@ Reading progress bar는 현재 페이지의 진행 정도를 보여주는 바인
   
   <body>
     <div class="reading-bar"></div>
-    <slot />
+    ...
   </body>
 </html>
 ```
@@ -88,7 +88,7 @@ Reading progress bar는 현재 페이지의 진행 정도를 보여주는 바인
 그런데 코드를 분리하는게 요즘 추세라네요?    
 그래서 css를 따로 분리하고, 개별 페이지 최상단에 넣어봤습니다.  
 
-```css file="ReadingProgressBar.astro"
+```astro file="ReadingProgressBar.astro"
 <div class="reading-bar"></div>
 
 <style>
