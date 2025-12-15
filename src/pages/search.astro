@@ -6,9 +6,9 @@ import Nav from "components/layout/navbar.astro";
 <Html title="Search" description="Search the blog">
   <Nav />
   <main class="main-container">
-    <div class="search-container mt-12">
-      <h1>블로그 검색</h1>
-      <div id="search"></div>
+    <div class="article-container">
+      <h1 class="search-header pt-4">블로그 검색</h1>
+      <div class="pt-4" id="search"></div>
     </div>
   </main>
 </Html>
@@ -24,7 +24,6 @@ import Nav from "components/layout/navbar.astro";
 
     const scriptSrc = "/pagefind/pagefind-ui.js";
 
-    // 공통 PagefindUI 설정
     const pagefindConfig = {
       element: "#search",
       showSubResults: true,
@@ -48,7 +47,6 @@ import Nav from "components/layout/navbar.astro";
       },
     };
 
-    // 공통 input 핸들러 설정
     function setupInputHandler() {
       setTimeout(() => {
         const input = searchDiv.querySelector("input");
@@ -76,7 +74,6 @@ import Nav from "components/layout/navbar.astro";
       }, 100);
     }
 
-    // PagefindUI 초기화
     if (typeof PagefindUI !== "undefined") {
       new PagefindUI(pagefindConfig);
       setupInputHandler();
