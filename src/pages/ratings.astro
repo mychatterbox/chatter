@@ -132,44 +132,32 @@ const sortedRatings = Object.keys(groupedMovies)
         </div>
 <p></p>
 
-{/* 별점 순서대로 리스트 렌더링 */}
         {sortedRatings.map(rating => (
-            // rating이 9점인 리스트부터 1점인 리스트까지 반복
             <details> 
-                        {/* <details open={rating >= 7}>  */}
                 <summary style="list-style: none; cursor: pointer;">
-                    {/* 별점 이미지 경로를 rating 변수를 사용하여 동적으로 생성합니다. */}
-                    {/* 예: rating이 9면 /images/9.png, 1이면 /images/1.png */}
                     <img 
                         src={`/images/${rating}.png`} 
                         class="rating-image" 
                         alt={`${rating}점 평점`}
                     />
-                    {/* 리스트 제목 (예: 9점 영화 리스트) */}
                     <span class="rating-count">({groupedMovies[rating].length})</span>
-                                        {/* <span class="rating-count">{rating}점 영화 리스트 ({groupedMovies[rating].length}개)</span> */}
                 </summary>
-                
-                {/* 별점별 영화 리스트 */}
                 <ul>
                     {groupedMovies[rating].map(movie => (
-                        <li> 
-                            <a href={movie.url}>{movie.title}</a>
+                        <li class="rating-list">
+                            <a href={movie.url} target="_blank" rel="noopener noreferrer">
+                                {movie.title}
+                            </a>
                         </li>
-                    ))}
+                ))}
                 </ul>
             </details>
         ))}
-      
-      
     </article>
   </main>
 </Html>
 
-{/* -------------------- 갤러리 전용 스타일 (Global) -------------------- */}
-
 <style>
-  /* <style is:global> */
   div.gallery {
     display: flex;
     flex-wrap: wrap;
@@ -207,8 +195,6 @@ const sortedRatings = Object.keys(groupedMovies)
     }
   }
   details summary {
-    list-style: none; 
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -217,12 +203,16 @@ const sortedRatings = Object.keys(groupedMovies)
   }
   
   span.rating-count {
-    text-align: center;
     margin-top: 5px; 
     font-weight: 600;
   }
 
-  img.rating-image {
+.rating-list a {
+    display: block;
+    line-height: 2;
+}
 
-  }
+.rating-list a:hover {
+    background-color: var(--color-thead-bg);
+}
 </style>
