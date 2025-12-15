@@ -36,27 +36,27 @@ const description = "모든 태그 목록";
     <Nav />
     <main class="main-container">
         <article class="article-container">
-        <div class="tags-header pt-4 text-big">
-            <span class="tag-hash">#</span>Tags
-            <hr />
-        </div>
-        <div class="tags-body">
-            {
-                sortedTags.map((tag) => (
-                    <li class="tag-item flex">
-                        <span class="tag-count pr-2" aria-hidden="true">
-                            {tagCounts[tag]}
-                        </span>
-                        <a
-                            class="link-tag"
-                            href={`/tag/${encodeURIComponent(tag)}`}
-                        >
-                            # {tag}
-                        </a>
-                    </li>
-                ))
-            }
-        </div>
+            <h1 class="tags-header pt-4">
+                <span class="tag-hash">#</span>Tags
+                <hr />
+            </h1>
+            <div class="tags-body">
+                {
+                    sortedTags.map((tag) => (
+                        <li class="tag-item flex">
+                            <span class="tag-count pr-2" aria-hidden="true">
+                                {tagCounts[tag]}
+                            </span>
+                            <a
+                                class="link-tag"
+                                href={`/tag/${encodeURIComponent(tag)}`}
+                            >
+                                # {tag}
+                            </a>
+                        </li>
+                    ))
+                }
+            </div>
         </article>
     </main>
 </Html>
