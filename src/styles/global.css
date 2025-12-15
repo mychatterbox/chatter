@@ -335,7 +335,7 @@ ol>li {
 
 code {
   border-radius: 0.25rem;
-  padding: 0.125rem 0.25rem;
+  padding: 0.05rem 0.25rem;
   background-color: var(--color-code-bg);
   color: var(--color-code-text);
   font-family: var(--font-mono);
