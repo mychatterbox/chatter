@@ -24,7 +24,7 @@
   --spacing-24: 6rem;
 
   --font-sans: 'Pretendard GOV', 'Pretendard', 'Apple SD Gothic Neo', 'OneUI Sans', 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'Cascadia Mono', 'CascadiaCode', 'Cascadia Code', 'D2Coding', 'Noto Sans Mono', 'Roboto Mono', ui-monospace, monospace;
+  --font-mono: 'Cascadia Mono', 'Cascadia Code', 'D2Coding', 'Menlo', 'Noto Sans Mono', 'Roboto Mono', 'Lucida Console', ui-monospace, monospace;
 
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -335,7 +335,7 @@ ol>li {
 
 code {
   border-radius: 0.25rem;
-  padding: 0.05rem 0.25rem;
+  padding: 0.1rem 0.25rem;
   background-color: var(--color-code-bg);
   color: var(--color-code-text);
   font-family: var(--font-mono);
