@@ -20,12 +20,20 @@ const isDraft = entry.collection === "draft";
     </a>
 
     <div class="article-meta text-small text-muted flex-wrap">
-      {kind === "article" && (
-        <a href="/kind/article" class="link-article">Article</a>
-      )}
-      {kind === "note" && (
-        <a href="/kind/note" class="link-note">Note</a>
-      )}
+      {
+        kind === "article" && (
+          <a href="/kind/article" class="link-article">
+            Article
+          </a>
+        )
+      }
+      {
+        kind === "note" && (
+          <a href="/kind/note" class="link-note">
+            Note
+          </a>
+        )
+      }
 
       <div>{pubDate.toISOString().slice(0, 10)}</div>
 
@@ -33,8 +41,7 @@ const isDraft = entry.collection === "draft";
     </div>
   </div>
 
-  {kind === "article"
-    ? <Fragment set:html={description} />
-    : <Content />
-  }
+  <div class="feed-item-body mt-4 mb-6">
+    {kind === "article" ? <Fragment set:html={description} /> : <Content />}
+  </div>
 </li>
