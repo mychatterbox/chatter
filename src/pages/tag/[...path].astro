@@ -96,10 +96,10 @@ const description = `${tag} 태그가 달린 게시물`;
 <Html title={title} description={description}>
     <Nav />
     <main class="main-container">
-        <div class="tags-header pt-4 text-big">
+        <h1 class="tags-header pt-4">
             <span class="tag-hash">#</span>{tag}
             <hr />
-        </div>
+        </h1>
 
         <ul class="feed-list">
             {posts && posts.map((entry) => <FeedItem entry={entry} />)}
