@@ -35,13 +35,12 @@ const description = "모든 태그 목록";
 <Html title={title} description={description}>
     <Nav />
     <main class="main-container">
-        <article class="tags-header pt-4 text-big">
-            <!-- <article class="article-container pt-4 text-big"> -->
+        <article class="article-container">
+        <div class="tags-header pt-4 text-big">
             <span class="tag-hash">#</span>Tags
             <hr />
-        </article>
-
-        <ul class="feed-list">
+        </div>
+        <div class="tags-body">
             {
                 sortedTags.map((tag) => (
                     <li class="tag-item flex">
@@ -57,7 +56,8 @@ const description = "모든 태그 목록";
                     </li>
                 ))
             }
-        </ul>
+        </div>
+        </article>
     </main>
 </Html>
 
