@@ -10,8 +10,8 @@
   --color-code-text: #ffffff;
   --color-thead-bg: #dddddd;
   --color-border: rgba(128, 128, 128, 0.5);
-
   --codeblock-filename-dot: #dd4444;
+
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
   --spacing-3: 0.75rem;
@@ -240,15 +240,6 @@ h6 {
   font-size: 0.84rem;
 }
 
-.text-big {
-  font-size: 1.24rem;
-  font-weight: bold;
-
-  @media (min-width: 768px) {
-    font-size: 1.36rem;
-  }
-}
-
 .text-muted {
   color: var(--color-text-muted);
 }
@@ -382,19 +373,19 @@ code {
   font-family: var(--font-mono);
 }
 
-/* Pre (code blocks) - Shiki 듀얼 테마 지원 */
 pre {
   display: flex;
   border-radius: 0.375rem;
   border: 1px solid rgba(128, 128, 128, 0.2);
   overflow-x: auto;
+  font-size: 0.92rem;
 }
 
 .astro-code,
 .astro-code span {
   color: var(--shiki-light);
   background-color: var(--shiki-light-bg);
-  font-size: 0.92rem;
+  margin-bottom: var(--spacing-6);
 }
 
 .dark .astro-code,
@@ -404,7 +395,7 @@ pre {
 }
 
 pre code {
-  background-color: transparent !important;
+  background-color: transparent;
   padding: 1rem;
   overflow-x: auto;
   line-height: 1.5rem;
@@ -414,20 +405,13 @@ pre code {
     Code Block FileName Label Styles
     ============================================ */
 
-pre.has-code-file-label {
-  overflow: visible !important;
-  position: relative;
-  --code-file-offset: -0.75rem;
-}
-
 .code-file-label {
   position: absolute;
-  top: var(--code-file-offset);
-  left: 1rem;
+  transform: translate(0.75rem, -0.75rem);
   padding: 0 0.5rem;
   border-radius: 0.375rem;
   border: 1px solid var(--color-border);
-  font-size: 0.8rem !important;
+  font-size: 0.8rem;
 }
 
 .code-file-label::before {
@@ -651,7 +635,7 @@ li.task-list-item input[type="checkbox"]:checked::before {
 }
 
 figcaption {
-  margin-top: -15px !important;
+  margin-top: -15px;
   text-align: center;
   font-style: italic;
   background-color: var(--figcaption-bg);
@@ -661,11 +645,9 @@ figcaption {
 mark {
   background-color: transparent;
   color: var(--mark-text-color);
-  /* font-weight: 500; */
 }
 
 blockquote {
-  /* font-weight: 500; */
   border-left: 4px solid var(--color-text-primary);
   quotes: none;
   margin-top: 1.6rem;
