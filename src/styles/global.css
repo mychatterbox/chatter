@@ -84,6 +84,9 @@ body {
   }
 }
 
+.search-header,
+.body-container,
+.kind-header,
 .tags-header,
 .article-container,
 .search-container {
@@ -288,7 +291,6 @@ a {
 }
 
 .feed-item a:hover,
-.article-header a:hover,
 .article-body a {
   text-decoration: underline;
   text-underline-offset: 4px;
