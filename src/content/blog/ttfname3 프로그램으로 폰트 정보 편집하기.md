@@ -7,7 +7,7 @@ slug: ttfname3
 featured: false
 draft: false
 tags:
-  - 윈도우
+  - 소프트웨어
 ogImage: ""
 description: 특정 폰트의 정보를 추출해서 사용하고자 하는 폰트에 덮어 씌우는 용도로 사용할 수 있습니다. <br> 예를 들어 맑은 고딕의 폰트 정보를 추출해서 Pretendard 에 넣으면, 맑은 고딕으로 인식하지만 글자 모양은 Pretendard인 폰트를 만들 수 있습니다.  
 keywords:
