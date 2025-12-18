@@ -1,0 +1,198 @@
+<script lang="js">
+let overlay = null
+let imageStates = new WeakMap()
+
+function initZoom() {
+  if (overlay) overlay.remove()
+
+  overlay = document.createElement('div')
+  overlay.style.position = 'fixed'
+  overlay.style.left = '0'
+  overlay.style.top = '0'
+  overlay.style.width = '100%'
+  overlay.style.height = '100%'
+  overlay.style.zIndex = '1'
+  overlay.style.transition = '0.3s ease-out opacity'
+  overlay.style.backdropFilter = 'blur(1px)'
+  overlay.style.webkitBackdropFilter = 'blur(1px)'
+  overlay.style.opacity = '0'
+  overlay.style.pointerEvents = 'none'
+  document.body.appendChild(overlay)
+
+  overlay.addEventListener('click', () => {
+    document.querySelectorAll('img').forEach(img => {
+      const state = imageStates.get(img)
+      if (state && state.zoomStep > 0) state.zoomOut()
+    })
+  })
+
+  document.querySelectorAll('img').forEach(setupZoomableImage)
+}
+
+function setupZoomableImage(image) {
+  if (imageStates.has(image)) return
+
+  const state = { zoomStep: 0, zoomOut: null }
+
+  const centerTranslate = (rect, scale) => {
+    const viewportWidth = document.documentElement.clientWidth
+    const viewportHeight = document.documentElement.clientHeight
+    const elementCenterX = rect.left + rect.width / 2
+    const elementCenterY = rect.top + rect.height / 2
+    const translateX = (viewportWidth / 2) - elementCenterX
+    const translateY = (viewportHeight / 2) - elementCenterY
+    return { translateX, translateY, scale }
+  }
+
+  let naturalZoomState = null
+
+  function handleResize() {
+    if (state.zoomStep === 0) return
+    
+    const rect = image.getBoundingClientRect()
+    const viewportWidth = document.documentElement.clientWidth
+    const viewportHeight = document.documentElement.clientHeight
+    
+    if (state.zoomStep === 1) {
+      const naturalScale = image.naturalWidth / rect.width
+      const maxScale = Math.min(
+        viewportWidth * 0.95 / rect.width,
+        viewportHeight * 0.95 / rect.height
+      )
+      const scale = Math.min(naturalScale, maxScale)
+      
+      const { translateX, translateY } = centerTranslate(rect, scale)
+      image.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`
+      
+      naturalZoomState = {
+        scale: scale,
+        translateX: translateX,
+        translateY: translateY,
+        displayWidth: rect.width * scale,
+        displayHeight: rect.height * scale
+      }
+      
+    } else if (state.zoomStep === 2 && naturalZoomState) {
+      const nextScale = naturalZoomState.scale * 2
+      
+      const maxScaleX = (viewportWidth * 0.95) / (naturalZoomState.displayWidth / naturalZoomState.scale)
+      const maxScaleY = (viewportHeight * 0.95) / (naturalZoomState.displayHeight / naturalZoomState.scale)
+      const maxScale = Math.min(maxScaleX, maxScaleY)
+      
+      const scale = Math.min(nextScale, maxScale)
+      
+      image.style.transform = `translate(${naturalZoomState.translateX}px, ${naturalZoomState.translateY}px) scale(${scale})`
+    }
+  }
+
+  const zoomToNatural = () => {
+    const rect = image.getBoundingClientRect()
+    const viewportWidth = document.documentElement.clientWidth
+    const viewportHeight = document.documentElement.clientHeight
+
+    const naturalScale = image.naturalWidth / rect.width
+    const maxScale = Math.min(
+      viewportWidth * 0.95 / rect.width,
+      viewportHeight * 0.95 / rect.height
+    )
+    const scale = Math.min(naturalScale, maxScale)
+
+    const { translateX, translateY } = centerTranslate(rect, scale)
+    image.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`
+
+    image.style.zIndex = '2'
+    image.style.position = 'relative'
+    image.style.cursor = 'zoom-in'
+    overlay.style.opacity = '1'
+    overlay.style.pointerEvents = ''
+    state.zoomStep = 1
+    
+    naturalZoomState = {
+      scale: scale,
+      translateX: translateX,
+      translateY: translateY,
+      displayWidth: rect.width * scale,
+      displayHeight: rect.height * scale
+    }
+  }
+
+  const zoomToMax = () => {
+    if (!naturalZoomState) return
+    
+    const viewportWidth = document.documentElement.clientWidth
+    const viewportHeight = document.documentElement.clientHeight
+    
+    const nextScale = naturalZoomState.scale * 2
+    
+    const maxScaleX = (viewportWidth * 0.95) / (naturalZoomState.displayWidth / naturalZoomState.scale)
+    const maxScaleY = (viewportHeight * 0.95) / (naturalZoomState.displayHeight / naturalZoomState.scale)
+    const maxScale = Math.min(maxScaleX, maxScaleY)
+    
+    const scale = Math.min(nextScale, maxScale)
+    
+    image.style.transform = `translate(${naturalZoomState.translateX}px, ${naturalZoomState.translateY}px) scale(${scale})`
+    image.style.cursor = 'zoom-out'
+    state.zoomStep = 2
+  }
+
+  const zoomOut = () => {
+    overlay.style.opacity = '0'
+    overlay.style.pointerEvents = 'none'
+    image.style.transform = ''
+    image.style.cursor = 'zoom-in'
+    state.zoomStep = 0
+    naturalZoomState = null
+    window.removeEventListener('resize', handleResize)
+  }
+
+  state.zoomOut = zoomOut
+
+  const toggleZoom = (e) => {
+    e.stopPropagation()
+    if (state.zoomStep === 0) {
+      zoomToNatural()
+      window.addEventListener('resize', handleResize)
+    } else if (state.zoomStep === 1) {
+      zoomToMax()
+    } else if (state.zoomStep === 2) {
+      zoomOut()
+    }
+  }
+
+  image.addEventListener('click', toggleZoom)
+
+  window.addEventListener('scroll', () => {
+    if (state.zoomStep > 0) zoomOut()
+  }, { passive: true })
+
+  image.style.transition = '0.2s ease-out transform'
+  image.style.transformOrigin = 'center center'
+  image.style.cursor = 'zoom-in'
+
+  image.addEventListener('transitionend', () => {
+    if (state.zoomStep === 0) {
+      image.style.zIndex = ''
+      image.style.position = ''
+    }
+  })
+
+  imageStates.set(image, state)
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initZoom)
+} else {
+  initZoom()
+}
+
+document.addEventListener('astro:page-load', initZoom)
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('img').forEach(img => {
+      const state = imageStates.get(img)
+      if (state && state.zoomStep > 0) state.zoomOut()
+    })
+  }
+})
+</script>

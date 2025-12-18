@@ -8,6 +8,7 @@ import FeedItem from "components/content/feed-item.astro";
 import type { CollectionEntry } from "astro:content";
 import { processOgImage } from "../utils/og-image";
 import { PAGE_SIZE } from "config/pagination";
+import ImageModal from "components/features/ImageModal.astro";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
@@ -26,14 +27,11 @@ export async function getStaticPaths() {
     (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
   );
 
-  // 1. Generate paths for existing blog posts
   const postPaths = allPosts.map((entry) => ({
     params: { path: entry.id },
     props: { entry, type: "post" as const },
   }));
 
-  // 2. Generate paths for pagination (page 2, 3...)
-  // We skip page 1 because it's handled by index.astro
   const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
   const paginationPaths = [];
 
@@ -113,6 +111,7 @@ if (type === "post" && entry) {
     >
       <ReadingProgressBar />
       <Nav />
+      <ImageModal />
 
       <main class="main-container">
         <article class="article-container" data-pagefind-body>
