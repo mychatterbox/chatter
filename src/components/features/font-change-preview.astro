@@ -1,5 +1,6 @@
 ---
 import "../../styles/font-change-preview.css";
+import FontSizeIcon from "../../icons/hero/solid/FontSizeIcon.svg";
 const defaultSize = 16;
 const fontSizes = [14, 15, 16, 17, 18];
 ---
@@ -14,10 +15,7 @@ const fontSizes = [14, 15, 16, 17, 18];
     aria-controls="fontchange-popover"
     aria-expanded="false"
   >
-    <svg class="fontchange-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0.5" aria-hidden="true">
-      <text x="3" y="13" font-size="12" font-family="monospace">A</text>
-      <text x="11" y="23" font-size="18" font-family="monospace">A</text>
-    </svg>
+    <FontSizeIcon class="fontchange-icon" aria-hidden="true" />
   </button>
 
   <div
