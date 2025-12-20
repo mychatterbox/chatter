@@ -31,6 +31,9 @@ keywords:
 <mark>원글</mark></a>을 참고하셔도 되고 <a href="/ttfname3" target="_blank" rel="noopener noreferrer">
 <mark>ttfname3</mark></a>이라는 간단한 프로그램을 이용해 본인만의 폰트를 만들어도 됩니다.  
 
+> [!DANGER|hide]  
+> 항상 폰트의 저작권을 확인하세요. 
+
 위의 원글에서 다운받은 압축파일을 풀어보면 폰트 파일이 1개가 아닌데, 이유는 맑은 고딕(malgun.ttf) 1개가 아닌 여러 개의 파일을 교체해야 되기 때문입니다.  
 원글의 작성자분이 최대한 테스트하신 것으로 생각하고, 저도 한달 정도 실사용중인데 문제점은 없었습니다. 
 
