@@ -10,6 +10,7 @@ import TagsOutline from "../../icons/hero/outline/tags.svg";
 import SearchSolid from "../../icons/hero/solid/search.svg";
 import SearchOutline from "../../icons/hero/outline/search.svg";
 import ThemeToggle from "../features/colorscheme/ThemeToggle.astro";
+import FontChange from "../features/font-change-preview.astro";
 // import DescriptionToggle from "./DescriptionToggle.astro";
 ---
 
@@ -41,8 +42,8 @@ import ThemeToggle from "../features/colorscheme/ThemeToggle.astro";
           {Astro.url.pathname.startsWith("/site-info") ? <InfoSolid /> : <InfoOutline />}
         </div>
       </a>
+  <FontChange />
     </div>
-
     <div class="theme-toggle-container">
       <ThemeToggle />
     </div>

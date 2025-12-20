@@ -1,0 +1,133 @@
+/* 컨테이너 및 버튼 기본 스타일 */
+.fontchange-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.fontchange-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 40px;
+  width: 40px;
+  margin-left: -0.5rem;
+}
+
+.fontchange-btn:hover {
+  border-color: var(--color-border);
+}
+
+/* 팝오버 통합 스타일 */
+.fontchange-popover {
+  /* 기본 공통 레이아웃 */
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  display: none; /* JS에서 block으로 전환 */
+  
+  /* 애니메이션 기본 상태 (데스크탑: 위에서 아래로) */
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  /* 데스크탑 기본 위치 */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 260px;
+  margin-top: 0.8rem;
+  border-radius: 12px;
+  padding: 1.5rem 1.2rem 1.2rem;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+/* 활성화 상태 (!important를 사용하여 JS 인라인 스타일 간섭 방지) */
+.fontchange-popover.visible {
+  opacity: 1 !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+/* 모바일 전용 스타일 */
+@media (max-width: 639px) {
+  .fontchange-popover {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    width: 100%;
+    margin: 0;
+    border-radius: 20px 20px 0 0;
+    /* 모바일 기본 상태: 화면 아래에 숨김 */
+    transform: translateY(100%); 
+    opacity: 1; /* 모바일은 투명도 보단 움직임에 집중 */
+  }
+
+  .fontchange-popover.visible {
+    /* 모바일 활성화: 아래에서 위로 올라옴 */
+    transform: translateY(0) !important;
+  }
+}
+
+/* 슬라이더 및 기타 내부 요소 */
+.fontchange-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-border);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0.5rem 0;
+}
+
+.fontchange-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-text-primary);
+  cursor: pointer;
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fontchange-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.fontchange-label {
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-family: monospace;
+}
+
+.fontchange-label.active {
+  font-weight: bold;
+  transform: scale(1.1);
+  background-color: var(--color-select-item-hover-bg);
+}
+
+.fontchange-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--color-select-item-hover-bg);
+  border-radius: 10px;
+  margin-top: 1rem;
+}
