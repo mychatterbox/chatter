@@ -1,0 +1,233 @@
+.callout-wrapper {
+  display: contents;
+}
+
+.callout-checkbox {
+  display: none;
+}
+
+:root {
+  --base-font-size: 16px;
+}
+
+body {
+  font-size: var(--base-font-size);
+}
+
+.callout {
+  border-left: 4px solid;
+  margin-top: 1rem;
+  border-radius: 0 8px 8px 0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  padding-left: 1rem;
+}
+
+.callout-small {
+  font-size: calc(var(--base-font-size) * 0.84);
+}
+
+.callout .callout:not(.callout-small) {
+  font-size: var(--base-font-size);
+}
+
+.callout-borderless {
+  border-left-width: 0;
+  border-radius: 8px;
+}
+
+.callout-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  font-size: 1em;
+}
+
+.callout-title:hover {
+  background-color: rgba(0,0,0,0.02);
+}
+
+.callout-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.callout-title-text {
+  font-weight: 600;
+  /* font-size: 1em; */
+  padding-left: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--callout-title-color, #333);
+  flex-grow: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.callout-toggle {
+  display: flex;
+  opacity: 0.8;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  flex-shrink: 0;
+  font-size: 0.95em;
+  margin-left: 1.5rem;
+}
+
+.callout-container {
+  width: 100%;
+}
+
+.callout-checkbox:checked ~ .callout-title .callout-toggle {
+  transform: rotate(90deg);
+}
+
+.callout-content {
+  color: var(--callout-text);
+  font-size: 1em;
+}
+
+.callout-checkbox:checked ~ .callout-content {
+  max-height: 5000px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.callout-content > *:first-child {
+  margin-top: 0;
+}
+
+.callout-content > *:last-child {
+  margin-bottom: 0;
+}
+
+.callout-content p {
+  margin-bottom: 0;
+}
+
+.callout-checkbox:focus ~ .callout-title {
+  outline: 2px solid var(--callout-title-color, #3498db);
+  outline-offset: 2px;
+}
+
+.callout-note {
+  border-color: #3498db;
+  --callout-title-color: #2980b9;
+}
+
+.callout-tip {
+  border-color: #2ecc71;
+  --callout-title-color: #27ae60;
+}
+
+.callout-warning {
+  border-color: #f39c12;
+  --callout-title-color: #d68910;
+}
+
+.callout-danger {
+  border-color: #e74c3c;
+  --callout-title-color: #c0392b;
+}
+
+.callout-info {
+  border-color: #1abc9c;
+  --callout-title-color: #16a085;
+}
+
+.callout-success {
+  border-color: #2ecc71;
+  --callout-title-color: #27ae60;
+}
+
+.callout-question {
+  border-color: #3498db;
+  --callout-title-color: #2980b9;
+}
+
+.callout-todo {
+  border-color: #95a5a6;
+  --callout-title-color: var(--color-text-primary);
+}
+
+.callout-abstract {
+  border-color: #34495e;
+  --callout-title-color: #2c3e50;
+}
+
+.callout-important {
+  border-color: transparent;
+  background-color: rgba(233, 49, 71, 0.1);
+  --callout-title-color: #e93147;
+}
+
+.dark .callout-important {
+  border-color: transparent;
+  background-color: rgba(233, 49, 71, 0.1);
+    --callout-title-color: #fb464c;
+}
+
+.callout-bug {
+  border-color: #e74c3c;
+  --callout-title-color: #c0392b;
+  --callout-text: #78281f;
+}
+
+.callout-example {
+  border-color: #9b59b6;
+  --callout-title-color: #8e44ad;
+}
+
+.callout-quote {
+  border-color: #95a5a6;
+  --callout-title-color: #7f8c8d;
+  font-style: italic;
+}
+
+.callout:not(:has(.callout-title)) .callout-content {
+  display: block !important;
+}
+
+.callout-small:not(:has(.callout-title)) .callout-content {
+  padding: 0.75rem;
+}
+
+.callout:not(:has(.callout-checkbox)) .callout-content {
+  max-height: none;
+  opacity: 1;
+  transform: none;
+}
+
+.callout-collapsible .callout-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-10px);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.callout-collapsible .callout-checkbox:checked ~ .callout-title .callout-toggle {
+  transform: rotate(90deg);
+}
+
+.callout-collapsible .callout-checkbox:checked ~ .callout-content {
+  max-height: 5000px;
+  opacity: 1;
+  transform: translateY(0);
+  display: block !important;
+}
+
+.callout-collapsible .callout-checkbox {
+  /* display: none; */
+}
+
+.callout-title:not(:has(.callout-toggle)) {
+  /* cursor: default !important; */
+}

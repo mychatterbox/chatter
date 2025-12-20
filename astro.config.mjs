@@ -12,6 +12,7 @@ import {
 import { SITE_URL_WITH_SLASH } from "./src/config/site.ts";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { Callouts } from "./src/utils/callouts.js";
 
 function pagefind() {
   return {
@@ -46,17 +47,15 @@ export default defineConfig({
     layout: 'constrained',
   },
 
-  // trailingSlash: "always",
-
   build: {
     format: "preserve",
   },
+  
   integrations: [
     sitemap({
       serialize: (item) => {
         const url = new URL(item.url);
         if (url.pathname === '/') {
-          // Root URL should have trailing slash
           return { ...item, url: SITE_URL_WITH_SLASH };
         }
         if (url.pathname.endsWith('/')) {
@@ -81,6 +80,8 @@ export default defineConfig({
         transformerFileName(),
       ],
     },
+    remarkPlugins: [Callouts]
   },
+  
   scopedStyleStrategy: "where",
 });
