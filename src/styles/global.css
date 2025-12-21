@@ -1,6 +1,7 @@
 :root {
   --base-font-size: 16px;
   --color-text-primary: #101828;
+  --color-text-heading: var(--color-text-primary);
   --color-bg: #f1f2f3;
   --color-text-muted: #555555;
   --color-link-article: #2a6eb2;
@@ -41,8 +42,9 @@
 }
 
 .dark {
-  --color-text-primary: #eeeeee;
-  --color-bg: #111111;
+  --color-text-primary: #d4d4d4;
+  --color-text-heading: #eeeeee;
+  --color-bg: #0e1113;
   --color-text-muted: #999999;
   --color-code-bg: #bbbbbb;
   --color-code-text: #000000;
@@ -154,16 +156,24 @@ img {
     Typography
     ============================================ */
 
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-heading);
+}
+
 h1 {
   font-size: 1.3em;
 }
 
 h2 {
   font-size: 1.2em;
+  margin-top: 2em;
 }
 
 h3 {
   font-size: 1.1em;
+    margin-top: 1.8em;
+        margin-bottom: 0.6em;
 }
 
 h4 {
@@ -173,10 +183,12 @@ h4 {
 
 h5 {
   font-size: 0.94em;
+  margin-bottom: 0.6em;
 }
 
 h6 {
   font-size: 0.88em;
+    margin-bottom: 0.6em;
 }
 
 @media (min-width: 768px) {
@@ -192,6 +204,22 @@ h6 {
     font-size: 1.15em;
   }
 }
+
+.article-body h1 + *:not(h1, h2, h3, h4, h5, h6),
+.article-body h2 + *:not(h1, h2, h3, h4, h5, h6),
+.article-body h3 + *:not(h1, h2, h3, h4, h5, h6),
+.article-body h4 + *:not(h1, h2, h3, h4, h5, h6),
+.article-body h5 + *:not(h1, h2, h3, h4, h5, h6),
+.article-body h6 + *:not(h1, h2, h3, h4, h5, h6) {
+    margin-top: 0;
+}
+
+.article-body h1 + h2 { margin-top: 1.2em; }
+.article-body h1 + h3 { margin-top: 1em; }
+.article-body h2 + h3 { margin-top: 1em; }
+.article-body h3 + h4 { margin-top: 0.8em; }
+.article-body h4 + h5 { margin-top: 0.6em; }
+.article-body h5 + h6 { margin-top: 0.5em; }
 
 .title-index,
 .title-post {
@@ -366,7 +394,7 @@ ol>li {
     ============================================ */
 code {
   border-radius: 0.25rem;
-  padding: 0.1rem 0.25rem;
+  padding: 0.15rem 0.25rem;
   background-color: var(--color-code-bg);
   color: var(--color-code-text);
   font-family: var(--font-mono);
@@ -410,14 +438,14 @@ pre code {
   padding: 0 0.5rem;
   border-radius: 0.375rem;
   border: 1px solid var(--color-border);
-  font-size: 0.8rem;
+  font-size: 0.9em;
 }
 
 .code-file-label::before {
   content: "";
   display: inline-block;
-  width: 0.3rem;
-  height: 0.3rem;
+  width: 0.3em;
+  height: 0.3em;
   border-radius: 50%;
   background: var(--codeblock-filename-dot);
   margin-right: 0.5rem;
