@@ -56,7 +56,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1em;
   flex-shrink: 0;
 }
 
@@ -78,7 +78,7 @@ body {
   transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   flex-shrink: 0;
   font-size: 0.95em;
-  margin-left: 1.5rem;
+  margin-left: 1.5em;
 }
 
 .callout-container {
