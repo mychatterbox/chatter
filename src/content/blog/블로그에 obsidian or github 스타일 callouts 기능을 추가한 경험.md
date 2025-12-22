@@ -148,7 +148,7 @@ AI에게 시켜보니까 unist-util-visit 이건 꼭 설치해야 한답니다.
 > [!warning|hide]  
 > title 숨김 옵션
 
-> [!IMPORTANT]  
+> [!DANGER]  
 > 1. css 이렇게 설정하면 뭐 대충 옵시디언 스타일 아닙니까?  
 > 2. 박스의 색감이 별로라구요?  
 > 3. [obsidian 공식 사이트](https://help.obsidian.md/callouts#Supported%20types)의 색조합을 그대로 사용했습니다.  
@@ -160,11 +160,11 @@ AI에게 시켜보니까 unist-util-visit 이건 꼭 설치해야 한답니다.
 > [!INFO]  
 > 중첩 _1_  
 >  
->> [!DANGER|small]  
+>> [!NOTE|small]  
 >> 중**첩 2** small 옵션 [링크](https://google.com)  
 >>  
 >>> [!WARNING|hide]  
->>> 중첩 3 **제목 숨김** 옵션  
+>>> 중첩 3 **제목 숨김** 옵션, 크기 원래대로  
 >>> AI가 어려워한, 중첩되면 일부 속성이 아래로 상속되던 문제  
 >>>> [!TIP|small|no-icon|collapsed]  
 >>>> **small + no-icon + collapsed** 동시 테스트  
@@ -172,7 +172,7 @@ AI에게 시켜보니까 unist-util-visit 이건 꼭 설치해야 한답니다.
 >>>> 중첩 4 여러줄
 
 > [!QUESTION]  
-> tornado of souls - Who's to say what's for me to say? Who's to say what's for me to be? Who's to say what's for me to do? 'Cause a big nothin' it'll be for me'  
+> Who's to say what's for me to say? Who's to say what's for me to be? Who's to say what's for me to do? 'Cause a big nothin' it'll be for me'  
 > 문장이 길 때
 
 > [QUESTION]   
@@ -382,25 +382,44 @@ function escapeHtml(text) {
 
 ```css file="callouts.css"
 .callout-wrapper {
-  display: contents;
+    display: block;
+    margin: 1em 0;
+}
+
+.callout-wrapper + .callout-wrapper {
+  margin-top: 1.5rem;
+}
+
+.callout-wrapper + blockquote,
+blockquote + .callout-wrapper {
+  margin-top: 1.5rem;
 }
 
 .callout-checkbox {
   display: none;
 }
 
+:root {
+  --base-font-size: 16px;
+}
+
+body {
+  font-size: var(--base-font-size);
+}
+
 .callout {
   border-left: 4px solid;
-  margin-top: 1rem;
   border-radius: 0 8px 8px 0;
   overflow: hidden;
-  transition: all 0.2s ease;
   padding-left: 1rem;
-  font-size: 1rem;
 }
 
 .callout-small {
-  font-size: 0.84rem;
+  font-size: 0.875em;
+}
+
+.callout .callout:not(.callout-small) {
+  font-size: var(--base-font-size);
 }
 
 .callout-borderless {
@@ -414,29 +433,24 @@ function escapeHtml(text) {
   width: 100%;
   cursor: pointer;
   user-select: none;
-  transition: background-color 0.2s ease;
   box-sizing: border-box;
   justify-content: flex-start;
-}
-
-.callout-title:hover {
-  background-color: rgba(0,0,0,0.02);
+  font-size: 1em;
 }
 
 .callout-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1em;
+  font-size: 1em;
   flex-shrink: 0;
 }
 
 .callout-title-text {
   font-weight: 600;
-  font-size: 0.95em;
+  /* font-size: 1em; */
   padding-left: 0.3rem;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
   color: var(--callout-title-color, #333);
   flex-grow: 0;
   flex-shrink: 0;
@@ -446,10 +460,9 @@ function escapeHtml(text) {
 .callout-toggle {
   display: flex;
   opacity: 0.8;
-  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   flex-shrink: 0;
-  font-size: 0.95em;
-  margin-left: 1.5rem;
+  font-size: 0.8em;
+  margin-left: 1.5em;
 }
 
 .callout-container {
@@ -462,7 +475,11 @@ function escapeHtml(text) {
 
 .callout-content {
   color: var(--callout-text);
+  font-size: 1em;
+}
 
+.callout-content pre:last-child {
+  margin-bottom: 0;
 }
 
 .callout-checkbox:checked ~ .callout-content {
@@ -475,7 +492,7 @@ function escapeHtml(text) {
   margin-top: 0;
 }
 
-.callout-content > *:last-child {
+.callout-content > :last-child {
   margin-bottom: 0;
 }
 
@@ -503,10 +520,23 @@ function escapeHtml(text) {
   --callout-title-color: #d68910;
 }
 
-.callout-danger {
+.callout-important {
   border-color: #e74c3c;
   --callout-title-color: #c0392b;
 }
+
+.callout-danger {
+  border-color: transparent;
+  background-color: rgba(233, 49, 71, 0.1);
+  --callout-title-color: #e93147;
+}
+
+.dark .callout-danger {
+  border-color: transparent;
+  background-color: rgba(233, 49, 71, 0.1);
+    --callout-title-color: #fb464c;
+}
+
 
 .callout-info {
   border-color: #1abc9c;
@@ -533,22 +563,9 @@ function escapeHtml(text) {
   --callout-title-color: #2c3e50;
 }
 
-.callout-important {
-  border-color: transparent;
-  background-color: rgba(233, 49, 71, 0.1);
-  --callout-title-color: #e93147;
-}
-
-.dark .callout-important {
-  border-color: transparent;
-  background-color: rgba(233, 49, 71, 0.1);
-    --callout-title-color: #fb464c;
-}
-
 .callout-bug {
   border-color: #e74c3c;
   --callout-title-color: #c0392b;
-  --callout-text: #78281f;
 }
 
 .callout-example {
@@ -581,7 +598,6 @@ function escapeHtml(text) {
   opacity: 0;
   overflow: hidden;
   transform: translateY(-10px);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .callout-collapsible .callout-checkbox:checked ~ .callout-title .callout-toggle {
@@ -594,9 +610,17 @@ function escapeHtml(text) {
   transform: translateY(0);
   display: block !important;
 }
+
+.callout-collapsible .callout-checkbox {
+  /* display: none; */
+}
+
+.callout-title:not(:has(.callout-toggle)) {
+  /* cursor: default !important; */
+}
 ```
 </details>
 
-> [!DANGER|hide]  
+> [!IMPORTANT|hide]  
 > 시간이 남아도는 것이 아니라면 <mark>[rehype-callouts](https://github.com/lin-stephanie/rehype-callouts)</mark> 쓰세요.  
 > 더 많은 기능이 필요하면 <mark>remark-directive</mark> 같은 것들을 찾아보세요.  
