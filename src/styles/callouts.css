@@ -1,5 +1,15 @@
 .callout-wrapper {
-  display: contents;
+    display: block;
+    margin: 1em 0;
+}
+
+.callout-wrapper + .callout-wrapper {
+  margin-top: 1.5rem;
+}
+
+.callout-wrapper + blockquote,
+blockquote + .callout-wrapper {
+  margin-top: 1.5rem;
 }
 
 .callout-checkbox {
@@ -16,15 +26,13 @@ body {
 
 .callout {
   border-left: 4px solid;
-  margin-top: 1rem;
   border-radius: 0 8px 8px 0;
   overflow: hidden;
-  transition: all 0.2s ease;
   padding-left: 1rem;
 }
 
 .callout-small {
-  font-size: calc(var(--base-font-size) * 0.84);
+  font-size: 0.875em;
 }
 
 .callout .callout:not(.callout-small) {
@@ -42,14 +50,9 @@ body {
   width: 100%;
   cursor: pointer;
   user-select: none;
-  transition: background-color 0.2s ease;
   box-sizing: border-box;
   justify-content: flex-start;
   font-size: 1em;
-}
-
-.callout-title:hover {
-  background-color: rgba(0,0,0,0.02);
 }
 
 .callout-icon {
@@ -65,7 +68,6 @@ body {
   /* font-size: 1em; */
   padding-left: 0.3rem;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
   color: var(--callout-title-color, #333);
   flex-grow: 0;
   flex-shrink: 0;
@@ -75,9 +77,8 @@ body {
 .callout-toggle {
   display: flex;
   opacity: 0.8;
-  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   flex-shrink: 0;
-  font-size: 0.95em;
+  font-size: 0.8em;
   margin-left: 1.5em;
 }
 
@@ -94,6 +95,10 @@ body {
   font-size: 1em;
 }
 
+.callout-content pre:last-child {
+  margin-bottom: 0;
+}
+
 .callout-checkbox:checked ~ .callout-content {
   max-height: 5000px;
   opacity: 1;
@@ -104,7 +109,7 @@ body {
   margin-top: 0;
 }
 
-.callout-content > *:last-child {
+.callout-content > :last-child {
   margin-bottom: 0;
 }
 
@@ -132,10 +137,23 @@ body {
   --callout-title-color: #d68910;
 }
 
-.callout-danger {
+.callout-important {
   border-color: #e74c3c;
   --callout-title-color: #c0392b;
 }
+
+.callout-danger {
+  border-color: transparent;
+  background-color: rgba(233, 49, 71, 0.1);
+  --callout-title-color: #e93147;
+}
+
+.dark .callout-danger {
+  border-color: transparent;
+  background-color: rgba(233, 49, 71, 0.1);
+    --callout-title-color: #fb464c;
+}
+
 
 .callout-info {
   border-color: #1abc9c;
@@ -162,22 +180,9 @@ body {
   --callout-title-color: #2c3e50;
 }
 
-.callout-important {
-  border-color: transparent;
-  background-color: rgba(233, 49, 71, 0.1);
-  --callout-title-color: #e93147;
-}
-
-.dark .callout-important {
-  border-color: transparent;
-  background-color: rgba(233, 49, 71, 0.1);
-    --callout-title-color: #fb464c;
-}
-
 .callout-bug {
   border-color: #e74c3c;
   --callout-title-color: #c0392b;
-  --callout-text: #78281f;
 }
 
 .callout-example {
@@ -210,7 +215,6 @@ body {
   opacity: 0;
   overflow: hidden;
   transform: translateY(-10px);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .callout-collapsible .callout-checkbox:checked ~ .callout-title .callout-toggle {
