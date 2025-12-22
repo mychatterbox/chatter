@@ -588,27 +588,21 @@ Underscores
 ## YouTube Videos
 
 ```
+마크다운 이미지 링크를 이용한 방식 : 클릭하면 해당 유튜브로 이동
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
 ```
 
 [![District 9 4K HDR | Ending Scene](https://img.youtube.com/vi/21mqS5O1kWs/0.jpg)](https://www.youtube.com/watch?v=21mqS5O1kWs)
 
 ```
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe
-    src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID_HERE"
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;"
-    allowfullscreen
-    title="YouTube Video">
-  </iframe>
-</div>
+lite-youtube 방식  
+<lite-youtube videoid="VIDEO_ID"></lite-youtube>
 ```
+<lite-youtube videoid="PkuvZbwHAbU"></lite-youtube>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe 
-    src="https://www.youtube.com/embed/21mqS5O1kWs" 
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" 
-    allowfullscreen 
-    title="District 9 4K HDR | Ending Scene">
-  </iframe>
-</div>
+
+```
+lite-youtube 방식 shorts  
+<lite-youtube videoid="VIDEO_ID" orientation="shorts"></lite-youtube>
+```
+<lite-youtube videoid="4lMhrCxgXK0" orientation="shorts"></lite-youtube>
