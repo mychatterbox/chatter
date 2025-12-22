@@ -9,7 +9,6 @@ import type { CollectionEntry } from "astro:content";
 import { processOgImage } from "../utils/og-image";
 import { PAGE_SIZE } from "config/pagination";
 import ImageModal from "components/features/ImageModal.astro";
-
 import LiteYTScript from "utils/lite-yt-embed.astro";
 
 export async function getStaticPaths() {
@@ -55,18 +54,13 @@ export async function getStaticPaths() {
   return [...postPaths, ...paginationPaths];
 }
 
-// 2. Astro.props에서 필요한 값들을 한 번에 가져오기
 const { entry, type, posts, currentPage, totalPages } = Astro.props;
 
-// 3. 포스트인 경우 콘텐츠 렌더링 및 유튜브 체크
 const renderResult = entry ? await render(entry) : { Content: null };
-// @ts-ignore
 const { Content } = renderResult;
 
-// 프론트메터에 youtube: true가 있는지 확인
 const hasYoutube = type === "post" && entry?.data?.youtube === true;
 
-// 공통 변수 초기화
 let title = "";
 let description = "";
 let pubDate;
