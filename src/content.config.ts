@@ -8,6 +8,7 @@ const schema = z.object({
   kind: z.enum(["article", "note"]),
   tags: z.array(z.string()).optional(),
   ogImage: z.string().optional(),
+  youtube: z.boolean().optional(),
 });
 
 const blog = defineCollection({
