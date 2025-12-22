@@ -119,6 +119,7 @@ img {
 }
 
 .article-meta {
+  margin-top: 1px;
   display: flex;
   padding-left: var(--spacing-1);
   gap: var(--spacing-2);
@@ -394,10 +395,11 @@ ol>li {
     ============================================ */
 code {
   border-radius: 0.25rem;
-  padding: 0.15rem 0.25rem;
+  padding: 0.15rem 0.2rem;
   background-color: var(--color-code-bg);
   color: var(--color-code-text);
   font-family: var(--font-mono);
+  margin-right: 0.1em;
 }
 
 pre {
