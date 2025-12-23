@@ -308,6 +308,10 @@ a[data-footnote-backref],
   color: var(--color-link-hover);
 }
 
+.link-tag {
+  padding: 0 0.5rem;
+}
+
 sup::before {
   content: "[";
 }
@@ -405,16 +409,23 @@ code {
 pre {
   display: flex;
   border-radius: 0.375rem;
-  border: 1px solid rgba(128, 128, 128, 0.2);
+  border: 1px solid var(--color-border);
   overflow-x: auto;
   font-size: 0.92em;
+}
+
+pre:focus {
+  outline: 2px solid #007bff; /* 파란색 */
+  outline-offset: -2px;
 }
 
 .astro-code,
 .astro-code span {
   color: var(--shiki-light);
   background-color: var(--shiki-light-bg);
-  margin-bottom: var(--spacing-6);
+  /* margin-bottom: var(--spacing-6); */
+    /* margin-bottom: 0; */
+    /* margin-top: 0; */
 }
 
 .dark .astro-code,
@@ -430,33 +441,7 @@ pre code {
   line-height: 1.5rem;
 }
 
-/* ============================================
-    Code Block FileName Label Styles
-    ============================================ */
 
-.code-file-label {
-  position: absolute;
-  transform: translate(0.75rem, -0.75rem);
-  padding: 0 0.5rem;
-  border-radius: 0.375rem;
-  border: 1px solid var(--color-border);
-  font-size: 0.9em;
-}
-
-.code-file-label::before {
-  content: "";
-  display: inline-block;
-  width: 0.3em;
-  height: 0.3em;
-  border-radius: 50%;
-  background: var(--codeblock-filename-dot);
-  margin-right: 0.5rem;
-  vertical-align: middle;
-}
-
-.code-file-label.no-dot::before {
-  display: none;
-}
 
 /* ============================================
     Component Specific Styles
@@ -686,6 +671,10 @@ blockquote {
 
 blockquote {  border-left: 4px solid var(--color-text-primary);}
 
+blockquote p {
+  margin-bottom: 0;
+}
+
 hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -717,6 +706,82 @@ table code {
   white-space: nowrap;
 }
 
-/* * {
+/* ============================================
+    코드블럭 파일명, 복사 버튼
+    ============================================ */
+
+.code-block-wrapper {
+  position: relative;
+  padding-top: 0;
+  overflow: visible;
+  margin-top: -0.5em;
+}
+
+.code-block-wrapper:has(.code-file-label) {
+  margin-top: 0;
+}
+
+.code-file-label {
+  position: absolute;
+  left: 1rem;
+  padding: 0 0.3em;
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  font-size: 0.9em;
+  background-color: var(--shiki-light-bg);
+  font-family: var(--font-mono);
+}
+
+.dark .code-file-label {
+    background-color: var(--shiki-dark-bg);
+}
+
+.code-file-label::before {
+  content: "";
+  display: inline-block;
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: 50%;
+  background: var(--codeblock-filename-dot);
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.code-file-label.no-dot::before {
+  display: none;
+}
+
+.code-file-label::before {
+  content: "";
+  display: inline-block;
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: 50%;
+  background: var(--codeblock-filename-dot);
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.code-file-label.no-dot::before {
+  display: none;
+}
+
+.copy-code-button-enhanced {
+  background: var(--shiki-light-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.dark .copy-code-button-enhanced {
+  background: var(--shiki-dark-bg);
+}
+
+.copy-code-button-enhanced:hover {
+background: var(--color-bg);
+}
+
+
+  
+  /* * {
   outline: 1px solid red !important;
 } */

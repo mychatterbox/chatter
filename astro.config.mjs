@@ -3,7 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import FlexokiDark from "./src/styles/themes/Flexoki-Dark-color-theme.json";
 import FlexokiLight from "./src/styles/themes/Flexoki-Light-color-theme.json";
 import umami from "@yeskunall/astro-umami";
-import { transformerFileName } from "./src/utils/fileName.js";
+
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -13,6 +13,7 @@ import { SITE_URL_WITH_SLASH } from "./src/config/site.ts";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { Callouts } from "./src/utils/callouts.js";
+import { transformerFileName } from "./src/utils/transformer-file-name.js";
 
 function pagefind() {
   return {
@@ -41,12 +42,10 @@ function pagefind() {
 
 export default defineConfig({
   site: SITE_URL_WITH_SLASH,
-
   image: {
     responsiveStyles: true,
     layout: 'constrained',
   },
-
   build: {
     format: "preserve",
   },
@@ -77,10 +76,13 @@ export default defineConfig({
       },
       defaultColor: false,
       transformers: [
+        transformerNotationDiff(),
+        transformerNotationHighlight(),
+        transformerNotationWordHighlight(),
         transformerFileName(),
       ],
     },
-    remarkPlugins: [Callouts]
+        remarkPlugins: [Callouts]
   },
   
   scopedStyleStrategy: "where",

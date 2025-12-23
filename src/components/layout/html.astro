@@ -5,6 +5,7 @@ import "../../styles/global.css";
 import "../../styles/callouts.css";
 import { ClientRouter } from "astro:transitions";
 import { SITE_OG_IMAGE, SITE_NAME } from "../../config/site";
+import CodeBlockCopy from "../features/CodeBlockCopy.astro";
 
 export interface Props {
   title: string;
@@ -104,5 +105,6 @@ const canonicalURL = new URL(
   </head>
   <body>
     <slot />
+        <CodeBlockCopy />
   </body>
 </html>
