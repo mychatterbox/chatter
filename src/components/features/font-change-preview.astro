@@ -92,7 +92,7 @@ const fontSizes = Array.from(
     const root = document.querySelector(ROOT_SELECTOR);
     if (!root || root.__fontChangeInitialized) return;
     root.__fontChangeInitialized = true;
-    const DEFAULT = Number(root.dataset.defaultFontSize) || 12;
+    const DEFAULT = Number(root.dataset.defaultFontSize) || 16;
 
     const btn = root.querySelector('#fontchange-btn');
     const popover = root.querySelector('#fontchange-popover');
