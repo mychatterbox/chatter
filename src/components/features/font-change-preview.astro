@@ -12,8 +12,7 @@ const fontSizes = Array.from(
   (_, i) => FONT_SIZE_START + i * FONT_SIZE_STEP
 );
 ---
-
-<div class="fontchange-container" id="fontchange-wrapper">
+<div class="fontchange-container" id="fontchange-wrapper" data-default-font-size={DEFAULT_FONT_SIZE}>
   <button
     type="button"
     class="fontchange-btn"
@@ -34,7 +33,6 @@ const fontSizes = Array.from(
     aria-hidden="true"
     style="display: none;"
   >
-    <!-- Slider -->
     <div class="fontchange-slider-container">
       <input
         type="range"
@@ -48,7 +46,6 @@ const fontSizes = Array.from(
       />
     </div>
 
-    <!-- Labels -->
     <div class="fontchange-slider-labels" role="list">
       {fontSizes.map((size) => (
         <span
@@ -63,7 +60,6 @@ const fontSizes = Array.from(
       ))}
     </div>
 
-    <!-- Preview -->
     <div class="fontchange-preview">
       <span
         class="fontchange-preview-text"
@@ -92,6 +88,8 @@ const fontSizes = Array.from(
     const root = document.querySelector(ROOT_SELECTOR);
     if (!root || root.__fontChangeInitialized) return;
     root.__fontChangeInitialized = true;
+    
+    // data-default-font-size 속성에서 값을 가져오고, 없으면 16을 기본값으로 사용
     const DEFAULT = Number(root.dataset.defaultFontSize) || 16;
 
     const btn = root.querySelector('#fontchange-btn');
