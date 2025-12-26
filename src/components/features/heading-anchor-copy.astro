@@ -1,0 +1,79 @@
+<script lang="js">
+(function () {
+  // 중복 초기화 방지
+  if (window.__anchorLinksSetup) return;
+  window.__anchorLinksSetup = true;
+
+  function setupAnchors() {
+    const anchors = document.querySelectorAll('a[data-anchor]');
+
+    anchors.forEach(anchor => {
+      if (anchor.__bound) return;
+      anchor.__bound = true;
+
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const href = anchor.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+
+        const hash = decodeURIComponent(href);
+        const url = location.origin + location.pathname + hash;
+
+        // --- 1) 링크 복사 (모바일 fallback 포함) ---
+        (async () => {
+          try {
+            if (navigator.clipboard?.writeText) {
+              await navigator.clipboard.writeText(url);
+            } else {
+              // iOS Safari fallback
+              const textarea = document.createElement('textarea');
+              textarea.value = url;
+              textarea.setAttribute('readonly', '');
+              textarea.style.position = 'absolute';
+              textarea.style.left = '-9999px';
+              document.body.appendChild(textarea);
+              textarea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textarea);
+            }
+          } catch (err) {
+            console.error('[anchor copy] failed:', err);
+          }
+        })();
+
+        // --- 2) 주소창 해시 제거 (clipboard 이후) ---
+        if (window.location.hash) {
+          setTimeout(() => {
+            history.replaceState(null, '', location.pathname);
+          }, 0);
+        }
+
+        // --- 3) 클릭 피드백 ---
+        anchor.classList.add('feedback-visible');
+
+        // 모바일에서 포커스 제거 (툴팁 재등장 방지)
+        anchor.blur();
+
+        setTimeout(() => {
+          anchor.classList.remove('feedback-visible');
+        }, 1500);
+      });
+
+      // 키보드 접근성 (Enter / Space)
+      anchor.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        anchor.click();
+      });
+    });
+  }
+
+  // 초기 실행
+  setupAnchors();
+
+  // Astro client-side navigation 대응
+  document.addEventListener('astro:page-load', setupAnchors);
+})();
+</script>

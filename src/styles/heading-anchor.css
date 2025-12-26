@@ -1,0 +1,105 @@
+/* 앵커 기본 스타일 */
+.heading-anchor {
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.3rem;
+  padding: 0 0.3em;
+  color: var(--color-text-tertiary);
+  opacity: 0.2;
+  transition: opacity 0.5s;
+  font-size: 1em;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.anchor-icon svg {
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  margin-bottom: 3px;
+}
+
+/* 호버 시 앵커 표시 */
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor {
+  opacity: 1;
+}
+
+h2,
+h3,
+h4 {
+  display: flex;
+  align-items: flex-start; /* 중앙 대신 위쪽 정렬 */
+  gap: 0.25rem;
+}
+
+/* 포커스 접근성 */
+.heading-anchor:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+/* 기본 숨김 */
+@media (min-width: 480px) {
+  .heading-anchor {
+    opacity: 0;
+  }
+  .heading-anchor:active {
+    opacity: 1;
+  }
+}
+
+[id] {
+  scroll-margin-top: 2rem;
+}
+
+/* 공통 툴팁 위치 */
+.heading-anchor::before,
+.heading-anchor::after {
+  position: absolute;
+  top: -35px;
+  right: 0%;
+  /* transform: translateX(-50%); */
+  /* padding: 0 0.3rem; */
+    padding: 0 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+    border: 1px solid var(--color-border);
+        transition: 150ms transform;
+        font-weight: 400;
+        color: var(--color-text-primary);
+  font-family: var(--font-mono);
+}
+
+/* 기본 툴팁 (호버 시) */
+.heading-anchor::before {
+  content: 'copy?';
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+.heading-anchor:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.heading-anchor::after {
+  content: '✓ copied!';
+  background: #007bff;
+  color: #ffffff;
+}
+.heading-anchor.feedback-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+/* 클릭 중에는 기본 툴팁 숨김 */
+.heading-anchor.feedback-visible::before {
+  opacity: 0;
+  visibility: hidden;
+}

@@ -14,6 +14,7 @@ import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { Callouts } from "./src/utils/callouts.js";
 import { transformerFileName } from "./src/utils/transformer-file-name.js";
+import { addAnchorLinks } from "./src/utils/heading-anchor-links.js";
 
 function pagefind() {
   return {
@@ -57,6 +58,9 @@ export default defineConfig({
         if (url.pathname === '/') {
           return { ...item, url: SITE_URL_WITH_SLASH };
         }
+        if (/^\/(tag|kind)\/[^/]+\/1\/?$/.test(url.pathname)) {
+          return null;
+        }
         if (url.pathname.endsWith('/')) {
           url.pathname = url.pathname.slice(0, -1);
           item.url = url.toString();
@@ -82,7 +86,8 @@ export default defineConfig({
         transformerFileName(),
       ],
     },
-        remarkPlugins: [Callouts]
+      rehypePlugins: [addAnchorLinks],
+      remarkPlugins: [Callouts],
   },
   
   scopedStyleStrategy: "where",
