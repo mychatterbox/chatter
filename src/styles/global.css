@@ -1,3 +1,5 @@
+@import './heading-anchor.css';
+
 :root {
   --base-font-size: 16px;
   --color-text-primary: #101828;
@@ -74,7 +76,7 @@ body {
   color: var(--color-text-primary);
   line-height: 1.75;
   font-weight: 400;
-    font-size: var(--base-font-size, 16px);
+  font-size: var(--base-font-size, 16px);
 
 }
 
@@ -85,6 +87,7 @@ body {
 .main-container {
   flex: 1;
   padding: var(--spacing-12) var(--spacing-2) var(--spacing-12);
+
 }
 
 @media (min-width: 640px) {
@@ -812,9 +815,4 @@ background: var(--color-bg);
   /* * {
   outline: 1px solid red !important;
 } */
-
-/* 접힌 상태 */
-
-
-/* 토글 버튼 */
 
