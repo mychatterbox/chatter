@@ -13,6 +13,7 @@ description: markdown 문법이 어떻게 표현되는지를 보여주는 샘플
 keywords:
   - markdown style
   - 마크다운 스타일
+youtube: true
 ---
 
 ![markdown-example](./blog-images/2025/markdown-style.webp)  
