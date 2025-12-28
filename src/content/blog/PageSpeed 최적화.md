@@ -53,8 +53,8 @@ Pretendard 폰트가 없는 기기에서는 어떻게 보일지 생각해봅니�
 
 ```css file="global.css"
 :root {
---font-sans: 'Pretendard GOV Variable', 'Pretendard GOV', 'Pretendard', 'Noto Sans KR', 'OneUI Sans', sans-serif;
---font-mono: 'Cascadia Code', 'Noto Sans Mono', 'Roboto Mono' monospace;
+  --font-sans: 'Pretendard GOV', 'Pretendard', 'Apple SD Gothic Neo', 'OneUI Sans', 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Cascadia Mono', 'Cascadia Code', 'D2Coding', 'Menlo', 'Noto Sans Mono', 'Roboto Mono', 'Lucida Console', ui-monospace, monospace;
 }
 ```
 
