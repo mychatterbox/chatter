@@ -18,6 +18,9 @@
   margin: 0;
 }
 
+.fontchange-btn:hover {
+  transform: scale(1.1);
+}
 
 
 .fontchange-popover {
