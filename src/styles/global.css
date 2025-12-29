@@ -233,6 +233,15 @@ h6 {
   margin-bottom: 0;
 }
 
+.title-index {
+  font-size: 1.2rem;
+}
+@media (min-width: 768px) {
+    .title-index {
+        font-size: 1.3em;
+    }
+}
+
 .text-small {
   font-size: 0.84rem;
 }
@@ -813,7 +822,21 @@ background: var(--color-bg);
   display: none;
 }
   
-  /* * {
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* * {
   outline: 1px solid red !important;
 } */
 
