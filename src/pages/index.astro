@@ -29,6 +29,7 @@ const posts = allPosts.slice(0, PAGE_SIZE);
   <Nav />
 
   <main class="main-container">
+  <h1 class="visually-hidden">mychatterbox 글 목록</h1>
   <div class="landing-content">
     <ul class="feed-list">
       {posts.map((entry) => (<FeedItem entry={entry} />))}
