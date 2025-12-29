@@ -12,7 +12,7 @@ const isDraft = entry.collection === "draft";
 ---
 
 <li class="feed-item">
-  <div class="article-header">
+  <article class="article-header">
     <a class="title-link" href={`/${id}`}>
       <h2 class="title-index" transition:name={`title-${entry.id}`}>
         {title}
@@ -39,7 +39,7 @@ const isDraft = entry.collection === "draft";
 
       {isDraft && <div class="text-draft">_____ Draft _____</div>}
     </div>
-  </div>
+  </article>
 
   <div class="feed-item-body mt-4 mb-6">
     {kind === "article" ? <Fragment set:html={description} /> : <Content />}
