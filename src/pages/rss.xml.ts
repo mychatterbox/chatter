@@ -14,7 +14,7 @@ export const GET: APIRoute = async (context) => {
 
   return rss({
     title: "mychatterbox",
-    description: "이런 것도 팁이 되나 싶은 정보들",
+    description: "자잘한 팁과 정보",
     site: siteUrl,
     items: posts.map((post) => ({
       title: post.data.title,
