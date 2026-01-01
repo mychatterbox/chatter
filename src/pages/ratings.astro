@@ -33,7 +33,7 @@ const sortedRatings = Object.keys(groupedMovies)
         </h1> 
       </div>
       
-                    <img src="/images/10.png" class="rating-image" alt="Rating 10"> <p></p>
+                    <img src="/images/10.png" class="rating-image" alt="Rating 10" no-zoom> <p></p>
         <div class="gallery">
 
             <div class="gallery-item">
@@ -138,7 +138,7 @@ const sortedRatings = Object.keys(groupedMovies)
                     <img 
                         src={`/images/${rating}.png`} 
                         class="rating-image" 
-                        alt={`${rating}점 평점`}
+                        alt={`${rating}점 평점`} no-zoom
                     />
                     <span class="rating-count">({groupedMovies[rating].length})</span>
                 </summary>

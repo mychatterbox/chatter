@@ -20,13 +20,13 @@ function initZoom() {
   document.body.appendChild(overlay)
 
   overlay.addEventListener('click', () => {
-    document.querySelectorAll('img').forEach(img => {
+    document.querySelectorAll('img:not([no-zoom])').forEach(img => {
       const state = imageStates.get(img)
       if (state && state.zoomStep > 0) state.zoomOut()
     })
   })
 
-  document.querySelectorAll('img').forEach(setupZoomableImage)
+  document.querySelectorAll('img:not([no-zoom])').forEach(setupZoomableImage)
 }
 
 function setupZoomableImage(image) {
@@ -189,7 +189,7 @@ document.addEventListener('astro:page-load', initZoom)
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    document.querySelectorAll('img').forEach(img => {
+    document.querySelectorAll('img:not([no-zoom])').forEach(img => {
       const state = imageStates.get(img)
       if (state && state.zoomStep > 0) state.zoomOut()
     })
