@@ -1,16 +1,24 @@
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    const pathname = url.pathname;
 
-    // Trailing slash 제거
-    const hasFileExtension = /\.[a-zA-Z0-9]{2,4}$/.test(url.pathname.split('/').pop() || '');
-    const shouldRemoveTrailingSlash =
-      url.pathname.endsWith('/') &&
-      url.pathname.length > 1 &&
-      !hasFileExtension;
+    // 1. .html 제거
+    if (pathname.endsWith(".html")) {
+      url.pathname = pathname.replace(/\.html$/, "");
+      return Response.redirect(url.toString(), 301);
+    }
 
-    if (shouldRemoveTrailingSlash) {
-      url.pathname = url.pathname.slice(0, -1);
+    // 2. trailing slash 제거 (파일 제외)
+    const lastSegment = pathname.split("/").pop() || "";
+    const hasExtension = /\.[a-zA-Z0-9]{2,4}$/.test(lastSegment);
+
+    if (
+      pathname.endsWith("/") &&
+      pathname.length > 1 &&
+      !hasExtension
+    ) {
+      url.pathname = pathname.slice(0, -1);
       return Response.redirect(url.toString(), 301);
     }
 
@@ -18,24 +26,20 @@ export default {
     const response = await env.ASSETS.fetch(request);
     const contentType = response.headers.get("content-type") || "";
 
-    // 캐시 정책
     const cacheControl = contentType.includes("text/html")
       ? "public, max-age=3600"
       : "public, max-age=2628000, immutable";
 
-    // 헤더 복사 후 보강
-    const newHeaders = new Headers(response.headers);
-    newHeaders.set("cache-control", cacheControl);
-    newHeaders.set("strict-transport-security", "max-age=63072000; includeSubDomains; preload");
-    newHeaders.set("x-content-type-options", "nosniff");
-    newHeaders.set("x-frame-options", "DENY");
-    newHeaders.set("referrer-policy", "strict-origin-when-cross-origin");
+    const headers = new Headers(response.headers);
+    headers.set("cache-control", cacheControl);
+    headers.set("strict-transport-security", "max-age=63072000; includeSubDomains; preload");
+    headers.set("x-content-type-options", "nosniff");
+    headers.set("x-frame-options", "DENY");
+    headers.set("referrer-policy", "strict-origin-when-cross-origin");
 
-    // 새 Response 반환
     return new Response(response.body, {
       status: response.status,
-      statusText: response.statusText,
-      headers: newHeaders
+      headers
     });
   }
-}
+};
