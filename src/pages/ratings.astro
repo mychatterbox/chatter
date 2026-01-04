@@ -132,27 +132,67 @@ const sortedRatings = Object.keys(groupedMovies)
         </div>
 <p></p>
 
-        {sortedRatings.map(rating => (
-            <details> 
-                <summary style="list-style: none; cursor: pointer;">
-                    <img 
-                        src={`/images/${rating}.png`} 
-                        class="rating-image" 
-                        alt={`${rating}점 평점`} no-zoom
-                    />
-                    <span class="rating-count">({groupedMovies[rating].length})</span>
-                </summary>
-                <ul>
-                    {groupedMovies[rating].map(movie => (
-                        <li class="rating-list">
-                            <a href={movie.url} target="_blank" rel="noopener noreferrer">
-                                {movie.title}
-                            </a>
-                        </li>
-                ))}
-                </ul>
-            </details>
-        ))}
+{sortedRatings.map(rating => {
+  const items = groupedMovies[rating];
+  
+  const movies = items.filter(item => item.url.includes('/movie/'));
+  const tvSeries = items.filter(item => item.url.includes('/tv/'));
+
+  const sortByYear = (a: Movie, b: Movie) => {
+    const yearA = parseInt(a.title.match(/\((\d{4})\)/)?.[1] || "0");
+    const yearB = parseInt(b.title.match(/\((\d{4})\)/)?.[1] || "0");
+    
+    return yearB - yearA; 
+  };
+
+  const sortedMovies = movies.sort(sortByYear);
+  const sortedTvSeries = tvSeries.sort(sortByYear);
+
+  return (
+    <details> 
+      <summary style="list-style: none; cursor: pointer;">
+        <img 
+          src={`/images/${rating}.png`} 
+          class="rating-image" 
+          alt={`${rating}점 평점`} no-zoom
+        />
+        <span class="rating-count">({items.length})</span>
+      </summary>
+
+    <div class="rating-content">
+        {sortedMovies.length > 0 && (
+          <div class="category-group">
+            <h3 class="category-title">MOVIES</h3>
+            <ul>
+              {sortedMovies.map(movie => (
+                <li class="rating-list">
+                  <a href={movie.url} target="_blank" rel="noopener noreferrer">
+                    {movie.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {sortedTvSeries.length > 0 && (
+          <div class="category-group">
+            <h3 class="category-title">TV SERIES</h3>
+            <ul>
+              {sortedTvSeries.map(tv => (
+                <li class="rating-list">
+                  <a href={tv.url} target="_blank" rel="noopener noreferrer">
+                    {tv.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </details>
+  );
+})}
     </article>
   </main>
 </Html>
@@ -210,13 +250,27 @@ const sortedRatings = Object.keys(groupedMovies)
 .rating-list a {
     display: block;
     line-height: 2;
+    padding-left: 0.3em; 
 }
 
 .rating-list a:hover {
-    background-color: var(--color-thead-bg);
+    background-color: var(--color-select-item-hover-bg);
 }
 
 .rating-image {
     border: none;
+}
+
+.category-group {
+  margin-bottom: 20px;
+}
+
+.category-title {
+  font-size: 0.8em;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-border, rgba(128, 128, 128, 0.5));
+  display: inline-block;
 }
 </style>
