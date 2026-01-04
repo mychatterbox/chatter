@@ -216,7 +216,7 @@ document.addEventListener('astro:page-load', initExpandCollapse);
             font-size: 0.9em;
             cursor: pointer;
             transition: all 0.2s ease;
-            z-index: 20;
+            z-index: auto;
             opacity: 0;
             /* transform: translateY(-55px); */
             display: flex;
@@ -294,6 +294,7 @@ document.addEventListener('astro:page-load', initExpandCollapse);
   transform: rotate(180deg) translateY(-3px);
 }
 
+.code-toggle-button { z-index: auto; }
 
 .code-toggle-button:focus {
     opacity: 1;
