@@ -60,5 +60,5 @@ ttfname3 과 폰트 2가지를 같은 폴더에 넣고 명령 프롬프트(cmd) 
 
 아래 글을 참고합니다.  
 
-<a href="/windows-default-font-change" target="_blank" rel="noopener noreferrer">
+<a href="/windows-font-change" target="_blank" rel="noopener noreferrer">
 윈도우 기본 폰트 변경하기</a>  
