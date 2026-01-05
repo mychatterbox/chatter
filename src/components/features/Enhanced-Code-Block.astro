@@ -1,303 +1,292 @@
 <script is:inline>
-const copyCodeSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 -2 24 24" aria-hidden="true"><path fill="currentColor" d="M9 18q-.825 0-1.412-.587T7 16V4q0-.825.588-1.412T9 2h9q.825 0 1.413.588T20 4v12q0 .825-.587 1.413T18 18zm0-2h9V4H9zm-4 6q-.825 0-1.412-.587T3 20V7q0-.425.288-.712T4 6t.713.288T5 7v13h10q.425 0 .713.288T16 21t-.288.713T15 22zm4-6V4z"/></svg>';
-const copiedCodeSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m10 13.6l5.9-5.9q.275-.275.7-.275t.7.275t.275.7t-.275.7l-6.6 6.6q-.3.3-.7.3t-.7-.3l-2.6-2.6q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275z"/></svg>';
+  (function () {
+    var copyCodeSvg =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 -2 24 24" aria-hidden="true"><path fill="currentColor" d="M9 18q-.825 0-1.412-.587T7 16V4q0-.825.588-1.412T9 2h9q.825 0 1.413.588T20 4v12q0 .825-.587 1.413T18 18zm0-2h9V4H9zm-4 6q-.825 0-1.412-.587T3 20V7q0-.425.288-.712T4 6t.713.288T5 7v13h10q.425 0 .713.288T16 21t-.288.713T15 22zm4-6V4z"/></svg>';
+    var copiedCodeSvg =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m10 13.6l5.9-5.9q.275-.275.7-.275t.7.275t.275.7t-.275.7l-6.6 6.6q-.3.3-.7.3t-.7-.3l-2.6-2.6q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275z"/></svg>';
 
-const addCopyCodeButtons = () => {
-  const codeBlocks = Array.from(document.querySelectorAll(".code-block-wrapper"));
+    function addCopyCodeButtons() {
+      var codeBlocks = document.querySelectorAll(".code-block-wrapper");
+      for (var i = 0; i < codeBlocks.length; i++) {
+        var wrapper = codeBlocks[i];
+        if (wrapper.querySelector(".copy-code-button-enhanced")) continue;
 
-  for (const wrapper of codeBlocks) {
-    if (wrapper.querySelector(".copy-code-button-enhanced")) continue;
+        var preElement = wrapper.querySelector("pre");
+        if (!preElement) continue;
 
-    const preElement = wrapper.querySelector("pre");
-    if (!preElement) continue;
+        var fileName = wrapper.getAttribute("data-file") || "";
+        var defaultText = fileName.trim() !== "" ? "Copy " + fileName : "";
+        var ariaLabel = fileName ? "Copy code from " + fileName : "Copy code";
 
-    const fileName = wrapper.getAttribute("data-file") || wrapper.getAttribute("data-filename") || "";
-    // const defaultText = fileName.trim() !== "" ? `Copy ${fileName}` : "Copy code";
-    // const ariaLabel = fileName ? `Copy code from ${fileName}` : "Copy code";
-    const defaultText = fileName.trim() !== "" ? `Copy ${fileName}` : "";
-    const ariaLabel = fileName ? `Copy code from ${fileName}` : "";
+        var button = document.createElement("button");
+        button.className = "copy-code-button-enhanced";
+        button.type = "button";
+        button.setAttribute("aria-label", ariaLabel);
+        button.setAttribute("title", defaultText || "Copy code");
+        button.innerHTML =
+          '<div class="copy-button-content"><span class="copy-icon">' +
+          copyCodeSvg +
+          '</span><span class="copy-text">' +
+          defaultText +
+          "</span></div>";
 
-    const button = document.createElement("button");
-    button.className = "copy-code-button-enhanced";
-    button.setAttribute("aria-label", ariaLabel);
-    button.setAttribute("title", defaultText);
-    button.setAttribute("type", "button");
-
-    button.innerHTML = `
-      <div class="copy-button-content">
-        <span class="copy-icon" aria-hidden="true">${copyCodeSvg}</span>
-        <span class="copy-text">${defaultText}</span>
-      </div>
-    `;
-
-    wrapper.appendChild(button);
-
-    button.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        button.click();
+        wrapper.appendChild(button);
       }
-    });
+    }
 
-    button.addEventListener("click", async () => {
-      const code = preElement.querySelector("code");
-      const codeText = code?.innerText || preElement.textContent || "";
-      
-      if (!codeText.trim()) return;
+    function setupCopyEventDelegation() {
+      if (window._copyEventDelegated) return;
+      window._copyEventDelegated = true;
 
-      const textSpan = button.querySelector(".copy-text");
-      const iconSpan = button.querySelector(".copy-icon");
+      document.addEventListener("click", function (e) {
+        var button = e.target.closest(".copy-code-button-enhanced");
+        if (!button) return;
 
-      try {
-        await navigator.clipboard.writeText(codeText);
-        
-        textSpan.textContent = "Copied!";
-        iconSpan.innerHTML = copiedCodeSvg;
-        button.classList.add("copied");
-        button.setAttribute("aria-label", "Code copied to clipboard");
-        
-        const resetTimer = setTimeout(() => {
-          textSpan.textContent = defaultText;
-          iconSpan.innerHTML = copyCodeSvg;
-          button.classList.remove("copied");
-          button.setAttribute("aria-label", ariaLabel);
-        }, 2000);
+        var wrapper = button.closest(".code-block-wrapper");
+        if (!wrapper) return;
 
-        button._resetTimer = resetTimer;
-        
-      } catch (err) {
-        console.error("Copy failed:", err);
-        
-        const textarea = document.createElement("textarea");
-        textarea.value = codeText;
-        textarea.style.position = "fixed";
-        textarea.style.left = "-9999px";
-        document.body.appendChild(textarea);
-        textarea.select();
-        
-        try {
-          document.execCommand("copy");
-          
-          textSpan.textContent = "Copied!";
-          iconSpan.innerHTML = copiedCodeSvg;
+        var pre = wrapper.querySelector("pre");
+        if (!pre) return;
+
+        var code = pre.querySelector("code");
+        var codeText = code ? code.innerText : pre.textContent || "";
+        if (!codeText.trim()) return;
+
+        var fileName = wrapper.getAttribute("data-file") || "";
+        var defaultText = fileName.trim() !== "" ? "Copy " + fileName : "";
+        var ariaLabel = fileName ? "Copy code from " + fileName : "Copy code";
+
+        var textSpan = button.querySelector(".copy-text");
+        var iconSpan = button.querySelector(".copy-icon");
+
+        function showCopied() {
+          if (textSpan) textSpan.textContent = "Copied!";
+          if (iconSpan) iconSpan.innerHTML = copiedCodeSvg;
           button.classList.add("copied");
           button.setAttribute("aria-label", "Code copied to clipboard");
-          
-          setTimeout(() => {
-            textSpan.textContent = defaultText;
-            iconSpan.innerHTML = copyCodeSvg;
+          setTimeout(function () {
+            if (textSpan) textSpan.textContent = defaultText;
+            if (iconSpan) iconSpan.innerHTML = copyCodeSvg;
             button.classList.remove("copied");
             button.setAttribute("aria-label", ariaLabel);
           }, 2000);
-          
-        } catch (fallbackErr) {
-          console.error("Fallback copy failed:", fallbackErr);
-          textSpan.textContent = "Copy failed";
-          setTimeout(() => {
-            textSpan.textContent = defaultText;
+        }
+
+        function showFailed() {
+          if (textSpan) textSpan.textContent = "Copy failed";
+          setTimeout(function () {
+            if (textSpan) textSpan.textContent = defaultText;
           }, 2000);
-        } finally {
+        }
+
+        function fallbackCopy() {
+          var textarea = document.createElement("textarea");
+          textarea.value = codeText;
+          textarea.style.cssText = "position:fixed;left:-9999px;top:0;";
+          document.body.appendChild(textarea);
+          textarea.focus();
+          textarea.select();
+          try {
+            var success = document.execCommand("copy");
+            if (success) {
+              showCopied();
+            } else {
+              showFailed();
+            }
+          } catch (err) {
+            showFailed();
+          }
           document.body.removeChild(textarea);
         }
-      }
-    });
-  }
-};
 
-if (!window._copyButtonsInitialized) {
-  window._copyButtonsInitialized = true;
-  
-  const init = () => {
-    setTimeout(addCopyCodeButtons, 100);
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-  document.addEventListener('astro:page-load', init);
-
-  if (typeof MutationObserver !== 'undefined') {
-    const observer = new MutationObserver((mutations) => {
-      for (const mutation of mutations) {
-        if (mutation.addedNodes.length > 0) {
-          setTimeout(addCopyCodeButtons, 100);
-          break;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard
+            .writeText(codeText)
+            .then(showCopied)
+            .catch(fallbackCopy);
+        } else {
+          fallbackCopy();
         }
-      }
+      });
+    }
+
+    function init() {
+      setupCopyEventDelegation();
+      setTimeout(addCopyCodeButtons, 100);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+
+    document.addEventListener("astro:page-load", function () {
+      setTimeout(addCopyCodeButtons, 100);
     });
-    
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-  }
-}
+  })();
 </script>
 
 <script is:inline>
-function addExpandCollapseButtons() {
-  const codeBlocks = document.querySelectorAll('.code-block-wrapper');
+  (function () {
+    var toggleSvg =
+      '<svg class="toggle-icon" width="20" height="18" viewBox="0 -2 24 24" fill="currentColor" aria-hidden="true"><path d="M13.0607,16.0607 C12.4749,16.6465 11.5251,16.6465 10.9393,16.0607 L5.28249,10.4038 C4.6967,9.81804 4.6967,8.86829 5.28248,8.2825 C5.86827,7.69672 6.81802,7.69672 7.40381,8.2825 L12,12.8787 L16.5962,8.2825 C17.182,7.69672 18.1317,7.69672 18.7175,8.2825 C19.3033,8.86829 19.3033,9.81804 18.7175,10.4038 L13.0607,16.0607 Z"></svg>';
 
-  const toggleSvg = `
-<svg
-  class="toggle-icon"
-  width="20"
-  height="18"
-  viewBox="0 -2 24 24"
-  fill="currentColor"
-  aria-hidden="true"
->
-<path d="M13.0607,16.0607 C12.4749,16.6465 11.5251,16.6465 10.9393,16.0607 L5.28249,10.4038 C4.6967,9.81804 4.6967,8.86829 5.28248,8.2825 C5.86827,7.69672 6.81802,7.69672 7.40381,8.2825 L12,12.8787 L16.5962,8.2825 C17.182,7.69672 18.1317,7.69672 18.7175,8.2825 C19.3033,8.86829 19.3033,9.81804 18.7175,10.4038 L13.0607,16.0607 Z">
-</svg>
-  `;
+    function addExpandCollapseButtons() {
+      var codeBlocks = document.querySelectorAll(".code-block-wrapper");
+      for (var i = 0; i < codeBlocks.length; i++) {
+        var wrapper = codeBlocks[i];
+        var pre = wrapper.querySelector("pre");
+        if (!pre) continue;
+        if (wrapper.querySelector(".code-toggle-button")) continue;
 
-  for (const wrapper of codeBlocks) {
-    const pre = wrapper.querySelector('pre');
-    if (!pre) continue;
+        var lines = pre.querySelectorAll(".line").length;
+        if (lines <= 20) continue;
 
-    if (wrapper.querySelector('.code-toggle-button')) continue;
+        wrapper.classList.add("is-collapsed");
 
-    // 줄 수 계산 (shiki 기준)
-    const lines = pre.querySelectorAll('.line').length;
-    if (lines <= 20) continue;
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "code-toggle-button";
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-label", "코드 펼치기");
+        button.innerHTML = toggleSvg;
 
-    wrapper.classList.add('is-collapsed');
+        wrapper.appendChild(button);
+      }
+    }
 
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'code-toggle-button';
-    button.setAttribute('aria-expanded', 'false');
-    button.setAttribute('aria-label', '코드 펼치기');
+    function setupToggleEventDelegation() {
+      if (window._toggleEventDelegated) return;
+      window._toggleEventDelegated = true;
 
-    button.innerHTML = toggleSvg;
+      document.addEventListener("click", function (e) {
+        var button = e.target.closest(".code-toggle-button");
+        if (!button) return;
 
-    button.addEventListener('click', () => {
-      const isCollapsed = wrapper.classList.toggle('is-collapsed');
+        var wrapper = button.closest(".code-block-wrapper");
+        if (!wrapper) return;
 
-      button.setAttribute('aria-expanded', String(!isCollapsed));
-      button.setAttribute(
-        'aria-label',
-        isCollapsed ? '코드 펼치기' : '코드 접기'
-      );
+        var isCollapsed = wrapper.classList.toggle("is-collapsed");
+        button.setAttribute("aria-expanded", String(!isCollapsed));
+        button.setAttribute(
+          "aria-label",
+          isCollapsed ? "코드 펼치기" : "코드 접기",
+        );
+      });
+    }
+
+    function init() {
+      setupToggleEventDelegation();
+      setTimeout(addExpandCollapseButtons, 100);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+
+    document.addEventListener("astro:page-load", function () {
+      setTimeout(addExpandCollapseButtons, 100);
     });
-
-    wrapper.appendChild(button);
-  }
-}
-
-/* 초기 실행 + Astro 페이지 전환 대응 */
-const initExpandCollapse = () => {
-  setTimeout(addExpandCollapseButtons, 100);
-};
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initExpandCollapse);
-} else {
-  initExpandCollapse();
-}
-
-document.addEventListener('astro:page-load', initExpandCollapse);
+  })();
 </script>
 
-
 <style is:global>
-/* =========================
+  /* =========================
    COPY BUTTON
-========================= */
-.copy-code-button-enhanced {
-  position: absolute;
-  top: 0;
-            right: 1rem;
-            padding: 0 0.3rem;
-            border-radius: 0.375rem;
-            font-size: 0.9em;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            z-index: auto;
-            opacity: 0;
-            /* transform: translateY(-55px); */
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: var(--font-mono);
-            line-height: 1.75;
-}
+  ========================= */
+  .copy-code-button-enhanced {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    padding: 0 0.3rem;
+    border-radius: 0.375rem;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: auto;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    line-height: 1.75;
+  }
 
-.code-block-wrapper:hover .copy-code-button-enhanced {
-  opacity: 1;
-}
+  .code-block-wrapper:hover .copy-code-button-enhanced {
+    opacity: 1;
+  }
 
-.dark .copy-code-button-enhanced {
-  background: var(--shiki-dark-bg);
-}
+  .dark .copy-code-button-enhanced {
+    background: var(--shiki-dark-bg);
+  }
 
-.copy-code-button-enhanced.copied {
-  opacity: 1;
-}
+  .copy-code-button-enhanced.copied {
+    opacity: 1;
+  }
 
-.copy-code-button-enhanced .copy-icon svg {
-  transition: transform 0.2s ease;
-  transform-origin: center;
-}
+  .copy-code-button-enhanced .copy-icon svg {
+    transition: transform 0.2s ease;
+    transform-origin: center;
+  }
 
-/* 버튼 hover 시, SVG만 확대 */
-.copy-code-button-enhanced:hover .copy-icon svg {
-  transform: scale(1.6);
-}
+  .copy-code-button-enhanced:hover .copy-icon svg {
+    transform: scale(1.6);
+  }
 
   .copy-code-button-enhanced.copied {
     background: #007bff;
     color: #ffffff;
     opacity: 1;
     transform: translateY(0);
-    
     transition: all 0.3s ease;
   }
 
   .copy-code-button-enhanced:focus {
     opacity: 1;
-  outline: 1px solid #007bff;
-  outline-offset: -1px;
-}  
+    outline: 1px solid #007bff;
+    outline-offset: -1px;
+  }
 
-/* =========================
+  /* =========================
    COLLAPSED STATE
-========================= */
-.code-block-wrapper.is-collapsed code {
-  max-height: 22em;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 1rem;
-}
+  ========================= */
+  .code-block-wrapper.is-collapsed code {
+    max-height: 22em;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1rem;
+  }
 
-.code-block-wrapper.is-collapsed code::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 11em;
-  background: linear-gradient(to bottom, transparent, var(--shiki-light-bg));
-  pointer-events: none;
-}
+  .code-block-wrapper.is-collapsed code::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 11em;
+    background: linear-gradient(to bottom, transparent, var(--shiki-light-bg));
+    pointer-events: none;
+  }
 
-.dark .code-block-wrapper.is-collapsed code::after {
-  background: linear-gradient(to bottom, transparent, var(--shiki-dark-bg));
-}
+  .dark .code-block-wrapper.is-collapsed code::after {
+    background: linear-gradient(to bottom, transparent, var(--shiki-dark-bg));
+  }
 
- .toggle-icon {
-  transition: transform 0.25s ease;
-}
+  .toggle-icon {
+    transition: transform 0.25s ease;
+  }
 
-.code-block-wrapper:not(.is-collapsed) .toggle-icon {
-  transform: rotate(180deg) translateY(-3px);
-}
+  .code-block-wrapper:not(.is-collapsed) .toggle-icon {
+    transform: rotate(180deg) translateY(-3px);
+  }
 
-.code-toggle-button { z-index: auto; }
+  .code-toggle-button {
+    z-index: auto;
+  }
 
-.code-toggle-button:focus {
+  .code-toggle-button:focus {
     opacity: 1;
-  outline: 1px solid #007bff;
-}  
+    outline: 1px solid #007bff;
+  }
 </style>
