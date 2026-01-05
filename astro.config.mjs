@@ -43,10 +43,10 @@ function pagefind() {
 
 export default defineConfig({
   site: SITE_URL_WITH_SLASH,
-  image: {
-    responsiveStyles: true,
-    layout: 'constrained',
-  },
+  // image: {
+  //   responsiveStyles: true,
+  //   layout: 'constrained',
+  // },
   build: {
     format: "preserve",
   },
