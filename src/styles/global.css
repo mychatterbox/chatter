@@ -416,7 +416,7 @@ ol>li {
     ============================================ */
 code {
   border-radius: 0.25rem;
-  padding: 0.15rem 0.2rem;
+  padding: 0.1rem 0.2rem;
   background-color: var(--color-code-bg);
   color: var(--color-code-text);
   font-family: var(--font-mono);
