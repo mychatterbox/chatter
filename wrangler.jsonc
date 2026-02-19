@@ -1,6 +1,6 @@
 {
   "name": "who",
-  "compatibility_date": "2025-10-27",
+  "compatibility_date": "2025-11-17",
   "main": "./worker.js",
   "assets": {
     "directory": "./dist",
