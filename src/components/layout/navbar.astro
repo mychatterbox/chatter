@@ -1,8 +1,8 @@
 ---
 import HomeModernSolid from "../../icons/hero/solid/home-modern.svg";
 import HomeModernOutline from "../../icons/hero/outline/home-modern.svg";
-import FilmSolid from "../../icons/hero/solid/film.svg";
-import FilmOutline from "../../icons/hero/outline/film.svg";
+// import FilmSolid from "../../icons/hero/solid/film.svg";
+// import FilmOutline from "../../icons/hero/outline/film.svg";
 import InfoSolid from "../../icons/hero/solid/information-circle.svg";
 import InfoOutline from "../../icons/hero/outline/information-circle.svg";
 import TagsSolid from "../../icons/hero/solid/tags.svg";
@@ -22,11 +22,11 @@ import FontChange from "../features/font-change-preview.astro";
           {Astro.url.pathname === "/" ? <HomeModernSolid /> : <HomeModernOutline />}
         </div>
       </a>
-      <a aria-label="Film Ratings" href="/ratings" class="navbar-icon">
+      <!-- <a aria-label="Film Ratings" href="/ratings" class="navbar-icon">
         <div class="navbar-icon-svg">
           {Astro.url.pathname.startsWith("/ratings") ? <FilmSolid /> : <FilmOutline />}
         </div>
-      </a>
+      </a> -->
       <a aria-label="Tags" href="/tag" class="navbar-icon">
         <div class="navbar-icon-svg">
           {Astro.url.pathname === "/tag" || Astro.url.pathname === "/tag/" ? <TagsSolid /> : <TagsOutline />}
