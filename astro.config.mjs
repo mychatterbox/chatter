@@ -50,7 +50,7 @@ export default defineConfig({
   build: {
     format: "preserve",
   },
-  
+
   integrations: [
     sitemap({
       serialize: (item) => {
@@ -59,6 +59,9 @@ export default defineConfig({
           return { ...item, url: SITE_URL_WITH_SLASH };
         }
         if (/^\/(tag|kind)\/[^/]+\/1\/?$/.test(url.pathname)) {
+          return null;
+        }
+        if (url.pathname === '/ratings' || url.pathname === '/ratings/') {
           return null;
         }
         if (url.pathname.endsWith('/')) {
@@ -86,9 +89,9 @@ export default defineConfig({
         transformerFileName(),
       ],
     },
-      rehypePlugins: [addAnchorLinks],
-      remarkPlugins: [Callouts],
+    rehypePlugins: [addAnchorLinks],
+    remarkPlugins: [Callouts],
   },
-  
+
   scopedStyleStrategy: "where",
 });
