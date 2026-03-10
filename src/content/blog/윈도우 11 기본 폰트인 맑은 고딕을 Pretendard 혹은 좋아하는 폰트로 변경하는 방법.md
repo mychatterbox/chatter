@@ -13,6 +13,7 @@ description: 많이 쓰이는 레지스트리 변경 방식이나 No!! MeiryoUI 
 keywords:
   - 윈도우 폰트 바꾸기
   - 윈도우 맑은고딕 변경
+  - 윈도우 폰트 변경
 ---
 
 윈도우 11 기본 폰트인 맑은 고딕을 변경하기 위한 방법을 검색해보면 아래처럼 여러가지 방법을 확인할 수 있습니다.  
@@ -41,7 +42,7 @@ keywords:
 
 원글에서는 맑은 고딕 두께별 3개와 Noto Sans KR, Segoe UI 폰트들을 <mark>Pretendard JP Medium</mark> (두께 500) 1가지로 통일한 것 같습니다.  이렇게 해도 두께별로 잘 표현되고 특별한 문제는 없었던 것 같습니다.  
 
-### Pretendard JP의 단점
+## Pretendard JP의 단점
 
 아래 스크린샷은 원글의 Pretendard JP로 설정한 결과인데 2024-11-23과 2025-03-21은 숫자별로 폭이 다르기 때문에 정확한 정렬이 안됨을 알 수 있습니다.  
 ![Pretendard JP](./blog-images/2025/windows-default-font-change_2.webp)  
@@ -57,7 +58,7 @@ Segoe UI --> Pretendard GOV Medium (500)
 Segoe UI Bold --> Pretendard GOV Bold (700)    
 Noto Sans KR 은 그대로 유지합니다.  
 
-### 작업 순서
+## 작업 순서
 
 1. 폰트 준비  
     <a href="https://meeco.kr/Review/40907913" target="_blank" rel="noopener noreferrer">
@@ -83,18 +84,18 @@ Noto Sans KR 은 그대로 유지합니다.
 7. <mark>shutdown /r /t 0</mark>  혹은 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>  
   시스템 재시작
 
-### 결과 확인
+## 결과 확인
 
 ![result](./blog-images/2025/windows-default-font-change_1.webp)  
 
 맑은 고딕 포함 기존 한글폰트가 교체한 폰트로 보인다면 작업이 잘 끝났습니다.  
 
-### 복구 방법
+## 복구 방법
 
 c:\ 를 확인해보면 font-out.bat 으로 빼낸 여러 개의 원본 ttf 폰트가 있을텐데 이 폰트들을 2개의 .bat 파일과 함께 따로 보관해두세요.  
 전체 작업의 원리를 알았으니 혹시 부작용이 생기거나 원래대로 되돌리고 싶은 경우 보관한 폰트들을 동일하게 c:\font list 로 복사해서 위 과정을 진행하면 원래대로 복구됩니다.  
 
-### 참고
+## 참고
 
 기억하세요.  
 이제 각각의 프로그램에서 폰트가 '맑은 고딕'으로 설정되어 있어도 그 폰트는 수정된 폰트입니다.
