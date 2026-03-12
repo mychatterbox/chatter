@@ -1,6 +1,6 @@
 ---
 kind: note
-title: OneDrive 변경 내용 처리 중
+title: OneDrive 변경 내용 처리 중 오류 해결하기
 author: mychatterbox
 pubDate: 2025-03-04
 slug: onedrive-stuck
