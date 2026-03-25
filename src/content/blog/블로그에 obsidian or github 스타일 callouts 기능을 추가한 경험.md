@@ -208,13 +208,17 @@ AI에게 시켜보니까 unist-util-visit 이건 꼭 설치해야 한답니다.
 > - [x] 검색 기능  
 > - [x] medium 스타일 image zoom 기능  
 > - [x] github 스타일 callouts  
-> - [ ] header에 anchor 달기  
+> - [x] header에 anchor 달기  
 > - [ ] 사이드바  
 
 ---  
 
-<details>
-<summary>코드 확인</summary>
+> [!IMPORTANT|hide]  
+> 시간이 남아도는 것이 아니라면 <mark>[rehype-callouts](https://github.com/lin-stephanie/rehype-callouts)</mark> 쓰세요.  
+> 더 많은 기능이 필요하면 <mark>remark-directive</mark> 같은 것들을 찾아보세요.  
+
+
+## 사용된 코드
 
 ```js file="callouts.js"
 import { visit } from 'unist-util-visit';
@@ -619,8 +623,3 @@ body {
   /* cursor: default !important; */
 }
 ```
-</details>
-
-> [!IMPORTANT|hide]  
-> 시간이 남아도는 것이 아니라면 <mark>[rehype-callouts](https://github.com/lin-stephanie/rehype-callouts)</mark> 쓰세요.  
-> 더 많은 기능이 필요하면 <mark>remark-directive</mark> 같은 것들을 찾아보세요.  
