@@ -9,7 +9,7 @@ draft: false
 tags:
   - WOW
 ogImage: ./blog-images/2026/wow-teleport-addon.webp
-description: 심플한 내부전쟁 던전 포탈 위크오라입니다.
+description: 심플한 와우 한밤 던전 포탈 애드온입니다.
 keywords:
   - 와우 포탈 애드온
 ---
