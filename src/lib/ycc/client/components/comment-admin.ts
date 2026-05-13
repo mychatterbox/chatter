@@ -1,0 +1,291 @@
+import { LitElement, html, css } from 'lit';
+import { customElement, state } from 'lit/decorators.js';
+import { yangChunCommentStyles } from './yangchun-comment.styles';
+import { globalApiService } from '../api/globalApiService';
+
+@customElement('comment-admin')
+export class CommentAdmin extends LitElement {
+  static styles = [
+    yangChunCommentStyles,
+    css`
+      :host {
+        display: block;
+      }
+
+      .form-group {
+        margin-bottom: var(--ycc-spacing-m);
+      }
+
+      label {
+        display: block;
+        margin-bottom: var(--ycc-spacing-s);
+        font-weight: 500;
+        color: var(--ycc-text-primary);
+      }
+
+      input[type='text'],
+      input[type='password'] {
+        width: 100%;
+        padding: var(--ycc-spacing-s);
+        border: 1px solid var(--ycc-border-color);
+        border-radius: var(--ycc-radius);
+        font-family: inherit;
+        font-size: var(--ycc-font-size);
+        box-sizing: border-box;
+        transition: border-color 0.2s;
+      }
+
+      input[type='text']:focus,
+      input[type='password']:focus {
+        outline: none;
+        border-color: var(--ycc-primary-color);
+      }
+
+      button[type='submit'] {
+        width: 100%;
+        padding: var(--ycc-spacing-s) var(--ycc-spacing-m);
+        margin-top: var(--ycc-spacing-s);
+      }
+
+      .message {
+        margin-top: var(--ycc-spacing-m);
+        padding: var(--ycc-spacing-s);
+        border-radius: var(--ycc-radius);
+        text-align: center;
+        display: none;
+      }
+
+      .message.show {
+        display: block;
+      }
+
+      .message.error {
+        background-color: #fee;
+        border: 1px solid #fcc;
+        color: var(--ycc-error-color);
+      }
+
+      .message.success {
+        background-color: #efe;
+        border: 1px solid #cfc;
+        color: #22c55e;
+      }
+    `,
+  ];
+
+  @state() private username = '';
+  @state() private password = '';
+  @state() private errorMessage = '';
+  @state() private successMessage = '';
+  @state() private isLoading = false;
+  @state() private isLoggedIn = false;
+  @state() private isCheckingAuth = true;
+  @state() private hasCheckedAuthFromComments = false;
+
+  render() {
+    if (this.isCheckingAuth) {
+      return html`<div>Checking authentication status...</div>`;
+    }
+
+    if (this.isLoggedIn) {
+      return this.renderAdminPanel();
+    }
+    return this.renderLoginForm();
+  }
+
+  async connectedCallback() {
+    super.connectedCallback();
+    // Listen for admin status updates from parent component
+    this.addEventListener('admin-status-updated', this.handleAdminStatusUpdated);
+    // Fallback: if we don't receive admin status from comments API within 2 seconds, check directly
+    setTimeout(() => {
+      if (!this.hasCheckedAuthFromComments) {
+        this.checkAuthStatus();
+      }
+    }, 2000);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('admin-status-updated', this.handleAdminStatusUpdated);
+  }
+
+  // Public method to be called from parent component
+  public updateAuthStatus(isAdmin: boolean) {
+    if (!this.hasCheckedAuthFromComments) {
+      this.hasCheckedAuthFromComments = true;
+      this.isLoggedIn = isAdmin;
+      this.isCheckingAuth = false;
+      if (this.isLoggedIn) {
+        this.handleAuthStatusChange();
+      }
+    }
+  }
+
+  private handleAdminStatusUpdated = (e: Event) => {
+    const customEvent = e as CustomEvent<boolean>;
+    if (!this.hasCheckedAuthFromComments) {
+      this.hasCheckedAuthFromComments = true;
+      this.isLoggedIn = customEvent.detail;
+      this.isCheckingAuth = false;
+      if (this.isLoggedIn) {
+        this.handleAuthStatusChange();
+      }
+    }
+  };
+
+  private renderLoginForm() {
+    return html`
+      <form @submit=${this.handleSubmit}>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            .value=${this.username}
+            @change=${this.handleUsernameChange}
+            ?disabled=${this.isLoading}
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            .value=${this.password}
+            @change=${this.handlePasswordChange}
+            ?disabled=${this.isLoading}
+            required
+          />
+        </div>
+        <button type="submit" ?disabled=${this.isLoading}>
+          ${this.isLoading ? 'Logging in...' : 'Login'}
+        </button>
+      </form>
+
+      <div class="message error ${this.errorMessage ? 'show' : ''}">${this.errorMessage}</div>
+
+      <div class="message success ${this.successMessage ? 'show' : ''}">${this.successMessage}</div>
+    `;
+  }
+
+  private renderAdminPanel() {
+    return html`
+      <div>
+        <p>You are logged in as admin</p>
+        <button @click=${this.handleLogout} ?disabled=${this.isLoading}>
+          ${this.isLoading ? 'Logging out...' : 'Logout'}
+        </button>
+
+        <div class="message error ${this.errorMessage ? 'show' : ''}">${this.errorMessage}</div>
+        <div class="message success ${this.successMessage ? 'show' : ''}">
+          ${this.successMessage}
+        </div>
+      </div>
+    `;
+  }
+
+  private handleSubmit = async (e: Event) => {
+    e.preventDefault();
+
+    if (!this.username || !this.password) {
+      this.errorMessage = 'Please enter username and password';
+      this.successMessage = '';
+      return;
+    }
+
+    this.isLoading = true;
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    if (!globalApiService.isInitialized()) {
+      this.errorMessage = 'API service not available';
+      this.isLoading = false;
+      return;
+    }
+
+    try {
+      const data = await globalApiService.getInstance().adminLogin(this.username, this.password);
+      if (data) {
+        this.successMessage = data.message || 'Login successful';
+        this.username = '';
+        this.password = '';
+        this.isLoggedIn = true;
+        this.handleAuthStatusChange();
+      } else {
+        this.errorMessage = 'Login failed';
+      }
+    } catch (error) {
+      this.errorMessage = `Error (${error}). Please try again.`;
+    } finally {
+      this.isLoading = false;
+    }
+  };
+
+  private async checkAuthStatus() {
+    if (!globalApiService.isInitialized()) {
+      this.isCheckingAuth = false;
+      return;
+    }
+
+    try {
+      this.isLoggedIn = await globalApiService.getInstance().checkAdminAuth();
+      if (this.isLoggedIn) {
+        this.handleAuthStatusChange();
+      }
+    } catch (error) {
+      console.error('Failed to check auth status:', error);
+      this.isLoggedIn = false;
+    } finally {
+      this.isCheckingAuth = false;
+    }
+  }
+
+  private handleLogout = async () => {
+    if (!globalApiService.isInitialized()) {
+      this.errorMessage = 'API service not available';
+      return;
+    }
+
+    this.isLoading = true;
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    try {
+      const success = await globalApiService.getInstance().adminLogout();
+
+      if (success) {
+        this.successMessage = 'Logged out successfully';
+        this.isLoggedIn = false;
+        this.handleAuthStatusChange();
+      } else {
+        this.errorMessage = 'Logout failed';
+      }
+    } catch (error) {
+      this.errorMessage = `Error (${error}). Please try again.`;
+    } finally {
+      this.isLoading = false;
+    }
+  };
+
+  private handleUsernameChange = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    this.username = target.value;
+  };
+
+  private handlePasswordChange = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    this.password = target.value;
+  };
+
+  private handleAuthStatusChange = () => {
+    this.dispatchEvent(
+      new CustomEvent('auth-status-change', {
+        detail: this.isLoggedIn,
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  };
+}

@@ -92,4 +92,11 @@ export default defineConfig({
   },
 
   scopedStyleStrategy: "where",
+  vite: {
+    resolve: {
+      alias: {
+        "@ziteh/yangchun-comment-shared": fileURLToPath(new URL("./src/lib/ycc/shared/index.ts", import.meta.url))
+      }
+    }
+  }
 });

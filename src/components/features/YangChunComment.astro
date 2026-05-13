@@ -1,0 +1,100 @@
+---
+interface Props {
+  post: string;
+}
+const { post } = Astro.props;
+
+// Cloudflare Worker 설정
+const apiUrl =
+  import.meta.env.PUBLIC_YCC_API_URL ||
+  "https://yangchun-comment-server.chatterer.workers.dev";
+const adminName = import.meta.env.PUBLIC_YCC_ADMIN_NAME || "admin";
+const prePowDifficulty = import.meta.env.PUBLIC_YCC_PRE_POW_DIFFICULTY || "2";
+const prePowSalt = import.meta.env.PUBLIC_YCC_PRE_POW_SALT || "MAGIC";
+const lang = "ko-KR"; // 필요에 따라 변경
+
+console.log('YangChunComment post:', post);
+---
+
+<div class="yangchun-comment-wrapper">
+  <!-- 태그가 살아있는지 확인용 -->
+  <div id="ycc-debug-marker" style="display:none;">YCC RENDERED</div>
+
+  <yangchun-comment
+    post={post}
+    apiUrl={apiUrl}
+    lang={lang}
+    adminName={adminName}
+    prePowDifficulty={prePowDifficulty}
+    prePowSalt={prePowSalt}></yangchun-comment>
+</div>
+
+<script is:inline>
+  // 이 스크립트는 번들링 에러와 상관없이 무조건 실행됩니다.
+  console.log("🔍 [YCC-DEBUG] Inline tracker started");
+  setTimeout(() => {
+    const el = document.querySelector("yangchun-comment");
+    const isDefined = !!customElements.get("yangchun-comment");
+    console.log("🔍 [YCC-DEBUG] Element exists:", !!el);
+    console.log("🔍 [YCC-DEBUG] Element defined in registry:", isDefined);
+    if (el && !isDefined) {
+      console.warn(
+        "⚠️ [YCC-DEBUG] Element is in DOM but NOT registered. Script bundling might have failed.",
+      );
+    }
+  }, 2000);
+</script>
+
+<script>
+  // 1️⃣ Yang Chun Comment 라이브러리 로드 (로컬 소스 사용)
+  import "../../lib/ycc/client/components/yangchun-comment.ts";
+  import { koKR } from '../../lib/ycc/client/utils/i18n.ts';
+
+  // 3️⃣ 한국어 번역 적용 함수
+const applyKorean = async () => {
+  const currentYcc = document.querySelector("yangchun-comment") as any;
+  if (!currentYcc) return;
+  await customElements.whenDefined("yangchun-comment");
+  currentYcc.customMessages = koKR;
+  await currentYcc.updateComplete;
+
+  const forceUpdateAll = (root: ShadowRoot | HTMLElement) => {
+    const children = root.querySelectorAll("*");
+    children.forEach((el: any) => {
+      if (typeof el.requestUpdate === "function") el.requestUpdate();
+      if (el.shadowRoot) forceUpdateAll(el.shadowRoot);
+    });
+  };
+
+  if (currentYcc.shadowRoot) forceUpdateAll(currentYcc.shadowRoot);
+};
+
+  // Astro View Transitions 대응
+  document.addEventListener("astro:page-load", applyKorean);
+</script>
+
+<style is:global>
+  .yangchun-comment-wrapper {
+    margin-top: 1em;
+  }
+
+  /* 댓글 컴포넌트 색상 커스터마이징 */
+  yangchun-comment {
+    --ycc-primary-color: #5f91c3;
+    --ycc-primary-hover: var(--color-link-hover, #3171b2);
+    --ycc-text-primary: var(--color-text-heading);
+    --ycc-text-secondary: var(--color-text-primary, #555555);
+    --ycc-placeholder-color: var(--color-text-muted, #999999);
+    --ycc-bg-color: var(--color-bg, #f1f2f3);
+    --ycc-bg-secondary: var(--color-thead-bg);
+    --ycc-border-color: var(--color-thead-bg, #cccccc);
+    --ycc-error-color: var(--color-text-draft, #ff0000);
+    --ycc-badge-bg-color: var(--color-code-bg);
+    --ycc-badge-color: var(--color-bg);
+    --ycc-font-size: var(--base-font-size, 16px);
+    --ycc-radius: 4px;
+    --ycc-font-family: var(--font-sans);
+    --ycc-badge-text: var(--color-code-text);
+    --ycc-badge-bg: var(--color-code-bg);
+  }
+</style>

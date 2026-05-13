@@ -11,6 +11,11 @@ import { PAGE_SIZE } from "config/pagination";
 import ImageModal from "components/features/ImageModal.astro";
 import LiteYTScript from "utils/lite-yt-embed.astro";
 import HeadingAnchorCopy from "components/features/heading-anchor-copy.astro";
+import YangChunComment from "components/features/YangChunComment.astro";
+
+const apiUrl =
+  import.meta.env.PUBLIC_YCC_API_URL ||
+  "https://yangchun-comment-server.chatterer.workers.dev";
 
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
@@ -101,8 +106,8 @@ if (type === "post" && entry) {
       <ReadingProgressBar />
       <Nav />
       <ImageModal />
-{hasYoutube && <LiteYTScript enabled={hasYoutube} />}
-<HeadingAnchorCopy />
+      {hasYoutube && <LiteYTScript enabled={hasYoutube} />}
+      <HeadingAnchorCopy />
 
       <main class="main-container">
         <article class="article-container" data-pagefind-body>
@@ -124,6 +129,29 @@ if (type === "post" && entry) {
               )}
 
               <div>{pubDate?.toISOString().slice(0, 10)}</div>
+
+              <div
+                class="comment-count-wrapper"
+                data-post-id={entry.id}
+                style="display: none;"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="comment-icon"
+                >
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+
+                <span class="comment-count-value">0</span>
+              </div>
 
               {isDraft && <div class="text-draft">_____ Draft _____</div>}
             </div>
@@ -147,6 +175,8 @@ if (type === "post" && entry) {
               </div>
             </div>
           )}
+
+          <YangChunComment post={entry.id} />
         </article>
       </main>
     </Html>
@@ -171,3 +201,45 @@ if (type === "post" && entry) {
     </Html>
   )
 }
+
+<script define:vars={{ apiUrl }}>
+  const updateCommentCounts = async () => {
+    const wrappers = document.querySelectorAll(".comment-count-wrapper");
+    await Promise.all(
+      Array.from(wrappers).map(async (wrapper) => {
+        const postId = wrapper.getAttribute("data-post-id");
+        if (!postId) return;
+
+        try {
+          const response = await fetch(`${apiUrl}/api/comments?post=${postId}`);
+          if (response.ok) {
+            const data = await response.json();
+            const count = data.comments.length;
+            if (count > 0) {
+              const countEl = wrapper.querySelector(".comment-count-value");
+              if (countEl) countEl.textContent = count.toString();
+              wrapper.style.display = "inline-flex";
+            }
+          }
+        } catch (err) {
+          console.error("Failed to fetch comment count:", err);
+        }
+      })
+    );
+  };
+
+  // 실시간 업데이트 이벤트 리스너
+  document.addEventListener("ycc-comments-updated", (e) => {
+    if (e.detail && typeof e.detail.count === "number") {
+      const wrappers = document.querySelectorAll(".comment-count-wrapper");
+      wrappers.forEach((wrapper) => {
+        const countEl = wrapper.querySelector(".comment-count-value");
+        if (countEl) countEl.textContent = e.detail.count.toString();
+        wrapper.style.display = e.detail.count > 0 ? "inline-flex" : "none";
+      });
+    }
+  });
+
+  // Astro View Transitions 대응
+  document.addEventListener("astro:page-load", updateCommentCounts);
+</script>

@@ -23,6 +23,10 @@ allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
 const posts = allPosts.slice(0, PAGE_SIZE);
+
+const apiUrl =
+  import.meta.env.PUBLIC_YCC_API_URL ||
+  "https://yangchun-comment-server.chatterer.workers.dev";
 ---
 
 <Html title="mychatterbox" description="Astro 프레임워크를 이용해서 만들어진 블로그입니다. 여러가지 소소한 팁과 정보를 공유합니다.">
@@ -43,3 +47,35 @@ const posts = allPosts.slice(0, PAGE_SIZE);
   </div>
   </main>
 </Html>
+
+<script define:vars={{ apiUrl }}>
+  const updateCommentCounts = async () => {
+    const wrappers = document.querySelectorAll(".comment-count-wrapper");
+    
+    // 10개의 요청을 병렬로 처리하여 속도를 높임
+    await Promise.all(
+      Array.from(wrappers).map(async (wrapper) => {
+        const postId = wrapper.getAttribute("data-post-id");
+        if (!postId) return;
+
+        try {
+          const response = await fetch(`${apiUrl}/api/comments?post=${postId}`);
+          if (response.ok) {
+            const data = await response.json();
+            const count = data.comments.length;
+            if (count > 0) {
+              const countEl = wrapper.querySelector(".comment-count-value");
+              if (countEl) countEl.textContent = count.toString();
+              wrapper.style.display = "inline-flex";
+            }
+          }
+        } catch (err) {
+          console.error(`Failed to fetch count for ${postId}:`, err);
+        }
+      })
+    );
+  };
+
+  // Astro View Transitions 대응
+  document.addEventListener("astro:page-load", updateCommentCounts);
+</script>

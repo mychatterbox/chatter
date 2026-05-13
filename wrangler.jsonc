@@ -1,12 +1,25 @@
 {
-  "name": "who",
-  "compatibility_date": "2025-11-17",
-  "main": "./worker.js",
-  "assets": {
-    "directory": "./dist",
-    "not_found_handling": "404-page",
-    // "html_handling": "drop-trailing-slash"
-    "run_worker_first": true,
-     "binding": "ASSETS"
-  }
+	"name": "who",
+	"compatibility_date": "2025-11-17",
+	"main": "./worker.js",
+	"assets": {
+		"directory": "./dist",
+		"not_found_handling": "404-page",
+		// "html_handling": "drop-trailing-slash"
+		"run_worker_first": true,
+		"binding": "ASSETS"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "yangchun-comment-d1",
+			"database_id": "38ff38d5-7f02-4e2c-ac9a-4088d668a44a"
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "6dfac18ecdd64e83a205b63bb6d757bc"
+		}
+	]
 }

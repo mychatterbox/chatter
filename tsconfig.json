@@ -1,4 +1,13 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "compilerOptions": { "baseUrl": "src" }
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["./*"],
+      "@ziteh/yangchun-comment-shared": ["lib/ycc/shared/index.ts"]
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": false
+  }
 }

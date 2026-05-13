@@ -1,0 +1,107 @@
+import { z } from 'zod';
+
+const MAX_MSG_LENGTH = 1000;
+const MAX_NICKNAME_LENGTH = 80;
+const COMMENT_ID_REGEX = /^[0-9A-Z]{12}$/;
+
+const messagePreprocess = (raw: string) =>
+  raw
+    .normalize('NFC') // Unicode normalization, or NFKC if needed
+    // eslint-disable-next-line no-control-regex
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '') // Remove control characters
+    .replace(/[\u200B-\u200D\uFEFF]/g, '') // Remove zero-width characters
+    .replace(/[\u202A-\u202E\u2066-\u2069]/g, '') // Remove bidirectional text control characters
+    .trim();
+
+export const CommentSchema = z.object({
+  /** Unique comment identifier */
+  id: z.string(),
+
+  /** Author's display nickname; anonymous if omitted */
+  nickname: z.string().optional(),
+
+  /** The comment body text */
+  msg: z.string(),
+
+  /** Publish timestamp */
+  pubDate: z.number(),
+
+  /** Last modified timestamp, if edited or deleted */
+  modDate: z.number().optional(),
+
+  /** Parent comment ID, if this comment is a reply */
+  replyTo: z.string().optional(),
+
+  /** Flags if the author is an admin */
+  isAdmin: z.boolean().optional(),
+
+  /** Selected emoji/badge */
+  emoji: z.string().optional(),
+
+  /** Like count */
+  likes: z.number().int().nonnegative().optional(),
+
+  /** HMAC token for edit/delete operations */
+  token: z.string().optional(),
+
+  /** Token timestamp */
+  tokenTimestamp: z.number().optional(),
+});
+export type Comment = z.infer<typeof CommentSchema>;
+
+export const CommentListSchema = z.array(CommentSchema);
+export type CommentList = z.infer<typeof CommentListSchema>;
+
+export const GetCommentsResponseSchema = z.object({
+  comments: z.array(CommentSchema),
+  isAdmin: z.boolean(),
+});
+export type GetCommentsResponse = z.infer<typeof GetCommentsResponseSchema>;
+
+export const CreateCommentRequestSchema = z.object({
+  nickname: z.preprocess(
+    (val) => (typeof val === 'string' && val.trim() === '' ? undefined : val),
+    z.string().max(MAX_NICKNAME_LENGTH).optional(),
+  ),
+  msg: z.string().min(1).max(MAX_MSG_LENGTH).transform(messagePreprocess),
+  replyTo: z.string().regex(COMMENT_ID_REGEX).optional(),
+  emoji: z.string().max(8).optional(),
+  email: z.string().optional(), // Honeypot field
+});
+export type CreateCommentRequest = z.infer<typeof CreateCommentRequestSchema>;
+
+export const CreateCommentResponseSchema = z.object({
+  id: z.string(),
+  timestamp: z.number(),
+  token: z.string(),
+});
+export type CreateCommentResponse = z.infer<typeof CreateCommentResponseSchema>;
+
+export const UpdateCommentRequestSchema = z.object({
+  nickname: z.preprocess(
+    (val) => (typeof val === 'string' && val.trim() === '' ? undefined : val),
+    z.string().max(MAX_NICKNAME_LENGTH).optional(),
+  ),
+  msg: z.string().min(1).max(MAX_MSG_LENGTH).transform(messagePreprocess),
+  emoji: z.string().max(8).optional(),
+});
+export type UpdateCommentRequest = z.infer<typeof UpdateCommentRequestSchema>;
+
+export const CommentQuerySchema = z.object({
+  post: z.string(),
+});
+export type CommentQuery = z.infer<typeof CommentQuerySchema>;
+
+export const CreateCommentQuerySchema = z.object({
+  post: z.string(),
+  challenge: z.string(),
+  nonce: z.string().regex(/^\d+$/), // Must be numeric string
+});
+export type CreateCommentQuery = z.infer<typeof CreateCommentQuerySchema>;
+
+export const CommentAuthHeadersSchema = z.object({
+  'x-comment-id': z.string(),
+  'x-comment-token': z.string(),
+  'x-comment-timestamp': z.string(),
+});
+export type CommentAuthHeaders = z.infer<typeof CommentAuthHeadersSchema>;
