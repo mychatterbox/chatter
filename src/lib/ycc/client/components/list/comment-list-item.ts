@@ -117,7 +117,7 @@ export class CommentListItem extends LitElement {
       }
 .comment-id {
   display: none;
-  font-size: 0.7em;
+  // font-size: 0.7em;
   font-family: var(--ycc-font-monospace);
 }
 .header:hover .comment-id {
@@ -356,6 +356,12 @@ export class CommentListItem extends LitElement {
           gap: calc(var(--ycc-spacing-s) / 2);
           width: 100%;
         }
+          .comment-id {
+  font-size: 0.7em;
+}
+  .comment-icon {
+top: 0;
+  }
         .comment-layout.has-replies::after{
           left: 12.5px;
           top: 35px;
