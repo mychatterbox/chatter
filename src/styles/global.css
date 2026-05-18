@@ -3,9 +3,9 @@
 :root {
   color-scheme: light;
   --base-font-size: 16px;
-  --color-text-primary: #101828;
-  --color-text-heading: var(--color-text-primary);
-  --color-bg: #f1f2f3;
+  --color-text-primary: #404040;
+  --color-text-heading: #171717;
+  --color-bg: #fafafa;
   --color-text-muted: #555555;
   --color-link-article: #2a6eb2;
   --color-link-note: #007a70;
