@@ -123,22 +123,22 @@ body {
 }
 
 .callout-note {
-  border-color: #3498db;
+  border-color: oklch(70.7% 0.165 254.624);
   --callout-title-color: #2980b9;
 }
 
 .callout-tip {
-  border-color: #2ecc71;
+  border-color: oklch(65.2% 0.209 151.711);
   --callout-title-color: #27ae60;
 }
 
 .callout-warning {
-  border-color: #f39c12;
+  border-color: oklch(75% 0.183 55.934);
   --callout-title-color: #d68910;
 }
 
 .callout-important {
-  border-color: #e74c3c;
+  border-color: oklch(70.4% 0.191 22.216);
   --callout-title-color: #c0392b;
 }
 
@@ -156,7 +156,7 @@ body {
 
 
 .callout-info {
-  border-color: #1abc9c;
+  border-color: oklch(84.1% 0.238 128.85);
   --callout-title-color: #16a085;
 }
 
@@ -166,7 +166,7 @@ body {
 }
 
 .callout-question {
-  border-color: #3498db;
+  border-color: oklch(0.5 0 0);
   --callout-title-color: #2980b9;
 }
 
@@ -186,12 +186,12 @@ body {
 }
 
 .callout-example {
-  border-color: #9b59b6;
+  border-color: oklch(70.2% 0.183 293.541);
   --callout-title-color: #8e44ad;
 }
 
 .callout-quote {
-  border-color: #95a5a6;
+  border-color: oklch(70.5% 0.015 286.067);
   --callout-title-color: #7f8c8d;
   font-style: italic;
 }
