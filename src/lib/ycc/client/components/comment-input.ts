@@ -402,7 +402,7 @@ export class CommentInput extends LitElement {
               maxlength=${CommentInput.MAX_MESSAGE_LENGTH}
             ></textarea>
             <div class="char-counter message-counter" id="message-counter" aria-live="polite">
-              ${this.draft.length}/${CommentInput.MAX_MESSAGE_LENGTH}
+              ${this.draft.length} / ${CommentInput.MAX_MESSAGE_LENGTH}
             </div>
             <input
               type="email"
@@ -432,7 +432,7 @@ export class CommentInput extends LitElement {
               maxlength=${CommentInput.MAX_NICKNAME_LENGTH}
             />
             <span class="char-counter" id="nickname-counter" aria-live="polite">
-              ${this.nickname.length}/${CommentInput.MAX_NICKNAME_LENGTH}
+              ${this.nickname.length} / ${CommentInput.MAX_NICKNAME_LENGTH}
             </span>
           </div>
           <div class="actions">
