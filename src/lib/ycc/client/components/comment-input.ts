@@ -74,6 +74,7 @@ export class CommentInput extends LitElement {
         border-bottom: none;
         border-radius: var(--ycc-radius) var(--ycc-radius) 0 0;
         min-height: calc(100px + 2 * var(--ycc-spacing-s));
+        transition: border-color 0.15s ease;
       }
       .controls-row {
         border: 1px solid var(--ycc-border-color);
@@ -81,6 +82,11 @@ export class CommentInput extends LitElement {
         display: flex;
         justify-content: space-between;
         gap: var(--ycc-spacing-s);
+        transition: border-color 0.15s ease;
+      }
+      .comment-input-container:focus-within .message-row,
+      .comment-input-container:focus-within .controls-row {
+        border-color: var(--ycc-border-focus-color, var(--color-border));
       }
       .nickname-input {
         flex: 1;
