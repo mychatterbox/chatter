@@ -242,8 +242,8 @@
   }
 
   .copy-code-button-enhanced.copied {
-    background: #007bff;
-    color: #ffffff;
+    background: var(--color-link-hover);
+    color: oklch(1 0 0);
     opacity: 1;
     transform: translateY(0);
     transition: all 0.3s ease;
@@ -251,7 +251,7 @@
 
   .copy-code-button-enhanced:focus {
     opacity: 1;
-    outline: 1px solid #007bff;
+    outline: 1px solid var(--color-link-hover);
     outline-offset: -1px;
   }
 
@@ -292,6 +292,6 @@
 
   .code-toggle-button:focus {
     opacity: 1;
-    outline: 1px solid #007bff;
+    outline: 1px solid var(--color-link-hover);
   }
 </style>
