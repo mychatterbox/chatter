@@ -24,6 +24,6 @@
   "devDependencies": {
     "@shikijs/transformers": "^3.15.0",
     "@types/dompurify": "^3.0.5",
-    "pagefind": "^1.4.0"
+    "pagefind": "^1.5.2"
   }
 }
