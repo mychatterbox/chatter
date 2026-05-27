@@ -86,7 +86,7 @@ export class CommentInput extends LitElement {
       }
       .comment-input-container:focus-within .message-row,
       .comment-input-container:focus-within .controls-row {
-        border-color: var(--ycc-border-focus-color, var(--color-border));
+        border-color: var(--ycc-border-focus-color, color-mix(in oklch, var(--color-border) 50%, gray));
       }
       .nickname-input {
         flex: 1;
