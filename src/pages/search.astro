@@ -105,9 +105,20 @@ import Nav from "components/layout/navbar.astro";
     --pagefind-ui-image-border-radius: 4px;
     --pagefind-ui-image-box-ratio: 3 / 2;
     --pagefind-ui-font: var(--font-sans);
+    --pagefind-search-height: 48px;
 
     .pagefind-ui__message {
       font-weight: 400;
+    }
+
+    .pagefind-ui__form::before {
+      top: calc((var(--pagefind-search-height) - (18px * var(--pagefind-ui-scale))) / 2);
+      left: calc(16px * var(--pagefind-ui-scale));
+    }
+
+    .pagefind-ui__search-input {
+      height: var(--pagefind-search-height);
+      padding-left: calc(44px * var(--pagefind-ui-scale));
     }
 
     input {
@@ -116,7 +127,14 @@ import Nav from "components/layout/navbar.astro";
 
     .pagefind-ui__search-clear {
       background-color: transparent;
+      display: flex;
+      align-items: center;
       font-size: 0.92em;
+      height: calc(var(--pagefind-search-height) - (6px * var(--pagefind-ui-scale)));
+      line-height: 1;
+    }
+    .pagefind-ui__search-input {
+      font-size: 1.1em;
     }
 .pagefind-ui__result-title {
   font-size: var(--base-font-size);
