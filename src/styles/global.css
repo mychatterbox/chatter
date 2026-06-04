@@ -130,6 +130,10 @@ img {
   gap: var(--spacing-2);
 }
 
+.article-meta-date .updated-date {
+  color: var(--color-text-primary);
+}
+
 .comment-count-wrapper {
   display: inline-flex;
   align-items: center;
