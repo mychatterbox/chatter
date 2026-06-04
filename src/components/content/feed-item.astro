@@ -3,7 +3,7 @@ import { render } from "astro:content";
 
 const { entry } = Astro.props;
 const { id, data } = entry;
-const { title, description, pubDate, kind } = data;
+const { title, description, pubDate, updatedDate, kind } = data;
 
 const { Content } = await render(entry);
 
@@ -35,7 +35,17 @@ const isDraft = entry.collection === "draft";
         )
       }
 
-      <div>{pubDate.toISOString().slice(0, 10)}</div>
+      <div class="article-meta-date" title={updatedDate && pubDate && updatedDate.getTime() !== pubDate.getTime() ? `최종 수정일: ${updatedDate.toISOString().slice(0, 10)}` : undefined}>
+        {updatedDate && pubDate && updatedDate.getTime() !== pubDate.getTime() ? (
+          <span aria-label={`최초 작성일 ${pubDate.toISOString().slice(0, 10)}, 최종 수정일 ${updatedDate.toISOString().slice(0, 10)}`}>
+            {pubDate.toISOString().slice(0, 10)}
+            ·
+            <span class="updated-date">{updatedDate.toISOString().slice(0, 10)}</span>
+          </span>
+        ) : (
+          <span>{pubDate?.toISOString().slice(0, 10)}</span>
+        )}
+      </div>
 
       <div
         class="comment-count-wrapper"
