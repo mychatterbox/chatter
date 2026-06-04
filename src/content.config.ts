@@ -6,6 +6,7 @@ const schema = z.object({
   title: z.string(),
   description: z.string(),
   pubDate: z.date(),
+  updatedDate: z.date().optional(),
   kind: z.enum(["article", "note"]),
   tags: z.array(z.string()).optional(),
   ogImage: z.string().optional(),
