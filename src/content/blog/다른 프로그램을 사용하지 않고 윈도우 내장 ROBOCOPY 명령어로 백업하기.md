@@ -3,6 +3,7 @@ kind: article
 title: 다른 프로그램을 사용하지 않고 윈도우 내장 ROBOCOPY 명령어로 백업하기
 author: mychatterbox
 pubDate: 2024-05-25
+updatedDate: 2026-06-05
 slug: robocopy-backup
 featured: false
 draft: false
