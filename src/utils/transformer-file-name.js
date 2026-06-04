@@ -3,6 +3,9 @@ export const transformerFileName = ({ className = "code-file-label" } = {}) => (
   pre(node) {
     const raw = this.options?.meta?.__raw || node.meta || "";
     
+    const isExpanded = /\bexpanded\b/.test(raw);
+    const cleanedRaw = raw.replace(/\bexpanded\b/g, "").trim();
+
     const patterns = [
       /(?:file|filename|title)=["']([^"']+)["']/,
       /(?:file|filename|title)=([^\s]+)/,
@@ -11,7 +14,7 @@ export const transformerFileName = ({ className = "code-file-label" } = {}) => (
 
     let file = "";
     for (const pattern of patterns) {
-      const match = raw.match(pattern);
+      const match = cleanedRaw.match(pattern);
       if (match && match[1]) {
         file = match[1];
         break;
@@ -37,7 +40,8 @@ export const transformerFileName = ({ className = "code-file-label" } = {}) => (
       properties: { 
         className: ["code-block-wrapper"],
         "data-file": file || "",
-style: node.properties.style,
+        "data-expanded": isExpanded ? "true" : "false",
+        style: node.properties.style,
       },
       children: children,
     };

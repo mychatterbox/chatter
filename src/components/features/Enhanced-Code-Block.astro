@@ -143,13 +143,17 @@
         var lines = pre.querySelectorAll(".line").length;
         if (lines <= 20) continue;
 
-        wrapper.classList.add("is-collapsed");
+        var isExpanded = wrapper.getAttribute("data-expanded") === "true";
+
+        if (!isExpanded) {
+          wrapper.classList.add("is-collapsed");
+        }
 
         var button = document.createElement("button");
         button.type = "button";
         button.className = "code-toggle-button";
-        button.setAttribute("aria-expanded", "false");
-        button.setAttribute("aria-label", "코드 펼치기");
+        button.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+        button.setAttribute("aria-label", isExpanded ? "코드 접기" : "코드 펼치기");
         button.innerHTML = toggleSvg;
 
         wrapper.appendChild(button);
