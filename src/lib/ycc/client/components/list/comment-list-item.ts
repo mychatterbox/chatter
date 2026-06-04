@@ -117,7 +117,7 @@ export class CommentListItem extends LitElement {
       }
 .comment-id {
   display: none;
-  // font-size: 0.7em;
+  font-size: 0.9em;
   font-family: var(--ycc-font-monospace);
 }
 .header:hover .comment-id {
