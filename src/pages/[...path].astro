@@ -118,7 +118,7 @@ if (type === "post" && entry) {
               {title}
             </h1>
 
-            <div class="article-meta text-small text-muted flex-wrap">
+            <div class="article-meta text-small text-muted flex-wrap" data-pagefind-ignore>
               {kind === "article" && (
                 <a href="/kind/article" class="link-article">
                   Article
@@ -144,7 +144,6 @@ if (type === "post" && entry) {
 
               <div
                 class="comment-count-wrapper"
-                data-pagefind-ignore
                 data-post-id={entry.id}
                 style="display: none;"
               >
@@ -168,6 +167,17 @@ if (type === "post" && entry) {
 
               {isDraft && <div class="text-draft">_____ Draft _____</div>}
             </div>
+            {/* pagefind meta: 검색 결과에 날짜/kind 표시를 위해 인덱싱 */}
+            <span
+              style="display:none"
+              data-pagefind-meta={`date:${updatedDate && pubDate && updatedDate.getTime() !== pubDate.getTime() ? `${pubDate.toISOString().slice(0, 10)} · ${updatedDate.toISOString().slice(0, 10)}` : pubDate?.toISOString().slice(0, 10)}`}
+            />
+            {kind && (
+              <span
+                style="display:none"
+                data-pagefind-meta={`kind:${kind}`}
+              />
+            )}
           </div>
           <div class="article-body">
             {Content ? (
