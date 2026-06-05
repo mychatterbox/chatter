@@ -1,10 +1,14 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "src",
     "paths": {
-      "@/*": ["./*"],
-      "@ziteh/yangchun-comment-shared": ["lib/ycc/shared/index.ts"]
+      "@/*": ["./src/*"],
+      "assets/*": ["./src/assets/*"],
+      "components/*": ["./src/components/*"],
+      "config/*": ["./src/config/*"],
+      "lib/*": ["./src/lib/*"],
+      "utils/*": ["./src/utils/*"],
+      "@ziteh/yangchun-comment-shared": ["./src/lib/ycc/shared/index.ts"]
     },
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
