@@ -346,14 +346,14 @@ window.openSearchModal = async function () {
   backdrop.classList.remove("hidden");
   
   // 1. 기존 스타일 저장
-  previousOverflow = document.body.style.overflow;
-  previousPaddingRight = document.body.style.paddingRight;
+  // previousOverflow = document.body.style.overflow;
+  // previousPaddingRight = document.body.style.paddingRight;
 
-  // 2. 스크롤바 너비 계산 및 레이아웃 밀림 방지
-  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-  if (scrollbarWidth > 0) {
-    document.body.style.paddingRight = scrollbarWidth + "px";
-  }
+  // // 2. 스크롤바 너비 계산 및 레이아웃 밀림 방지
+  // const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  // if (scrollbarWidth > 0) {
+  //   document.body.style.paddingRight = scrollbarWidth + "px";
+  // }
 
   // 3. 스크롤 잠금
   document.body.style.overflow = "hidden";
@@ -377,7 +377,7 @@ window.openSearchModal = async function () {
 
       backdrop.classList.add("hidden");
         document.body.style.overflow = previousOverflow;
-  document.body.style.paddingRight = previousPaddingRight;
+  // document.body.style.paddingRight = previousPaddingRight;
 
       input.innerHTML = "";
       resultsContainer.innerHTML = "";
@@ -522,11 +522,13 @@ window.openSearchModal = async function () {
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
+    background-color: transparent !important;
+    z-index: 99999;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding-top: var(--spacing-20, 5rem);
+    backdrop-filter: blur(1px);
   }
 
   .search-modal-content {
