@@ -59,6 +59,11 @@
   scrollbar-color: oklch(0.5 0 0) transparent;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
+
 /* ============================================
     Base Styles
     ============================================ */
@@ -577,9 +582,11 @@ pre code {
 
 .theme-toggle-container {
   position: fixed;
-  right: 1rem;
+  top: var(--spacing-5);
+  right: var(--spacing-4);
   display: flex;
-  z-index: 5;
+  z-index: 60;
+  align-items: center;
 }
 
 .theme-toggle {
