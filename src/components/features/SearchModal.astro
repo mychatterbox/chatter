@@ -345,19 +345,6 @@ let previousPaddingRight = "";
 window.openSearchModal = async function () {
   backdrop.classList.remove("hidden");
   
-  // 1. 기존 스타일 저장
-  // previousOverflow = document.body.style.overflow;
-  // previousPaddingRight = document.body.style.paddingRight;
-
-  // // 2. 스크롤바 너비 계산 및 레이아웃 밀림 방지
-  // const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-  // if (scrollbarWidth > 0) {
-  //   document.body.style.paddingRight = scrollbarWidth + "px";
-  // }
-
-  // 3. 스크롤 잠금
-  document.body.style.overflow = "hidden";
-
       if (!pagefindModule) {
         try {
           pagefindModule = await import("/pagefind/pagefind.js");
@@ -370,14 +357,13 @@ window.openSearchModal = async function () {
     };
 
     function closeModal() {
-  const backdrop = document.getElementById("search-modal-backdrop");
+      const backdrop = document.getElementById("search-modal-backdrop");
       const input = document.getElementById("pf-custom-input");
       const resultsContainer = document.getElementById("pf-custom-results");
       const countEl = document.getElementById("pf-results-count");
 
       backdrop.classList.add("hidden");
-        document.body.style.overflow = previousOverflow;
-  // document.body.style.paddingRight = previousPaddingRight;
+      document.body.style.overflow = previousOverflow;
 
       input.innerHTML = "";
       resultsContainer.innerHTML = "";
@@ -399,21 +385,18 @@ window.openSearchModal = async function () {
     let lastQuery = "";
 
     input.addEventListener("input", () => {
-      // 사용자가 실제 입력한 원본 텍스트
       const rawQuery = input.textContent || "";
 
       if (rawQuery.trim() === "") {
         input.innerHTML = "";
       }
 
-      // 검색용 정규화
       const processedQuery = rawQuery
         .normalize("NFKC")
         .replace(/[<>]/g, "")
         .replace(/\s+/g, " ")
         .trim();
 
-      // 동일 검색어면 재검색 방지
       if (processedQuery === lastQuery) {
         return;
       }
@@ -439,25 +422,21 @@ window.openSearchModal = async function () {
       input.dispatchEvent(new Event("input"));
     });
 
-    // 2. 가상 탐색 (포커스 이동 없는 방식)
     input.addEventListener("keydown", (e) => {
-      // 1. 모달이 열려있을 때만 동작
 
-  if (e.key === "Tab") {
-    e.preventDefault();
-    const links = [...resultsContainer.querySelectorAll("a.pf-result-link")];
-    if (links.length === 0) return;
+      if (e.key === "Tab") {
+      e.preventDefault();
+      const links = [...resultsContainer.querySelectorAll("a.pf-result-link")];
+        if (links.length === 0) return;
 
-    if (e.shiftKey) {
-      // 역방향 순환: -1일 경우(입력창 상태) 마지막 항목으로, 아니면 인덱스 감소
-      activeIndex = (activeIndex <= 0) ? links.length - 1 : activeIndex - 1;
-    } else {
-      // 순방향 순환: 마지막 항목일 경우 첫 번째(0)로, 아니면 인덱스 증가
-      activeIndex = (activeIndex >= links.length - 1) ? 0 : activeIndex + 1;
-    }
+        if (e.shiftKey) {
+          activeIndex = (activeIndex <= 0) ? links.length - 1 : activeIndex - 1;
+        } else {
+          activeIndex = (activeIndex >= links.length - 1) ? 0 : activeIndex + 1;
+        }
     
-    updateVisualSelection(links);
-  }
+      updateVisualSelection(links);
+      }
 
       if (
         document
@@ -466,12 +445,10 @@ window.openSearchModal = async function () {
       )
         return;
 
-      // 2. 방향키나 엔터키라면 기본 동작(커서 이동, 줄바꿈 등)을 무조건 차단
       if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
         e.preventDefault();
       }
 
-      // 3. 로직 처리
       const links = [...resultsContainer.querySelectorAll("a.pf-result-link")];
 
       if (e.key === "Enter") {
@@ -492,7 +469,6 @@ window.openSearchModal = async function () {
       links.forEach((l, i) => {
         if (i === activeIndex) {
           l.parentElement.classList.add("selected");
-          // scrollIntoView 가 가장 가까운 스크롤 가능한 조상(.search-modal-content)을 자동으로 찾아 스크롤
           l.parentElement.scrollIntoView({ block: "nearest" });
         } else {
           l.parentElement.classList.remove("selected");
@@ -506,8 +482,6 @@ window.openSearchModal = async function () {
         renderNextBatch(currentSearchId, resultsContainer, closeModal);
       }
     }
-
-    // 모달 열기/닫기 로직 내에서 input.focus() 호출 유지
   }
 
   document.addEventListener("astro:page-load", initPagefindComponentModal);
@@ -522,7 +496,6 @@ window.openSearchModal = async function () {
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    background-color: transparent !important;
     z-index: 99999;
     display: flex;
     justify-content: center;
@@ -545,6 +518,7 @@ window.openSearchModal = async function () {
     scrollbar-color: var(--color-border) transparent;
     display: flex;
     flex-direction: column;
+     overscroll-behavior: contain;
   }
 
   .dark .search-modal-content {
@@ -579,6 +553,7 @@ window.openSearchModal = async function () {
     gap: var(--spacing-2);
     border: none;
     margin-top: var(--spacing-1);
+    scroll-padding-block-end: var(--spacing-1);
   }
 
   .pf-custom-results.pf-results-loading {
