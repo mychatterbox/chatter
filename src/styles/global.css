@@ -54,7 +54,7 @@
   --color-code-bg: oklch(0.75 0 0);
   --color-code-text: oklch(0 0 0);
   --color-thead-bg: oklch(0.25 0 0);
-  --color-select-item-hover-bg: oklch(0.3 0 0);
+  --color-select-item-hover-bg: oklch(0.25 0 0);
   --figcaption-bg: oklch(0.25 0 0);
   scrollbar-color: oklch(0.5 0 0) transparent;
 }
