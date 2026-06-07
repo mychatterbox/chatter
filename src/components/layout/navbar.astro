@@ -7,7 +7,6 @@ import InfoSolid from "../../icons/hero/solid/information-circle.svg";
 import InfoOutline from "../../icons/hero/outline/information-circle.svg";
 import TagsSolid from "../../icons/hero/solid/tags.svg";
 import TagsOutline from "../../icons/hero/outline/tags.svg";
-import SearchSolid from "../../icons/hero/solid/search.svg";
 import SearchOutline from "../../icons/hero/outline/search.svg";
 import ThemeToggle from "../features/colorscheme/ThemeToggle.astro";
 import FontChange from "../features/font-change-preview.astro";
@@ -31,12 +30,19 @@ import FontChange from "../features/font-change-preview.astro";
         <div class="navbar-icon-svg">
           {Astro.url.pathname === "/tag" || Astro.url.pathname === "/tag/" ? <TagsSolid /> : <TagsOutline />}
         </div>
-      </a>    
-      <a aria-label="search" href="/search" class="navbar-icon">
+      </a>
+
+      <!-- 검색: 페이지 이동 대신 모달 오픈 -->
+      <button
+        aria-label="검색 열기 (Cmd+K)"
+        class="navbar-icon navbar-search-btn"
+        onclick="window.openSearchModal && window.openSearchModal()"
+      >
         <div class="navbar-icon-svg">
-          {Astro.url.pathname.startsWith("/search") ? <SearchSolid /> : <SearchOutline />}
+          <SearchOutline />
         </div>
-      </a>            
+      </button>
+
       <a aria-label="Site Info" href="/site-info" class="navbar-icon">
         <div class="navbar-icon-svg">
           {Astro.url.pathname.startsWith("/site-info") ? <InfoSolid /> : <InfoOutline />}
@@ -49,3 +55,22 @@ import FontChange from "../features/font-change-preview.astro";
     </div>
   </header>
 </div>
+
+<style>
+  /* <a>와 동일한 모양을 유지하면서 button 기본 스타일 제거 */
+  .navbar-search-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    /* navbar-icon 스타일이 이미 적용됨 */
+  }
+
+  /*
+    포커스 링은 키보드 탐색(:focus-visible)일 때만 표시.
+    마우스 클릭이나 dialog 닫힘 후 자동 포커스 복원 시에는 숨김.
+  */
+  .navbar-search-btn:focus:not(:focus-visible) {
+    outline: none;
+  }
+</style>
