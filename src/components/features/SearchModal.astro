@@ -507,13 +507,13 @@ window.openSearchModal = async function () {
   .search-modal-content {
     background-color: var(--color-bg);
     border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
     width: calc(100% - var(--spacing-4) * 2);
     max-width: var(--breakpoint-md);
     max-height: 80vh;
     overflow-y: auto;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
-    padding: var(--spacing-2) var(--spacing-2) var(--spacing-5) var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-2) var(--spacing-2) var(--spacing-2);
     scrollbar-width: thin;
     scrollbar-color: var(--color-border) transparent;
     display: flex;
@@ -534,11 +534,11 @@ window.openSearchModal = async function () {
 
   .pf-custom-input {
     width: 100%;
-    padding: 12px 16px;
-    border-radius: 8px;
+    padding: 3px 16px;
+    border-radius: 0.4rem;
     border: 2px solid var(--color-border);
     outline: none;
-    margin-bottom: var(--spacing-2);
+    /* margin-bottom: var(--spacing-2); */
   }
 
   .pf-custom-input:focus {
@@ -552,7 +552,7 @@ window.openSearchModal = async function () {
     flex-direction: column;
     gap: var(--spacing-2);
     border: none;
-    margin-top: var(--spacing-1);
+    /* margin-top: var(--spacing-1); */
     scroll-padding-block-end: var(--spacing-1);
   }
 
@@ -570,7 +570,7 @@ window.openSearchModal = async function () {
 
   .pf-result-item {
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 0.3rem;
     cursor: pointer;
     background-color: var(--color-bg);
     border: 1px solid var(--color-border);
@@ -638,5 +638,12 @@ window.openSearchModal = async function () {
   .pf-custom-input:empty::before {
     content: attr(data-placeholder);
     pointer-events: none;
+  }
+  
+  .pf-results-count
+  {
+    margin-top: var(--spacing-1);
+    font-size: 0.88em;
+    color: var(--color-text-muted);
   }
 </style>
