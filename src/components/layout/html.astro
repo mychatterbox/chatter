@@ -6,6 +6,7 @@ import "../../styles/callouts.css";
 import { ClientRouter } from "astro:transitions";
 import { SITE_OG_IMAGE, SITE_NAME } from "../../config/site";
 import EnhancedCodeBlock from "../features/Enhanced-Code-Block.astro";
+import SearchModal from "components/features/SearchModal.astro";
 
 export interface Props {
   title: string;
@@ -109,5 +110,6 @@ const canonicalURL = new URL(
   <body>
     <slot />
     <EnhancedCodeBlock />
+    <SearchModal />
   </body>
 </html>

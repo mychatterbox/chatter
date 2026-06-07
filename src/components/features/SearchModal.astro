@@ -1,0 +1,665 @@
+<div id="search-modal-backdrop" class="search-modal-backdrop hidden">
+  <div class="search-modal-content">
+    <div class="pagefind-component-search">
+      <div
+        id="pf-custom-input"
+        contenteditable="plaintext-only"
+        role="textbox"
+        class="pf-custom-input"
+        data-placeholder="search..."
+      >
+      </div>
+      <div
+        id="pf-results-count"
+        class="pf-results-count"
+        style="display: none;"
+      >
+      </div>
+      <div id="pf-custom-results" class="pf-custom-results"></div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const PF_PAGE_SIZE = 20;
+
+  let activeIndex = -1;
+  let pagefindModule = null,
+    currentSearchId = 0,
+    allResults = [],
+    loadedCount = 0,
+    isLoading = false,
+    sentinel = null,
+    io = null,
+    _openerElement = null,
+    currentQuery = "";
+
+  function cleanExcerptTitle(excerptHtml, titleText) {
+    if (!excerptHtml || !titleText) return excerptHtml;
+
+    const normalize = (str) => str.trim().replace(/\s+/g, " ");
+    const normalizedTitle = normalize(titleText);
+
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = excerptHtml;
+    const pureExcerptText = normalize(tempDiv.textContent);
+
+    let matchText = "";
+    if (pureExcerptText.includes(normalizedTitle)) {
+      matchText = normalizedTitle;
+    } else {
+      for (let i = 0; i < normalizedTitle.length - 6; i++) {
+        const chunk = normalizedTitle.slice(i);
+        if (pureExcerptText.startsWith(chunk)) {
+          matchText = chunk;
+          break;
+        }
+      }
+    }
+
+    if (matchText) {
+      let html = excerptHtml.trim();
+      let charCount = 0,
+        cutIndex = 0,
+        inTag = false;
+
+      for (let i = 0; i < html.length; i++) {
+        if (html[i] === "<") {
+          inTag = true;
+          continue;
+        }
+
+        if (html[i] === ">") {
+          inTag = false;
+          continue;
+        }
+
+        if (!inTag) {
+          charCount++;
+          if (charCount >= matchText.length) {
+            cutIndex = i + 1;
+            break;
+          }
+        }
+      }
+
+      return html.slice(cutIndex).replace(/^[\s.…·。/,-]+/, "");
+    }
+
+    const firstSentenceMatch = pureExcerptText.match(
+      /^(.+?)(?:[.。](?:\s|$)|$)/s,
+    );
+
+    const firstSentence = firstSentenceMatch
+      ? normalize(firstSentenceMatch[1])
+      : "";
+
+    if (firstSentence.length > 5 && normalizedTitle.includes(firstSentence)) {
+      const raw = firstSentenceMatch[0];
+      const escaped = raw.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+
+      return excerptHtml
+        .replace(new RegExp("^[\\s.…·]*" + escaped, "s"), "")
+        .replace(/^[\s.…·。/,-]+/, "");
+    }
+
+    return excerptHtml;
+  }
+
+  // ── 발췌문에서 해시태그 추출 및 제거 ──────────────────────────────────────
+  function extractAndRemoveHashtags(excerptHtml) {
+    if (!excerptHtml) {
+      return { tags: [], cleanHtml: excerptHtml };
+    }
+
+    const tmp = document.createElement("div");
+    tmp.innerHTML = excerptHtml;
+
+    const plainText = tmp.textContent;
+
+    const tags = [...plainText.matchAll(/#([\p{L}\p{N}_]+)/gu)].map(
+      (m) => m[1],
+    );
+
+    if (tags.length === 0) {
+      return { tags: [], cleanHtml: excerptHtml };
+    }
+
+    let cleanHtml = excerptHtml;
+
+    for (const tag of tags) {
+      const escaped = tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+      cleanHtml = cleanHtml.replace(
+        new RegExp(`#<mark[^>]*>${escaped}<\/mark>\\.?`, "gu"),
+        "",
+      );
+
+      cleanHtml = cleanHtml.replace(new RegExp(`#${escaped}\\.?`, "gu"), "");
+    }
+
+    cleanHtml = cleanHtml.trim();
+
+    return { tags, cleanHtml };
+  }
+
+  // ── 결과 엘리먼트 생성 ─────────────────────────────────────────────────────
+  function createResultElement(data, closeModal) {
+    const rawTitle = data.meta.title || "제목 없음";
+    const rawExcerpt = data.excerpt || "";
+    const metaDate = data.meta.date || "";
+    const metaKind = data.meta.kind || "";
+    const url = (data.url || "").replace(/\.html$/, "");
+
+    const cleanedExcerpt = cleanExcerptTitle(rawExcerpt, rawTitle);
+
+    const { tags, cleanHtml: finalExcerpt } =
+      extractAndRemoveHashtags(cleanedExcerpt);
+
+    const textCheck = document.createElement("div");
+    textCheck.innerHTML = finalExcerpt;
+
+    const hasContent = /[\p{L}\p{N}]/u.test(textCheck.textContent);
+
+    let metaHtml = "";
+
+    if (metaDate || metaKind || tags.length > 0) {
+      const kindBadge = metaKind
+        ? `<span class="pagefind-meta-kind pagefind-meta-${metaKind.toLowerCase()}">
+               ${metaKind.charAt(0).toUpperCase() + metaKind.slice(1)}
+             </span>`
+        : "";
+
+      const dateSpan = metaDate
+        ? `<span class="pagefind-meta-date">${metaDate}</span>`
+        : "";
+
+      const tagSpans = tags
+        .map((t) => {
+          if (currentQuery) {
+            const esc = currentQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+            const highlighted = t.replace(
+              new RegExp(`(${esc})`, "gi"),
+              "<mark>$1</mark>",
+            );
+
+            return `<span class="pf-meta-tag">#${highlighted}</span>`;
+          }
+
+          return `<span class="pf-meta-tag">#${t}</span>`;
+        })
+        .join("");
+
+      metaHtml = `
+          <div class="pagefind-result-meta">
+            ${kindBadge}
+            ${dateSpan}
+            ${tagSpans}
+          </div>
+        `;
+    }
+
+    const item = document.createElement("div");
+
+    item.className = "pf-result-item";
+
+    item.innerHTML = `
+  <a href="${url}" class="pf-result-link" tabindex="-1">
+    <div class="pf-result-title">${rawTitle}</div>
+    ${metaHtml}
+    ${hasContent ? `<div class="pf-result-excerpt">${finalExcerpt}</div>` : ""}
+  </a>
+`;
+
+    item.querySelector("a").addEventListener("click", closeModal);
+
+    return item;
+  }
+
+  // ── 다음 배치 렌더링 ────────────────────────────────────────────────────────
+  async function renderNextBatch(searchId, resultsContainer, closeModal) {
+    if (isLoading || loadedCount >= allResults.length) return;
+
+    isLoading = true;
+    try {
+      const batch = allResults.slice(loadedCount, loadedCount + PF_PAGE_SIZE);
+      const fragment = document.createDocumentFragment();
+
+      for (let i = 0; i < batch.length; i++) {
+        if (searchId !== currentSearchId) return;
+        try {
+          const data = await batch[i].data();
+          fragment.appendChild(createResultElement(data, closeModal));
+        } catch (e) {
+          // console.error(`${i}번째 데이터 추출 실패:`, e);
+        }
+      }
+
+      if (searchId !== currentSearchId) return;
+
+      loadedCount += batch.length;
+
+      if (sentinel && sentinel.parentNode === resultsContainer) {
+        resultsContainer.insertBefore(fragment, sentinel);
+      } else {
+        resultsContainer.appendChild(fragment);
+      }
+
+      if (loadedCount >= allResults.length) {
+        sentinel?.remove();
+        sentinel = null;
+        io?.disconnect();
+        io = null;
+      }
+    } finally {
+      isLoading = false;
+    }
+  }
+
+async function handleSearch(query, resultsContainer, closeModal) {
+  const countEl = document.getElementById("pf-results-count");
+  const searchId = ++currentSearchId;
+
+  activeIndex = -1;
+
+  // 이전 검색 결과 및 상태 정리
+  io?.disconnect();
+  io = null;
+  sentinel?.remove();
+  sentinel = null;
+  allResults = [];
+  loadedCount = 0;
+  isLoading = false;
+  currentQuery = query;
+
+  if (!query) {
+    resultsContainer.innerHTML = "";
+    countEl.style.display = "none";
+    countEl.innerText = "";
+    return;
+  }
+  if (!pagefindModule) return;
+
+  const search = await pagefindModule.search(query);
+  if (searchId !== currentSearchId) return;
+
+  resultsContainer.innerHTML = "";
+
+  if (search.results.length === 0) {
+    resultsContainer.innerHTML = `<div class="pf-no-results">"${query}"에 대한 검색 결과가 없습니다.</div>`;
+    countEl.style.display = "none";
+    return;
+  }
+
+  allResults = search.results;
+  countEl.innerText = `검색 결과 : ${allResults.length}개`;
+  countEl.style.display = "block";
+
+  await renderNextBatch(searchId, resultsContainer, closeModal);
+
+  if (allResults.length > PF_PAGE_SIZE) {
+    sentinel = document.createElement("div");
+    sentinel.className = "pf-sentinel";
+    resultsContainer.appendChild(sentinel);
+    initInfiniteScroll(resultsContainer, closeModal);
+  }
+}
+
+  function initInfiniteScroll(resultsContainer, closeModal) {
+    // 1. IntersectionObserver 설정
+    const options = {
+      root: resultsContainer.closest(".search-modal-content"),
+      rootMargin: "200px",
+      threshold: 0,
+    };
+
+    io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !isLoading) {
+        // 2. sentinel이 화면에 보이면 다음 배치 렌더링
+        renderNextBatch(currentSearchId, resultsContainer, closeModal);
+      }
+    }, options);
+
+    // 3. sentinel 관찰 시작
+    if (sentinel) {
+      io.observe(sentinel);
+    }
+  }
+
+  function initPagefindComponentModal() {
+    const backdrop = document.getElementById("search-modal-backdrop");
+    const input = document.getElementById("pf-custom-input");
+    const resultsContainer = document.getElementById("pf-custom-results");
+    if (!backdrop || !input || !resultsContainer) return;
+
+    backdrop.addEventListener("click", (e) => {
+      if (e.target === backdrop) {
+        closeModal();
+      }
+    });
+
+let previousOverflow = "";
+let previousPaddingRight = "";
+
+window.openSearchModal = async function () {
+  backdrop.classList.remove("hidden");
+  
+  // 1. 기존 스타일 저장
+  previousOverflow = document.body.style.overflow;
+  previousPaddingRight = document.body.style.paddingRight;
+
+  // 2. 스크롤바 너비 계산 및 레이아웃 밀림 방지
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  if (scrollbarWidth > 0) {
+    document.body.style.paddingRight = scrollbarWidth + "px";
+  }
+
+  // 3. 스크롤 잠금
+  document.body.style.overflow = "hidden";
+
+      if (!pagefindModule) {
+        try {
+          pagefindModule = await import("/pagefind/pagefind.js");
+          pagefindModule.init();
+        } catch (err) {
+          console.error("Pagefind 로드 실패:", err);
+        }
+      }
+      setTimeout(() => input.focus(), 50);
+    };
+
+    function closeModal() {
+  const backdrop = document.getElementById("search-modal-backdrop");
+      const input = document.getElementById("pf-custom-input");
+      const resultsContainer = document.getElementById("pf-custom-results");
+      const countEl = document.getElementById("pf-results-count");
+
+      backdrop.classList.add("hidden");
+        document.body.style.overflow = previousOverflow;
+  document.body.style.paddingRight = previousPaddingRight;
+
+      input.innerHTML = "";
+      resultsContainer.innerHTML = "";
+      countEl.style.display = "none";
+      countEl.innerText = "";
+
+      activeIndex = -1;
+      lastQuery = "";
+      allResults = [];
+      loadedCount = 0;
+
+      io?.disconnect();
+      io = null;
+      sentinel?.remove();
+      sentinel = null;
+    }
+
+    // 1. 입력 처리
+    let lastQuery = "";
+
+    input.addEventListener("input", () => {
+      // 사용자가 실제 입력한 원본 텍스트
+      const rawQuery = input.textContent || "";
+
+      if (rawQuery.trim() === "") {
+        input.innerHTML = "";
+      }
+
+      // 검색용 정규화
+      const processedQuery = rawQuery
+        .normalize("NFKC")
+        .replace(/[<>]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      // 동일 검색어면 재검색 방지
+      if (processedQuery === lastQuery) {
+        return;
+      }
+
+      lastQuery = processedQuery;
+
+      clearTimeout(window.searchDebounce);
+
+      window.searchDebounce = setTimeout(() => {
+        handleSearch(processedQuery, resultsContainer, closeModal);
+      }, 200);
+    });
+
+    input.addEventListener("paste", (e) => {
+      e.preventDefault();
+      const text = e.clipboardData.getData("text/plain");
+      // execCommand 대신:
+      const selection = window.getSelection();
+      if (!selection.rangeCount) return;
+      selection.deleteFromDocument();
+      selection.getRangeAt(0).insertNode(document.createTextNode(text));
+      selection.collapseToEnd();
+      input.dispatchEvent(new Event("input"));
+    });
+
+    // 2. 가상 탐색 (포커스 이동 없는 방식)
+    input.addEventListener("keydown", (e) => {
+      // 1. 모달이 열려있을 때만 동작
+
+  if (e.key === "Tab") {
+    e.preventDefault();
+    const links = [...resultsContainer.querySelectorAll("a.pf-result-link")];
+    if (links.length === 0) return;
+
+    if (e.shiftKey) {
+      // 역방향 순환: -1일 경우(입력창 상태) 마지막 항목으로, 아니면 인덱스 감소
+      activeIndex = (activeIndex <= 0) ? links.length - 1 : activeIndex - 1;
+    } else {
+      // 순방향 순환: 마지막 항목일 경우 첫 번째(0)로, 아니면 인덱스 증가
+      activeIndex = (activeIndex >= links.length - 1) ? 0 : activeIndex + 1;
+    }
+    
+    updateVisualSelection(links);
+  }
+
+      if (
+        document
+          .getElementById("search-modal-backdrop")
+          .classList.contains("hidden")
+      )
+        return;
+
+      // 2. 방향키나 엔터키라면 기본 동작(커서 이동, 줄바꿈 등)을 무조건 차단
+      if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
+        e.preventDefault();
+      }
+
+      // 3. 로직 처리
+      const links = [...resultsContainer.querySelectorAll("a.pf-result-link")];
+
+      if (e.key === "Enter") {
+        if (activeIndex >= 0) links[activeIndex]?.click();
+      } else if (e.key === "ArrowDown") {
+        if (links.length === 0) return;
+        activeIndex = Math.min(activeIndex + 1, links.length - 1);
+        updateVisualSelection(links);
+      } else if (e.key === "ArrowUp") {
+        activeIndex = Math.max(activeIndex - 1, -1);
+        updateVisualSelection(links);
+      } else if (e.key === "Escape") {
+        closeModal();
+      }
+    });
+
+    function updateVisualSelection(links) {
+      links.forEach((l, i) => {
+        if (i === activeIndex) {
+          l.parentElement.classList.add("selected");
+          // scrollIntoView 가 가장 가까운 스크롤 가능한 조상(.search-modal-content)을 자동으로 찾아 스크롤
+          l.parentElement.scrollIntoView({ block: "nearest" });
+        } else {
+          l.parentElement.classList.remove("selected");
+        }
+      });
+
+      if (activeIndex === -1) {
+        input.focus();
+      }
+      if (activeIndex === links.length - 1 && loadedCount < allResults.length) {
+        renderNextBatch(currentSearchId, resultsContainer, closeModal);
+      }
+    }
+
+    // 모달 열기/닫기 로직 내에서 input.focus() 호출 유지
+  }
+
+  document.addEventListener("astro:page-load", initPagefindComponentModal);
+</script>
+
+<style is:global>
+  .search-modal-backdrop.hidden {
+    display: none !important;
+  }
+
+  .search-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: var(--spacing-20, 5rem);
+  }
+
+  .search-modal-content {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    width: calc(100% - var(--spacing-4) * 2);
+    max-width: var(--breakpoint-md);
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+    padding: var(--spacing-2) var(--spacing-2) var(--spacing-5) var(--spacing-2);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dark .search-modal-content {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  }
+
+  .pagefind-component-search {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .pf-custom-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 2px solid var(--color-border);
+    outline: none;
+    margin-bottom: var(--spacing-2);
+  }
+
+  .pf-custom-input:focus {
+    border-color: var(--color-link-article);
+  }
+
+  .pf-custom-results {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    border: none;
+    margin-top: var(--spacing-1);
+  }
+
+  .pf-custom-results.pf-results-loading {
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .pf-sentinel {
+    height: 20px;
+    width: 100%;
+    background-color: transparent;
+    flex-shrink: 0;
+  }
+
+  .pf-result-item {
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+  }
+
+  .pf-result-item:hover {
+    background-color: var(--color-select-item-hover-bg);
+  }
+
+  .pf-result-link {
+    display: block;
+    text-decoration: none !important;
+    outline: none;
+  }
+
+  .pf-result-item:focus-within {
+    background-color: var(--color-select-item-hover-bg);
+  }
+
+  .pf-result-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+  }
+
+  .pagefind-result-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2, 0.5rem);
+    font-size: 0.85rem;
+    margin-bottom: var(--spacing-2, 0.5rem);
+    color: var(--color-text-muted);
+  }
+
+  .pf-meta-tag mark {
+    background-color: transparent;
+    color: var(--mark-text-color);
+    font-weight: 600;
+    opacity: 1;
+  }
+
+  .pf-result-excerpt {
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .pf-result-excerpt mark {
+    background-color: transparent;
+    color: var(--mark-text-color);
+    font-weight: 600;
+  }
+
+  .pf-no-results {
+    padding: var(--spacing-4);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+
+  .pf-result-item.selected {
+    background-color: var(--color-select-item-hover-bg);
+    border-color: var(--color-link-article);
+  }
+
+  .pf-custom-input:empty::before {
+    content: attr(data-placeholder);
+    pointer-events: none;
+  }
+</style>
