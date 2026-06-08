@@ -105,139 +105,134 @@
 
     return excerptHtml;
   }
+  function createResultElement(
+    mainSub,
+    title,
+    url,
+    closeModal,
+    isHeaderOnly = false,
+    meta = {},
+  ) {
+    const finalUrl = (url || "").replace(/\.html$/, "");
 
-  // ── 발췌문에서 해시태그 추출 및 제거 ──────────────────────────────────────
-  function extractAndRemoveHashtags(excerptHtml) {
-    if (!excerptHtml) {
-      return { tags: [], cleanHtml: excerptHtml };
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = mainSub.excerpt || "";
+    let excerptHtml = tempDiv.innerHTML.trim();
+
+    const dateStr = meta.date ? `Article ${meta.date}` : "";
+
+    let tagStr = "";
+    if (meta.tags) {
+      tagStr = meta.tags
+        .split(/,\s*|#/)
+        .map((t) => t.trim())
+        .filter((t) => t.length > 0)
+        .map(
+          (t) => `
+      <span class="link-tag">
+        <span class="tag-hash">#</span>${t}
+      </span>`,
+        )
+        .join(" ");
     }
 
-    const tmp = document.createElement("div");
-    tmp.innerHTML = excerptHtml;
-
-    const plainText = tmp.textContent;
-
-    const tags = [...plainText.matchAll(/#([\p{L}\p{N}_]+)/gu)].map(
-      (m) => m[1],
-    );
-
-    if (tags.length === 0) {
-      return { tags: [], cleanHtml: excerptHtml };
-    }
-
-    let cleanHtml = excerptHtml;
-
-    for (const tag of tags) {
-      const escaped = tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-      cleanHtml = cleanHtml.replace(
-        new RegExp(`#<mark[^>]*>${escaped}<\/mark>\\.?`, "gu"),
-        "",
-      );
-
-      cleanHtml = cleanHtml.replace(new RegExp(`#${escaped}\\.?`, "gu"), "");
-    }
-
-    cleanHtml = cleanHtml.trim();
-
-    return { tags, cleanHtml };
-  }
-
-  // ── 결과 엘리먼트 생성 ─────────────────────────────────────────────────────
-  function createResultElement(data, closeModal) {
-    const rawTitle = data.meta.title || "제목 없음";
-    const rawExcerpt = data.excerpt || "";
-    const metaDate = data.meta.date || "";
-    const metaKind = data.meta.kind || "";
-    const url = (data.url || "").replace(/\.html$/, "");
-
-    const cleanedExcerpt = cleanExcerptTitle(rawExcerpt, rawTitle);
-
-    const { tags, cleanHtml: finalExcerpt } =
-      extractAndRemoveHashtags(cleanedExcerpt);
-
-    const textCheck = document.createElement("div");
-    textCheck.innerHTML = finalExcerpt;
-
-    const hasContent = /[\p{L}\p{N}]/u.test(textCheck.textContent);
-
-    let metaHtml = "";
-
-    if (metaDate || metaKind || tags.length > 0) {
-      const kindBadge = metaKind
-        ? `<span class="pagefind-meta-kind pagefind-meta-${metaKind.toLowerCase()}">
-               ${metaKind.charAt(0).toUpperCase() + metaKind.slice(1)}
-             </span>`
+    const metaHtml =
+      dateStr || tagStr
+        ? `
+  <div class="pf-result-meta" style="display: flex; gap: 8px; align-items: center; margin-bottom: 4px;">
+    ${dateStr ? `<span class="pf-result-date">${dateStr}</span>` : ""} 
+    ${tagStr ? `<span class="pf-result-tags">${tagStr}</span>` : ""}
+  </div>`
         : "";
-
-      const dateSpan = metaDate
-        ? `<span class="pagefind-meta-date">${metaDate}</span>`
-        : "";
-
-      const tagSpans = tags
-        .map((t) => {
-          if (currentQuery) {
-            const esc = currentQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-            const highlighted = t.replace(
-              new RegExp(`(${esc})`, "gi"),
-              "<mark>$1</mark>",
-            );
-
-            return `<span class="pf-meta-tag">#${highlighted}</span>`;
-          }
-
-          return `<span class="pf-meta-tag">#${t}</span>`;
-        })
-        .join("");
-
-      metaHtml = `
-          <div class="pagefind-result-meta">
-            ${kindBadge}
-            ${dateSpan}
-            ${tagSpans}
-          </div>
-        `;
-    }
 
     const item = document.createElement("div");
-
     item.className = "pf-result-item";
-
     item.innerHTML = `
-  <a href="${url}" class="pf-result-link" tabindex="-1">
-    <div class="pf-result-title">${rawTitle}</div>
-    ${metaHtml}
-    ${hasContent ? `<div class="pf-result-excerpt">${finalExcerpt}</div>` : ""}
-  </a>
-`;
-
+    <a href="${finalUrl}" class="pf-result-link" tabindex="-1">
+      <div class="pf-result-title">${title}</div>
+      ${metaHtml}
+      ${!isHeaderOnly ? `<div class="pf-result-excerpt">${excerptHtml.substring(0, 150)}...</div>` : ""}
+    </a>
+  `;
     item.querySelector("a").addEventListener("click", closeModal);
-
     return item;
   }
 
-  // ── 다음 배치 렌더링 ────────────────────────────────────────────────────────
+  function createSubResultElement(sub, closeModal) {
+    const item = document.createElement("div");
+    item.className = "pf-result-item pf-sub-result-item";
+
+    const cleanedExcerpt = cleanExcerptTitle(
+      sub.excerpt || "",
+      sub.title || "",
+    );
+
+    item.innerHTML = `
+    <a href="${sub.url}" class="pf-result-link" tabindex="-1">
+      <div class="pf-sub-title"># ${sub.title}</div>
+      <div class="pf-sub-excerpt">${cleanedExcerpt}</div>
+    </a>
+  `;
+    item.querySelector("a").addEventListener("click", closeModal);
+    return item;
+  }
+
   async function renderNextBatch(searchId, resultsContainer, closeModal) {
     if (isLoading || loadedCount >= allResults.length) return;
 
     isLoading = true;
+    const batch = allResults.slice(loadedCount, loadedCount + PF_PAGE_SIZE);
+
     try {
-      const batch = allResults.slice(loadedCount, loadedCount + PF_PAGE_SIZE);
       const fragment = document.createDocumentFragment();
 
       for (let i = 0; i < batch.length; i++) {
         if (searchId !== currentSearchId) return;
         try {
           const data = await batch[i].data();
-          fragment.appendChild(createResultElement(data, closeModal));
+          const isHeaderMatch =
+            data.sub_results.length > 0 &&
+            data.sub_results[0].title !== data.meta.title;
+
+          if (isHeaderMatch) {
+            fragment.appendChild(
+              createResultElement(
+                data.sub_results[0],
+                data.meta.title,
+                data.url,
+                closeModal,
+                true,
+                data.meta,
+              ),
+            );
+            for (let j = 0; j < data.sub_results.length; j++) {
+              fragment.appendChild(
+                createSubResultElement(data.sub_results[j], closeModal),
+              );
+            }
+          } else {
+            fragment.appendChild(
+              createResultElement(
+                data.sub_results[0],
+                data.meta.title,
+                data.url,
+                closeModal,
+                false,
+                data.meta,
+              ),
+            );
+            for (let j = 1; j < data.sub_results.length; j++) {
+              fragment.appendChild(
+                createSubResultElement(data.sub_results[j], closeModal),
+              );
+            }
+          }
         } catch (e) {
-          // console.error(`${i}번째 데이터 추출 실패:`, e);
+          console.error("Batch item error:", e);
         }
       }
 
       if (searchId !== currentSearchId) return;
-
       loadedCount += batch.length;
 
       if (sentinel && sentinel.parentNode === resultsContainer) {
@@ -257,57 +252,70 @@
     }
   }
 
-async function handleSearch(query, resultsContainer, closeModal) {
-  const countEl = document.getElementById("pf-results-count");
-  const searchId = ++currentSearchId;
+  function extractManualSubResults(excerptHtml) {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = excerptHtml;
+    const subs = [];
+    const headers = tempDiv.querySelectorAll("h2, h3, h4");
+    headers.forEach((h) => {
+      subs.push({
+        title: h.textContent,
+        url: window.location.pathname + "#" + (h.id || ""),
+        excerpt: h.nextElementSibling ? h.nextElementSibling.textContent : "",
+      });
+    });
+    return subs;
+  }
 
-  activeIndex = -1;
+  async function handleSearch(query, resultsContainer, closeModal) {
+    const countEl = document.getElementById("pf-results-count");
+    const searchId = ++currentSearchId;
 
-  // 이전 검색 결과 및 상태 정리
-  io?.disconnect();
-  io = null;
-  sentinel?.remove();
-  sentinel = null;
-  allResults = [];
-  loadedCount = 0;
-  isLoading = false;
-  currentQuery = query;
+    activeIndex = -1;
 
-  if (!query) {
+    io?.disconnect();
+    io = null;
+    sentinel?.remove();
+    sentinel = null;
+    allResults = [];
+    loadedCount = 0;
+    isLoading = false;
+    currentQuery = query;
+
+    if (!query) {
+      resultsContainer.innerHTML = "";
+      countEl.style.display = "none";
+      countEl.innerText = "";
+      return;
+    }
+    if (!pagefindModule) return;
+
+    const search = await pagefindModule.search(query);
+    if (searchId !== currentSearchId) return;
+
     resultsContainer.innerHTML = "";
-    countEl.style.display = "none";
-    countEl.innerText = "";
-    return;
+
+    if (search.results.length === 0) {
+      resultsContainer.innerHTML = `<div class="pf-no-results">"${query}"에 대한 검색 결과가 없습니다.</div>`;
+      countEl.style.display = "none";
+      return;
+    }
+
+    allResults = search.results;
+    countEl.innerText = `검색 결과 : ${allResults.length} 페이지`;
+    countEl.style.display = "block";
+
+    await renderNextBatch(searchId, resultsContainer, closeModal);
+
+    if (allResults.length > PF_PAGE_SIZE) {
+      sentinel = document.createElement("div");
+      sentinel.className = "pf-sentinel";
+      resultsContainer.appendChild(sentinel);
+      initInfiniteScroll(resultsContainer, closeModal);
+    }
   }
-  if (!pagefindModule) return;
-
-  const search = await pagefindModule.search(query);
-  if (searchId !== currentSearchId) return;
-
-  resultsContainer.innerHTML = "";
-
-  if (search.results.length === 0) {
-    resultsContainer.innerHTML = `<div class="pf-no-results">"${query}"에 대한 검색 결과가 없습니다.</div>`;
-    countEl.style.display = "none";
-    return;
-  }
-
-  allResults = search.results;
-  countEl.innerText = `검색 결과 : ${allResults.length}개`;
-  countEl.style.display = "block";
-
-  await renderNextBatch(searchId, resultsContainer, closeModal);
-
-  if (allResults.length > PF_PAGE_SIZE) {
-    sentinel = document.createElement("div");
-    sentinel.className = "pf-sentinel";
-    resultsContainer.appendChild(sentinel);
-    initInfiniteScroll(resultsContainer, closeModal);
-  }
-}
 
   function initInfiniteScroll(resultsContainer, closeModal) {
-    // 1. IntersectionObserver 설정
     const options = {
       root: resultsContainer.closest(".search-modal-content"),
       rootMargin: "200px",
@@ -316,12 +324,10 @@ async function handleSearch(query, resultsContainer, closeModal) {
 
     io = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !isLoading) {
-        // 2. sentinel이 화면에 보이면 다음 배치 렌더링
         renderNextBatch(currentSearchId, resultsContainer, closeModal);
       }
     }, options);
 
-    // 3. sentinel 관찰 시작
     if (sentinel) {
       io.observe(sentinel);
     }
@@ -339,12 +345,12 @@ async function handleSearch(query, resultsContainer, closeModal) {
       }
     });
 
-let previousOverflow = "";
-let previousPaddingRight = "";
+    let previousOverflow = "";
+    let previousPaddingRight = "";
 
-window.openSearchModal = async function () {
-  backdrop.classList.remove("hidden");
-  
+    window.openSearchModal = async function () {
+      backdrop.classList.remove("hidden");
+
       if (!pagefindModule) {
         try {
           pagefindModule = await import("/pagefind/pagefind.js");
@@ -381,7 +387,6 @@ window.openSearchModal = async function () {
       sentinel = null;
     }
 
-    // 1. 입력 처리
     let lastQuery = "";
 
     input.addEventListener("input", () => {
@@ -413,7 +418,6 @@ window.openSearchModal = async function () {
     input.addEventListener("paste", (e) => {
       e.preventDefault();
       const text = e.clipboardData.getData("text/plain");
-      // execCommand 대신:
       const selection = window.getSelection();
       if (!selection.rangeCount) return;
       selection.deleteFromDocument();
@@ -423,19 +427,20 @@ window.openSearchModal = async function () {
     });
 
     input.addEventListener("keydown", (e) => {
-
       if (e.key === "Tab") {
-      e.preventDefault();
-      const links = [...resultsContainer.querySelectorAll("a.pf-result-link")];
+        e.preventDefault();
+        const links = [
+          ...resultsContainer.querySelectorAll("a.pf-result-link"),
+        ];
         if (links.length === 0) return;
 
         if (e.shiftKey) {
-          activeIndex = (activeIndex <= 0) ? links.length - 1 : activeIndex - 1;
+          activeIndex = activeIndex <= 0 ? links.length - 1 : activeIndex - 1;
         } else {
-          activeIndex = (activeIndex >= links.length - 1) ? 0 : activeIndex + 1;
+          activeIndex = activeIndex >= links.length - 1 ? 0 : activeIndex + 1;
         }
-    
-      updateVisualSelection(links);
+
+        updateVisualSelection(links);
       }
 
       if (
@@ -518,7 +523,7 @@ window.openSearchModal = async function () {
     scrollbar-color: var(--color-border) transparent;
     display: flex;
     flex-direction: column;
-     overscroll-behavior: contain;
+    overscroll-behavior: contain;
   }
 
   .dark .search-modal-content {
@@ -571,10 +576,9 @@ window.openSearchModal = async function () {
 
   .pf-result-item {
     padding: 12px;
-    border-radius: 0.3rem;
     cursor: pointer;
     background-color: var(--color-bg);
-    border: 1px solid var(--color-border);
+    /* border-top: 1px solid var(--color-border); */
   }
 
   .pf-result-item:hover {
@@ -615,11 +619,11 @@ window.openSearchModal = async function () {
   }
 
   .pf-result-excerpt {
-    color: var(--color-text-muted);
+    /* color: var(--color-text-muted); */
     line-height: 1.5;
   }
 
-  .pf-result-excerpt mark {
+  .search-modal-content mark {
     background-color: transparent;
     color: var(--mark-text-color);
     font-weight: 600;
@@ -634,33 +638,87 @@ window.openSearchModal = async function () {
 
   .pf-result-item.selected {
     background-color: var(--color-select-item-hover-bg);
-    border-color: var(--color-link-article);
+    border-radius: 0.3rem;
   }
 
   .pf-custom-input:empty::before {
     content: attr(data-placeholder);
     pointer-events: none;
   }
-  
-  .pf-results-count
-  {
+
+  .pf-results-count {
     /* margin-top: var(--spacing-1); */
     font-size: 0.88em;
     color: var(--color-text-muted);
-    margin: var(--spacing-1) 0 0 var(--spacing-4)
+    margin: var(--spacing-1) 0 0 var(--spacing-4);
+  }
+
+  .pf-sub-title {
+    font-weight: 600;
+    font-size: 1em;
+    color: var(--color-text-heading);
+  }
+
+  .pf-sub-excerpt {
+    font-size: 0.94rem;
+    /* color: var(--color-text-muted); */
+  }
+
+  .pf-sub-result-item {
+    margin-left: 2rem;
+    /* margin-top: 0.5rem; */
+    /* border-left: 3px solid var(--color-link-article); */
+    /* padding: 6px; */
+    padding: 5px;
+    margin-top: -5px;
+    border: none;
+  }
+
+  .pf-result-meta {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin: 4px 0;
+  }
+
+  .pf-result-meta .tag-hash,
+  .link-tag:hover {
+    color: inherit;
+  }
+  .pf-result-meta .link-tag {
+    padding: 0;
   }
 
   @media (max-width: 479px) {
-.pf-result-title {
-    font-size: 1em;
-  }
+    .pf-custom-results {
+      gap: 0;
+      padding: 1px 0;
+    }
 
-.pagefind-result-meta {
-    font-size: 0.84em;
-  }
+    .pf-result-title {
+      font-size: 1em;
+    }
 
-.pf-result-excerpt {
-    font-size: 0.94em;
+    .pagefind-result-meta,
+    .pf-sub-excerpt {
+      font-size: 0.85em;
+    }
+
+    .pf-result-excerpt,
+    .pf-sub-title {
+      font-size: 0.94em;
+    }
+    .pf-result-item {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .pf-sub-title {
+      font-weight: 700;
+    }
+
+    .pf-sub-result-item {
+      margin-left: 1rem;
+      border-top: none;
+      margin-top: 0;
+    }
   }
-  }  
 </style>
