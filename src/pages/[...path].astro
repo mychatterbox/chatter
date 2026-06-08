@@ -118,7 +118,10 @@ if (type === "post" && entry) {
               {title}
             </h1>
 
-            <div class="article-meta text-small text-muted flex-wrap" data-pagefind-ignore>
+            <div
+              class="article-meta text-small text-muted flex-wrap"
+              data-pagefind-ignore
+            >
               {kind === "article" && (
                 <a href="/kind/article" class="link-article">
                   Article
@@ -130,12 +133,26 @@ if (type === "post" && entry) {
                 </a>
               )}
 
-              <div class="article-meta-date" title={updatedDate && pubDate && updatedDate.getTime() !== pubDate.getTime() ? `최종 수정일: ${updatedDate.toISOString().slice(0, 10)}` : undefined}>
-                {updatedDate && pubDate && updatedDate.getTime() !== pubDate.getTime() ? (
-                  <span aria-label={`최초 작성일 ${pubDate.toISOString().slice(0, 10)}, 최종 수정일 ${updatedDate.toISOString().slice(0, 10)}`}>
-                    {pubDate.toISOString().slice(0, 10)}
-                    ·
-                    <span class="updated-date">{updatedDate.toISOString().slice(0, 10)}</span>
+              <div
+                class="article-meta-date"
+                title={
+                  updatedDate &&
+                  pubDate &&
+                  updatedDate.getTime() !== pubDate.getTime()
+                    ? `최종 수정일: ${updatedDate.toISOString().slice(0, 10)}`
+                    : undefined
+                }
+              >
+                {updatedDate &&
+                pubDate &&
+                updatedDate.getTime() !== pubDate.getTime() ? (
+                  <span
+                    aria-label={`최초 작성일 ${pubDate.toISOString().slice(0, 10)}, 최종 수정일 ${updatedDate.toISOString().slice(0, 10)}`}
+                  >
+                    {pubDate.toISOString().slice(0, 10)}·
+                    <span class="updated-date">
+                      {updatedDate.toISOString().slice(0, 10)}
+                    </span>
                   </span>
                 ) : (
                   <span>{pubDate?.toISOString().slice(0, 10)}</span>
@@ -173,10 +190,7 @@ if (type === "post" && entry) {
               data-pagefind-meta={`date:${updatedDate && pubDate && updatedDate.getTime() !== pubDate.getTime() ? `${pubDate.toISOString().slice(0, 10)} · ${updatedDate.toISOString().slice(0, 10)}` : pubDate?.toISOString().slice(0, 10)}`}
             />
             {kind && (
-              <span
-                style="display:none"
-                data-pagefind-meta={`kind:${kind}`}
-              />
+              <span style="display:none" data-pagefind-meta={`kind:${kind}`} />
             )}
           </div>
           <div class="article-body">
@@ -188,7 +202,7 @@ if (type === "post" && entry) {
           </div>
           {tagLinks.length > 0 && (
             <div class="article-footer">
-              <div class="tags-wrapper">
+              <div class="tags-wrapper" data-pagefind-meta="tags">
                 {tagLinks.map(({ tag, url }) => (
                   <a href={url} class="link-tag">
                     <span class="tag-hash">#</span>
@@ -247,11 +261,10 @@ if (type === "post" && entry) {
         } catch (err) {
           console.error("Failed to fetch comment count:", err);
         }
-      })
+      }),
     );
   };
 
-  // 실시간 업데이트 이벤트 리스너
   document.addEventListener("ycc-comments-updated", (e) => {
     if (e.detail && typeof e.detail.count === "number") {
       const wrappers = document.querySelectorAll(".comment-count-wrapper");
@@ -263,6 +276,5 @@ if (type === "post" && entry) {
     }
   });
 
-  // Astro View Transitions 대응
   document.addEventListener("astro:page-load", updateCommentCounts);
 </script>
