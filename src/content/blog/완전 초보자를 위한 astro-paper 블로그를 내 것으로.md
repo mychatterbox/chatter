@@ -7,8 +7,6 @@ slug: to-my-astro-paper
 featured: true
 draft: false
 tags:
-  - github
-  - netlify
   - astro
 ogImage: ./blog-images/2024/astropaper-og.webp
 description: astro-paper 블로그 디자인이나 기능이 마음에 드나요? 써봅시다.
