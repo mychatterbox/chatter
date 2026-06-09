@@ -3,7 +3,7 @@ kind: article
 title: 다른 프로그램을 사용하지 않고 윈도우 내장 ROBOCOPY 명령어로 백업하기
 author: mychatterbox
 pubDate: 2024-05-25
-updatedDate: 2026-06-05
+updatedDate: 2026-06-09
 slug: robocopy-backup
 featured: false
 draft: false
@@ -203,7 +203,7 @@ sh.Run "powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File 
 
 | 코드  | <div align="center">설명</div> |
 | :---: | ------------- |
-| 0  | 오류가 발생하지 않았습니다.  <br> 파일이 복사되지 않았습니다. <br> 동기화된 상태입니다.  |  
+| 0  | 오류가 발생하지 않았습니다.  <br> 파일이 복사되지 않았습니다. <br> 파일이 대상 디렉터리에 이미 있기 때문에 복사 작업을 건너뛰었습니다.  |  
 | 1  | 모든 파일이 성공적으로 복사되었습니다.  |  
 | 2  | 원본 디렉터리에 없는 일부 추가 파일이 대상 디렉터리에 있습니다.  <br> 파일이 복사되지 않았습니다. |
 | 3 <br> (2+1) | 일부 파일이 복사되었습니다.  <br> 추가 파일이 있습니다. <br> 오류는 발생하지 않았습니다. |
