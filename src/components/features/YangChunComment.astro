@@ -11,9 +11,8 @@ const apiUrl =
 const adminName = import.meta.env.PUBLIC_YCC_ADMIN_NAME || "admin";
 const prePowDifficulty = import.meta.env.PUBLIC_YCC_PRE_POW_DIFFICULTY || "2";
 const prePowSalt = import.meta.env.PUBLIC_YCC_PRE_POW_SALT || "MAGIC";
-const lang = "ko-KR"; // 필요에 따라 변경
+const lang = "ko-KR";
 
-console.log('YangChunComment post:', post);
 ---
 
 <div class="yangchun-comment-wrapper" data-pagefind-ignore>
@@ -30,13 +29,9 @@ console.log('YangChunComment post:', post);
 </div>
 
 <script is:inline>
-  // 이 스크립트는 번들링 에러와 상관없이 무조건 실행됩니다.
-  console.log("🔍 [YCC-DEBUG] Inline tracker started");
   setTimeout(() => {
     const el = document.querySelector("yangchun-comment");
     const isDefined = !!customElements.get("yangchun-comment");
-    console.log("🔍 [YCC-DEBUG] Element exists:", !!el);
-    console.log("🔍 [YCC-DEBUG] Element defined in registry:", isDefined);
     if (el && !isDefined) {
       console.warn(
         "⚠️ [YCC-DEBUG] Element is in DOM but NOT registered. Script bundling might have failed.",
@@ -46,7 +41,7 @@ console.log('YangChunComment post:', post);
 </script>
 
 <script>
-  // 1️⃣ Yang Chun Comment 라이브러리 로드 (로컬 소스 사용)
+
   import "../../lib/ycc/client/components/yangchun-comment.ts";
   import { koKR } from '../../lib/ycc/client/utils/i18n.ts';
 

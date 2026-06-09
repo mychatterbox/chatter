@@ -278,7 +278,6 @@ ${t('helpMdCodeBlock')}
         changedProperties.has('prePowSalt')) &&
       this.apiUrl
     ) {
-      console.debug('Initializing API service with URL:', this.apiUrl);
       const apiService = createApiService(this.apiUrl, this.prePowDifficulty, this.prePowSalt);
       globalApiService.setInstance(apiService);
 
@@ -292,13 +291,11 @@ ${t('helpMdCodeBlock')}
     super.updated(changedProperties);
     // Re-fetch comments when post ID changes
     if (changedProperties.has('post')) {
-      console.debug('Post changed to:', this.post);
       this.updatedComments();
     }
   }
 
   async firstUpdated() {
-    console.debug('firstUpdated', 'apiUrl:', this.apiUrl);
     this.addEventListener('external-link-click', this.handleExternalLinkClick as EventListener);
   }
 
@@ -357,11 +354,7 @@ ${t('helpMdCodeBlock')}
   private async updatedComments() {
     try {
       const response = await globalApiService.getInstance().getComments(this.post);
-      console.log('DEBUG: API Response:', response);
-      console.log('DEBUG: Number of comments fetched:', response.comments.length);
-      console.log('Fetched comments:', response.comments);
       this.comments = response.comments;
-      console.log('Updated comments:', this.comments);
       
       // 댓글 업데이트 이벤트 발송 (실시간 카운트 업데이트용)
       this.dispatchEvent(new CustomEvent('ycc-comments-updated', {
@@ -380,7 +373,6 @@ ${t('helpMdCodeBlock')}
   }
 
   private handleRefCommentCancel = () => {
-    console.debug('Canceling reply/edit: Resetting input to default position (above list)');
     
     // 1. 모든 입력 내용 초기화
     this.draft = '';
@@ -449,7 +441,6 @@ ${t('helpMdCodeBlock')}
           tokenData?.timestamp,
         );
 
-      console.debug('Edit comment ID:', this.referenceComment.id, ok);
       this.draft = '';
       this.inputPreviewComment = null;
       this.referenceComment = null;
@@ -479,15 +470,11 @@ ${t('helpMdCodeBlock')}
         ? this.referenceComment.id
         : undefined;
 
-    console.log('handleCommentSubmit called with post:', this.post, 'replyTo:', replyTo);
     try {
-      console.debug('Submitting comment - post:', this.post, 'replyTo:', replyTo);
       const result = await globalApiService
         .getInstance()
         .addComment(this.post, nickname, pureDraft, replyTo, emoji);
-      console.log('addComment result:', result);
       if (result) {
-        console.debug('Added comment ID:', result.id, 'replyTo:', replyTo);
         // Store token for future edit/delete operations
         const newTokens = new Map(this.commentTokens);
         newTokens.set(result.id, {
@@ -517,7 +504,6 @@ ${t('helpMdCodeBlock')}
 
   private async handleCommentReply(e: CustomEvent<string>) {
     const commentId = e.detail;
-    console.debug('Reply to comment ID:', commentId);
 
     const refComment = this.comments.find((cmt) => cmt.id === commentId);
     if (!refComment) {
@@ -537,13 +523,11 @@ ${t('helpMdCodeBlock')}
 
   private async handleCommentDelete(e: CustomEvent<string>) {
     const commentId = e.detail;
-    console.debug('Delete comment ID:', commentId);
     this.deleteCommentId = commentId;
   }
 
   private async handleCommentEdit(e: CustomEvent<string>) {
     const commentId = e.detail;
-    console.debug('Edit comment ID:', commentId);
 
     const refComment = this.comments.find((cmt) => cmt.id === commentId);
     if (!refComment) {
@@ -566,10 +550,7 @@ ${t('helpMdCodeBlock')}
   private async handleDeleteComment() {
     if (!this.deleteCommentId) return;
     const commentId = this.deleteCommentId;
-    console.debug('Delete comment ID:', commentId);
-    console.log('Deleting comment ID:', commentId, 'from comments:', this.comments);
     const commentExists = this.comments.find(c => c.id === commentId);
-    console.log('Comment to delete exists in local comments:', commentExists);
 
     const tokenData = this.commentTokens.get(commentId);
     if (!tokenData) {
@@ -581,7 +562,6 @@ ${t('helpMdCodeBlock')}
     try {
       const ok = await globalApiService.getInstance().deleteComment(commentId, this.post, tokenData.token, tokenData.timestamp);
       if (ok) {
-        console.debug('Deleted comment ID:', commentId);
         const newTokens = new Map(this.commentTokens);
         newTokens.delete(commentId); // Clean up token
         this.commentTokens = newTokens;
@@ -615,7 +595,6 @@ ${t('helpMdCodeBlock')}
     if (this.externalLinkUrl) {
       try {
         await navigator.clipboard.writeText(this.externalLinkUrl);
-        console.log('Link copied to clipboard');
       } catch (err) {
         console.error('Failed to copy link:', err);
       }
