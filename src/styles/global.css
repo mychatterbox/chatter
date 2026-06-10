@@ -582,11 +582,11 @@ pre code {
 
 .theme-toggle-container {
   position: fixed;
-  top: var(--spacing-5);
   right: var(--spacing-4);
   display: flex;
   z-index: 60;
   align-items: center;
+  gap: 1rem;
 }
 
 .theme-toggle {
@@ -607,42 +607,51 @@ pre code {
   border: none;
   padding: 0;
   cursor: pointer;
-  /* margin-bottom: -0.22rem; */
-
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
 
 .theme-toggle-main-icon {
-  z-index: 2;
+  z-index: 3;
 }
 
 .theme-toggle-main-icon:hover {
   transform: scale(1.1);
 }
 
+/* 아래로 펼쳐지는 세로 방향 버튼 그룹 */
 .theme-toggle-buttons {
   position: absolute;
+  top: 2.5em;
   right: 0;
   display: flex;
-  overflow: hidden;
-  width: calc(1.5rem * 3 + 0.5rem * 2);
+  flex-direction: column;
+  gap: 1em;
+  width: auto;
+  background: var(--color-select-item-hover-bg);
+  padding: 0.4rem;
+  border-radius: 10px;
+  z-index: 2;
+  
+  /* 애니메이션용 속성 */
   opacity: 0;
-  pointer-events: none;
+  visibility: hidden;
+  transform: translateY(-6px) translateX(6px);
+  transition: opacity 0.2s ease, transform 0.25s ease, visibility 0.2s;
+  /* GPU 가속을 위한 will-change */
+  will-change: transform, opacity;
 }
 
-.theme-toggle-buttons.expanded {
+.theme-toggle-buttons.expanded,
+.theme-toggle.is-expanded .theme-toggle-buttons {
   opacity: 1;
-  pointer-events: auto;
+  visibility: visible;
+  /* transform: translateY(0); */
 }
 
 .theme-toggle-buttons button {
-  margin-right: 0.5rem;
-}
-
-.theme-toggle-buttons button:last-child {
-  margin-right: 0;
+  margin: 0;
 }
 
 .theme-toggle-buttons button:hover {
