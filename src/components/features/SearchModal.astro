@@ -21,475 +21,455 @@
 </div>
 
 <script is:inline>
-  const PF_PAGE_SIZE = 20;
+const PF_PAGE_SIZE = 20;
 
-  let activeIndex = -1;
-  let pagefindModule = null,
-    currentSearchId = 0,
-    allResults = [],
-    loadedCount = 0,
-    isLoading = false,
-    sentinel = null,
-    io = null,
-    _openerElement = null,
-    currentQuery = "";
+// 상태를 객체로 묶어 관리 (전역 변수 오염 방지)
+let state = {
+  activeIndex: -1,
+  pagefindModule: null,
+  currentSearchId: 0,
+  allResults: [],
+  loadedCount: 0,
+  isLoading: false,
+  sentinel: null,
+  io: null,
+  lastQuery: "",
+  searchDebounce: null,
+};
 
-  function cleanExcerptTitle(excerptHtml, titleText) {
-    if (!excerptHtml || !titleText) return excerptHtml;
+const SENTENCE_REGEX = /^(.+?)(?:[.。](?:\s|$)|$)/s;
 
-    const normalize = (str) => str.trim().replace(/\s+/g, " ");
-    const normalizedTitle = normalize(titleText);
+function cleanExcerptTitle(excerptHtml, titleText) {
+  if (!excerptHtml || !titleText) return excerptHtml;
 
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = excerptHtml;
-    const pureExcerptText = normalize(tempDiv.textContent);
+  const normalize = (str) => str.trim().replace(/\s+/g, " ");
+  const normalizedTitle = normalize(titleText);
 
-    let matchText = "";
-    if (pureExcerptText.includes(normalizedTitle)) {
-      matchText = normalizedTitle;
-    } else {
-      for (let i = 0; i < normalizedTitle.length - 6; i++) {
-        const chunk = normalizedTitle.slice(i);
-        if (pureExcerptText.startsWith(chunk)) {
-          matchText = chunk;
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = excerptHtml;
+  const pureExcerptText = normalize(tempDiv.textContent);
+
+  let matchText = "";
+  if (pureExcerptText.includes(normalizedTitle)) {
+    matchText = normalizedTitle;
+  } else {
+    for (let i = 0; i < normalizedTitle.length - 6; i++) {
+      const chunk = normalizedTitle.slice(i);
+      if (pureExcerptText.startsWith(chunk)) {
+        matchText = chunk;
+        break;
+      }
+    }
+  }
+
+  if (matchText) {
+    let html = excerptHtml.trim();
+    let charCount = 0,
+      cutIndex = 0,
+      inTag = false;
+
+    for (let i = 0; i < html.length; i++) {
+      if (html[i] === "<") {
+        inTag = true;
+        continue;
+      }
+      if (html[i] === ">") {
+        inTag = false;
+        continue;
+      }
+      if (!inTag) {
+        charCount++;
+        if (charCount >= matchText.length) {
+          cutIndex = i + 1;
           break;
         }
       }
     }
 
-    if (matchText) {
-      let html = excerptHtml.trim();
-      let charCount = 0,
-        cutIndex = 0,
-        inTag = false;
-
-      for (let i = 0; i < html.length; i++) {
-        if (html[i] === "<") {
-          inTag = true;
-          continue;
-        }
-
-        if (html[i] === ">") {
-          inTag = false;
-          continue;
-        }
-
-        if (!inTag) {
-          charCount++;
-          if (charCount >= matchText.length) {
-            cutIndex = i + 1;
-            break;
-          }
-        }
-      }
-
-      return html.slice(cutIndex).replace(/^[\s.…·。/,-]+/, "");
-    }
-
-    const firstSentenceMatch = pureExcerptText.match(
-      /^(.+?)(?:[.。](?:\s|$)|$)/s,
-    );
-
-    const firstSentence = firstSentenceMatch
-      ? normalize(firstSentenceMatch[1])
-      : "";
-
-    if (firstSentence.length > 5 && normalizedTitle.includes(firstSentence)) {
-      const raw = firstSentenceMatch[0];
-      const escaped = raw.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
-
-      return excerptHtml
-        .replace(new RegExp("^[\\s.…·]*" + escaped, "s"), "")
-        .replace(/^[\s.…·。/,-]+/, "");
-    }
-
-    return excerptHtml;
+    return html.slice(cutIndex).replace(/^[\s.…·。/,-]+/, "");
   }
-  function createResultElement(
-    mainSub,
-    title,
-    url,
-    closeModal,
-    isHeaderOnly = false,
-    meta = {},
-  ) {
-    const finalUrl = (url || "").replace(/\.html$/, "");
 
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = mainSub.excerpt || "";
-    let excerptHtml = tempDiv.innerHTML.trim();
+  const firstSentenceMatch = pureExcerptText.match(SENTENCE_REGEX);
+  const firstSentence = firstSentenceMatch
+    ? normalize(firstSentenceMatch[1])
+    : "";
 
-    const dateStr = meta.date ? `Article ${meta.date}` : "";
+  if (firstSentence.length > 5 && normalizedTitle.includes(firstSentence)) {
+    const raw = firstSentenceMatch[0];
+    const escaped = raw.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+    return excerptHtml
+      .replace(new RegExp("^[\\s.…·]*" + escaped, "s"), "")
+      .replace(/^[\s.…·。/,-]+/, "");
+  }
 
-    let tagStr = "";
-    if (meta.tags) {
-      tagStr = meta.tags
-        .split(/,\s*|#/)
-        .map((t) => t.trim())
-        .filter((t) => t.length > 0)
-        .map(
-          (t) => `
+  return excerptHtml;
+}
+
+function createResultElement(
+  mainSub,
+  title,
+  url,
+  closeModal,
+  isHeaderOnly = false,
+  meta = {}
+) {
+  const finalUrl = (url || "").replace(/\.html$/, "");
+
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = mainSub.excerpt || "";
+  let excerptHtml = tempDiv.innerHTML.trim();
+
+  const dateStr = meta.date ? `Article ${meta.date}` : "";
+
+  let tagStr = "";
+  if (meta.tags) {
+    tagStr = meta.tags
+      .split(/,\s*|#/)
+      .map((t) => t.trim())
+      .filter((t) => t.length > 0)
+      .map(
+        (t) => `
       <span class="link-tag">
         <span class="tag-hash">#</span>${t}
-      </span>`,
-        )
-        .join(" ");
-    }
+      </span>`
+      )
+      .join(" ");
+  }
 
-    const metaHtml =
-      dateStr || tagStr
-        ? `
+  const metaHtml =
+    dateStr || tagStr
+      ? `
   <div class="pf-result-meta" style="display: flex; gap: 8px; align-items: center; margin-bottom: 4px;">
-    ${dateStr ? `<span class="pf-result-date">${dateStr}</span>` : ""} 
+    ${dateStr ? `<span class="pf-result-date">${dateStr}</span>` : ""}
     ${tagStr ? `<span class="pf-result-tags">${tagStr}</span>` : ""}
   </div>`
-        : "";
+      : "";
 
-    const item = document.createElement("div");
-    item.className = "pf-result-item";
-    item.innerHTML = `
+  const item = document.createElement("div");
+  item.className = "pf-result-item";
+  item.innerHTML = `
     <a href="${finalUrl}" class="pf-result-link" tabindex="-1">
       <div class="pf-result-title">${title}</div>
       ${metaHtml}
       ${!isHeaderOnly ? `<div class="pf-result-excerpt">${excerptHtml.substring(0, 150)}...</div>` : ""}
     </a>
   `;
-    item.querySelector("a").addEventListener("click", closeModal);
-    return item;
-  }
+  item.querySelector("a").addEventListener("click", closeModal);
+  return item;
+}
 
-  function createSubResultElement(sub, closeModal) {
-    const item = document.createElement("div");
-    item.className = "pf-result-item pf-sub-result-item";
+function createSubResultElement(sub, closeModal) {
+  const item = document.createElement("div");
+  item.className = "pf-result-item pf-sub-result-item";
 
-    const cleanedExcerpt = cleanExcerptTitle(
-      sub.excerpt || "",
-      sub.title || "",
-    );
+  const cleanedExcerpt = cleanExcerptTitle(sub.excerpt || "", sub.title || "");
 
-    item.innerHTML = `
+  item.innerHTML = `
     <a href="${sub.url}" class="pf-result-link" tabindex="-1">
       <div class="pf-sub-title"># ${sub.title}</div>
       <div class="pf-sub-excerpt">${cleanedExcerpt}</div>
     </a>
   `;
-    item.querySelector("a").addEventListener("click", closeModal);
-    return item;
-  }
+  item.querySelector("a").addEventListener("click", closeModal);
+  return item;
+}
 
-  async function renderNextBatch(searchId, resultsContainer, closeModal) {
-    if (isLoading || loadedCount >= allResults.length) return;
+async function renderNextBatch(searchId, resultsContainer, closeModal) {
+  if (state.isLoading || state.loadedCount >= state.allResults.length) return;
 
-    isLoading = true;
-    const batch = allResults.slice(loadedCount, loadedCount + PF_PAGE_SIZE);
+  state.isLoading = true;
+  const batch = state.allResults.slice(
+    state.loadedCount,
+    state.loadedCount + PF_PAGE_SIZE
+  );
 
-    try {
-      const fragment = document.createDocumentFragment();
+  try {
+    const fragment = document.createDocumentFragment();
 
-      for (let i = 0; i < batch.length; i++) {
-        if (searchId !== currentSearchId) return;
-        try {
-          const data = await batch[i].data();
-          const isHeaderMatch =
-            data.sub_results.length > 0 &&
-            data.sub_results[0].title !== data.meta.title;
+    for (let i = 0; i < batch.length; i++) {
+      if (searchId !== state.currentSearchId) return;
+      try {
+        const data = await batch[i].data();
+        const isHeaderMatch =
+          data.sub_results.length > 0 &&
+          data.sub_results[0].title !== data.meta.title;
 
-          if (isHeaderMatch) {
+        if (isHeaderMatch) {
+          fragment.appendChild(
+            createResultElement(
+              data.sub_results[0],
+              data.meta.title,
+              data.url,
+              closeModal,
+              true,
+              data.meta
+            )
+          );
+          for (let j = 0; j < data.sub_results.length; j++) {
             fragment.appendChild(
-              createResultElement(
-                data.sub_results[0],
-                data.meta.title,
-                data.url,
-                closeModal,
-                true,
-                data.meta,
-              ),
+              createSubResultElement(data.sub_results[j], closeModal)
             );
-            for (let j = 0; j < data.sub_results.length; j++) {
-              fragment.appendChild(
-                createSubResultElement(data.sub_results[j], closeModal),
-              );
-            }
-          } else {
-            fragment.appendChild(
-              createResultElement(
-                data.sub_results[0],
-                data.meta.title,
-                data.url,
-                closeModal,
-                false,
-                data.meta,
-              ),
-            );
-            for (let j = 1; j < data.sub_results.length; j++) {
-              fragment.appendChild(
-                createSubResultElement(data.sub_results[j], closeModal),
-              );
-            }
           }
-        } catch (e) {
-          console.error("Batch item error:", e);
+        } else {
+          fragment.appendChild(
+            createResultElement(
+              data.sub_results[0],
+              data.meta.title,
+              data.url,
+              closeModal,
+              false,
+              data.meta
+            )
+          );
+          for (let j = 1; j < data.sub_results.length; j++) {
+            fragment.appendChild(
+              createSubResultElement(data.sub_results[j], closeModal)
+            );
+          }
         }
+      } catch (e) {
+        console.error("Batch item error:", e);
       }
-
-      if (searchId !== currentSearchId) return;
-      loadedCount += batch.length;
-
-      if (sentinel && sentinel.parentNode === resultsContainer) {
-        resultsContainer.insertBefore(fragment, sentinel);
-      } else {
-        resultsContainer.appendChild(fragment);
-      }
-
-      if (loadedCount >= allResults.length) {
-        sentinel?.remove();
-        sentinel = null;
-        io?.disconnect();
-        io = null;
-      }
-    } finally {
-      isLoading = false;
     }
+
+    if (searchId !== state.currentSearchId) return;
+    state.loadedCount += batch.length;
+
+    if (state.sentinel?.parentNode === resultsContainer) {
+      resultsContainer.insertBefore(fragment, state.sentinel);
+    } else {
+      resultsContainer.appendChild(fragment);
+    }
+
+    if (state.loadedCount >= state.allResults.length) {
+      state.sentinel?.remove();
+      state.sentinel = null;
+      state.io?.disconnect();
+      state.io = null;
+    }
+  } finally {
+    state.isLoading = false;
+  }
+}
+
+async function handleSearch(query, resultsContainer, closeModal) {
+  const countEl = document.getElementById("pf-results-count");
+  const searchId = ++state.currentSearchId;
+
+  state.activeIndex = -1;
+  state.io?.disconnect();
+  state.io = null;
+  state.sentinel?.remove();
+  state.sentinel = null;
+  state.allResults = [];
+  state.loadedCount = 0;
+  state.isLoading = false;
+
+  if (!query) {
+    resultsContainer.innerHTML = "";
+    countEl.style.display = "none";
+    countEl.innerText = "";
+    return;
+  }
+  if (!state.pagefindModule) return;
+
+  const search = await state.pagefindModule.search(query);
+  if (searchId !== state.currentSearchId) return;
+
+  resultsContainer.innerHTML = "";
+
+  if (search.results.length === 0) {
+    resultsContainer.innerHTML = `<div class="pf-no-results">"${query}" : 검색 결과가 없습니다.</div>`;
+    countEl.style.display = "none";
+    return;
   }
 
-  function extractManualSubResults(excerptHtml) {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = excerptHtml;
-    const subs = [];
-    const headers = tempDiv.querySelectorAll("h2, h3, h4");
-    headers.forEach((h) => {
-      subs.push({
-        title: h.textContent,
-        url: window.location.pathname + "#" + (h.id || ""),
-        excerpt: h.nextElementSibling ? h.nextElementSibling.textContent : "",
-      });
-    });
-    return subs;
+  state.allResults = search.results;
+  countEl.innerText = `검색 결과 : ${state.allResults.length} 페이지`;
+  countEl.style.display = "block";
+
+  await renderNextBatch(searchId, resultsContainer, closeModal);
+
+  if (state.allResults.length > PF_PAGE_SIZE) {
+    state.sentinel = document.createElement("div");
+    state.sentinel.className = "pf-sentinel";
+    resultsContainer.appendChild(state.sentinel);
+    initInfiniteScroll(resultsContainer, closeModal);
   }
+}
 
-  async function handleSearch(query, resultsContainer, closeModal) {
-    const countEl = document.getElementById("pf-results-count");
-    const searchId = ++currentSearchId;
+function initInfiniteScroll(resultsContainer, closeModal) {
+  const options = {
+    root: resultsContainer.closest(".search-modal-content"),
+    rootMargin: "200px",
+    threshold: 0,
+  };
 
-    activeIndex = -1;
-
-    io?.disconnect();
-    io = null;
-    sentinel?.remove();
-    sentinel = null;
-    allResults = [];
-    loadedCount = 0;
-    isLoading = false;
-    currentQuery = query;
-
-    if (!query) {
-      resultsContainer.innerHTML = "";
-      countEl.style.display = "none";
-      countEl.innerText = "";
-      return;
+  state.io = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !state.isLoading) {
+      renderNextBatch(state.currentSearchId, resultsContainer, closeModal);
     }
-    if (!pagefindModule) return;
+  }, options);
 
-    const search = await pagefindModule.search(query);
-    if (searchId !== currentSearchId) return;
+  if (state.sentinel) {
+    state.io.observe(state.sentinel);
+  }
+}
 
+function initPagefindComponentModal() {
+  const backdrop = document.getElementById("search-modal-backdrop");
+  const input = document.getElementById("pf-custom-input");
+  const resultsContainer = document.getElementById("pf-custom-results");
+  if (!backdrop || !input || !resultsContainer) return;
+
+  // astro:page-load 중복 초기화 방지
+  if (backdrop.dataset.initialized) return;
+  backdrop.dataset.initialized = "true";
+
+  backdrop.addEventListener("click", (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+
+  window.openSearchModal = async function () {
+    backdrop.classList.remove("hidden");
+
+    if (!state.pagefindModule) {
+      try {
+        state.pagefindModule = await import("/pagefind/pagefind.js");
+        state.pagefindModule.init();
+      } catch (err) {
+        console.error("Pagefind 로드 실패:", err);
+      }
+    }
+    setTimeout(() => input.focus(), 50);
+  };
+
+  // ✅ 외부 스코프 변수 재사용, getElementById 중복 제거
+  function closeModal() {
+    backdrop.classList.add("hidden");
+
+    // ✅ pending 타이머 정리
+    clearTimeout(state.searchDebounce);
+
+    input.textContent = "";
     resultsContainer.innerHTML = "";
 
-    if (search.results.length === 0) {
-      resultsContainer.innerHTML = `<div class="pf-no-results">"${query}"에 대한 검색 결과가 없습니다.</div>`;
-      countEl.style.display = "none";
-      return;
-    }
+    const countEl = document.getElementById("pf-results-count");
+    countEl.style.display = "none";
+    countEl.innerText = "";
 
-    allResults = search.results;
-    countEl.innerText = `검색 결과 : ${allResults.length} 페이지`;
-    countEl.style.display = "block";
+    state.activeIndex = -1;
+    state.lastQuery = "";
+    state.allResults = [];
+    state.loadedCount = 0;
 
-    await renderNextBatch(searchId, resultsContainer, closeModal);
-
-    if (allResults.length > PF_PAGE_SIZE) {
-      sentinel = document.createElement("div");
-      sentinel.className = "pf-sentinel";
-      resultsContainer.appendChild(sentinel);
-      initInfiniteScroll(resultsContainer, closeModal);
-    }
+    state.io?.disconnect();
+    state.io = null;
+    state.sentinel?.remove();
+    state.sentinel = null;
   }
 
-  function initInfiniteScroll(resultsContainer, closeModal) {
-    const options = {
-      root: resultsContainer.closest(".search-modal-content"),
-      rootMargin: "200px",
-      threshold: 0,
-    };
+  input.addEventListener("input", () => {
+    const rawQuery = input.textContent || "";
 
-    io = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !isLoading) {
-        renderNextBatch(currentSearchId, resultsContainer, closeModal);
-      }
-    }, options);
-
-    if (sentinel) {
-      io.observe(sentinel);
-    }
-  }
-
-  function initPagefindComponentModal() {
-    const backdrop = document.getElementById("search-modal-backdrop");
-    const input = document.getElementById("pf-custom-input");
-    const resultsContainer = document.getElementById("pf-custom-results");
-    if (!backdrop || !input || !resultsContainer) return;
-
-    backdrop.addEventListener("click", (e) => {
-      if (e.target === backdrop) {
-        closeModal();
-      }
-    });
-
-    let previousOverflow = "";
-    let previousPaddingRight = "";
-
-    window.openSearchModal = async function () {
-      backdrop.classList.remove("hidden");
-
-      if (!pagefindModule) {
-        try {
-          pagefindModule = await import("/pagefind/pagefind.js");
-          pagefindModule.init();
-        } catch (err) {
-          console.error("Pagefind 로드 실패:", err);
-        }
-      }
-      setTimeout(() => input.focus(), 50);
-    };
-
-    function closeModal() {
-      const backdrop = document.getElementById("search-modal-backdrop");
-      const input = document.getElementById("pf-custom-input");
-      const resultsContainer = document.getElementById("pf-custom-results");
-      const countEl = document.getElementById("pf-results-count");
-
-      backdrop.classList.add("hidden");
-      document.body.style.overflow = previousOverflow;
-
-      input.innerHTML = "";
-      resultsContainer.innerHTML = "";
-      countEl.style.display = "none";
-      countEl.innerText = "";
-
-      activeIndex = -1;
-      lastQuery = "";
-      allResults = [];
-      loadedCount = 0;
-
-      io?.disconnect();
-      io = null;
-      sentinel?.remove();
-      sentinel = null;
+    if (rawQuery.trim() === "") {
+      input.textContent = "";
     }
 
-    let lastQuery = "";
+    const processedQuery = rawQuery
+      .normalize("NFKC")
+      .replace(/[<>]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
 
-    input.addEventListener("input", () => {
-      const rawQuery = input.textContent || "";
+    if (processedQuery === state.lastQuery) return;
 
-      if (rawQuery.trim() === "") {
-        input.innerHTML = "";
-      }
+    // ✅ debounce 전에 즉시 업데이트하여 동기화 문제 방지
+    state.lastQuery = processedQuery;
 
-      const processedQuery = rawQuery
-        .normalize("NFKC")
-        .replace(/[<>]/g, "")
-        .replace(/\s+/g, " ")
-        .trim();
+    // ✅ 이전 타이머를 항상 정리한 뒤 새로 등록
+    clearTimeout(state.searchDebounce);
+    state.searchDebounce = setTimeout(() => {
+      handleSearch(processedQuery, resultsContainer, closeModal);
+    }, 200);
+  });
 
-      if (processedQuery === lastQuery) {
-        return;
-      }
+  input.addEventListener("paste", (e) => {
+    e.preventDefault();
+    const text = e.clipboardData.getData("text/plain");
+    const selection = window.getSelection();
+    if (!selection.rangeCount) return;
+    selection.deleteFromDocument();
+    selection.getRangeAt(0).insertNode(document.createTextNode(text));
+    selection.collapseToEnd();
+    input.dispatchEvent(new Event("input"));
+  });
 
-      lastQuery = processedQuery;
-
-      clearTimeout(window.searchDebounce);
-
-      window.searchDebounce = setTimeout(() => {
-        handleSearch(processedQuery, resultsContainer, closeModal);
-      }, 200);
-    });
-
-    input.addEventListener("paste", (e) => {
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") {
       e.preventDefault();
-      const text = e.clipboardData.getData("text/plain");
-      const selection = window.getSelection();
-      if (!selection.rangeCount) return;
-      selection.deleteFromDocument();
-      selection.getRangeAt(0).insertNode(document.createTextNode(text));
-      selection.collapseToEnd();
-      input.dispatchEvent(new Event("input"));
-    });
+      const links = [
+        ...resultsContainer.querySelectorAll("a.pf-result-link"),
+      ];
+      if (links.length === 0) return;
 
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Tab") {
-        e.preventDefault();
-        const links = [
-          ...resultsContainer.querySelectorAll("a.pf-result-link"),
-        ];
-        if (links.length === 0) return;
-
-        if (e.shiftKey) {
-          activeIndex = activeIndex <= 0 ? links.length - 1 : activeIndex - 1;
-        } else {
-          activeIndex = activeIndex >= links.length - 1 ? 0 : activeIndex + 1;
-        }
-
-        updateVisualSelection(links);
+      if (e.shiftKey) {
+        state.activeIndex =
+          state.activeIndex <= 0 ? links.length - 1 : state.activeIndex - 1;
+      } else {
+        state.activeIndex =
+          state.activeIndex >= links.length - 1 ? 0 : state.activeIndex + 1;
       }
 
-      if (
-        document
-          .getElementById("search-modal-backdrop")
-          .classList.contains("hidden")
-      )
-        return;
+      updateVisualSelection(links);
+    }
 
-      if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-        e.preventDefault();
-      }
+    if (backdrop.classList.contains("hidden")) return;
 
-      const links = [...resultsContainer.querySelectorAll("a.pf-result-link")];
+    if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
+      e.preventDefault();
+    }
 
-      if (e.key === "Enter") {
-        if (activeIndex >= 0) links[activeIndex]?.click();
-      } else if (e.key === "ArrowDown") {
-        if (links.length === 0) return;
-        activeIndex = Math.min(activeIndex + 1, links.length - 1);
-        updateVisualSelection(links);
-      } else if (e.key === "ArrowUp") {
-        activeIndex = Math.max(activeIndex - 1, -1);
-        updateVisualSelection(links);
-      } else if (e.key === "Escape") {
-        closeModal();
+    const links = [...resultsContainer.querySelectorAll("a.pf-result-link")];
+
+    if (e.key === "Enter") {
+      if (state.activeIndex >= 0) links[state.activeIndex]?.click();
+    } else if (e.key === "ArrowDown") {
+      if (links.length === 0) return;
+      state.activeIndex = Math.min(state.activeIndex + 1, links.length - 1);
+      updateVisualSelection(links);
+    } else if (e.key === "ArrowUp") {
+      state.activeIndex = Math.max(state.activeIndex - 1, -1);
+      updateVisualSelection(links);
+    } else if (e.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  function updateVisualSelection(links) {
+    links.forEach((l, i) => {
+      if (i === state.activeIndex) {
+        l.parentElement.classList.add("selected");
+        l.parentElement.scrollIntoView({ block: "nearest" });
+      } else {
+        l.parentElement.classList.remove("selected");
       }
     });
 
-    function updateVisualSelection(links) {
-      links.forEach((l, i) => {
-        if (i === activeIndex) {
-          l.parentElement.classList.add("selected");
-          l.parentElement.scrollIntoView({ block: "nearest" });
-        } else {
-          l.parentElement.classList.remove("selected");
-        }
-      });
-
-      if (activeIndex === -1) {
-        input.focus();
-      }
-      if (activeIndex === links.length - 1 && loadedCount < allResults.length) {
-        renderNextBatch(currentSearchId, resultsContainer, closeModal);
-      }
+    if (state.activeIndex === -1) {
+      input.focus();
+    }
+    if (
+      state.activeIndex === links.length - 1 &&
+      state.loadedCount < state.allResults.length
+    ) {
+      renderNextBatch(state.currentSearchId, resultsContainer, closeModal);
     }
   }
+}
 
-  document.addEventListener("astro:page-load", initPagefindComponentModal);
+document.addEventListener("astro:page-load", initPagefindComponentModal);
+
 </script>
 
 <style is:global>
@@ -507,6 +487,12 @@
     align-items: flex-start;
     padding-top: var(--spacing-12, 3rem);
     backdrop-filter: blur(1px);
+  }
+
+  .pf-custom-input:empty::before {
+  content: attr(data-placeholder);
+  color: var(--color-text-muted);
+  pointer-events: none;
   }
 
   .search-modal-content {
@@ -543,6 +529,7 @@
     border: 2px solid var(--color-border);
     outline: none;
     margin: 0 var(--spacing-2);
+    color: var(--color-text-heading);
   }
 
   .pf-custom-input:focus {
