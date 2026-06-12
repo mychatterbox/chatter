@@ -1,8 +1,9 @@
 ---
 kind: article
-title: OSFMOUNT 램디스크 작업스케줄러
+title: OSFMOUNT 램디스크 작업스케줄러에 등록하기
 author: mychatterbox
 pubDate: 2024-02-05
+updatedDate: 2026-06-12
 slug: osfmount-ramdisk-scheduler
 featured: false
 draft: false
@@ -32,7 +33,7 @@ OSFMOUNT는 항상 고정된 크기로만 사용할 수 있습니다.
 
     ```md
     @echo off
-    osfmount -a -t vm -o rw,hd,format:ntfs:"RAMDISK" -m R: -s 16G
+    osfmount -a -t vm -m R: -o format:NTFS:"RAMDISK" -s 16G
     ```
 
 4.  미리 폴더를 만들고 싶다면 아래 코드를 적절하게 수정 후 추가하고 저장합니다.
