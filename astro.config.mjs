@@ -58,7 +58,10 @@ export default defineConfig({
         if (url.pathname === '/') {
           return { ...item, url: SITE_URL_WITH_SLASH };
         }
-        if (/^\/(tag|kind)\/[^/]+\/1\/?$/.test(url.pathname)) {
+        if (/^\/\d+\/?$/.test(url.pathname)) {
+          return null;
+        }
+        if (url.pathname.startsWith('/tag') || url.pathname.startsWith('/kind')) {
           return null;
         }
         if (url.pathname === '/ratings' || url.pathname === '/ratings/') {
