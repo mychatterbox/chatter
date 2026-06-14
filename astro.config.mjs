@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import { unified } from "@astrojs/markdown-remark";
 import FlexokiDark from "./src/styles/themes/Flexoki-Dark-color-theme.json";
 import FlexokiLight from "./src/styles/themes/Flexoki-Light-color-theme.json";
 
@@ -87,8 +88,10 @@ export default defineConfig({
         transformerFileName(),
       ],
     },
-    rehypePlugins: [addAnchorLinks],
-    remarkPlugins: [Callouts],
+    processor: unified({
+      remarkPlugins: [Callouts],
+      rehypePlugins: [addAnchorLinks],
+    }),
   },
 
   scopedStyleStrategy: "where",
