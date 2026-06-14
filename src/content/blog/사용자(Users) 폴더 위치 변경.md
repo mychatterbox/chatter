@@ -3,6 +3,7 @@ kind: article
 title: 사용자 Users 폴더 전체 위치 변경 (C:\Users -> D:\Users)
 author: mychatterbox
 pubDate: 2026-06-12
+updatedDate: 2026-06-14
 slug: change-users-folder-location
 featured: false
 draft: false
@@ -71,3 +72,11 @@ VHD(X) 에도 잘 적용되고 10/11 모두 가능합니다.
     ![sysprep is working](./blog-images/2026/change-users-folder-location_4.png)
 
     만약 에러창이 뜨면 relocate.xml 파일의 위치, 저장 형식 (UTF-8)을 살펴보거나, 원문 사이트의 코드를 사용해보세요.  
+
+
+
+
+> [!Info|hide]
+> 혹시 탐색기에서 OneDrive 를 클릭해도 아무런 반응이 없으면 다음 글을 참고하세요.  
+> <a href="/explorer-onedrive-fix" target="_blank" rel="noopener noreferrer">
+탐색기 원드라이브  폴더를 클릭해도 아무런 반응이 없을 때</a>  
