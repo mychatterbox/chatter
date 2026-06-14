@@ -156,8 +156,8 @@ body {
 
 
 .callout-info {
-  border-color: oklch(84.1% 0.238 128.85);
-  --callout-title-color: #16a085;
+  border-color: oklch(70.7% 0.165 254.624);
+  --callout-title-color: #2980b9;
 }
 
 .callout-success {
