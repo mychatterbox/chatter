@@ -337,6 +337,7 @@ export class CommentListItem extends LitElement {
           display: flex;
           flex-direction: row;
           align-items: flex-start;
+          margin: var(--ycc-spacing-xs) -5px;
         }
         .emoji-column {
           display: flex;
