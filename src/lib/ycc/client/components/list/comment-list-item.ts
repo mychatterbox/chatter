@@ -357,6 +357,9 @@ export class CommentListItem extends LitElement {
           gap: calc(var(--ycc-spacing-s) / 2);
           width: 100%;
         }
+        .actions {          margin-top: var(--ycc-spacing-s);
+          margin-bottom: var(--ycc-spacing-m);
+  }
           .comment-id {
   font-size: 0.7em;
 }
