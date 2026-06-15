@@ -44,6 +44,7 @@ export class CommentInput extends LitElement {
         scrollbar-width: thin;
         scrollbar-color: var(--ycc-border-color) transparent;
         color: inherit;
+        font-family: inherit;
       }
       textarea::-webkit-scrollbar {
         width: 6px;
