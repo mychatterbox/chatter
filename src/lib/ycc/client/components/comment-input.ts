@@ -419,13 +419,13 @@ export class CommentInput extends LitElement {
     return html`
       ${this.isFocused ? html`<div class="focus-overlay"></div>` : null}
       ${this.previewPlacement === 'before' ? preview : null}
-      ${this.beforeInputContent}
       <div
         part="input-container"
         class="comment-input-container ${this.isFocused ? 'mobile-focus' : ''}"
         @focusin=${this.handleFocusIn}
         @focusout=${this.handleFocusOut}
       >
+        ${this.beforeInputContent}
         <div class="message-row">
           <div class="draft-container">
             <textarea
@@ -582,8 +582,13 @@ export class CommentInput extends LitElement {
 
   private createPreviewComment(): Comment {
     const nickname = this.nickname.trim() || t('anonymous');
+        const processedDraft = this.draft
+      .split('\n')
+      .map(line => (line.length > 0 && !line.endsWith('  ')) ? line + '  ' : line)
+      .join('\n');
+      
     return {
-      msg: this.draft,
+      msg: processedDraft,
       nickname: nickname,
       pubDate: Date.now(),
       id: `preview_${Date.now()}`,
