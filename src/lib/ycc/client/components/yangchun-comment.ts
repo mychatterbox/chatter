@@ -423,7 +423,12 @@ ${t('helpMdCodeBlock')}
     if (!this.referenceComment) return;
     if (this.isReply) return;
 
-    const pureDraft = this.draft.trim();
+    // 마크다운 줄바꿈 처리: 엔터만 입력해도 줄바꿈이 되도록 문장 끝에 스페이스 2개 추가
+    const pureDraft = this.draft.trim()
+      .split('\n')
+      .map(line => (line.length > 0 && !line.endsWith('  ')) ? line + '  ' : line)
+      .join('\n');
+
     if (!pureDraft) return;
 
     const tokenData = this.commentTokens.get(this.referenceComment.id);
@@ -461,7 +466,12 @@ ${t('helpMdCodeBlock')}
       return;
     }
 
-    const pureDraft = this.draft.trim();
+    // 마크다운 줄바꿈 처리: 엔터만 입력해도 줄바꿈이 되도록 문장 끝에 스페이스 2개 추가
+    const pureDraft = this.draft.trim()
+      .split('\n')
+      .map(line => (line.length > 0 && !line.endsWith('  ')) ? line + '  ' : line)
+      .join('\n');
+
     if (!pureDraft) return;
 
     const nickname = this.nickname.trim() || undefined;
