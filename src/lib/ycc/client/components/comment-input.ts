@@ -249,7 +249,7 @@ export class CommentInput extends LitElement {
         }
         .comment-input-container.mobile-focus {
           position: fixed;
-          top: 0; left: 0; right: 0;
+          top: 0; left: 3px; right: 3px;
           z-index: 1000;
           background-color: var(--ycc-bg-color);
           box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
@@ -314,6 +314,9 @@ export class CommentInput extends LitElement {
   @state() private isPickerOpen = false;
   @state() private isDarkMode = false;
 
+  private previewResizeObserver: ResizeObserver | null = null;
+  private isAutoScrolling = false;
+
   // ⋯ 를 제외한 고정 이모지 목록
   private readonly emojis = ['😀', '🤬', '❤️', '👍🏼', '🙏🏼', '❗️', '❓️', '🐱', '🐶'];
 
@@ -362,6 +365,29 @@ export class CommentInput extends LitElement {
     // Shadow DOM 외부 클릭 감지 (팝업 닫기)
     this._onOutsideClick = this._onOutsideClick.bind(this);
     document.addEventListener('pointerdown', this._onOutsideClick);
+
+    // ResizeObserver로 미리보기 컨테이너 크기 변화 감지
+    this.previewResizeObserver = new ResizeObserver(() => {
+      this.updateComplete.then(() => {
+        const previewContainer = this.shadowRoot?.querySelector('.preview-container');
+        if (!previewContainer) return;
+
+        const rect = previewContainer.getBoundingClientRect();
+        
+        // 미리보기가 화면 아래에 가려져 있으면 자동 스크롤
+        if (rect.bottom > window.innerHeight) {
+          this.isAutoScrolling = true;
+          previewContainer.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'nearest' // 최소한의 스크롤만 수행
+          });
+          // 스크롤 완료 후 플래그 리셋
+          setTimeout(() => {
+            this.isAutoScrolling = false;
+          }, 500);
+        }
+      });
+    });
   }
 
   disconnectedCallback() {
@@ -370,6 +396,10 @@ export class CommentInput extends LitElement {
     // Observer 정리
     if (this.themeObserver) {
       this.themeObserver.disconnect();
+    }
+
+    if (this.previewResizeObserver) {
+      this.previewResizeObserver.disconnect();
     }
 
     document.removeEventListener('pointerdown', this._onOutsideClick);
@@ -588,6 +618,26 @@ export class CommentInput extends LitElement {
           composed: true,
         }),
       );
+    }
+  }
+
+  updated(changedProperties: PropertyValues<this>) {
+    // 렌더링 후 미리보기 컨테이너 감지 설정
+    if ((changedProperties as Map<string, any>).has('previewComment')) {
+      if (this.previewComment) {
+        // 미리보기가 추가되면 ResizeObserver 활성화
+        this.updateComplete.then(() => {
+          const previewContainer = this.shadowRoot?.querySelector('.preview-container');
+          if (previewContainer && this.previewResizeObserver) {
+            this.previewResizeObserver.observe(previewContainer);
+          }
+        });
+      } else {
+        // 미리보기가 제거되면 관찰 중지
+        if (this.previewResizeObserver) {
+          this.previewResizeObserver.disconnect();
+        }
+      }
     }
   }
 
