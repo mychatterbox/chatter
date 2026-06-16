@@ -170,6 +170,7 @@ export class CommentInput extends LitElement {
         font-weight: 700;
         color: #ef4444;
         animation: fadeIn 1s ease;
+        line-height: 0;
       }
       .preview-container {
         // border: 1px solid var(--ycc-border-color);
@@ -279,11 +280,12 @@ export class CommentInput extends LitElement {
         }
         .preview-label {
           margin-left: 0;   
+          line-height: 1rem;
         }
-        .preview-container {
-          margin: 0 8px;
-          padding: var(--ycc-spacing-s);
-        }
+        // .preview-container {
+        //   margin: 0 8px;
+        //   padding: var(--ycc-spacing-s);
+        // }
         comment-info::part(info-bar) {
           margin-left: 0;
           gap: 5px;
