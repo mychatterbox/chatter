@@ -118,7 +118,8 @@ export class CommentListItem extends LitElement {
 .comment-id {
   display: none;
   font-size: 0.9em;
-  font-family: var(--ycc-font-monospace);
+  // font-family: var(--ycc-font-monospace);
+  font-weight: 500;
 }
 .header:hover .comment-id {
   display: block;
@@ -471,6 +472,10 @@ top: 0;
     .like-count {
       font-size: 0.85em;
     }
+      :host([isReplying]) .comment-id,
+.header:hover .comment-id {
+  display: block !important;
+}
     `,
   ];
 
@@ -493,6 +498,7 @@ top: 0;
   @state() private likes = 0;
   @state() private liked = false;
   @state() private likeTimestamp: number | null = null;
+  @property({ type: Boolean, reflect: true }) isReplying = false;
   private _lastMsg: string | undefined | null = null;
   private _cachedHtml: ReturnType<typeof unsafeHTML> | null = null;
 
@@ -627,6 +633,16 @@ top: 0;
   `;
   }
 
+    updated(changedProperties: Map<string, any>) {
+    // 1. 부모로부터 전달받는 inlineEditorRootId 속성이 변경되었는지 확인
+    if (changedProperties.has('inlineEditorRootId')) {
+      // 2. 현재 입력 중인 ID가 나의 ID와 다르면 답글 상태를 해제
+      if (this.inlineEditorRootId !== this.comment.id) {
+        this.isReplying = false;
+      }
+    }
+  }
+
   private shouldRenderInlineEditor(): boolean {
     return !!this.inlineEditor && this.inlineEditorRootId === this.comment.id;
   }
@@ -734,16 +750,20 @@ top: 0;
     );
   }
 
-  private handleReply() {
-    if (!this.comment.id) return;
-    this.dispatchEvent(
-      new CustomEvent('comment-reply', {
-        detail: this.comment.id,
-        bubbles: true,
-        composed: true,
-      }),
-    );
-  }
+private handleReply() {
+  if (!this.comment.id) return;
+  
+  // 답글 모드 활성화 (ID 강제 노출을 위해)
+  this.isReplying = true; 
+  
+  this.dispatchEvent(
+    new CustomEvent('comment-reply', {
+      detail: this.comment.id,
+      bubbles: true,
+      composed: true,
+    }),
+  );
+}
 
   private handleContentClick(e: Event) {
     const target = e.target as HTMLElement;
