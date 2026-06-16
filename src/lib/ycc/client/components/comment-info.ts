@@ -21,6 +21,7 @@ export class CommentInfo extends LitElement {
         // border-radius: var(--ycc-radius);
         // margin-bottom: var(--ycc-spacing-s);
         font-size: 0.9em;
+        line-height: 1rem;
       }
       .reference-comment-info {
         display: flex;
