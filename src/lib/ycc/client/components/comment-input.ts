@@ -243,13 +243,13 @@ export class CommentInput extends LitElement {
           position: fixed;
           inset: 0;
           // z-index: 999;
-          backdrop-filter: blur(1px);
-          -webkit-backdrop-filter: blur(1px);
+          // backdrop-filter: blur(1px);
+          // -webkit-backdrop-filter: blur(1px);
           pointer-events: none;
         }
 
         .comment-input-container.mobile-focus {
-          z-index: 1000;
+          // z-index: 999;
 
           // background-color: var(--ycc-bg-color);
           // box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
@@ -737,57 +737,32 @@ export class CommentInput extends LitElement {
     if (!this.shadowRoot?.activeElement) this.isFocused = false;
   }
 
-  private async handleCancel(e: Event) {
-    e.preventDefault();
-    e.stopPropagation();
+private async handleCancel(e: Event) {
+  e.preventDefault();
+  e.stopPropagation();
 
-    // 아무 입력 없으면 완전 무시
-    if (!this.hasUserContent()) {
-      return;
-    }
+  // 1. 컴포넌트 내부 상태 초기화
+  this.draft = '';
+  this.nickname = '';
+  this.selectedEmoji = '';
+  this.isFocused = false;
+  this.isPickerOpen = false;
+  this.previewComment = null;
 
-    const textarea =
-      this.shadowRoot?.querySelector('textarea');
-
-    const nicknameInput =
-      this.shadowRoot?.querySelector('.nickname-input') as HTMLInputElement | null;
-
-    // 먼저 blur 처리
-    textarea?.blur();
-    nicknameInput?.blur();
-
-    // mobile-focus 즉시 해제
-    this.isFocused = false;
-
-    // picker 닫기
-    this.isPickerOpen = false;
-
-    // 렌더 안정화 대기
-    await this.updateComplete;
-
-    // 상태 초기화
-    this.draft = '';
-    this.nickname = '';
-    this.selectedEmoji = '';
-    this.previewComment = null;
-
-    // preview 제거 이벤트
-    this.dispatchEvent(
-      new CustomEvent('preview-change', {
-        detail: null,
-        bubbles: true,
-        composed: true,
-      }),
-    );
-
-    // cancel 이벤트
-    this.dispatchEvent(
-      new CustomEvent('comment-cancel', {
-        bubbles: true,
-        composed: true,
-      }),
-    );
-  }
+  // 2. 부모에게 상태 초기화를 강력하게 요청 (이 부분이 중요합니다)
+  this.dispatchEvent(
+    new CustomEvent('draft-change', { detail: '', bubbles: true, composed: true })
+  );
+  this.dispatchEvent(
+    new CustomEvent('nickname-change', { detail: '', bubbles: true, composed: true })
+  );
+  this.dispatchEvent(
+    new CustomEvent('preview-change', { detail: null, bubbles: true, composed: true })
+  );
+  this.dispatchEvent(
+    new CustomEvent('comment-cancel', { bubbles: true, composed: true })
+  );
+}
 
   private handleSubmit(e?: Event) {
     e?.preventDefault();
