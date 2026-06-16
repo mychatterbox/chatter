@@ -275,7 +275,7 @@ export class CommentListItem extends LitElement {
         z-index: 1;
       }
       /* 다음 형제로 이어지는 수직선 (마지막 요소가 아닐 때만) */
-      .reply-comment::after {
+      .reply-comment:not(.preview-label)::after {
         content: '';
         position: absolute;
         left: -26px;
@@ -403,7 +403,9 @@ top: 0;
         .reply-comment.is-last::after {
           display: none !important;
         }
-        .preview-label { margin-left: 0; }
+        .preview-label {
+         margin-left: 0; 
+         }
         .preview-container {
           margin: 0 8px;
           padding: var(--ycc-spacing-s);
