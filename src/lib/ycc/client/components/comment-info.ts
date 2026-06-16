@@ -28,6 +28,7 @@ export class CommentInfo extends LitElement {
         align-items: center;
         gap: var(--ycc-spacing-s);
         min-width: 0;
+        font-weight: 500;
       }
       .actions {
         display: flex;
@@ -73,10 +74,8 @@ export class CommentInfo extends LitElement {
               <div class="reference-comment-info">
                 ${this.isReply
                   ? html`<span
-                      >${t('replyingTo')}<strong
-                        >${this.comment.nickname || t('anonymous')}${' #' +
-                        this.comment.id}</strong
-                      ></span
+                      >${t('replyingTo')}${this.comment.nickname || t('anonymous')}${' #' +
+                        this.comment.id}</span
                     >`
                   : html`<span>${t('editing')}<strong>${this.comment.id}</strong></span>`}
                 <button 
