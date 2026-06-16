@@ -340,6 +340,11 @@ export class CommentListItem extends LitElement {
           align-items: flex-start;
           margin: var(--ycc-spacing-xs) -5px;
         }
+
+        .reply-comment:not(.preview-label)::after 
+        {
+              left: -17.5px;
+        }
         .emoji-column {
           display: flex;
           flex: 0 0 35px;
