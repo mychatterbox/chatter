@@ -9,7 +9,6 @@ import { t } from '../utils/i18n';
 export class CommentInput extends LitElement {
   static shadowRootOptions = {
     ...LitElement.shadowRootOptions,
-    delegatesFocus: true,
   };
 
   static styles = [
@@ -248,14 +247,12 @@ export class CommentInput extends LitElement {
           -webkit-backdrop-filter: blur(1px);
           pointer-events: none;
         }
+
         .comment-input-container.mobile-focus {
-          position: fixed;
-          top: 0; left: 3px; right: 3px;
           z-index: 1000;
-          background-color: var(--ycc-bg-color);
-          box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
-          padding-top: var(--ycc-spacing-s);
-          padding-bottom: var(--ycc-spacing-s);
+
+          // background-color: var(--ycc-bg-color);
+          // box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
         }
         .emoji-btn {
           width: 100%;
@@ -423,7 +420,6 @@ export class CommentInput extends LitElement {
       <div
         part="input-container"
         class="comment-input-container ${this.isFocused ? 'mobile-focus' : ''}"
-        @focusin=${this.handleFocusIn}
         @focusout=${this.handleFocusOut}
       >
         ${this.beforeInputContent}
@@ -432,6 +428,7 @@ export class CommentInput extends LitElement {
             <textarea
               part="textarea"
               .value=${this.draft}
+              @focus=${this.handleFocusIn}
               @input=${this.handleDraftInput}
               placeholder=${t('messagePlaceholder')}
               aria-label=${t('messagePlaceholder')}
@@ -460,6 +457,7 @@ export class CommentInput extends LitElement {
               part="nickname"
               class="nickname-input"
               .value=${this.isAdmin ? 'Admin' : this.nickname}
+              @focus=${this.handleFocusIn}
               @input=${this.handleNicknameInput}
               type="text"
               placeholder=${t('nicknamePlaceholder')}
@@ -474,7 +472,16 @@ export class CommentInput extends LitElement {
           </div>
           <div class="actions">
             <button
+              part="btn-cancel"
+              @pointerdown=${this.preventMobileFocus}
+              @click=${this.handleCancel}
+              ?disabled=${!this.shouldShowLivePreview()}
+            >
+              ${t('cancel')}
+            </button>
+            <button
               part="btn-submit"
+              @pointerdown=${this.preventMobileFocus}
               @click=${this.handleSubmit}
               ?disabled=${!this.isValidComment()}
             >
@@ -599,12 +606,16 @@ export class CommentInput extends LitElement {
     };
   }
 
-  private shouldShowLivePreview(): boolean {
+  private hasUserContent(): boolean {
     return (
       this.draft.trim().length > 0 ||
       this.nickname.trim().length > 0 ||
       this.selectedEmoji.length > 0
     );
+  }
+
+  private shouldShowLivePreview(): boolean {
+    return this.hasUserContent();
   }
 
   willUpdate(changedProperties: PropertyValues<this>) {
@@ -662,13 +673,32 @@ export class CommentInput extends LitElement {
   private handleDraftInput(e: Event) {
     const target = e.target as HTMLTextAreaElement;
     this.draft = target.value.slice(0, CommentInput.MAX_MESSAGE_LENGTH);
-    this.dispatchEvent(new CustomEvent('draft-change', { detail: this.draft, bubbles: true, composed: true }));
+
+    // 실제 입력 시작 시에만 mobile-focus 활성화
+    this.isFocused = this.hasUserContent();
+
+    this.dispatchEvent(
+      new CustomEvent('draft-change', {
+        detail: this.draft,
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   private handleNicknameInput(e: Event) {
     const target = e.target as HTMLInputElement;
     this.nickname = target.value.slice(0, CommentInput.MAX_NICKNAME_LENGTH);
-    this.dispatchEvent(new CustomEvent('nickname-change', { detail: this.nickname, bubbles: true, composed: true }));
+
+    this.isFocused = this.hasUserContent();
+
+    this.dispatchEvent(
+      new CustomEvent('nickname-change', {
+        detail: this.nickname,
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   private handleHoneypotInput(e: Event) {
@@ -676,13 +706,95 @@ export class CommentInput extends LitElement {
     this.honeypot = target.value;
   }
 
-  private handleFocusIn() { this.isFocused = true; }
+
+  private preventMobileFocus(e: PointerEvent) {
+    // 모바일에서 버튼 터치 시 textarea focus 복원 방지
+    e.preventDefault();
+  }
+
+  private async handleFocusIn() {
+    if (!this.hasUserContent()) {
+      return;
+    }
+
+    // mobile fixed 모드 활성화
+    this.isFocused = true;
+
+    // DOM 업데이트 대기
+    await this.updateComplete;
+
+    // 컨테이너 전체 기준으로 스크롤
+    const container =
+      this.shadowRoot?.querySelector('.comment-input-container');
+
+    container?.scrollIntoView({
+      block: 'start',
+      behavior: 'instant',
+    });
+  }
 
   private handleFocusOut() {
     if (!this.shadowRoot?.activeElement) this.isFocused = false;
   }
 
-  private handleSubmit() {
+  private async handleCancel(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // 아무 입력 없으면 완전 무시
+    if (!this.hasUserContent()) {
+      return;
+    }
+
+    const textarea =
+      this.shadowRoot?.querySelector('textarea');
+
+    const nicknameInput =
+      this.shadowRoot?.querySelector('.nickname-input') as HTMLInputElement | null;
+
+    // 먼저 blur 처리
+    textarea?.blur();
+    nicknameInput?.blur();
+
+    // mobile-focus 즉시 해제
+    this.isFocused = false;
+
+    // picker 닫기
+    this.isPickerOpen = false;
+
+    // 렌더 안정화 대기
+    await this.updateComplete;
+
+    // 상태 초기화
+    this.draft = '';
+    this.nickname = '';
+    this.selectedEmoji = '';
+    this.previewComment = null;
+
+    // preview 제거 이벤트
+    this.dispatchEvent(
+      new CustomEvent('preview-change', {
+        detail: null,
+        bubbles: true,
+        composed: true,
+      }),
+    );
+
+    // cancel 이벤트
+    this.dispatchEvent(
+      new CustomEvent('comment-cancel', {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  private handleSubmit(e?: Event) {
+    e?.preventDefault();
+
+    // 입력 없으면 아무 동작 안 함
+    if (!this.hasUserContent()) return;
+
     if (this.honeypot !== '') return;
     this.previewComment = null;
     this.dispatchEvent(
