@@ -367,7 +367,7 @@ export class CommentListItem extends LitElement {
           margin-bottom: var(--ycc-spacing-m);
   }
           .comment-id {
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
   .comment-icon {
 top: 0;
