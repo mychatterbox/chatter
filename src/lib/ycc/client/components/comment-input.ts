@@ -242,14 +242,14 @@ export class CommentInput extends LitElement {
           display: block;
           position: fixed;
           inset: 0;
-          z-index: 999;
+          // z-index: 999;
           backdrop-filter: blur(1px);
           -webkit-backdrop-filter: blur(1px);
           pointer-events: none;
         }
 
         .comment-input-container.mobile-focus {
-          // z-index: 1000;
+          z-index: 1000;
 
           // background-color: var(--ycc-bg-color);
           // box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
