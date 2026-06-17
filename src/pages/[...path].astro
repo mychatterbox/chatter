@@ -11,6 +11,7 @@ import { PAGE_SIZE } from "config/pagination";
 import ImageModal from "components/features/ImageModal.astro";
 import LiteYTScript from "utils/lite-yt-embed.astro";
 import HeadingAnchorCopy from "components/features/heading-anchor-copy.astro";
+import EnhancedCodeBlock from "components/features/Enhanced-Code-Block.astro";
 import YangChunComment from "components/features/YangChunComment.astro";
 
 const apiUrl =
@@ -62,7 +63,8 @@ export async function getStaticPaths() {
 
 const { entry, type, posts, currentPage, totalPages } = Astro.props;
 
-const renderResult = entry ? await render(entry) : { Content: null };
+const renderResult = entry ? await render(entry) : { Content: null, headings: [] };
+const { headings } = renderResult;
 const { Content } = renderResult;
 
 const hasYoutube = type === "post" && entry?.data?.youtube === true;
@@ -75,6 +77,12 @@ let kind;
 let isDraft = false;
 let processedOgImage;
 let tagLinks: { tag: string; url: string }[] = [];
+// 본문에 h2 ~ h6 헤딩이 하나라도 있는지 확인 (template의 h1은 무시됨)
+const hasHeadings = type === "post" && headings && headings.some(h => h.depth > 1);
+// 본문에 마크다운 이미지(![) 또는 HTML 이미지 태그(<img)가 포함되어 있는지 확인
+const hasImages = type === "post" && entry?.body && (entry.body.includes("![") || entry.body.includes("<img"));
+// 본문에 코드 블록( ``` )이 포함되어 있는지 확인
+const hasCodeBlocks = type === "post" && entry?.body && entry.body.includes(" ```");
 
 if (type === "post" && entry) {
   const data = entry.data;
@@ -103,15 +111,16 @@ if (type === "post" && entry) {
       description={description}
       pubDate={pubDate}
       ogType="article"
-      ogImage={processedOgImage}
+      ogImage={processedOgImage}      
     >
       <ReadingProgressBar />
       <Nav />
-      <ImageModal />
+      {hasImages && <ImageModal />}
+      {hasCodeBlocks && <EnhancedCodeBlock />}
       {hasYoutube && <LiteYTScript enabled={hasYoutube} />}
-      <HeadingAnchorCopy />
+      {hasHeadings && <HeadingAnchorCopy />}
 
-      <main class="main-container">
+      <main class="main-container">        
         <article class="article-container" data-pagefind-body>
           <div class="article-header">
             <h1 class="title-post" transition:name={`title-${entry?.id}`}>
