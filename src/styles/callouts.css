@@ -123,7 +123,7 @@ body {
 }
 
 .callout-note {
-  border-color: oklch(70.7% 0.165 254.624);
+  border-color: oklch(74.6% 0.16 232.661);
   --callout-title-color: #2980b9;
 }
 
@@ -138,7 +138,7 @@ body {
 }
 
 .callout-important {
-  border-color: oklch(70.4% 0.191 22.216);
+  border-color: oklch(71.2% 0.194 13.428);
   --callout-title-color: #c0392b;
 }
 
@@ -156,7 +156,8 @@ body {
 
 
 .callout-info {
-  border-color: oklch(70.7% 0.165 254.624);
+  /* border-color: oklch(70.7% 0.165 254.624); */
+    border-color: oklch(70.7% 0.165 254.624);
   --callout-title-color: #2980b9;
 }
 
@@ -166,12 +167,12 @@ body {
 }
 
 .callout-question {
-  border-color: oklch(0.5 0 0);
+  border-color: oklch(70.4% 0.04 256.788);
   --callout-title-color: #2980b9;
 }
 
 .callout-todo {
-  border-color: #95a5a6;
+  border-color:  oklch(74% 0.238 322.16);
   --callout-title-color: var(--color-text-primary);
 }
 
