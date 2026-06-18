@@ -49,7 +49,7 @@ export default defineConfig({
   // },
   build: {
     format: "preserve",
-    internalStylesheet: "always",
+    inlineStylesheets: 'always',
   },
 
   integrations: [
