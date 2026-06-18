@@ -49,6 +49,7 @@ export default defineConfig({
   // },
   build: {
     format: "preserve",
+    internalStylesheet: "always",
   },
 
   integrations: [
