@@ -76,7 +76,7 @@ VHD(X) 에도 잘 적용되고 10/11 모두 가능합니다.
 
 
 
-> [!Info|hide]
-> 혹시 탐색기에서 OneDrive 를 클릭해도 아무런 반응이 없으면 다음 글을 참고하세요.  
+> [!TIP|hide]
+> 설치 후 탐색기에서 OneDrive 를 클릭해도 아무런 반응이 없으면 다음 글을 참고하세요.  
 > <a href="/explorer-onedrive-fix" target="_blank" rel="noopener noreferrer">
 탐색기 원드라이브  폴더를 클릭해도 아무런 반응이 없을 때</a>  
