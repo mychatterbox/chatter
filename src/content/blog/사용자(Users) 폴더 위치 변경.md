@@ -44,16 +44,17 @@ VHD(X) 에도 잘 적용되고 10/11 모두 가능합니다.
 4.  메모장을 열고, 아래 내용으로 UTF-8 형식인 무인 응답 파일(relocate.xml)을 만들고 C:\가 아닌 다른 드라이브에 저장합니다.   
     Users 폴더의 위치를 다른 곳으로 하고 싶으면 **D:\Users**  부분을 수정합니다.  
 
-    ```xml file="relocate.xml"
-      <? xml version = "1.0" encoding = "utf-8" ?> <unattend xmlns = "urn:schemas-microsoft-com:unattend" > 
-      <settings pass = "oobeSystem" > 
-      <component name = "Microsoft-Windows-Shell-Setup" processorArchitecture = "amd64" publicKeyToken = "31bf3856ad364e35" language = "neutral" versionScope = "nonSxS" xmlns:wcm = " http://schemas.microsoft.com/WMIConfig/2002/State " xmlns:xsi = " http://www.w3.org/2001/XMLSchema-instance "" > 
-      <FolderLocations> 
-      <ProfilesDirectory> D:\Users </ProfilesDirectory> 
-      </FolderLocations> 
-      </component> 
-      </settings>
-      </unattend>
+    ```xml file="relocate.xml"  
+    <?xml version="1.0" encoding="utf-8"?>
+    <unattend xmlns="urn:schemas-microsoft-com:unattend">
+    <settings pass="oobeSystem">
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <FolderLocations>
+    <ProfilesDirectory>D:\Users</ProfilesDirectory>
+    </FolderLocations>
+    </component>
+    </settings>
+    </unattend>  
     ```
 
 5. 관리자 권한으로 명령 프롬프트 (CMD) 실행한 뒤 아래 명령어를 차례로 실행합니다.  
