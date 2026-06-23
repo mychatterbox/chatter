@@ -439,7 +439,7 @@ ${t('helpMdCodeBlock')}
         .updateComment(
           this.referenceComment.id,
           this.post,
-          this.referenceComment.nickname || '',
+          this.nickname,
           pureDraft,
           emoji,
           tokenData?.token,
@@ -447,6 +447,8 @@ ${t('helpMdCodeBlock')}
         );
 
       this.draft = '';
+      this.nickname = '';
+      this.selectedEmoji = '';
       this.inputPreviewComment = null;
       this.referenceComment = null;
       this.isReply = true;
@@ -547,6 +549,7 @@ ${t('helpMdCodeBlock')}
     this.referenceComment = refComment;
     this.isReply = false;
     this.draft = refComment.msg || '';
+    this.nickname = refComment.nickname || '';
     this.selectedEmoji = refComment.emoji || '';
     this.inputPreviewComment = null;
     await this.updateComplete;
