@@ -1,3 +1,5 @@
+<div id="enhanced-code-block-marker" style="display: none;" aria-hidden="true"></div>
+
 <script is:inline>
   (function () {
     var copyCodeSvg =
@@ -122,6 +124,7 @@
     }
 
     document.addEventListener("astro:page-load", function () {
+      if (!document.getElementById("enhanced-code-block-marker")) return;
       setTimeout(addCopyCodeButtons, 100);
     });
   })();
@@ -192,6 +195,7 @@
     }
 
     document.addEventListener("astro:page-load", function () {
+      if (!document.getElementById("enhanced-code-block-marker")) return;
       setTimeout(addExpandCollapseButtons, 100);
     });
   })();
