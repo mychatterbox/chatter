@@ -33,7 +33,7 @@ export const yangChunCommentStyles = css`
   }
 
   .root {
-    font-family: "Twemoji Mozilla", var(--ycc-font-family), sans-serif;
+    font-family: var(--ycc-font-family);
     color: var(--ycc-text-secondary);
     line-height: var(--ycc-line-height);
     font-size: var(--ycc-font-size);

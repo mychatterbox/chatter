@@ -329,15 +329,6 @@ export class CommentInput extends LitElement {
     script.type = 'module';
     script.src = 'https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js';
     document.head.appendChild(script);
-
-    // 윈도우 국기 이모지 폴리필 적용
-    const polyfillScript = document.createElement('script');
-    polyfillScript.type = 'module';
-    polyfillScript.textContent = `
-      import { polyfillCountryFlagEmojis } from 'https://cdn.skypack.dev/country-flag-emoji-polyfill@v0.1.1';
-      polyfillCountryFlagEmojis('Twemoji Mozilla');
-    `;
-    document.head.appendChild(polyfillScript);
   }
 
   // MutationObserver로 dark 클래스 변경 감지
