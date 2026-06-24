@@ -355,6 +355,11 @@ export class CommentListItem extends LitElement {
           width: 28px;
           height: 28px;
         }
+.author-emoji {
+font-size: 1.7rem;
+}
+
+
         .header-avatar, .header-emoji {
           // display: none !important;
         }
