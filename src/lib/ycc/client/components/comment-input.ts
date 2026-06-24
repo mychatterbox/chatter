@@ -16,7 +16,13 @@ export class CommentInput extends LitElement {
     css`
       :host {
         display: block;
+        position: relative;
       }
+:host([picker-open]) {
+  z-index: 9999;
+}
+
+
       .comment-input-container {
         position: relative;
         z-index: 1;
@@ -157,6 +163,7 @@ export class CommentInput extends LitElement {
 
       /* emoji-picker 기본 크기 및 스타일 */
       .emoji-picker-popup emoji-picker {
+      // --emoji-font-family: 'OpenMoji Color';
         width: 100%;
         height: 100%;
         --emoji-size: 2.5rem;
@@ -328,6 +335,7 @@ export class CommentInput extends LitElement {
     const script = document.createElement('script');
     script.type = 'module';
     script.src = 'https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js';
+    
     document.head.appendChild(script);
   }
 
@@ -640,25 +648,33 @@ export class CommentInput extends LitElement {
     }
   }
 
-  updated(changedProperties: PropertyValues<this>) {
-    // 렌더링 후 미리보기 컨테이너 감지 설정
-    if ((changedProperties as Map<string, any>).has('previewComment')) {
-      if (this.previewComment) {
-        // 미리보기가 추가되면 ResizeObserver 활성화
-        this.updateComplete.then(() => {
-          const previewContainer = this.shadowRoot?.querySelector('.preview-container');
-          if (previewContainer && this.previewResizeObserver) {
-            this.previewResizeObserver.observe(previewContainer);
-          }
-        });
-      } else {
-        // 미리보기가 제거되면 관찰 중지
-        if (this.previewResizeObserver) {
-          this.previewResizeObserver.disconnect();
+updated(changedProperties: PropertyValues<this>) {
+  // isPickerOpen과 previewComment 모두 같은 방식으로 캐스팅
+  const changed = changedProperties as Map<string, any>;
+
+  if (changed.has('isPickerOpen')) {
+    if (this.isPickerOpen) {
+      this.setAttribute('picker-open', '');
+    } else {
+      this.removeAttribute('picker-open');
+    }
+  }
+
+  if (changed.has('previewComment')) {
+    if (this.previewComment) {
+      this.updateComplete.then(() => {
+        const previewContainer = this.shadowRoot?.querySelector('.preview-container');
+        if (previewContainer && this.previewResizeObserver) {
+          this.previewResizeObserver.observe(previewContainer);
         }
+      });
+    } else {
+      if (this.previewResizeObserver) {
+        this.previewResizeObserver.disconnect();
       }
     }
   }
+}
 
 
 
