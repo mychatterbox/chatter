@@ -1,4 +1,5 @@
 @import './heading-anchor.css';
+@import '../styles/fonts-emoji.css';
 
 :root {
   color-scheme: light;
@@ -35,7 +36,7 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
 
-  --font-sans: 'Pretendard GOV Variable', 'Pretendard', 'SF Pro', 'Apple SD Gothic Neo', 'OneUI Sans', 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Twemoji Mozilla', 'Pretendard GOV Variable', 'Pretendard', 'SF Pro', 'Apple SD Gothic Neo', 'OneUI Sans', 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Cascadia Mono', 'Cascadia Code', 'D2Coding', 'Menlo', 'Noto Sans Mono', 'Roboto Mono', 'Lucida Console', ui-monospace, monospace;
 
   --breakpoint-xs: 420px;
