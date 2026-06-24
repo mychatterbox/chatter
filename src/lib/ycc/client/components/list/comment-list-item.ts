@@ -332,6 +332,11 @@ export class CommentListItem extends LitElement {
         display: none;
       }
 
+
+      .author-emoji {
+    filter: drop-shadow(0 0 1px gray);
+}
+
       @media (max-width: 420px) {
         /* 모바일 레이아웃 및 정렬 */
         .comment-layout {

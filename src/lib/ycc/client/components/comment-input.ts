@@ -89,6 +89,8 @@ export class CommentInput extends LitElement {
         justify-content: space-between;
         gap: var(--ycc-spacing-s);
         transition: border-color 0.15s ease;
+          position: relative;
+  z-index: 2;
       }
       .comment-input-container:focus-within .message-row,
       .comment-input-container:focus-within .controls-row {
@@ -163,7 +165,8 @@ export class CommentInput extends LitElement {
 
       /* emoji-picker 기본 크기 및 스타일 */
       .emoji-picker-popup emoji-picker {
-      // --emoji-font-family: 'OpenMoji Color';
+      // --emoji-font-family: 'OpenMoji';
+            --emoji-font-family: 'Twemoji Mozilla';
         width: 100%;
         height: 100%;
         --emoji-size: 2.5rem;
@@ -178,11 +181,15 @@ export class CommentInput extends LitElement {
         color: #ef4444;
         animation: fadeIn 1s ease;
         line-height: 0;
+          position: relative;
+  z-index: 1; 
       }
       .preview-container {
         // border: 1px solid var(--ycc-border-color);
         // padding-top: var(--ycc-spacing-s);
         animation: fadeIn 1s ease;
+          position: relative;
+  z-index: 1;  
       }
 
       @keyframes fadeIn {
@@ -212,14 +219,14 @@ export class CommentInput extends LitElement {
       }
 
 .emoji-picker-popup {
-  width: min(768px, calc(100dvw - 2.5em));
+    width: min(768px, calc(100vw - 30px));
   height: 470px;
   // height: 768px;
 }
 
 @media (max-width: 640px) {
   .emoji-picker-popup {
-    width: min(768px, calc(100dvw - 2em));
+    width: min(640px, calc(100vw - 16px));
   }
 }
 
