@@ -44,7 +44,7 @@ export class CommentInput extends LitElement {
         min-height: 100px;
         resize: vertical;
         border: none;
-        resize: none;
+        // resize: none;
         background-color: var(--ycc-bg-color);
         scrollbar-width: thin;
         scrollbar-color: var(--ycc-border-color) transparent;
@@ -74,6 +74,7 @@ export class CommentInput extends LitElement {
         display: flex;
         justify-content: flex-end;
         gap: var(--ycc-spacing-s);
+        padding: 5px 10px;
       }
       .message-row {
         border: 1px solid var(--ycc-border-color);
@@ -92,16 +93,24 @@ export class CommentInput extends LitElement {
           position: relative;
   z-index: 2;
       }
-      .comment-input-container:focus-within .message-row,
-      .comment-input-container:focus-within .controls-row {
-        border-color: var(--ycc-border-focus-color, color-mix(in oklch, var(--color-border) 50%, gray));
-      }
+      // .comment-input-container:focus-within .message-row,
+      // .comment-input-container:focus-within .controls-row {
+      //   border-color: var(--ycc-border-focus-color, color-mix(in oklch, var(--color-border) 50%, gray));
+      // }
+
+.message-row:focus-within, .controls-row:focus-within {
+  box-shadow: inset 0 0 0 1.5px var(--ycc-primary-color);
+
+}
+
+
       .nickname-input {
         flex: 1;
         border: none;
         outline: none;
         background-color: var(--ycc-bg-color);
         font-size: 10px;
+        margin-left: 2px;
       }
       .nickname-wrapper {
         flex: 1;
@@ -252,7 +261,7 @@ export class CommentInput extends LitElement {
       /* ─── 모바일 (420px 이하) ─── */
       @media (max-width: 420px) {
         textarea { min-height: 100px; }
-        .draft-container { padding: 0; }
+        .draft-container { padding: 1px; }
         .focus-overlay {
           display: block;
           position: fixed;
@@ -262,6 +271,11 @@ export class CommentInput extends LitElement {
           // -webkit-backdrop-filter: blur(1px);
           pointer-events: none;
         }
+
+.message-counter {
+margin-right: 5px;
+}
+
 
         .comment-input-container.mobile-focus {
           // z-index: 999;
