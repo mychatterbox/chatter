@@ -100,7 +100,7 @@ export class CommentInput extends LitElement {
       // }
 
 .message-row:focus-within, .controls-row:focus-within {
-  box-shadow: inset 0 0 0 1.5px var(--ycc-primary-color);
+  box-shadow: inset 0 0 0 1px var(--ycc-primary-color);
 
 }
 
