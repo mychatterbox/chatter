@@ -210,7 +210,7 @@ export class CommentInput extends LitElement {
       /* ─── 카운터 ─── */
       .char-counter {
         font-size: 0.75rem;
-        color: var(--ycc-text-secondary);
+        color: var(--color-text-muted);
         white-space: nowrap;
       }
       .message-counter {
