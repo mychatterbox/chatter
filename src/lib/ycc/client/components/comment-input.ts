@@ -780,6 +780,11 @@ private async handleCancel(e: Event) {
   e.preventDefault();
   e.stopPropagation();
 
+    const textarea = this.shadowRoot?.querySelector('textarea');
+    if (textarea) {
+      textarea.style.height = 'auto';
+    }
+
   // 1. 컴포넌트 내부 상태 초기화
   this.draft = '';
   this.nickname = '';
