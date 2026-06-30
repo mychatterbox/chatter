@@ -39,6 +39,7 @@ export class CommentInput extends LitElement {
         flex-direction: column;
         gap: var(--ycc-spacing-s);
         padding: var(--ycc-spacing-s);
+        position: relative;
       }
       textarea {
         min-height: 100px;
@@ -46,8 +47,8 @@ export class CommentInput extends LitElement {
         border: none;
         // resize: none;
         background-color: var(--ycc-bg-color);
-        scrollbar-width: thin;
-        scrollbar-color: var(--ycc-border-color) transparent;
+        // scrollbar-width: thin;
+        // scrollbar-color: var(--ycc-border-color) transparent;
         color: inherit;
         font-family: inherit;
       }
@@ -232,6 +233,15 @@ export class CommentInput extends LitElement {
   height: 470px;
   // height: 768px;
 }
+.char-counter.message-counter {
+  position: absolute;
+  bottom: 5px;
+  right: 30px;
+  // font-size: 0.75rem;
+  color: var(--color-text-muted); 
+  pointer-events: none;
+  z-index: 5;
+}
 
 @media (max-width: 640px) {
   .emoji-picker-popup {
@@ -261,7 +271,7 @@ export class CommentInput extends LitElement {
       /* ─── 모바일 (420px 이하) ─── */
       @media (max-width: 420px) {
         textarea { min-height: 100px; }
-        .draft-container { padding: 1px; }
+        // .draft-container { padding: 1px; }
         .focus-overlay {
           display: block;
           position: fixed;
@@ -276,7 +286,10 @@ export class CommentInput extends LitElement {
 margin-right: 5px;
 }
 
-
+.char-counter.message-counter {
+  bottom: 3px;
+  right: 15px;
+  }
         .comment-input-container.mobile-focus {
           // z-index: 999;
 
