@@ -40,21 +40,27 @@ export const yangChunCommentStyles = css`
   }
 
   button {
-    background-color: var(--ycc-primary-color);
-    color: white;
+    background-color: var(--color-thead-bg);
+    // color:var(--color-text-primary);
     border: none;
-    padding: var(--ycc-spacing-s) var(--ycc-spacing-m);
+    padding: 6px 12px;
     border-radius: var(--ycc-radius);
     cursor: pointer;
     font-size: var(--ycc-font-size);
     transition: background-color 0.2s;
     font-family: inherit;
+    opacity: 0;
+      transition: opacity 0.8s ease;
   }
+    button:enabled {
+  opacity: 0.8;
+}
   button:hover {
-    background-color: var(--ycc-primary-hover);
+    background-color: var(--color-link-article);
+    color: oklch(0.92 0 0);
   }
   button:disabled {
-    opacity: 0.5;
+    opacity: 0;
     cursor: not-allowed;
   }
   button.secondary {
