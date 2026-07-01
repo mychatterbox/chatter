@@ -30,7 +30,7 @@ flag 이모지를 사용하기 위해 Twemoji, openmoji, NotoColorEmoji 와 같�
 
 
 유니코드 버전에 따라 flag가 추가([Sark](https://en.wikipedia.org/wiki/Flag_of_Sark))되거나 디자인이 바뀌기 때문에 2026년 6월 기준, 최소한 유니코드 16 이상 적용된 폰트를 사용하는 것이 좋습니다.  
-아래는 공식 사이트의 원본 ttf 파일 링크이므로 다운 받아서 <mark>[직접 변환](http://chatter.kr/how-to-subset-flag-emoji#폰트-subsetting)</mark>  해야 합니다.  
+아래는 공식 사이트의 원본 ttf 파일 링크이므로 다운 받아서 <mark>[직접 변환](#폰트-subsetting)</mark>  해야 합니다.  
 
 
 
