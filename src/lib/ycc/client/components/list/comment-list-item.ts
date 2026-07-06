@@ -2,18 +2,15 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { globalApiService } from '../../api/globalApiService';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { until } from 'lit/directives/until.js';
 import { yangChunCommentStyles } from '../yangchun-comment.styles';
 import type { Comment } from '@ziteh/yangchun-comment-shared';
-import { sanitizeHtml } from '../../utils/sanitize';
-import { marked } from 'marked';
-import { formatRelativeDate, formatAbsoluteDate } from '../../utils/format';
+import { parseAndSanitizeMarkdown } from '../../utils/sanitize';
+import { formatAbsoluteDate } from '../../utils/format';
 import { t } from '../../utils/i18n';
 import anonymousAvatar from '../anonymous_square.png?url';
 
 const anonymousAvatarUrl = anonymousAvatar;
 
-const deletedMark = 'deleted';
 
 @customElement('comment-list-item')
 export class CommentListItem extends LitElement {
@@ -517,8 +514,7 @@ top: 0;
   private _lastMsg: string | undefined | null = null;
   private _cachedHtml: ReturnType<typeof unsafeHTML> | null = null;
 
-  private isContentExpanded = false;
-  private readonly MAX_LINES = 10;
+
   private readonly LIKED_STORAGE_KEY = 'ycc_liked';
 
   firstUpdated() {
@@ -544,7 +540,7 @@ top: 0;
   }
 
   render() {
-    const commentContent = html`<div part="content" class="content">${until(this.renderMarkdown(this.comment.msg), '')}</div>`;
+    const commentContent = html`<div part="content" class="content">${this.renderMarkdown(this.comment.msg)}</div>`;
     const shouldRenderReplyArea = this.replyComments.length > 0 || this.shouldRenderInlineEditor();
     const normalReplies = this.replyComments.filter(
       (reply) => !this.isPreviewComment(reply) && reply.replyTo === this.comment.id,
@@ -780,48 +776,21 @@ private handleReply() {
   );
 }
 
-  private handleContentClick(e: Event) {
-    const target = e.target as HTMLElement;
-    const link = target.closest('[data-external-link="true"]') as HTMLElement;
-    if (link) {
-      e.preventDefault();
-      e.stopPropagation();
-      const href = link.getAttribute('data-href');
-      if (href) {
-        this.dispatchEvent(
-          new CustomEvent('external-link-click', {
-            detail: href,
-            bubbles: true,
-            composed: true,
-          }),
-        );
-      }
-    }
-  }
 
-  private async renderMarkdown(
+
+  private renderMarkdown(
     dirtyMd: string | undefined | null,
-  ): Promise<ReturnType<typeof unsafeHTML>> {
+  ): ReturnType<typeof unsafeHTML> {
     if (!dirtyMd) return unsafeHTML('');
 
     if (this._lastMsg === dirtyMd && this._cachedHtml) {
       return this._cachedHtml;
     }
 
-    const dirtyHtml = await marked.parse(dirtyMd);
-    const cleanHtml = sanitizeHtml(dirtyHtml);
+    const cleanHtml = parseAndSanitizeMarkdown(dirtyMd);
     this._lastMsg = dirtyMd;
     this._cachedHtml = unsafeHTML(cleanHtml);
     return this._cachedHtml;
   }
 
-  private shouldShowExpandBtn(): boolean {
-    const lines = (this.comment.msg || '').split('\n');
-    return lines.length > this.MAX_LINES;
-  }
-
-  private handleToggleExpand(): void {
-    this.isContentExpanded = !this.isContentExpanded;
-    this.requestUpdate();
-  }
 }

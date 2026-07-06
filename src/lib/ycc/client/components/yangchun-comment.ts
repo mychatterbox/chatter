@@ -11,10 +11,9 @@ import './comment-admin';
 import type { CommentAdmin } from './comment-admin';
 import { createApiService } from '../api/apiService';
 import { globalApiService } from '../api/globalApiService';
-import { initI18n, enUS, zhTW, koKR, t } from '../utils/i18n';
+import { initI18n, koKR, t } from '../utils/i18n';
 import type { I18nStrings } from '../utils/i18n';
 import { cleanupPowWorker } from '../utils/pow';
-import { findRootComment } from '../utils/comment';
 
 @customElement('yangchun-comment')
 export class YangChunComment extends LitElement {
@@ -78,7 +77,7 @@ export class YangChunComment extends LitElement {
   @property({ type: String }) post = 'my-post';
   @property({ type: String }) apiUrl = 'http://localhost:8787';
   @property({ type: String }) adminName = 'Admin';
-  @property({ type: String }) lang = 'en-US';
+  @property({ type: String }) lang = 'ko-KR';
   @property({ type: String }) prePowSalt = 'MAGIC';
   @property({ type: Number }) prePowDifficulty = 2;
   @property({ type: Object, attribute: false }) customMessages: I18nStrings | undefined;
@@ -90,7 +89,6 @@ export class YangChunComment extends LitElement {
   @state() private selectedEmoji = '';
   @state() private comments: Comment[] = [];
   @state() private deleteCommentId = '';
-  @state() private inputPreviewComment: Comment | null = null;
 
   // Store tokens for edit/delete operations
   @state() private commentTokens = new Map<string, { token: string; timestamp: number }>();
@@ -115,8 +113,8 @@ export class YangChunComment extends LitElement {
       <div class="help-content">
         <div class="help-desc">
           ${t('helpDesc')
-            .split('\n')
-            .map((line) => html`<p>${line}</p>`)}
+        .split('\n')
+        .map((line) => html`<p>${line}</p>`)}
         </div>
         <pre class="help-md-sample">
 [${t('helpMdLink')}](https://example.com)
@@ -155,19 +153,19 @@ ${t('helpMdCodeBlock')}
       </div>
     `;
 
-    // 인라인(답글/수정) 모드일 때 사용할 에디터 정의
-    const inlineEditor = this.isInlineReply 
-      ? this.renderCommentInput('before', this.renderCommentInfo()) 
+    // ?�라???��?/?�정) 모드?????�용???�디???�의
+    const inlineEditor = this.isInlineReply
+      ? this.renderCommentInput('before', this.renderCommentInfo())
       : null;
 
-    // 루트 레벨(기본 위치)에서 사용할 에디터 정의
-    const rootEditor = !this.isInlineReply 
+    // 루트 ?�벨(기본 ?�치)?�서 ?�용???�디???�의
+    const rootEditor = !this.isInlineReply
       ? html`${this.renderCommentInfo()}${this.renderCommentInput('after')}`
       : null;
 
     return html`
       <div class="root" part="root">
-        <!-- 원래 위치: 본문 바로 아래 (댓글 리스트 위) -->
+        <!-- ?�래 ?�치: 본문 바로 ?�래 (?��? 리스???? -->
         ${rootEditor}
 
         <comment-list
@@ -240,7 +238,6 @@ ${t('helpMdCodeBlock')}
         @draft-change=${this.handleDraftChange}
         @nickname-change=${this.handleNicknameChange}
         @emoji-change=${(e: CustomEvent) => (this.selectedEmoji = e.detail)}
-        @preview-change=${this.handlePreviewChange}
         @comment-submit=${this.handleCommentSubmit}
       ></comment-input>
     `;
@@ -265,9 +262,7 @@ ${t('helpMdCodeBlock')}
       if (this.customMessages) {
         initI18n(this.customMessages);
       } else {
-        const availableLangs = [enUS, zhTW, koKR];
-        const selectedLang = availableLangs.find((l) => l.bcp47 === this.lang) || enUS;
-        initI18n(selectedLang);
+        initI18n(koKR);
       }
     }
 
@@ -313,10 +308,10 @@ ${t('helpMdCodeBlock')}
         const parsed = JSON.parse(stored);
         const now = Date.now();
         const twentyFourHours = 24 * 60 * 60 * 1000;
-        
+
         let hasExpired = false;
         const validTokens = new Map<string, { token: string; timestamp: number }>();
-        
+
         for (const [id, data] of Object.entries(parsed)) {
           const tokenData = data as { token: string; timestamp: number };
           if (now - tokenData.timestamp < twentyFourHours) {
@@ -325,7 +320,7 @@ ${t('helpMdCodeBlock')}
             hasExpired = true;
           }
         }
-        
+
         this.commentTokens = validTokens;
         if (hasExpired) {
           this.saveTokens(); // clean up expired ones from storage
@@ -355,8 +350,8 @@ ${t('helpMdCodeBlock')}
     try {
       const response = await globalApiService.getInstance().getComments(this.post);
       this.comments = response.comments;
-      
-      // 댓글 업데이트 이벤트 발송 (실시간 카운트 업데이트용)
+
+      // ?��? ?�데?�트 ?�벤??발송 (?�시�?카운???�데?�트??
       this.dispatchEvent(new CustomEvent('ycc-comments-updated', {
         detail: { count: response.comments.length },
         bubbles: true,
@@ -373,15 +368,15 @@ ${t('helpMdCodeBlock')}
   }
 
   private handleRefCommentCancel = () => {
-    
-    // 1. 모든 입력 내용 초기화
+
+    // 1. 모든 ?�력 ?�용 초기??
     this.draft = '';
     this.nickname = '';
     this.selectedEmoji = '';
-    this.inputPreviewComment = null;
+
     this.errorMessage = '';
 
-    // 2. 참조 댓글 해제 -> isInlineReply가 false가 되어 에디터가 리스트 하단으로 이동함
+    // 2. 참조 ?��? ?�제 -> isInlineReply가 false가 ?�어 ?�디?��? 리스???�단?�로 ?�동??
     this.referenceComment = null;
     this.isReply = true;
 
@@ -396,22 +391,10 @@ ${t('helpMdCodeBlock')}
     this.nickname = e.detail;
   }
 
-  private handlePreviewChange = (e: CustomEvent<Comment | null>) => {
-    this.inputPreviewComment = e.detail;
-  }
 
-  private get replyPreviewComment(): Comment | null {
-    if (!this.isReply || !this.referenceComment || !this.inputPreviewComment) return null;
-
-    return {
-      ...this.inputPreviewComment,
-      id: `preview_reply_${this.referenceComment.id}`,
-      replyTo: this.referenceComment.id,
-    };
-  }
 
   private get isInlineReply(): boolean {
-    // 답글(Reply)이든 수정(Edit)이든 대상 댓글이 있으면 인라인으로 표시
+    // ?��?(Reply)?�든 ?�정(Edit)?�든 ?�???��????�으�??�라?�으�??�시
     return !!this.referenceComment;
   }
 
@@ -423,7 +406,7 @@ ${t('helpMdCodeBlock')}
     if (!this.referenceComment) return;
     if (this.isReply) return;
 
-    // 마크다운 줄바꿈 처리: 엔터만 입력해도 줄바꿈이 되도록 문장 끝에 스페이스 2개 추가
+    // 마크?�운 줄바�?처리: ?�터�??�력?�도 줄바꿈이 ?�도�?문장 ?�에 ?�페?�스 2�?추�?
     const pureDraft = this.draft.trim()
       .split('\n')
       .map(line => (line.length > 0 && !line.endsWith('  ')) ? line + '  ' : line)
@@ -434,7 +417,7 @@ ${t('helpMdCodeBlock')}
     const tokenData = this.commentTokens.get(this.referenceComment.id);
 
     try {
-      const ok = await globalApiService
+      await globalApiService
         .getInstance()
         .updateComment(
           this.referenceComment.id,
@@ -449,7 +432,6 @@ ${t('helpMdCodeBlock')}
       this.draft = '';
       this.nickname = '';
       this.selectedEmoji = '';
-      this.inputPreviewComment = null;
       this.referenceComment = null;
       this.isReply = true;
 
@@ -468,7 +450,7 @@ ${t('helpMdCodeBlock')}
       return;
     }
 
-    // 마크다운 줄바꿈 처리: 엔터만 입력해도 줄바꿈이 되도록 문장 끝에 스페이스 2개 추가
+    // 마크?�운 줄바�?처리: ?�터�??�력?�도 줄바꿈이 ?�도�?문장 ?�에 ?�페?�스 2�?추�?
     const pureDraft = this.draft.trim()
       .split('\n')
       .map(line => (line.length > 0 && !line.endsWith('  ')) ? line + '  ' : line)
@@ -499,7 +481,7 @@ ${t('helpMdCodeBlock')}
         this.draft = '';
         this.nickname = '';
         this.selectedEmoji = '';
-        this.inputPreviewComment = null;
+
         this.referenceComment = null;
 
         // Refresh from server to get the latest data
@@ -524,7 +506,6 @@ ${t('helpMdCodeBlock')}
     }
     if (!this.isReply) {
       this.draft = ''; // If was editing, cancel editing first
-      this.inputPreviewComment = null;
     }
     this.referenceComment = refComment;
     this.isReply = true;
@@ -551,7 +532,7 @@ ${t('helpMdCodeBlock')}
     this.draft = refComment.msg || '';
     this.nickname = refComment.nickname || '';
     this.selectedEmoji = refComment.emoji || '';
-    this.inputPreviewComment = null;
+
     await this.updateComplete;
     this.commentInput?.focus();
   }
@@ -563,7 +544,6 @@ ${t('helpMdCodeBlock')}
   private async handleDeleteComment() {
     if (!this.deleteCommentId) return;
     const commentId = this.deleteCommentId;
-    const commentExists = this.comments.find(c => c.id === commentId);
 
     const tokenData = this.commentTokens.get(commentId);
     if (!tokenData) {

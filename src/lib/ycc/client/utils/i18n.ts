@@ -47,98 +47,6 @@ export interface I18nStrings {
   unlikeLimitReached: string;
 }
 
-export const enUS: I18nStrings = {
-  bcp47: 'en-US',
-  anonymous: 'Anonymous',
-  submit: 'Submit',
-  preview: 'Preview',
-  edit: 'Edit',
-  edited: 'Edited',
-  editing: 'Editing: ',
-  delete: 'Delete',
-  reply: 'Reply',
-  replyTo: 'Reply to',
-  replyingTo: 'Replying to: ',
-  help: 'Help',
-  cancel: 'Cancel',
-  close: 'Close',
-  author: 'Author',
-  me: 'Me',
-  messagePlaceholder: 'Write a comment...\nSupports Markdown',
-  nicknamePlaceholder: 'Nickname (optional)',
-  confirmDelete: 'Confirm delete',
-  confirmDeleteDesc1: 'Are you sure you want to delete this comment? Comment ID: ',
-  confirmDeleteDesc2: 'This action cannot be undone!',
-  helpDesc: `This is a simple comment system — you can post comments and reply to others. You may preview your content before posting.
-  You can fill in a nickname to display it with your comment, or leave it blank to remain anonymous.
-  After posting, you can edit or delete your own comment within two minutes without leaving or refreshing the page.
-  Comment content supports basic Markdown and does not support HTML.`,
-  helpMdLink: 'Link',
-  helpMdImage: 'Image',
-  helpMdItalic: 'Italic',
-  helpMdBold: 'Bold',
-  helpMdList: 'List item',
-  helpMdOrderedList: 'Ordered list item',
-  helpMdInlineCode: 'Inline code',
-  helpMdCodeBlock: 'Code block',
-  helpMdNoHtml: 'No HTML',
-  noComments: 'No comments yet',
-  showMore: 'Show more',
-  showLess: 'Show less',
-
-  externalLinkWarning: 'External Link Warning',
-  externalLinkDesc: 'You are about to leave this site and visit:',
-  openLink: 'Open Link',
-  copyLink: 'Copy Link',
-  unlikeLimitReached: 'You can only unlike a comment within 24 hours of liking it.',
-};
-
-export const zhTW: I18nStrings = {
-  bcp47: 'zh-TW',
-  anonymous: '匿名',
-  submit: '發送',
-  preview: '預覽',
-  edit: '編輯',
-  edited: '已編輯',
-  editing: '正在編輯：',
-  delete: '刪除',
-  reply: '回覆',
-  replyTo: '回覆給',
-  replyingTo: '正在回覆：',
-  cancel: '取消',
-  close: '關閉',
-  help: '幫助',
-  author: '作者',
-  me: '我',
-  messagePlaceholder: '請輸入留言...\n支援 Markdown',
-  nicknamePlaceholder: '暱稱（選填）',
-  confirmDelete: '確認刪除',
-  confirmDeleteDesc1: '確定要刪除此留言嗎？留言 ID: ',
-  confirmDeleteDesc2: '此操作無法復原！',
-  helpDesc: `這是一個簡單的留言板，你可以發表留言、回覆他人的留言，發表前可以先預覽內容。
-留言時可以填寫暱稱，系統會顯示您輸入的名稱，或留空保持匿名。
-發表留言後，在不離開或重新整理頁面的情況下，可以編輯或刪除自己兩分鐘內的留言。
-留言內容支援基本 Markdown 語法，不支援 HTML。`,
-  helpMdLink: '連結',
-  helpMdImage: '圖片',
-  helpMdItalic: '斜體',
-  helpMdBold: '粗體',
-  helpMdList: '清單項目',
-  helpMdOrderedList: '有序清單項目',
-  helpMdInlineCode: '行內程式碼',
-  helpMdCodeBlock: '程式碼區塊',
-  helpMdNoHtml: '不支援 HTML',
-  noComments: '目前還沒有留言',
-  showMore: '顯示全部',
-  showLess: '折疊',
-
-  externalLinkWarning: '外部連結警告',
-  externalLinkDesc: '你即將離開本站並訪問：',
-  openLink: '開啟連結',
-  copyLink: '複製連結',
-  unlikeLimitReached: '點讚後 24 小時內可以取消讚。',
-};
-
 export const koKR: I18nStrings = {
   bcp47: "ko-KR",
   anonymous: "익명",
@@ -184,7 +92,7 @@ export const koKR: I18nStrings = {
 };
 
 
-let currentLanguage: I18nStrings = enUS;
+let currentLanguage: I18nStrings = koKR;
 
 export function t(key: keyof I18nStrings): string {
   return currentLanguage[key] || key;

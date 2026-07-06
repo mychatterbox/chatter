@@ -2,9 +2,8 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import type { Comment } from '@ziteh/yangchun-comment-shared';
 import './comment-list-item';
-import { sortCommentsByDate, filterRootComments, findReplyComments, filterReplyComments } from '../../utils/comment';
+import { sortCommentsByDate, filterRootComments, filterReplyComments } from '../../utils/comment';
 import { yangChunCommentStyles } from '../yangchun-comment.styles';
-import { t } from '../../utils/i18n';
 
 @customElement('comment-list')
 export class CommentList extends LitElement {

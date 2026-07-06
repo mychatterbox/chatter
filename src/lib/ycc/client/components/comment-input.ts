@@ -356,8 +356,6 @@ margin-right: 5px;
   @state() private isDarkMode = false;
 
   private previewResizeObserver: ResizeObserver | null = null;
-  private isAutoScrolling = false;
-
   // ⋯ 를 제외한 고정 이모지 목록
   private readonly emojis = ['😀', '🤬', '❤️', '👍🏼', '🙏🏼', '❗️', '❓️', '🐱', '🐶'];
 
@@ -418,15 +416,10 @@ margin-right: 5px;
         
         // 미리보기가 화면 아래에 가려져 있으면 자동 스크롤
         if (rect.bottom > window.innerHeight) {
-          this.isAutoScrolling = true;
           previewContainer.scrollIntoView({ 
             behavior: 'smooth', 
             block: 'nearest' // 최소한의 스크롤만 수행
           });
-          // 스크롤 완료 후 플래그 리셋
-          setTimeout(() => {
-            this.isAutoScrolling = false;
-          }, 500);
         }
       });
     });
