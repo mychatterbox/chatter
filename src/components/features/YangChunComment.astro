@@ -2,6 +2,7 @@
 interface Props {
   post: string;
 }
+
 const { post } = Astro.props;
 
 // Cloudflare Worker 설정
@@ -11,66 +12,25 @@ const apiUrl =
 const adminName = import.meta.env.PUBLIC_YCC_ADMIN_NAME || "admin";
 const prePowDifficulty = import.meta.env.PUBLIC_YCC_PRE_POW_DIFFICULTY || "2";
 const prePowSalt = import.meta.env.PUBLIC_YCC_PRE_POW_SALT || "MAGIC";
-const lang = "ko-KR";
-
 ---
 
-<div class="yangchun-comment-wrapper" data-pagefind-ignore>
-  <!-- 태그가 살아있는지 확인용 -->
-  <div id="ycc-debug-marker" style="display:none;">YCC RENDERED</div>
-
-  <yangchun-comment
-    post={post}
-    apiUrl={apiUrl}
-    lang={lang}
-    adminName={adminName}
-    prePowDifficulty={prePowDifficulty}
-    prePowSalt={prePowSalt}></yangchun-comment>
+<div
+  class="yangchun-comment-wrapper"
+  data-pagefind-ignore
+  data-ycc-post={post}
+  data-ycc-api-url={apiUrl}
+  data-ycc-admin-name={adminName}
+  data-ycc-pow-difficulty={prePowDifficulty}
+  data-ycc-pow-salt={prePowSalt}
+>
+  <!-- Comment placeholder: shown until IntersectionObserver fires -->
+  <div class="ycc-placeholder" aria-hidden="true"></div>
 </div>
-
-<script is:inline>
-  setTimeout(() => {
-    const el = document.querySelector("yangchun-comment");
-    const isDefined = !!customElements.get("yangchun-comment");
-    if (el && !isDefined) {
-      console.warn(
-        "⚠️ [YCC-DEBUG] Element is in DOM but NOT registered. Script bundling might have failed.",
-      );
-    }
-  }, 2000);
-</script>
-
-<script>
-
-  import "../../lib/ycc/client/components/yangchun-comment.ts";
-  import { koKR } from '../../lib/ycc/client/utils/i18n.ts';
-
-  // 3️⃣ 한국어 번역 적용 함수
-const applyKorean = async () => {
-  const currentYcc = document.querySelector("yangchun-comment") as any;
-  if (!currentYcc) return;
-  await customElements.whenDefined("yangchun-comment");
-  currentYcc.customMessages = koKR;
-  await currentYcc.updateComplete;
-
-  const forceUpdateAll = (root: ShadowRoot | HTMLElement) => {
-    const children = root.querySelectorAll("*");
-    children.forEach((el: any) => {
-      if (typeof el.requestUpdate === "function") el.requestUpdate();
-      if (el.shadowRoot) forceUpdateAll(el.shadowRoot);
-    });
-  };
-
-  if (currentYcc.shadowRoot) forceUpdateAll(currentYcc.shadowRoot);
-};
-
-  // Astro View Transitions 대응
-  document.addEventListener("astro:page-load", applyKorean);
-</script>
 
 <style is:global>
   .yangchun-comment-wrapper {
     margin-top: 1em;
+    min-height: 4rem;
   }
 
   /* 댓글 컴포넌트 색상 커스터마이징 */
@@ -92,4 +52,99 @@ const applyKorean = async () => {
     --ycc-badge-text: var(--color-code-text);
     --ycc-badge-bg: var(--color-code-bg);
   }
+
+  /* 다크 모드 */
+  [data-theme="dark"] yangchun-comment {
+    --ycc-primary-color: #4a85c5;
+    --ycc-primary-hover: #5f91c3;
+    --ycc-text-primary: var(--color-text-heading);
+    --ycc-text-secondary: var(--color-text-body);
+    --ycc-bg-primary: var(--color-bg);
+    --ycc-border-color: var(--color-border);
+  }
 </style>
+
+<script>
+  // ─── Astro 빌드 파이프라인이 이 import를 처리합니다 ───
+  // Vite가 yangchun-comment.ts 및 모든 의존성을 번들링하므로
+  // 런타임에 /src/*.ts 파일을 직접 가져오는 문제를 방지합니다.
+  import "../../lib/ycc/client/components/yangchun-comment";
+  import { koKR } from "../../lib/ycc/client/utils/i18n";
+
+  /**
+   * 개별 댓글 wrapper 요소를 초기화합니다.
+   * - data-ycc-loaded 속성으로 중복 초기화를 방지합니다.
+   * - IntersectionObserver 콜백에서 호출됩니다.
+   */
+  function initCommentWrapper(wrapper: Element) {
+    if (wrapper instanceof HTMLElement && wrapper.dataset.yccLoaded === "true") {
+      return;
+    }
+    if (!(wrapper instanceof HTMLElement)) return;
+
+    wrapper.dataset.yccLoaded = "true";
+
+    const post = wrapper.getAttribute("data-ycc-post");
+    const apiUrl = wrapper.getAttribute("data-ycc-api-url");
+    const adminName = wrapper.getAttribute("data-ycc-admin-name");
+    const prePowDifficulty = wrapper.getAttribute("data-ycc-pow-difficulty");
+    const prePowSalt = wrapper.getAttribute("data-ycc-pow-salt");
+
+    if (!post || !apiUrl) {
+      console.error("[YCC] Missing required attributes: data-ycc-post or data-ycc-api-url");
+      return;
+    }
+
+    // placeholder 제거 후 web component 삽입
+    wrapper.innerHTML = "";
+
+    const commentEl = document.createElement("yangchun-comment");
+    commentEl.setAttribute("post", post);
+    commentEl.setAttribute("apiUrl", apiUrl);
+    commentEl.setAttribute("lang", "ko-KR");
+    commentEl.setAttribute("adminName", adminName ?? "admin");
+    commentEl.setAttribute("prePowDifficulty", prePowDifficulty ?? "2");
+    commentEl.setAttribute("prePowSalt", prePowSalt ?? "MAGIC");
+
+    // customMessages를 DOM 연결 전에 설정합니다.
+    // Lit 엘리먼트는 appendChild(connectedCallback) 시 이 프로퍼티를 처리하므로
+    // 첫 렌더링부터 koKR이 적용됩니다.
+    (commentEl as any).customMessages = koKR;
+
+    wrapper.appendChild(commentEl);
+  }
+
+  /**
+   * 현재 DOM에 있는 모든 .yangchun-comment-wrapper에
+   * IntersectionObserver를 등록합니다.
+   * Astro View Transitions 대응을 위해 astro:page-load마다 재등록합니다.
+   */
+  function setupCommentObservers() {
+    const wrappers = document.querySelectorAll(".yangchun-comment-wrapper");
+    if (wrappers.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            initCommentWrapper(entry.target);
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      {
+        // 200px 여유를 두어 뷰포트 진입 직전에 미리 로드
+        rootMargin: "200px",
+      }
+    );
+
+    wrappers.forEach((wrapper) => {
+      // 이미 초기화된 wrapper는 observer 등록 생략
+      if ((wrapper as HTMLElement).dataset.yccLoaded === "true") return;
+      observer.observe(wrapper);
+    });
+  }
+
+  // 초기 로드 및 Astro View Transitions 대응
+  document.addEventListener("astro:page-load", setupCommentObservers);
+</script>

@@ -11,7 +11,7 @@ import './comment-admin';
 import type { CommentAdmin } from './comment-admin';
 import { createApiService } from '../api/apiService';
 import { globalApiService } from '../api/globalApiService';
-import { initI18n, enUS, zhTW, t } from '../utils/i18n';
+import { initI18n, enUS, zhTW, koKR, t } from '../utils/i18n';
 import type { I18nStrings } from '../utils/i18n';
 import { cleanupPowWorker } from '../utils/pow';
 import { findRootComment } from '../utils/comment';
@@ -265,7 +265,7 @@ ${t('helpMdCodeBlock')}
       if (this.customMessages) {
         initI18n(this.customMessages);
       } else {
-        const availableLangs = [enUS, zhTW];
+        const availableLangs = [enUS, zhTW, koKR];
         const selectedLang = availableLangs.find((l) => l.bcp47 === this.lang) || enUS;
         initI18n(selectedLang);
       }

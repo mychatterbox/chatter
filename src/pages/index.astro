@@ -51,29 +51,44 @@ const apiUrl =
 <script define:vars={{ apiUrl }}>
   const updateCommentCounts = async () => {
     const wrappers = document.querySelectorAll(".comment-count-wrapper");
-    
-    // 10개의 요청을 병렬로 처리하여 속도를 높임
-    await Promise.all(
-      Array.from(wrappers).map(async (wrapper) => {
+    if (wrappers.length === 0) return;
+
+    // Collect all post IDs
+    const postIds = Array.from(wrappers)
+      .map((wrapper) => wrapper.getAttribute("data-post-id"))
+      .filter((id) => id !== null);
+
+    if (postIds.length === 0) return;
+
+    try {
+      // Batch request: fetch all comment counts in a single request
+      const params = new URLSearchParams({
+        posts: postIds.join(","),
+      });
+      const response = await fetch(`${apiUrl}/api/comments/batch/counts?${params}`);
+      
+      if (!response.ok) {
+        console.error("Failed to fetch batch comment counts:", response.statusText);
+        return;
+      }
+
+      const counts = await response.json();
+
+      // Update each wrapper with the fetched count
+      wrappers.forEach((wrapper) => {
         const postId = wrapper.getAttribute("data-post-id");
         if (!postId) return;
 
-        try {
-          const response = await fetch(`${apiUrl}/api/comments?post=${postId}`);
-          if (response.ok) {
-            const data = await response.json();
-            const count = data.comments.length;
-            if (count > 0) {
-              const countEl = wrapper.querySelector(".comment-count-value");
-              if (countEl) countEl.textContent = count.toString();
-              wrapper.style.display = "inline-flex";
-            }
-          }
-        } catch (err) {
-          console.error(`Failed to fetch count for ${postId}:`, err);
+        const count = counts[postId];
+        if (count && count > 0) {
+          const countEl = wrapper.querySelector(".comment-count-value");
+          if (countEl) countEl.textContent = count.toString();
+          wrapper.style.display = "inline-flex";
         }
-      })
-    );
+      });
+    } catch (err) {
+      console.error("Failed to fetch batch comment counts:", err);
+    }
   };
 
   // Astro View Transitions 대응
