@@ -14,6 +14,7 @@ import { globalApiService } from '../api/globalApiService';
 import { initI18n, koKR, t } from '../utils/i18n';
 import type { I18nStrings } from '../utils/i18n';
 import { cleanupPowWorker } from '../utils/pow';
+import { applyMarkdownLineBreaks } from '../utils/sanitize';
 
 @customElement('yangchun-comment')
 export class YangChunComment extends LitElement {
@@ -121,16 +122,13 @@ export class YangChunComment extends LitElement {
 
 ![${t('helpMdImage')}](https://example.com/img.jpg)
 
+### H3
+#### H4
 *${t('helpMdItalic')}*
-
 **${t('helpMdBold')}**
-
 - ${t('helpMdList')}
-
-1. ${t('helpMdOrderedList')}
-
+> 인용문
 \`${t('helpMdInlineCode')}\`
-
 \`\`\`
 ${t('helpMdCodeBlock')}
 \`\`\`
@@ -153,19 +151,19 @@ ${t('helpMdCodeBlock')}
       </div>
     `;
 
-    // ?�라???��?/?�정) 모드?????�용???�디???�의
+    // ?�라???��?/?�정) 모드?????�용???�디???�의
     const inlineEditor = this.isInlineReply
       ? this.renderCommentInput('before', this.renderCommentInfo())
       : null;
 
-    // 루트 ?�벨(기본 ?�치)?�서 ?�용???�디???�의
+    // 루트 ?�벨(기본 ?�치)?�서 ?�용???�디???�의
     const rootEditor = !this.isInlineReply
       ? html`${this.renderCommentInfo()}${this.renderCommentInput('after')}`
       : null;
 
     return html`
       <div class="root" part="root">
-        <!-- ?�래 ?�치: 본문 바로 ?�래 (?��? 리스???? -->
+        <!-- ?�래 ?�치: 본문 바로 ?�래 (?��? 리스???? -->
         ${rootEditor}
 
         <comment-list
@@ -351,7 +349,7 @@ ${t('helpMdCodeBlock')}
       const response = await globalApiService.getInstance().getComments(this.post);
       this.comments = response.comments;
 
-      // ?��? ?�데?�트 ?�벤??발송 (?�시�?카운???�데?�트??
+      // ?��? ?�데?�트 ?�벤??발송 (?�시�?카운???�데?�트??
       this.dispatchEvent(new CustomEvent('ycc-comments-updated', {
         detail: { count: response.comments.length },
         bubbles: true,
@@ -369,14 +367,14 @@ ${t('helpMdCodeBlock')}
 
   private handleRefCommentCancel = () => {
 
-    // 1. 모든 ?�력 ?�용 초기??
+    // 1. 모든 ?�력 ?�용 초기??
     this.draft = '';
     this.nickname = '';
     this.selectedEmoji = '';
 
     this.errorMessage = '';
 
-    // 2. 참조 ?��? ?�제 -> isInlineReply가 false가 ?�어 ?�디?��? 리스???�단?�로 ?�동??
+    // 2. 참조 ?��? ?�제 -> isInlineReply가 false가 ?�어 ?�디?��? 리스???�단?�로 ?�동??
     this.referenceComment = null;
     this.isReply = true;
 
@@ -394,7 +392,7 @@ ${t('helpMdCodeBlock')}
 
 
   private get isInlineReply(): boolean {
-    // ?��?(Reply)?�든 ?�정(Edit)?�든 ?�???��????�으�??�라?�으�??�시
+    // ?��?(Reply)?�든 ?�정(Edit)?�든 ?�???��????�으�??�라?�으�??�시
     return !!this.referenceComment;
   }
 
@@ -406,11 +404,9 @@ ${t('helpMdCodeBlock')}
     if (!this.referenceComment) return;
     if (this.isReply) return;
 
-    // 마크?�운 줄바�?처리: ?�터�??�력?�도 줄바꿈이 ?�도�?문장 ?�에 ?�페?�스 2�?추�?
-    const pureDraft = this.draft.trim()
-      .split('\n')
-      .map(line => (line.length > 0 && !line.endsWith('  ')) ? line + '  ' : line)
-      .join('\n');
+    // 마크다운 줄바꿈 처리: 엔터만 입력해도 줄바꿈이 되도록 문장 끝에 스페이스 2개 추가
+    // (코드 펜스 내부/라인에는 적용하지 않음)
+    const pureDraft = applyMarkdownLineBreaks(this.draft.trim());
 
     if (!pureDraft) return;
 
@@ -450,11 +446,9 @@ ${t('helpMdCodeBlock')}
       return;
     }
 
-    // 마크?�운 줄바�?처리: ?�터�??�력?�도 줄바꿈이 ?�도�?문장 ?�에 ?�페?�스 2�?추�?
-    const pureDraft = this.draft.trim()
-      .split('\n')
-      .map(line => (line.length > 0 && !line.endsWith('  ')) ? line + '  ' : line)
-      .join('\n');
+    // 마크다운 줄바꿈 처리: 엔터만 입력해도 줄바꿈이 되도록 문장 끝에 스페이스 2개 추가
+    // (코드 펜스 내부/라인에는 적용하지 않음)
+    const pureDraft = applyMarkdownLineBreaks(this.draft.trim());
 
     if (!pureDraft) return;
 

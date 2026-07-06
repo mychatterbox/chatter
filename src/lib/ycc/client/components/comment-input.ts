@@ -4,6 +4,7 @@ import { yangChunCommentStyles } from './yangchun-comment.styles';
 import './list/comment-list-item';
 import type { Comment } from '@ziteh/yangchun-comment-shared';
 import { t } from '../utils/i18n';
+import { applyMarkdownLineBreaks } from '../utils/sanitize';
 
 @customElement('comment-input')
 export class CommentInput extends LitElement {
@@ -627,11 +628,8 @@ margin-right: 5px;
 
   private createPreviewComment(): Comment {
     const nickname = this.nickname.trim() || t('anonymous');
-        const processedDraft = this.draft
-      .split('\n')
-      .map(line => (line.length > 0 && !line.endsWith('  ')) ? line + '  ' : line)
-      .join('\n');
-      
+    const processedDraft = applyMarkdownLineBreaks(this.draft);
+
     return {
       msg: processedDraft,
       nickname: nickname,
