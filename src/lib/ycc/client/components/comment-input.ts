@@ -102,11 +102,9 @@ export class CommentInput extends LitElement {
 
 .message-row:focus-within, .controls-row:focus-within {
   box-shadow: inset 0 0 0 1px var(--ycc-primary-color);
-
 }
 
-
-      .nickname-input {
+.nickname-input {
         flex: 1;
         border: none;
         outline: none;
@@ -122,7 +120,6 @@ export class CommentInput extends LitElement {
         font-size: 0.9em;
       }
 
-      /* ─── 이모지 셀렉터 ─── */
       .emoji-selector {
         display: grid;
         grid-template-columns: repeat(10, minmax(0, 1fr));
@@ -130,6 +127,7 @@ export class CommentInput extends LitElement {
         margin-bottom: var(--ycc-spacing-s);
         position: relative; /* 팝업 anchor */
       }
+
       .emoji-btn {
         padding: 0;
         background: var(--ycc-bg-color);
@@ -141,24 +139,24 @@ export class CommentInput extends LitElement {
         min-width: 0;
         font-size: 2.5em;
       }
+
       .emoji-btn:hover {
         background: var(--ycc-bg-secondary);
         border-color: var(--ycc-primary-color);
       }
+
       .emoji-btn.active {
         background: var(--ycc-primary-color);
         color: white;
         border-color: var(--ycc-primary-color);
       }
 
-      /* ─── ⋯ 버튼 래퍼 (팝업 anchor) ─── */
       .more-emoji-wrapper {
         position: relative;
         display: flex;
     justify-content: center;
       }
 
-      /* ─── 팝업 컨테이너 ─── */
       .emoji-picker-popup {
         display: none;
         position: absolute;
@@ -169,12 +167,12 @@ export class CommentInput extends LitElement {
         border-radius: 12px;
         overflow: hidden;
       }
+
       .emoji-picker-popup.open {
         display: block;
         animation: fadeIn 0.35s ease;
       }
 
-      /* emoji-picker 기본 크기 및 스타일 */
       .emoji-picker-popup emoji-picker {
       // --emoji-font-family: 'OpenMoji';
             --emoji-font-family: 'Twemoji Mozilla';
@@ -183,7 +181,6 @@ export class CommentInput extends LitElement {
         --emoji-size: 2.5rem;
       }
 
-      /* ─── preview ─── */
       .preview-label {
         margin-top: var(--ycc-spacing-m);
         margin-bottom: var(--ycc-spacing-xs);
@@ -208,7 +205,6 @@ export class CommentInput extends LitElement {
         to   { opacity: 1; transform: translateY(0); }
       }
 
-      /* ─── 카운터 ─── */
       .char-counter {
         font-size: 0.75rem;
         color: var(--color-text-muted);
@@ -218,7 +214,6 @@ export class CommentInput extends LitElement {
         text-align: right;
       }
 
-      /* ─── 허니팟 ─── */
       .input-email {
         position: absolute;
         left: -9999px;
@@ -234,6 +229,7 @@ export class CommentInput extends LitElement {
   height: 470px;
   // height: 768px;
 }
+
 .char-counter.message-counter {
   position: absolute;
   bottom: 5px;
