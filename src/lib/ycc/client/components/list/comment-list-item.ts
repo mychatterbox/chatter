@@ -222,7 +222,7 @@ export class CommentListItem extends LitElement {
         margin: var(--ycc-spacing-m) 0;
       }
       .content blockquote {
-        border-left: 4px solid var(--ycc-border-color);
+  border-left: 4px solid var(--color-text-muted);
         margin: var(--ycc-spacing-s) 0;
         padding-left: var(--ycc-spacing-m);
         color: var(--ycc-text-secondary);
