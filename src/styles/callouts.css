@@ -113,32 +113,28 @@ body {
   margin-bottom: 0;
 }
 
-.callout-content p {
-  /* margin-bottom: 0; */
-}
-
 .callout-checkbox:focus ~ .callout-title {
   outline: 2px solid var(--callout-title-color, #3498db);
   outline-offset: 2px;
 }
 
 .callout-note {
-  border-color: oklch(74.6% 0.16 232.661);
+  border-color: oklch(0.75 0.12 237);
   --callout-title-color: #2980b9;
 }
 
 .callout-tip {
-  border-color: oklch(65.2% 0.209 151.711);
+  border-color: oklch(0.68 0.14 155);
   --callout-title-color: #27ae60;
 }
 
 .callout-warning {
-  border-color: oklch(75% 0.183 55.934);
+  border-color: oklch(0.69 0.14 60);
   --callout-title-color: #d68910;
 }
 
 .callout-important {
-  border-color: oklch(71.2% 0.194 13.428);
+  border-color: oklch(0.67 0.16 20);
   --callout-title-color: #c0392b;
 }
 
@@ -157,7 +153,7 @@ body {
 
 .callout-info {
   /* border-color: oklch(70.7% 0.165 254.624); */
-    border-color: oklch(70.7% 0.165 254.624);
+    border-color: oklch(0.74 0.11 195);
   --callout-title-color: #2980b9;
 }
 
@@ -227,14 +223,6 @@ body {
   opacity: 1;
   transform: translateY(0);
   display: block !important;
-}
-
-.callout-collapsible .callout-checkbox {
-  /* display: none; */
-}
-
-.callout-title:not(:has(.callout-toggle)) {
-  /* cursor: default !important; */
 }
 
 .callout .astro-code {
