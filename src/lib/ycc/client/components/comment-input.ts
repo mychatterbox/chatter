@@ -5,6 +5,7 @@ import './list/comment-list-item';
 import type { Comment } from '@ziteh/yangchun-comment-shared';
 import { t } from '../utils/i18n';
 import { applyMarkdownLineBreaks } from '../utils/sanitize';
+import '../../../../styles/fonts-emoji.css';
 
 @customElement('comment-input')
 export class CommentInput extends LitElement {
@@ -265,7 +266,6 @@ export class CommentInput extends LitElement {
         .emoji-picker-popup emoji-picker { --emoji-size: 2rem;       }
       }
 
-      /* ─── 모바일 (420px 이하) ─── */
       @media (max-width: 420px) {
         textarea { min-height: 100px; }
         // .draft-container { padding: 1px; }
