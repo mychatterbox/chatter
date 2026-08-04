@@ -288,8 +288,7 @@ h6 {
 .title-post {
   line-height: 1.2;
   font-weight: 700;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-block: 0;
 }
 
 .title-index {
@@ -792,8 +791,7 @@ blockquote p {
 }
 
 hr {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-block: 2rem;
 }
 
 table {
