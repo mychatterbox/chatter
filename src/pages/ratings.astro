@@ -134,32 +134,40 @@ const sortedRatings = Object.keys(groupedMovies)
 
 {sortedRatings.map(rating => {
   const items = groupedMovies[rating];
-  
+
   const movies = items.filter(item => item.url.includes('/movie/'));
   const tvSeries = items.filter(item => item.url.includes('/tv/'));
 
   const sortByYear = (a: Movie, b: Movie) => {
     const yearA = parseInt(a.title.match(/\((\d{4})\)/)?.[1] || "0");
     const yearB = parseInt(b.title.match(/\((\d{4})\)/)?.[1] || "0");
-    
-    return yearB - yearA; 
+
+    return yearB - yearA;
   };
 
   const sortedMovies = movies.sort(sortByYear);
   const sortedTvSeries = tvSeries.sort(sortByYear);
 
   return (
-    <details> 
-      <summary style="list-style: none; cursor: pointer;">
-        <img 
-          src={`/images/${rating}.png`} 
-          class="rating-image" 
-          alt={`${rating}점 평점`} no-zoom
-        />
-        <span class="rating-count">({items.length})</span>
-      </summary>
+    <div class="rating-group" data-rating={rating}>
+      <button
+        type="button"
+        class="rating-summary"
+        aria-expanded="false"
+        aria-controls={`rating-content-${rating}`}
+      >
+        <span class="rating-summary-main">
+          <img
+            src={`/images/${rating}.png`}
+            class="rating-image"
+            alt={`${rating}점 평점`}
+            no-zoom
+          />
+          <span class="rating-count">({items.length})</span>
+        </span>
+      </button>
 
-    <div class="rating-content">
+      <div id={`rating-content-${rating}`} class="rating-content">
         {sortedMovies.length > 0 && (
           <div class="category-group">
             <h3 class="category-title">MOVIES</h3>
@@ -190,12 +198,48 @@ const sortedRatings = Object.keys(groupedMovies)
           </div>
         )}
       </div>
-    </details>
+    </div>
   );
 })}
     </article>
   </main>
 </Html>
+
+<script>
+  const ratingGroups = document.querySelectorAll('.rating-group');
+
+  const closeAllGroups = (exceptGroup = null) => {
+    ratingGroups.forEach((group) => {
+      const isOpen = group === exceptGroup;
+      group.classList.toggle('is-open', isOpen);
+      const summary = group.querySelector('.rating-summary');
+      if (summary) {
+        summary.setAttribute('aria-expanded', String(isOpen));
+      }
+    });
+  };
+
+  ratingGroups.forEach((group) => {
+    const summary = group.querySelector('.rating-summary');
+    if (!summary) return;
+
+    summary.addEventListener('click', () => {
+      const isOpening = !group.classList.contains('is-open');
+      closeAllGroups(isOpening ? group : null);
+
+      if (!isOpening) return;
+
+      // sticky 요소(summary)는 스크롤된 상태에서 이미 top:0에 붙어 있어
+      // scrollIntoView가 제대로 동작하지 않으므로, sticky가 아닌
+      // 부모 group의 실제 문서상 위치를 직접 계산해서 스크롤한다.
+      requestAnimationFrame(() => {
+        const rect = group.getBoundingClientRect();
+        const targetY = window.scrollY + rect.top - 64;
+        window.scrollTo({ top: targetY, behavior: 'auto' });
+      });
+    });
+  });
+</script>
 
 <style>
   div.gallery {
@@ -234,43 +278,86 @@ const sortedRatings = Object.keys(groupedMovies)
       width: calc(50% - 10px);
     }
   }
-  details summary {
+  .rating-group {
+    overflow: clip;
+    overflow-anchor: none;
+    border: none;
+    outline: none;
+    scroll-margin-top: 72px;
+  }
+
+  .rating-content {
+    overflow-anchor: none;
+  }
+
+  .rating-summary {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;
+    padding: 16px 12px;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .rating-group.is-open .rating-summary {
+    border-bottom-color: var(--color-border, rgba(128, 128, 128, 0.2));
+  }
+
+  .rating-summary-main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    gap: 6px;
+    scroll-margin-top: 72px;
   }
-  
-  span.rating-count {
-    margin-top: 5px; 
+
+  .rating-count {
     font-weight: 600;
   }
 
-.rating-list a {
+  .rating-content {
+    display: none;
+    padding: 18px 12px 8px;
+  }
+
+  .rating-group.is-open .rating-content {
+    display: block;
+  }
+
+  .rating-list a {
     display: block;
     line-height: 2;
-    padding-left: 0.3em; 
-}
+    padding-left: 0.3em;
+  }
 
-.rating-list a:hover {
+  .rating-list a:hover {
     background-color: var(--color-select-item-hover-bg);
-}
+  }
 
-.rating-image {
+  .rating-image {
     border: none;
-}
+  }
 
-.category-group {
-  margin-bottom: 20px;
-}
+  .category-group {
+    margin-bottom: 20px;
+  }
 
-.category-title {
-  font-size: 0.8em;
-  font-weight: bold;
-  letter-spacing: 0.1rem;
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--color-border, rgba(128, 128, 128, 0.5));
-  display: inline-block;
-}
+  .category-title {
+    font-size: 0.8em;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-border, rgba(128, 128, 128, 0.5));
+    display: inline-block;
+  }
 </style>
