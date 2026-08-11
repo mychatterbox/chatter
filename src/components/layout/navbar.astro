@@ -3,11 +3,13 @@ import HomeModernSolid from "../../icons/hero/solid/home-modern.svg";
 import HomeModernOutline from "../../icons/hero/outline/home-modern.svg";
 // import FilmSolid from "../../icons/hero/solid/film.svg";
 // import FilmOutline from "../../icons/hero/outline/film.svg";
-import InfoSolid from "../../icons/hero/solid/information-circle.svg";
-import InfoOutline from "../../icons/hero/outline/information-circle.svg";
 import TagsSolid from "../../icons/hero/solid/tags.svg";
 import TagsOutline from "../../icons/hero/outline/tags.svg";
 import SearchOutline from "../../icons/hero/outline/search.svg";
+import HDNSolid from "../../icons/hero/solid/hdn.svg";
+import HdnOutline from "../../icons/hero/outline/hdn.svg";
+import InfoSolid from "../../icons/hero/solid/information-circle.svg";
+import InfoOutline from "../../icons/hero/outline/information-circle.svg";
 import ThemeToggle from "../features/colorscheme/ThemeToggle.astro";
 import FontChange from "../features/font-change-preview.astro";
 // import DescriptionToggle from "./DescriptionToggle.astro";
@@ -42,6 +44,12 @@ import FontChange from "../features/font-change-preview.astro";
           <SearchOutline />
         </div>
       </button>
+
+      <a aria-label="HDN" href="/hdn" class="navbar-icon">
+        <div class="navbar-icon-svg">
+          {Astro.url.pathname === "/hdn" || Astro.url.pathname === "/hdn/" ? <HDNSolid /> : <HdnOutline />}
+        </div>
+      </a>
 
       <a aria-label="Site Info" href="/site-info" class="navbar-icon">
         <div class="navbar-icon-svg">

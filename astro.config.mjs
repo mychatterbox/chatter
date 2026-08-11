@@ -151,6 +151,16 @@ export default defineConfig({
 
   scopedStyleStrategy: "where",
   vite: {
+    server: {
+      proxy: {
+        '/api/hdn': {
+          target: 'https://hd-notification.chatterer.workers.dev',
+          changeOrigin: true,
+          secure: true,
+          rewrite: (path) => path.replace(/^\/api\/hdn/, '/api'),
+        },
+      },
+    },
     resolve: {
       alias: {
         "@ziteh/yangchun-comment-shared": fileURLToPath(new URL("./src/lib/ycc/shared/index.ts", import.meta.url))

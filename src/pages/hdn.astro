@@ -1,0 +1,1445 @@
+---
+import Html from "components/layout/html.astro";
+import Nav from "components/layout/navbar.astro";
+---
+
+<Html
+  title="핫딜 모음 | mychatterbox"
+  description="크롤링된 핫딜 정보를 모아 보여주는 페이지입니다."
+>
+  <Nav />
+
+  <main class="main-container">
+    <article class="article-container">
+      <div class="hdn-page">
+        <div class="header-row">
+          <div>
+            <h1>뭐 살거 없나 v0.8</h1>
+          </div>
+          <div class="header-actions">
+            <button class="icon-btn" id="settingsBtn" title="설정">⚙</button>
+          </div>
+        </div>
+
+        <div class="card" id="settingsCard">
+          <div id="settingsContent">불러오는 중...</div>
+        </div>
+
+        <div class="card">
+          <div class="search-row">
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="제목으로 검색..."
+            />
+            <button id="searchBtn">검색</button>
+            <button class="btn-secondary" id="searchResetBtn">초기화</button>
+          </div>
+        </div>
+
+        <div class="card" id="filterCard">
+          <div class="filter-row" id="sourceFilterRow">
+            <button class="filter-all-btn" id="filterAllBtn">전체</button>
+          </div>
+          <div class="keyword-filter-row" id="keywordFilterChips"></div>
+          <div class="keyword-filter-add">
+            <input
+              id="keywordFilterInput"
+              type="text"
+              placeholder="화면에 표시할 키워드 추가 (알림과는 별개)"
+            />
+            <button id="keywordFilterAddBtn">추가</button>
+          </div>
+        </div>
+
+        <div class="last-updated-row" id="statusRow">
+          <button
+            class="filter-toggle-btn"
+            id="filterToggleBtn"
+            style="display:none;">🔍 필터 설정</button
+          >
+          <span id="deal-status" class="status-message"
+            >핫딜 정보를 불러오는 중입니다...</span
+          >
+          <span id="deal-meta" class="meta-pill">마지막 업데이트: -</span>
+        </div>
+
+        <div class="card">
+          <div id="dealsList">
+            <div id="deal-list" class="deal-list"></div>
+          </div>
+          <div class="more-btn-row" id="moreBtnRow" style="display:none;">
+            <button class="more-btn" id="moreBtn">더보기</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</Html>
+
+<script>
+  const apiBase =
+    import.meta.env.PUBLIC_HDN_API_URL ||
+    "https://hd-notification.chatterer.workers.dev";
+  const isDev =
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname === "localhost";
+  const apiPrefix = isDev ? "/api/hdn" : apiBase + "/api";
+
+  function escapeHtml(text) {
+    return String(text ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  function formatDate(sqliteDatetime) {
+    if (!sqliteDatetime) return "-";
+    const date = new Date(sqliteDatetime.replace(" ", "T") + "Z");
+    if (Number.isNaN(date.getTime())) return sqliteDatetime;
+    const kst = new Date(date.getTime() + 9 * 60 * 60_000);
+    const y = kst.getUTCFullYear();
+    const m = String(kst.getUTCMonth() + 1).padStart(2, "0");
+    const d = String(kst.getUTCDate()).padStart(2, "0");
+    const hh = String(kst.getUTCHours()).padStart(2, "0");
+    const mm = String(kst.getUTCMinutes()).padStart(2, "0");
+    return `${y}-${m}-${d}  ${hh}:${mm}`;
+  }
+
+  function formatNowKST() {
+    const kst = new Date(Date.now() + 9 * 60 * 60_000);
+    const y = kst.getUTCFullYear();
+    const m = String(kst.getUTCMonth() + 1).padStart(2, "0");
+    const d = String(kst.getUTCDate()).padStart(2, "0");
+    const hh = String(kst.getUTCHours()).padStart(2, "0");
+    const mm = String(kst.getUTCMinutes()).padStart(2, "0");
+    return `${y}-${m}-${d} ${hh}:${mm}`;
+  }
+
+  function updateLastUpdatedLabel() {
+    const el = document.getElementById("deal-meta");
+    if (el) el.textContent = `마지막 업데이트: ${formatNowKST()}`;
+  }
+
+  function extractTitleAndPrice(title, keyword) {
+    let cleanTitle = escapeHtml(title);
+    const priceMatches = [];
+
+    cleanTitle = cleanTitle.replace(/\(([^()]*)\)/g, (whole, inner) => {
+      const isPriceLike =
+        /\d[\d,.]*\s*(원|만)|\$\s*\d[\d,.]*|[￦₩]\s*\d[\d,.]*|^\s*\d[\d,.]*\s*(\/|~|$)/.test(
+          inner,
+        );
+      if (isPriceLike) {
+        priceMatches.push(whole);
+        return "";
+      }
+      return whole;
+    });
+
+    cleanTitle = cleanTitle.replace(/\d[\d,.]*\s*원(?:\s*\/[^\s<]*)?/g, (m) => {
+      priceMatches.push(m);
+      return "";
+    });
+
+    cleanTitle = cleanTitle.replace(/[￦₩]\s*\d[\d,.]*/g, (m) => {
+      priceMatches.push(m);
+      return "";
+    });
+
+    cleanTitle = cleanTitle
+      .replace(/[,\-·/]\s*$/, "")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+
+    if (keyword) {
+      const keywordList = keyword
+        .split(",")
+        .map((k) => k.trim())
+        .filter(Boolean);
+      for (const kw of keywordList) {
+        const escapedKeyword = escapeHtml(kw).replace(
+          /[.*+?^${}()|[\]\\]/g,
+          "\\$&",
+        );
+        cleanTitle = cleanTitle.replace(
+          new RegExp(escapedKeyword, "gi"),
+          (match) => `<mark class="hl-keyword">${match}</mark>`,
+        );
+      }
+    }
+
+    function cleanPriceText(raw) {
+      let t = raw.trim();
+      t = t.replace(/^\(/, "").replace(/\)$/, "").trim();
+      t = t.replace(/\/\s*(무료배송|무료|무배|착불|유료)[\s\S]*$/, "").trim();
+      t = t.replace(/^(무료배송|무료|무배)$/, "").trim();
+      t = t
+        .replace(/[￦₩]\s*/g, "")
+        .replace(/\s*\(KRW\)\s*$/i, "")
+        .trim();
+      if (/^[\d,]+(\.\d+)?$/.test(t)) t = `${t}원`;
+      return t;
+    }
+
+    const seen = new Set();
+    const priceHtml = priceMatches
+      .map(cleanPriceText)
+      .filter(Boolean)
+      .filter((p) => {
+        if (seen.has(p)) return false;
+        seen.add(p);
+        return true;
+      })
+      .map((p) => `<span class="hl-price">${p}</span>`)
+      .join(" ");
+
+    return { titleHtml: cleanTitle, priceHtml };
+  }
+
+  const SOURCE_LABELS = {
+    ppomppu: "뽐뿌",
+    quasarzone: "퀘이사존",
+    arca: "아카라이브",
+    ruliweb: "루리웹",
+    eomisae: "어미새",
+  };
+  function sourceLabel(source) {
+    return SOURCE_LABELS[source] || source;
+  }
+
+  const FAVICON_URLS = {
+    ppomppu: "/icons/ppomppu.png",
+    quasarzone:
+      "https://www.google.com/s2/favicons?domain=quasarzone.com&sz=32",
+    arca: "https://www.google.com/s2/favicons?domain=arca.live&sz=32",
+    ruliweb: "https://www.google.com/s2/favicons?domain=ruliweb.com&sz=32",
+    eomisae: "https://www.google.com/s2/favicons?domain=eomisae.co.kr&sz=32",
+  };
+
+  function statusBadgeClass(status) {
+    if (!status) return null;
+    if (status.includes("종료")) return "ended";
+    return null;
+  }
+
+  let currentUser = null;
+  let currentProfile = null;
+  let allDeals = [];
+  let nextCursor = null;
+  let activeSources = new Set(Object.keys(SOURCE_LABELS));
+  let keywordFilters = [];
+  let currentSearchQuery = "";
+  let pagesLoaded = 1;
+  let filterPanelOpen = false;
+
+  function passesKeywordFilter(title) {
+    if (keywordFilters.length === 0) return true;
+    const normalized = title.toLowerCase();
+    return keywordFilters.some((k) => normalized.includes(k.toLowerCase()));
+  }
+
+  function renderDealsList() {
+    const list = document.getElementById("deal-list");
+    const statusMsg = document.getElementById("deal-status");
+    const filtered = allDeals.filter(
+      (d) => activeSources.has(d.source) && passesKeywordFilter(d.title),
+    );
+
+    if (filtered.length === 0) {
+      statusMsg.textContent = "표시할 핫딜이 없습니다.";
+      statusMsg.style.display = "inline-flex";
+      list.innerHTML = "";
+    } else {
+      statusMsg.style.display = "none";
+      const html = filtered
+        .map((d) => {
+          const badgeClass = statusBadgeClass(d.status);
+          const statusHtml = badgeClass
+            ? `<span class="status-badge ${badgeClass}">${escapeHtml(d.status)}</span> · `
+            : "";
+          const favicon = FAVICON_URLS[d.source] || "";
+          // keywordFilters 기반으로 하이라이트 표시
+          const { titleHtml, priceHtml } = extractTitleAndPrice(
+            d.title,
+            keywordFilters.join(","),
+          );
+
+          return `
+          <div class="deal-item">
+            <img class="deal-favicon" src="${favicon}" alt="" title="${sourceLabel(d.source)}" />
+            <div class="deal-content">
+              <a class="deal-title" href="${d.url}" target="_blank" rel="noopener">${titleHtml}</a>
+              <div class="deal-meta">
+                <span class="meta-left">${statusHtml}${priceHtml}</span>
+                <span class="meta-right">${formatDate(d.posted_at)}</span>
+              </div>
+            </div>
+          </div>
+        `;
+        })
+        .join("");
+      list.innerHTML = html;
+    }
+
+    const moreRow = document.getElementById("moreBtnRow");
+    if (moreRow) {
+      moreRow.style.display = nextCursor ? "block" : "none";
+    }
+  }
+
+  async function fetchDealsPage({ reset }) {
+    const params = new URLSearchParams();
+    if (currentSearchQuery) params.set("q", currentSearchQuery);
+    if (!reset && nextCursor) {
+      params.set("beforePostedAt", nextCursor.beforePostedAt);
+      params.set("beforeId", nextCursor.beforeId);
+    }
+    params.set("limit", "20");
+
+    const res = await fetch(`${apiPrefix}/deals?${params.toString()}`);
+    if (!res.ok) throw new Error("API 오류");
+    const data = await res.json();
+
+    if (reset) {
+      allDeals = data.deals || [];
+      pagesLoaded = 1;
+    } else {
+      allDeals = allDeals.concat(data.deals || []);
+      pagesLoaded += 1;
+    }
+    nextCursor = data.nextCursor && data.hasMore ? data.nextCursor : null;
+
+    renderDealsList();
+    updateLastUpdatedLabel();
+  }
+
+  function setupMoreButton() {
+    const btn = document.getElementById("moreBtn");
+    if (!btn) return;
+    btn.onclick = async () => {
+      btn.disabled = true;
+      btn.textContent = "불러오는 중...";
+      try {
+        await fetchDealsPage({ reset: false });
+      } catch (e) {
+        console.error(e);
+      }
+      btn.disabled = false;
+      btn.textContent = "더보기";
+    };
+  }
+
+  function setupSearch() {
+    const input = document.getElementById("searchInput");
+    const btn = document.getElementById("searchBtn");
+    const resetBtn = document.getElementById("searchResetBtn");
+    if (!input || !btn || !resetBtn) return;
+
+    const run = async () => {
+      currentSearchQuery = input.value.trim();
+      nextCursor = null;
+      await fetchDealsPage({ reset: true });
+    };
+    btn.onclick = run;
+    input.onkeydown = (e) => {
+      if (e.key === "Enter") run();
+    };
+    resetBtn.onclick = async () => {
+      input.value = "";
+      currentSearchQuery = "";
+      nextCursor = null;
+      await fetchDealsPage({ reset: true });
+    };
+  }
+
+  function renderFilterCard() {
+    const filterCard = document.getElementById("filterCard");
+    const toggleBtn = document.getElementById("filterToggleBtn");
+    if (!filterCard || !toggleBtn) return;
+
+    const isApproved = !!(currentUser && currentUser.approved);
+
+    toggleBtn.style.display = isApproved ? "inline-flex" : "none";
+    if (filterPanelOpen) toggleBtn.classList.add("active");
+    else toggleBtn.classList.remove("active");
+
+    if (isApproved && filterPanelOpen) filterCard.classList.add("open");
+    else filterCard.classList.remove("open");
+
+    if (!isApproved) return;
+
+    const row = document.getElementById("sourceFilterRow");
+    row.querySelectorAll("label").forEach((el) => el.remove());
+    const checkboxesHtml = Object.entries(SOURCE_LABELS)
+      .map(
+        ([key, label]) => `
+      <label>
+        <input type="checkbox" data-source="${key}" ${activeSources.has(key) ? "checked" : ""} />
+        <img class="filter-favicon" src="${FAVICON_URLS[key]}" alt="" />
+        ${label}
+      </label>
+    `,
+      )
+      .join("");
+    row.insertAdjacentHTML("beforeend", checkboxesHtml);
+
+    row.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+      cb.onchange = () => {
+        const source = cb.getAttribute("data-source");
+        if (cb.checked) activeSources.add(source);
+        else activeSources.delete(source);
+        renderDealsList();
+        saveFilterPrefs();
+      };
+    });
+
+    document.getElementById("filterAllBtn").onclick = () => {
+      const allChecked =
+        activeSources.size === Object.keys(SOURCE_LABELS).length;
+      row.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+        cb.checked = !allChecked;
+      });
+      activeSources = new Set(allChecked ? [] : Object.keys(SOURCE_LABELS));
+      renderDealsList();
+      saveFilterPrefs();
+    };
+
+    renderKeywordFilterChips();
+    document.getElementById("keywordFilterAddBtn").onclick = addKeywordFilter;
+    document.getElementById("keywordFilterInput").onkeydown = (e) => {
+      if (e.key === "Enter") addKeywordFilter();
+    };
+  }
+
+  function setupFilterToggle() {
+    const btn = document.getElementById("filterToggleBtn");
+    if (!btn) return;
+    btn.onclick = () => {
+      filterPanelOpen = !filterPanelOpen;
+      renderFilterCard();
+    };
+  }
+
+  function renderKeywordFilterChips() {
+    const wrap = document.getElementById("keywordFilterChips");
+    if (!wrap) return;
+    wrap.innerHTML = keywordFilters
+      .map(
+        (k, i) => `
+      <span class="keyword-chip">${escapeHtml(k)} <button data-idx="${i}">✕</button></span>
+    `,
+      )
+      .join("");
+    wrap.querySelectorAll("button").forEach((btn) => {
+      btn.onclick = () => {
+        keywordFilters.splice(Number(btn.getAttribute("data-idx")), 1);
+        renderKeywordFilterChips();
+        renderDealsList();
+        saveFilterPrefs();
+      };
+    });
+  }
+
+  function addKeywordFilter() {
+    const input = document.getElementById("keywordFilterInput");
+    const value = input.value.trim();
+    if (!value || keywordFilters.includes(value)) return;
+    keywordFilters.push(value);
+    input.value = "";
+    renderKeywordFilterChips();
+    renderDealsList();
+    saveFilterPrefs();
+  }
+
+  async function saveFilterPrefs() {
+    if (!currentUser || !currentUser.approved) return;
+    await fetch(`${apiPrefix}/me`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        siteFilter: Array.from(activeSources),
+        keywordFilter: keywordFilters,
+      }),
+    }).catch(() => {});
+  }
+
+  async function loadCurrentUser() {
+    try {
+      const data = await fetch(`${apiPrefix}/auth/me`).then((r) => r.json());
+      currentUser = data.user;
+    } catch (e) {
+      currentUser = null;
+    }
+  }
+
+  function renderSettingsCard() {
+    const el = document.getElementById("settingsContent");
+    if (!el) return;
+
+    if (!currentUser) {
+      el.innerHTML = renderAuthTabsHtml();
+      setupAuthTabs();
+      return;
+    }
+    if (!currentUser.approved) {
+      el.innerHTML = `
+        <div class="pending-box">
+          <h3>가입 승인 대기 중</h3>
+          <p>「${escapeHtml(currentUser.nickname)}」님의 가입 요청이 아직 승인되지 않았습니다.<br>
+          승인 전에는 키워드 등록과 알림을 받을 수 없고, 전체 핫딜 조회만 가능합니다.<br>
+          관리자 승인 후 다시 접속해주세요.</p>
+          <div class="btn-row"><button class="btn-secondary" id="pendingLogoutBtn">로그아웃</button></div>
+        </div>
+      `;
+      document.getElementById("pendingLogoutBtn").onclick = doLogout;
+      return;
+    }
+
+    el.innerHTML = "불러오는 중...";
+    Promise.all([
+      fetch(`${apiPrefix}/me`).then((r) => r.json()),
+      fetch(`${apiPrefix}/me/keywords`).then((r) => r.json()),
+      fetch(`${apiPrefix}/auth/sessions`).then((r) => r.json()),
+    ])
+      .then(([profileData, keywordsData, sessionsData]) => {
+        currentProfile = profileData.user;
+        renderApprovedSettingsHtml(
+          currentProfile,
+          keywordsData.keywords,
+          sessionsData.sessions,
+        );
+      })
+      .catch((e) => {
+        el.innerHTML = "설정 정보를 불러오지 못했습니다.";
+      });
+  }
+
+  function renderAuthTabsHtml() {
+    return `
+      <div class="tab-row">
+        <button class="tab-btn active" data-tab="login">로그인</button>
+        <button class="tab-btn" data-tab="register">회원가입</button>
+      </div>
+      <div id="authTabContent"></div>
+    `;
+  }
+
+  function renderLoginFormHtml() {
+    return `
+      <div class="form-group">
+        <label>닉네임</label>
+        <input id="loginNickname" type="text" />
+      </div>
+      <div class="form-group">
+        <label>비밀번호</label>
+        <input id="loginPassword" type="password" />
+      </div>
+      <div class="form-group">
+        <label>로그인 유지 기간</label>
+        <select id="loginSessionDays">
+          <option value="1">1일</option>
+          <option value="7" selected>7일</option>
+          <option value="30">30일</option>
+          <option value="180">180일</option>
+          <option value="365">1년</option>
+        </select>
+      </div>
+      <div class="btn-row"><button class="btn-primary" id="loginSubmitBtn">로그인</button></div>
+      <div class="form-error" id="loginError"></div>
+    `;
+  }
+
+  function renderRegisterFormHtml() {
+    return `
+      <div class="form-group">
+        <label>닉네임</label>
+        <input id="registerNickname" type="text" />
+        <div class="form-hint">공백 불가 · 특수기호는 _, - 만 가능 · 한글/영문 2~20자</div>
+      </div>
+      <div class="form-group">
+        <label>비밀번호</label>
+        <input id="registerPassword" type="password" />
+      </div>
+      <div class="form-group">
+        <label>메모 (선택)</label>
+        <textarea id="registerMemo" rows="2" placeholder="관리자에게 남길 메모"></textarea>
+      </div>
+      <div class="form-hint" style="margin-bottom: 10px;">
+        가입 후 관리자 승인이 필요합니다. 승인 전에는 전체 핫딜 조회만 가능합니다.
+      </div>
+      <div class="btn-row"><button class="btn-primary" id="registerSubmitBtn">가입 요청</button></div>
+      <div class="form-error" id="registerError"></div>
+      <div class="form-success" id="registerSuccess"></div>
+    `;
+  }
+
+  function setupAuthTabs() {
+    const tabs = document.querySelectorAll(".tab-btn");
+    const content = document.getElementById("authTabContent");
+    if (!content) return;
+
+    function showTab(tab) {
+      tabs.forEach((t) =>
+        t.classList.toggle("active", t.getAttribute("data-tab") === tab),
+      );
+      if (tab === "login") {
+        content.innerHTML = renderLoginFormHtml();
+        document.getElementById("loginSubmitBtn").onclick = doLogin;
+      } else {
+        content.innerHTML = renderRegisterFormHtml();
+        document.getElementById("registerSubmitBtn").onclick = doRegister;
+      }
+    }
+
+    tabs.forEach((t) => {
+      t.onclick = () => showTab(t.getAttribute("data-tab"));
+    });
+    showTab("login");
+  }
+
+  async function doLogin() {
+    const nickname = document.getElementById("loginNickname").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const sessionDays = Number(
+      document.getElementById("loginSessionDays").value,
+    );
+    const errorEl = document.getElementById("loginError");
+    errorEl.textContent = "";
+
+    try {
+      const res = await fetch(`${apiPrefix}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nickname, password, sessionDays }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        errorEl.textContent = data.error || "로그인에 실패했습니다.";
+        return;
+      }
+
+      currentUser = data.user;
+      await initAfterAuthChange();
+      renderSettingsCard();
+    } catch (err) {
+      errorEl.textContent = "로그인 중 오류가 발생했습니다.";
+    }
+  }
+
+  async function doRegister() {
+    const nickname = document.getElementById("registerNickname").value.trim();
+    const password = document.getElementById("registerPassword").value;
+    const memo = document.getElementById("registerMemo").value.trim();
+    const errorEl = document.getElementById("registerError");
+    const successEl = document.getElementById("registerSuccess");
+    errorEl.textContent = "";
+    successEl.textContent = "";
+
+    try {
+      const res = await fetch(`${apiPrefix}/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nickname, password, memo }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        errorEl.textContent = data.error || "가입에 실패했습니다.";
+        return;
+      }
+      successEl.textContent = data.message || "가입 요청이 접수되었습니다.";
+    } catch (err) {
+      errorEl.textContent = "가입 중 오류가 발생했습니다.";
+    }
+  }
+
+  function renderApprovedSettingsHtml(profile, keywords, sessions) {
+    const el = document.getElementById("settingsContent");
+    const siteFilterList = profile.site_filter || Array.from(activeSources);
+    const kwFilterList = profile.keyword_filter || [];
+
+    el.innerHTML = `
+      <h3>설정 — ${escapeHtml(profile.nickname)}</h3>
+      
+      <div class="settings-section">
+        <h4>Discord 알림 웹훅</h4>
+        <div class="form-group">
+          <input id="webhookInput" type="text" placeholder="https://discord.com/api/webhooks/..." value="${profile.discord_webhook_url ? escapeHtml(profile.discord_webhook_url) : ""}" />
+        </div>
+        <div class="btn-row">
+          <button class="btn-secondary" id="webhookTestBtn">핫딜 알림 테스트</button>
+        </div>
+        <div class="form-error" id="webhookMsg"></div>
+      </div>
+
+      <div class="settings-section">
+        <h4>알림받을 키워드</h4>
+        <div class="chip-list" id="notifyKeywordChips"></div>
+        <div class="chip-add-row">
+          <input id="notifyKeywordInput" type="text" placeholder="새 키워드 입력" />
+          <button id="notifyKeywordAddBtn">추가</button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h4>로그인 유지 기간</h4>
+        <div class="form-group">
+          <select id="sessionDurationSelect">
+            <option value="1">1일</option>
+            <option value="7">7일</option>
+            <option value="30">30일</option>
+            <option value="180">180일</option>
+            <option value="365">1년</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h4>로그인된 기기</h4>
+        <div id="sessionList"></div>
+        <div class="btn-row">
+          <button class="btn-secondary" id="logoutAllBtn">전체 기기 로그아웃</button>
+        </div>
+      </div>
+
+      <div class="form-error" id="settingsError"></div>
+      <div class="form-success" id="settingsSuccess"></div>
+      <div class="btn-row">
+        <button class="btn-primary" id="settingsSaveBtn">저장</button>
+        <button class="btn-secondary" id="settingsCancelBtn">닫기</button>
+        <button class="btn-secondary" id="settingsLogoutBtn">로그아웃</button>
+      </div>
+    `;
+
+    document.getElementById("sessionDurationSelect").value = String(
+      profile.session_duration_days,
+    );
+
+    let notifyKeywords = keywords.slice();
+    function renderNotifyKeywordChips() {
+      const wrap = document.getElementById("notifyKeywordChips");
+      wrap.innerHTML =
+        notifyKeywords
+          .map(
+            (k) => `
+        <span class="keyword-chip">${escapeHtml(k.keyword)} <button data-id="${k.id}">✕</button></span>
+      `,
+          )
+          .join("") ||
+        '<span class="form-hint">등록된 키워드가 없습니다.</span>';
+      wrap.querySelectorAll("button").forEach((btn) => {
+        btn.onclick = async () => {
+          const id = btn.getAttribute("data-id");
+          await fetch(`${apiPrefix}/me/keywords/${id}`, { method: "DELETE" });
+          notifyKeywords = notifyKeywords.filter((k) => String(k.id) !== id);
+          renderNotifyKeywordChips();
+        };
+      });
+    }
+    renderNotifyKeywordChips();
+
+    document.getElementById("notifyKeywordAddBtn").onclick = async () => {
+      const input = document.getElementById("notifyKeywordInput");
+      const value = input.value.trim();
+      if (!value) return;
+      const res = await fetch(`${apiPrefix}/me/keywords`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ keyword: value }),
+      });
+      if (res.ok) {
+        const listData = await fetch(`${apiPrefix}/me/keywords`).then((r) =>
+          r.json(),
+        );
+        notifyKeywords = listData.keywords;
+        renderNotifyKeywordChips();
+        input.value = "";
+      }
+    };
+
+    function renderSessionList(list) {
+      const wrap = document.getElementById("sessionList");
+      wrap.innerHTML = list
+        .map(
+          (s) => `
+        <div class="session-row">
+          <div class="session-info">
+            <span>${escapeHtml(s.userAgentSummary || "알 수 없는 기기")}${s.isCurrent ? '<span class="session-current-badge">이 기기</span>' : ""}</span>
+            <span class="form-hint">${formatDate(s.createdAt)} 로그인</span>
+          </div>
+          <button data-id="${s.id}">로그아웃</button>
+        </div>
+      `,
+        )
+        .join("");
+      wrap.querySelectorAll("button").forEach((btn) => {
+        btn.onclick = async () => {
+          await fetch(
+            `${apiPrefix}/auth/sessions/${btn.getAttribute("data-id")}`,
+            { method: "DELETE" },
+          );
+          const isCurrentDevice = list.find(
+            (s) => String(s.id) === btn.getAttribute("data-id"),
+          )?.isCurrent;
+          if (isCurrentDevice) {
+            await onLoggedOut();
+            return;
+          }
+          const refreshed = await fetch(`${apiPrefix}/auth/sessions`).then(
+            (r) => r.json(),
+          );
+          renderSessionList(refreshed.sessions);
+        };
+      });
+    }
+    renderSessionList(sessions);
+
+    document.getElementById("logoutAllBtn").onclick = async () => {
+      await fetch(`${apiPrefix}/auth/logout-all`, { method: "POST" });
+      await onLoggedOut();
+    };
+
+    document.getElementById("webhookTestBtn").onclick = async () => {
+      const msg = document.getElementById("webhookMsg");
+      const url = document.getElementById("webhookInput").value.trim();
+      msg.textContent = "전송 중...";
+      msg.className = "form-hint";
+      const res = await fetch(`${apiPrefix}/me/webhook-test`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ webhookUrl: url }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        msg.textContent = "테스트 메시지를 보냈습니다.";
+        msg.className = "form-success";
+      } else {
+        msg.textContent = data.error || "전송 실패";
+        msg.className = "form-error";
+      }
+    };
+
+    document.getElementById("settingsSaveBtn").onclick = async () => {
+      const errorEl = document.getElementById("settingsError");
+      const successEl = document.getElementById("settingsSuccess");
+      errorEl.textContent = "";
+      successEl.textContent = "";
+
+      const res = await fetch(`${apiPrefix}/me`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          discordWebhookUrl:
+            document.getElementById("webhookInput").value.trim() || null,
+          siteFilter: Array.from(activeSources),
+          keywordFilter: keywordFilters,
+          sessionDurationDays: Number(
+            document.getElementById("sessionDurationSelect").value,
+          ),
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        successEl.textContent = "저장되었습니다.";
+        setTimeout(() => {
+          document.getElementById("settingsCard").classList.remove("open");
+        }, 500);
+      } else {
+        errorEl.textContent = data.error || "저장에 실패했습니다.";
+      }
+    };
+
+    document.getElementById("settingsCancelBtn").onclick = () => {
+      document.getElementById("settingsCard").classList.remove("open");
+    };
+
+    document.getElementById("settingsLogoutBtn").onclick = doLogout;
+
+    activeSources = new Set(siteFilterList);
+    keywordFilters = kwFilterList.slice();
+    renderFilterCard();
+    renderDealsList();
+  }
+
+  async function doLogout() {
+    await fetch(`${apiPrefix}/auth/logout`, { method: "POST" });
+    await onLoggedOut();
+  }
+
+  async function onLoggedOut() {
+    currentUser = null;
+    currentProfile = null;
+    activeSources = new Set(Object.keys(SOURCE_LABELS));
+    keywordFilters = [];
+    renderFilterCard();
+    renderSettingsCard();
+    await fetchDealsPage({ reset: true });
+  }
+
+  async function initAfterAuthChange() {
+    if (currentUser && currentUser.approved) {
+      try {
+        const profileData = await fetch(`${apiPrefix}/me`).then((r) =>
+          r.json(),
+        );
+        currentProfile = profileData.user;
+        activeSources = new Set(
+          profileData.user.site_filter || Object.keys(SOURCE_LABELS),
+        );
+        keywordFilters = profileData.user.keyword_filter || [];
+      } catch (e) {
+        // failed to fetch profile
+      }
+    } else {
+      activeSources = new Set(Object.keys(SOURCE_LABELS));
+      keywordFilters = [];
+    }
+    renderFilterCard();
+    await fetchDealsPage({ reset: true });
+  }
+
+  function setupSettingsToggle() {
+    const btn = document.getElementById("settingsBtn");
+    const card = document.getElementById("settingsCard");
+    if (!btn || !card) return;
+    btn.onclick = () => {
+      card.classList.toggle("open");
+      if (card.classList.contains("open")) renderSettingsCard();
+    };
+  }
+
+  const POLL_INTERVAL_MS = 60_000;
+  let pollTimer = null;
+  async function pollForNewDeals() {
+    if (pagesLoaded > 1) return;
+    try {
+      await fetchDealsPage({ reset: true });
+    } catch (err) {
+      console.error("자동 갱신 실패:", err);
+    }
+  }
+
+  const initDealsPage = async () => {
+    // Only init if the page has our elements
+    if (!document.getElementById("dealsList")) return;
+
+    setupSettingsToggle();
+    setupSearch();
+    setupMoreButton();
+    setupFilterToggle();
+
+    await loadCurrentUser();
+    await initAfterAuthChange();
+
+    if (pollTimer) clearInterval(pollTimer);
+    pollTimer = setInterval(pollForNewDeals, POLL_INTERVAL_MS);
+  };
+
+  document.addEventListener("astro:page-load", initDealsPage);
+</script>
+
+<style is:global>
+  .hdn-page {
+    max-width: 768px;
+    margin: 0 auto;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+  }
+
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .header-row h1 {
+    font-size: 24px;
+    margin: 0 0 4px;
+    color: var(--color-text-heading);
+  }
+
+  .sub {
+    color: var(--color-text-muted);
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .card {
+    padding: 0 0 16px;
+  }
+
+  .last-updated-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin: 0 0 8px;
+    gap: 8px;
+  }
+
+  .status-message {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    font-size: 12px;
+  }
+
+  .meta-pill {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+
+  #dealsList {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .deal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .deal-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .deal-item:last-child {
+    border-bottom: none;
+  }
+
+  .deal-favicon {
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    object-fit: contain;
+    display: block;
+  }
+
+  .deal-content {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+  }
+
+  .deal-title {
+    color: var(--color-text-primary);
+    line-height: 1.4;
+    display: block;
+    word-break: break-word;
+  }
+
+  /* .deal-title:hover {
+    color: var(--color-link-article);
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  } */
+
+  .deal-meta {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .meta-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+
+  .meta-right {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hl-price {
+    color: oklch(0.6 0.15 150);
+    font-size: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .hdn-page {
+      /* padding: 20px 0; */
+    }
+
+    .last-updated-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  /* ------- 추가된 UI 스타일 ------- */
+  mark.hl-keyword {
+    background: none;
+    color: var(--color-link-article); /* var(--color-keyword-highlight) 대신 */
+    font-weight: 700;
+  }
+
+  .icon-btn {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-btn:hover {
+    background: var(--color-border);
+  }
+
+  .search-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .search-row input {
+    flex: 1;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  .search-row button {
+    background: var(--color-link-article);
+    border: none;
+    color: oklch(0.95 0 0);
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .search-row button:hover {
+    filter: brightness(1.1);
+  }
+  .search-row #searchResetBtn {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+  }
+
+  /* ------- 필터 ------- */
+  #filterCard {
+    display: none;
+  }
+  #filterCard.open {
+    display: block;
+  }
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .filter-row label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2.75px 12px;
+    border-radius: 5px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+  }
+  .filter-row label:has(input:checked) {
+    border-color: var(--color-link-article);
+    background: color-mix(in srgb, var(--color-link-article) 10%, transparent);
+  }
+  .filter-row input[type="checkbox"] {
+    display: none;
+  }
+  .filter-favicon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+  }
+  .filter-all-btn {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    border-radius: 5px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    height: 32px;
+  }
+  .keyword-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .keyword-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: color-mix(in srgb, var(--color-link-article) 10%, transparent);
+    border: 1px solid var(--color-link-article);
+    border-radius: 5px;
+    padding: 1px 12px;
+    font-size: 14px;
+    color: var(--color-text-primary);
+  }
+  .keyword-chip button {
+    background: none;
+    border: none;
+    color: oklch(0.6 0.25 30); /* red-ish for delete */
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0;
+  }
+  .keyword-filter-add {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .keyword-filter-add input {
+    flex: 1;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text-primary);
+    padding: 8px;
+    font-size: 14px;
+  }
+  .keyword-filter-add button {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  /* ------- 상태 ------- */
+  .status-badge.ended {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: color-mix(in srgb, oklch(0.6 0.25 30) 15%, transparent);
+  }
+  .more-btn-row {
+    text-align: center;
+    margin-top: 12px;
+  }
+  .more-btn {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .more-btn:disabled {
+    opacity: 0.5;
+  }
+
+  /* ------- 설정 창 ------- */
+  #settingsCard {
+    display: none;
+    overflow: hidden;
+  }
+  #settingsCard.open {
+    display: block;
+  }
+  .tab-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--color-text-muted);
+    padding: 6px 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .tab-btn.active {
+    color: var(--color-text-primary);
+    border-bottom-color: var(--color-link-article);
+    font-weight: 600;
+  }
+  .form-group {
+    margin-bottom: 14px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .form-hint {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-top: 4px;
+  }
+  .form-error {
+    font-size: 13px;
+    color: oklch(0.6 0.25 30);
+    margin-top: 8px;
+    min-height: 16px;
+  }
+  .form-success {
+    font-size: 13px;
+    color: var(--color-link-article);
+    margin-top: 8px;
+    min-height: 16px;
+  }
+  .btn-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .btn-primary {
+    background: var(--color-link-article);
+    border: none;
+    color: oklch(0.95 0 0);
+  }
+  .btn-secondary {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+  }
+  .settings-section {
+    /* margin-top: 22px; */
+    padding-top: 18px;
+    /* border-top: 1px solid var(--color-border); */
+  }
+  .settings-section h4 {
+    margin: 0 0 10px;
+    color: var(--color-text-heading);
+  }
+  .chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .chip-add-row {
+    display: flex;
+    gap: 6px;
+    padding-block: 12px;
+  }
+  .chip-add-row input {
+    flex: 1;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text-primary);
+    padding: 6px 8px;
+  }
+  .chip-add-row button {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .session-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 13px;
+  }
+  .session-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .session-current-badge {
+    font-size: 11px;
+    color: var(--color-link-article);
+    font-weight: 600;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    padding: 0 5px;
+    margin-left: 6px;
+  }
+  .session-row button {
+    background: none;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .pending-box {
+    padding: 12px 0;
+  }
+  .filter-toggle-btn {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .filter-toggle-btn.active {
+    background: color-mix(in srgb, var(--color-link-article) 12%, transparent);
+    border-color: var(--color-link-article);
+    /* color: var(--color-link-article); */
+  }
+</style>

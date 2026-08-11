@@ -3,6 +3,36 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
+    if (pathname.startsWith("/api/hdn")) {
+      const upstreamPath = pathname.replace(/^\/api\/hdn/, "/api");
+      const upstreamUrl = new URL(upstreamPath + url.search, "https://hd-notification.chatterer.workers.dev");
+      const upstreamResponse = await fetch(upstreamUrl.toString(), {
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      const headers = new Headers(upstreamResponse.headers);
+      const origin = request.headers.get("origin");
+      const allowedOrigins = ["https://chatter.kr", "http://localhost:4321", "http://127.0.0.1:4321"];
+
+      if (origin && allowedOrigins.includes(origin)) {
+        headers.set("Access-Control-Allow-Origin", origin);
+        headers.set("Vary", "Origin");
+      }
+
+      if (request.method === "OPTIONS") {
+        headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+        headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        return new Response(null, { status: 204, headers });
+      }
+
+      return new Response(upstreamResponse.body, {
+        status: upstreamResponse.status,
+        headers,
+      });
+    }
+
     // 1. .html 제거
     if (pathname.endsWith(".html")) {
       url.pathname = pathname.replace(/\.html$/, "");
