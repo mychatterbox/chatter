@@ -1,32 +1,13 @@
-import { visit } from 'unist-util-visit';
-
 export function Callouts() {
-  return (tree) => {
-    visit(tree, 'blockquote', (node) => {
-      processBlockquoteRecursively(node);
-    });
+  return {
+    name: 'callouts',
+    blockquote(node, ctx) {
+      processCallout(node, ctx);
+    },
   };
 }
 
-function processBlockquoteRecursively(node) {
-  if (!node.children || !Array.isArray(node.children)) return;
-  
-  for (const child of node.children) {
-    if (child.type === 'blockquote') {
-      processBlockquoteRecursively(child);
-    } else if (child.children) {
-      for (const grandchild of child.children) {
-        if (grandchild.type === 'blockquote') {
-          processBlockquoteRecursively(grandchild);
-        }
-      }
-    }
-  }
-  
-  processCallout(node);
-}
-
-function processCallout(node) {
+function processCallout(node, ctx) {
   if (!node.children || !Array.isArray(node.children)) return;
 
   const firstChild = node.children[0];
@@ -38,7 +19,7 @@ function processCallout(node) {
 
   const text = textNode.value || '';
 
-  const match = text.match(/^\[!(\w+)(?:\|([\w-]+(?:\|[\w-]+)*))?\]\s*(.*)/);
+  const match = text.match(/^\[!([\w-]+)(?:\|([\w-]+(?:\|[\w-]+)*))?\]\s*(.*)/);
   if (!match) return;
 
   const [_, type, options, titleText] = match;
@@ -61,6 +42,7 @@ function processCallout(node) {
     danger: 'danger',
     error: 'danger',
     info: 'info',
+    information: 'info',
     success: 'success',
     check: 'success',
     question: 'question',
@@ -100,19 +82,19 @@ function processCallout(node) {
   const icon = iconMap[finalType] || '📌';
 
   if (titleText.trim()) {
-    textNode.value = titleText;
+    ctx.setProperty(textNode, 'value', titleText);
   } else {
     if (firstChild.children.length > 1) {
-      firstChild.children.shift();
+      ctx.removeChildAt(firstChild, 0);
       if (firstChild.children[0]?.type === 'break') {
-        firstChild.children.shift();
+        ctx.removeChildAt(firstChild, 0);
       }
     } else {
-      node.children.shift();
+      ctx.removeChildAt(node, 0);
     }
   }
 
-  const checkboxId = `callout-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  const checkboxId = `callout-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
 
   let titleHtml = '';
   if (!hideTitle) {
@@ -132,22 +114,22 @@ function processCallout(node) {
   
   const closingDiv = `</div></div>`;
 
-  node.children.unshift({
+  ctx.prependChild(node, {
     type: 'html',
     value: openingDiv
   });
   
-  node.children.push({
+  ctx.appendChild(node, {
     type: 'html',
     value: closingDiv
   });
 
-  node.data = {
+  ctx.setProperty(node, 'data', {
     hName: 'div',
     hProperties: {
       className: 'callout-wrapper'
     }
-  };
+  });
 }
 
 function escapeHtml(text) {
