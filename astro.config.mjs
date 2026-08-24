@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import { unified } from "@astrojs/markdown-remark";
+import { satteri } from "@astrojs/markdown-satteri";
 import FlexokiDark from "./src/styles/themes/Flexoki-Dark-color-theme.json";
 import FlexokiLight from "./src/styles/themes/Flexoki-Light-color-theme.json";
 
@@ -143,9 +143,9 @@ export default defineConfig({
         transformerFileName(),
       ],
     },
-    processor: unified({
-      remarkPlugins: [Callouts],
-      rehypePlugins: [addAnchorLinks],
+    processor: satteri({
+      mdastPlugins: [Callouts()],
+      hastPlugins: [addAnchorLinks()],
     }),
   },
 
