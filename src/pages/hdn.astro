@@ -182,15 +182,20 @@ import Nav from "components/layout/navbar.astro";
       return t;
     }
 
-    const seen = new Set();
-    const priceHtml = priceMatches
-      .map(cleanPriceText)
-      .filter(Boolean)
-      .filter((p) => {
-        if (seen.has(p)) return false;
-        seen.add(p);
-        return true;
-      })
+    // 같은 가격이 괄호형/￦형 등 중복으로 잡힌 경우, 정리 후 메인 금액 기준으로 중복 제거
+    // 예: "14,630원/3,000원"과 "14,630원"이 함께 있으면 더 상세한 정보(배송비 포함 등)를 유지
+    const cleanedPrices = priceMatches.map(cleanPriceText).filter(Boolean);
+    const priceMap = new Map();
+    for (const p of cleanedPrices) {
+      const numMatch = p.match(/[\d,]+(?:\.\d+)?/);
+      const key = numMatch ? numMatch[0].replace(/,/g, "") : p;
+      const existing = priceMap.get(key);
+      if (!existing || p.length > existing.length) {
+        priceMap.set(key, p);
+      }
+    }
+
+    const priceHtml = Array.from(priceMap.values())
       .map((p) => `<span class="hl-price">${p}</span>`)
       .join(" ");
 
