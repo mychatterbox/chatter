@@ -294,29 +294,39 @@ import Nav from "components/layout/navbar.astro";
   }
 
   async function fetchDealsPage({ reset }) {
-    const params = new URLSearchParams();
-    if (currentSearchQuery) params.set("q", currentSearchQuery);
-    if (!reset && nextCursor) {
-      params.set("beforePostedAt", nextCursor.beforePostedAt);
-      params.set("beforeId", nextCursor.beforeId);
+    const statusMsg = document.getElementById("deal-status");
+    try {
+      const params = new URLSearchParams();
+      if (currentSearchQuery) params.set("q", currentSearchQuery);
+      if (!reset && nextCursor) {
+        params.set("beforePostedAt", nextCursor.beforePostedAt);
+        params.set("beforeId", nextCursor.beforeId);
+      }
+      params.set("limit", "20");
+
+      const res = await fetch(`${apiPrefix}/deals?${params.toString()}`);
+      if (!res.ok) throw new Error(`API 오류: ${res.status}`);
+      const data = await res.json();
+
+      if (reset) {
+        allDeals = data.deals || [];
+        pagesLoaded = 1;
+      } else {
+        allDeals = allDeals.concat(data.deals || []);
+        pagesLoaded += 1;
+      }
+      nextCursor = data.nextCursor && data.hasMore ? data.nextCursor : null;
+
+      renderDealsList();
+      updateLastUpdatedLabel();
+    } catch (err) {
+      console.error("핫딜 데이터 로딩 실패:", err);
+      if (statusMsg && allDeals.length === 0) {
+        statusMsg.textContent = "핫딜 정보를 불러오지 못했습니다. (서버 응답 오류)";
+        statusMsg.style.display = "inline-flex";
+      }
+      throw err;
     }
-    params.set("limit", "20");
-
-    const res = await fetch(`${apiPrefix}/deals?${params.toString()}`);
-    if (!res.ok) throw new Error("API 오류");
-    const data = await res.json();
-
-    if (reset) {
-      allDeals = data.deals || [];
-      pagesLoaded = 1;
-    } else {
-      allDeals = allDeals.concat(data.deals || []);
-      pagesLoaded += 1;
-    }
-    nextCursor = data.nextCursor && data.hasMore ? data.nextCursor : null;
-
-    renderDealsList();
-    updateLastUpdatedLabel();
   }
 
   function setupMoreButton() {
