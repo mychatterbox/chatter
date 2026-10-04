@@ -3,6 +3,10 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
+    if (pathname === "/favicon.ico") {
+      url.pathname = "/icons/favicon.svg";
+    }
+
     if (pathname.startsWith("/api/hdn")) {
       const upstreamPath = pathname.replace(/^\/api\/hdn/, "/api");
       const upstreamUrl = new URL(upstreamPath + url.search, "https://hd-notification.chatterer.workers.dev");
@@ -53,7 +57,7 @@ export default {
     }
 
     // 정적 자산 응답
-    const response = await env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(new Request(url, request));
     const contentType = response.headers.get("content-type") || "";
 
     const cacheControl = contentType.includes("text/html")
