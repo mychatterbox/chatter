@@ -3,6 +3,7 @@ kind: article
 title: 내 차단 징표가 뭐였더라? 와우 애드온
 author: mychatterbox
 pubDate: 2026-05-15
+updatedDate: 2026-11-02
 slug: wow-my-marker
 featured: false
 draft: false
@@ -21,6 +22,12 @@ keywords:
 
 아주 간단한 애드온이므로 디자인을 바꾸거나 기능을 수정, 추가하고 싶으면 코드를 AI 에게 물어보시면 됩니다.  
 애드온 수정 후 와우 재접할 필요 없이 /reloadui 혹은 /rl 하시면 바로 적용됩니다.  
+
+---
+
+2026-11-02 기능 업데이트  
+특정 상황에서 2번째 징표를 배정받을 때 표시하기 위해 아래쪽에 징표를 하나 더 표시할 수 있습니다.  
+메인 아이콘을 우클릭해서 아래 보조 아이콘을 표시/숨김 토글 할 수 있습니다.  
 
 ![차단징 애드온](./blog-images/2026/wow-my-marker.webp)
 
