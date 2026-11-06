@@ -5,7 +5,6 @@ import './list/comment-list-item';
 import type { Comment } from '@ziteh/yangchun-comment-shared';
 import { t } from '../utils/i18n';
 import { applyMarkdownLineBreaks } from '../utils/sanitize';
-import '../../../../styles/fonts-emoji.css';
 
 @customElement('comment-input')
 export class CommentInput extends LitElement {
