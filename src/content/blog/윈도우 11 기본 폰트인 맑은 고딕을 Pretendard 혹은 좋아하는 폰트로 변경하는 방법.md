@@ -3,6 +3,7 @@ kind: article
 title: 윈도우 11 기본 폰트인 맑은 고딕을 Pretendard 혹은 좋아하는 폰트로 변경하는 방법
 author: mychatterbox
 pubDate: 2025-12-17
+updatedDate: 2026-11-08
 slug: windows-font-change
 featured: false
 draft: false
@@ -97,6 +98,11 @@ c:\ 를 확인해보면 font-out.bat 으로 빼낸 여러 개의 원본 ttf 폰�
 
 ## 참고
 
+> [!Important|hide]
+> DISM.exe /Online /Cleanup-image /Restorehealth  
+> sfc /scannow  
+> 오류 복구를 위해 위와 같은 명령을 사용하면 기본 폰트로 변경될 수 있으니 다시 작업해주면 됩니다.  
+
 기억하세요.  
 이제 각각의 프로그램에서 폰트가 '맑은 고딕'으로 설정되어 있어도 그 폰트는 수정된 폰트입니다.
 
@@ -110,3 +116,5 @@ c:\ 를 확인해보면 font-out.bat 으로 빼낸 여러 개의 원본 ttf 폰�
 새로운 메모장은 어떤 폰트로 변경해도 글자 크기가 작으면 깨끗하게 나오질 않네요.  
 <a href="https://github.com/zufuliu/notepad4" target="_blank" rel="noopener noreferrer">
 Notepad4</a> 한 번 써보세요.  
+
+
