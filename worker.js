@@ -43,19 +43,6 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
-    // 2. trailing slash 제거 (파일 제외)
-    const lastSegment = pathname.split("/").pop() || "";
-    const hasExtension = /\.[a-zA-Z0-9]{2,4}$/.test(lastSegment);
-
-    if (
-      pathname.endsWith("/") &&
-      pathname.length > 1 &&
-      !hasExtension
-    ) {
-      url.pathname = pathname.slice(0, -1);
-      return Response.redirect(url.toString(), 301);
-    }
-
     // 정적 자산 응답
     const response = await env.ASSETS.fetch(new Request(url, request));
     const contentType = response.headers.get("content-type") || "";
