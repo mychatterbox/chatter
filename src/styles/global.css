@@ -925,7 +925,10 @@ table code {
   display: none;
 }
 
-
+.date-separator {
+  margin-inline: 0.45em;
+  user-select: none;
+}
 
 .visually-hidden {
   position: absolute;
